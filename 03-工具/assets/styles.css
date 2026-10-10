@@ -93,6 +93,7 @@ p { margin: 0; }
 .bar-right { margin-left: auto; display: flex; align-items: center; gap: 14px; }
 .who { font-size: 13px; color: var(--ink-3); max-width: 26ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .target { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink-3); }
+.lang-sel { height: 30px; max-width: 14ch; font-size: 13px; }
 
 /* ---------- 通用控件 ---------- */
 .seg { display: inline-flex; padding: 2px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 8px; gap: 2px; }
@@ -376,7 +377,7 @@ table.data .linkish:focus-visible { outline: 2px solid var(--accent); }
   .bar-in, main { padding-left: 16px; padding-right: 16px; }
   .bar-in { padding-top: 10px; gap: 8px 12px; }
   .tabs { order: 3; width: 100%; height: 40px; }
-  .bar-right { margin-left: 0; }
+  .bar-right { margin-left: 0; flex-wrap: wrap; row-gap: 8px; }
   .who { display: none; }
   .overview, .kpis { grid-template-columns: 1fr; }
   .mx-cells { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }

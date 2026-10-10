@@ -54,15 +54,15 @@
       s += '<g' + tipAttr(a.tip) + '>' +
         '<text x="' + n1(x) + '" y="' + n1(y + dy) + '" text-anchor="' + anchor + '" font-size="12" fill="' + P.ink + '">' +
         (code ? '<tspan font-family="' + MONO + '" font-size="11" fill="' + P.muted + '">' + esc(code) + '</tspan>' : '') + esc(a.label) + '</text>' +
-        T(pct(a.value) + (opt.compare ? '  对比 ' + pct(a.compare) : ''), x, y + dy + 15, { anchor: anchor, size: 11.5, weight: 600, fill: P.ink2 }) + '</g>';
+        T(pct(a.value) + (opt.compare ? '  ' + I18N.t('对比 {rate}', { rate: pct(a.compare) }) : ''), x, y + dy + 15, { anchor: anchor, size: 11.5, weight: 600, fill: P.ink2 }) + '</g>';
     });
     var ly = H - 12, lx = 0;
-    s += '<line x1="' + lx + '" y1="' + (ly - 4) + '" x2="' + (lx + 16) + '" y2="' + (ly - 4) + '" stroke="' + P.s1 + '" stroke-width="2"/>' + T(opt.currentLabel || '本次评估', lx + 22, ly, { size: 11.5, fill: P.ink2 });
+    s += '<line x1="' + lx + '" y1="' + (ly - 4) + '" x2="' + (lx + 16) + '" y2="' + (ly - 4) + '" stroke="' + P.s1 + '" stroke-width="2"/>' + T(opt.currentLabel || I18N.t('本次评估'), lx + 22, ly, { size: 11.5, fill: P.ink2 });
     if (opt.compare) {
-      lx += 22 + 12 * (opt.currentLabel || '本次评估').length + 20;
-      s += '<line x1="' + lx + '" y1="' + (ly - 4) + '" x2="' + (lx + 16) + '" y2="' + (ly - 4) + '" stroke="' + P.compare + '" stroke-width="1.5"/>' + T(opt.compareLabel || '对比', lx + 22, ly, { size: 11.5, fill: P.ink2 });
+      lx += 22 + 12 * (opt.currentLabel || I18N.t('本次评估')).length + 20;
+      s += '<line x1="' + lx + '" y1="' + (ly - 4) + '" x2="' + (lx + 16) + '" y2="' + (ly - 4) + '" stroke="' + P.compare + '" stroke-width="1.5"/>' + T(opt.compareLabel || I18N.t('对比'), lx + 22, ly, { size: 11.5, fill: P.ink2 });
     }
-    s += T('外圈 = 目标等级内的适用要求全部满足', W, ly, { anchor: 'end', size: 11.5, fill: P.muted });
+    s += T(I18N.t('外圈 = 目标等级内的适用要求全部满足'), W, ly, { anchor: 'end', size: 11.5, fill: P.muted });
     return { w: W, h: H, body: s };
   }
 
@@ -72,9 +72,9 @@
     var H = top + rows.length * step + 30;
     var lx = [236, 276, 316, 356], bx = 400, bw = 150, gx = W;
     var s = '';
-    s += T('章', 0, 16, { size: 11.5, fill: P.muted }) + T('达成等级', 296, 16, { anchor: 'middle', size: 11.5, fill: P.muted }) +
-      T('满足率', bx, 16, { size: 11.5, fill: P.muted }) + T('差距', gx, 16, { anchor: 'end', size: 11.5, fill: P.muted });
-    ['未达', 'L1', 'L2', 'L3'].forEach(function (k, i) {
+    s += T(I18N.t('章'), 0, 16, { size: 11.5, fill: P.muted }) + T(I18N.t('达成等级'), 296, 16, { anchor: 'middle', size: 11.5, fill: P.muted }) +
+      T(I18N.t('满足率'), bx, 16, { size: 11.5, fill: P.muted }) + T(I18N.t('差距'), gx, 16, { anchor: 'end', size: 11.5, fill: P.muted });
+    [I18N.t('未达'), 'L1', 'L2', 'L3'].forEach(function (k, i) {
       s += T(k, lx[i], 34, { anchor: 'middle', size: 10.5, weight: i === t ? 600 : 400, fill: i === t ? P.ink : P.muted, mono: i > 0 });
     });
     s += '<line x1="0" y1="42" x2="' + W + '" y2="42" stroke="' + P.axis + '" stroke-width="1"/>';
@@ -86,21 +86,21 @@
       lx.forEach(function (x) { s += '<circle cx="' + x + '" cy="' + y + '" r="2.5" fill="' + P.axis + '"/>'; });
       if (r.achieved < t) s += '<line x1="' + lx[r.achieved] + '" y1="' + y + '" x2="' + lx[t] + '" y2="' + y + '" stroke="' + P.s1light + '" stroke-width="4" stroke-linecap="round"/>';
       s += '<circle cx="' + lx[t] + '" cy="' + y + '" r="6.5" fill="' + P.surface + '" stroke="' + P.s1dark + '" stroke-width="2"/>';
-      s += '<circle cx="' + lx[r.achieved] + '" cy="' + y + '" r="5" fill="' + P.s1 + '" stroke="' + P.surface + '" stroke-width="2"' + tipAttr(r.name + '：当前达成 ' + (r.achieved ? 'L' + r.achieved : '未达 L1') + '，目标 L' + t) + '/>';
+      s += '<circle cx="' + lx[r.achieved] + '" cy="' + y + '" r="5" fill="' + P.s1 + '" stroke="' + P.surface + '" stroke-width="2"' + tipAttr(I18N.t('{name}：当前达成 {level}，目标 L{t}', { name: r.name, level: r.achieved ? 'L' + r.achieved : I18N.t('未达 L1'), t: t })) + '/>';
       var rate = r.rate == null ? 0 : r.rate;
       s += '<rect x="' + bx + '" y="' + (y - 3) + '" width="' + bw + '" height="6" rx="3" fill="' + P.grid + '"/>';
-      if (rate > 0) s += '<rect x="' + bx + '" y="' + (y - 3) + '" width="' + n1(Math.max(6, bw * rate)) + '" height="6" rx="3" fill="' + P.s1 + '"' + tipAttr(r.name + '：满足率 ' + pct(r.rate)) + '/>';
+      if (rate > 0) s += '<rect x="' + bx + '" y="' + (y - 3) + '" width="' + n1(Math.max(6, bw * rate)) + '" height="6" rx="3" fill="' + P.s1 + '"' + tipAttr(I18N.t('{name}：满足率 {rate}', { name: r.name, rate: pct(r.rate) })) + '/>';
       if (opt.compare && r.compare != null) s += '<line x1="' + n1(bx + bw * r.compare) + '" y1="' + (y - 7) + '" x2="' + n1(bx + bw * r.compare) + '" y2="' + (y + 7) + '" stroke="' + P.ink2 + '" stroke-width="1.5"/>';
       s += T(pct(r.rate), bx + bw + 10, y + 4, { size: 12.5, weight: 600, fill: P.ink });
-      s += T(r.gap ? String(r.gap) : '达标', gx, y + 4, { anchor: 'end', size: 12.5, weight: r.gap ? 600 : 400, fill: r.gap ? P.ink : P.ink2 });
+      s += T(r.gap ? String(r.gap) : I18N.t('达标'), gx, y + 4, { anchor: 'end', size: 12.5, weight: r.gap ? 600 : 400, fill: r.gap ? P.ink : P.ink2 });
     });
     var ly = H - 8, x = 0;
-    s += '<circle cx="' + (x + 5) + '" cy="' + (ly - 4) + '" r="4.5" fill="' + P.s1 + '"/>' + T('当前', x + 14, ly, { size: 11.5, fill: P.ink2 });
+    s += '<circle cx="' + (x + 5) + '" cy="' + (ly - 4) + '" r="4.5" fill="' + P.s1 + '"/>' + T(I18N.t('当前'), x + 14, ly, { size: 11.5, fill: P.ink2 });
     x += 54;
-    s += '<circle cx="' + (x + 5) + '" cy="' + (ly - 4) + '" r="5" fill="' + P.surface + '" stroke="' + P.s1dark + '" stroke-width="2"/>' + T('目标', x + 15, ly, { size: 11.5, fill: P.ink2 });
+    s += '<circle cx="' + (x + 5) + '" cy="' + (ly - 4) + '" r="5" fill="' + P.surface + '" stroke="' + P.s1dark + '" stroke-width="2"/>' + T(I18N.t('目标'), x + 15, ly, { size: 11.5, fill: P.ink2 });
     x += 56;
-    if (opt.compare) { s += '<line x1="' + (x + 5) + '" y1="' + (ly - 10) + '" x2="' + (x + 5) + '" y2="' + (ly + 2) + '" stroke="' + P.ink2 + '" stroke-width="1.5"/>' + T('对比时的满足率', x + 14, ly, { size: 11.5, fill: P.ink2 }); }
-    s += T('达到某级 = 该级及以下的适用要求全部满足', W, ly, { anchor: 'end', size: 11.5, fill: P.muted });
+    if (opt.compare) { s += '<line x1="' + (x + 5) + '" y1="' + (ly - 10) + '" x2="' + (x + 5) + '" y2="' + (ly + 2) + '" stroke="' + P.ink2 + '" stroke-width="1.5"/>' + T(I18N.t('对比时的满足率'), x + 14, ly, { size: 11.5, fill: P.ink2 }); }
+    s += T(I18N.t('达到某级 = 该级及以下的适用要求全部满足'), W, ly, { anchor: 'end', size: 11.5, fill: P.muted });
     return { w: W, h: H, body: s };
   }
 
@@ -112,19 +112,19 @@
     var max = Math.max.apply(null, rows.map(function (r) { return r.total; }).concat([1]));
     var k = (x1 - x0) / max;
     var parts = [
-      { key: 'unmet', label: '未满足', color: P.critical },
-      { key: 'partial', label: '部分满足', color: P.warning },
-      { key: 'none', label: '未评估', color: P.neutral }
+      { key: 'unmet', label: I18N.t('未满足'), color: P.critical },
+      { key: 'partial', label: I18N.t('部分满足'), color: P.warning },
+      { key: 'none', label: I18N.t('未评估'), color: P.neutral }
     ];
     var s = '';
-    if (!rows.length) s += T('目标等级内没有差距条目', W / 2, top + 30, { anchor: 'middle', size: 13, fill: P.ink2 });
+    if (!rows.length) s += T(I18N.t('目标等级内没有差距条目'), W / 2, top + 30, { anchor: 'middle', size: 13, fill: P.ink2 });
     rows.forEach(function (r, i) {
       var y = top + i * step + 4, x = x0, segs = parts.filter(function (p) { return r[p.key] > 0; });
       s += T(r.label, x0 - 12, y + bar / 2 + 4, { anchor: 'end', size: 12.5, fill: P.ink });
       s += '<rect x="' + x0 + '" y="' + y + '" width="' + (x1 - x0) + '" height="' + bar + '" rx="3" fill="' + P.grid + '" fill-opacity="0.55"/>';
       segs.forEach(function (p, j) {
         var lastSeg = j === segs.length - 1, w = Math.max(r[p.key] * k - (lastSeg ? 0 : 2), 2);
-        var tip = r.label + '：' + p.label + ' ' + r[p.key] + ' 条';
+        var tip = I18N.t('{label}：{part} {n} 条', { label: r.label, part: p.label, n: r[p.key] });
         var rl = j === 0 ? 3 : 0, rr = lastSeg ? 3 : 0;
         s += '<path d="' + roundRect(x, y, w, bar, rl, rr) + '" fill="' + p.color + '"' + tipAttr(tip) + '/>';
         x += w + (lastSeg ? 0 : 2);
@@ -136,7 +136,7 @@
       s += '<rect x="' + lx + '" y="' + (ly - 9) + '" width="10" height="10" rx="2" fill="' + p.color + '"/>' + T(p.label, lx + 16, ly, { size: 11.5, fill: P.ink2 });
       lx += 16 + p.label.length * 12 + 18;
     });
-    s += T('单位：条，只计目标等级内的适用要求', W, ly, { anchor: 'end', size: 11.5, fill: P.muted });
+    s += T(I18N.t('单位：条，只计目标等级内的适用要求'), W, ly, { anchor: 'end', size: 11.5, fill: P.muted });
     return { w: W, h: H, body: s };
   }
   function roundRect(x, y, w, h, rl, rr) {

@@ -3,42 +3,50 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="对照《企业智能体身份与授权安全基线》做自评：覆盖矩阵、逐条评估、成熟度报告与图表，数据只保存在本地浏览器。">
+<meta name="description" content="对照《企业智能体身份与授权安全基线》做自评：覆盖矩阵、逐条评估、成熟度报告与图表，数据只保存在本地浏览器。" data-i18n-attr="content">
 <meta name="referrer" content="no-referrer">
-<title>智能体安全基线自评</title>
+<title data-i18n="智能体安全基线自评">智能体安全基线自评</title>
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
 <header class="app-bar">
   <div class="bar-in">
-    <a class="brand" href="#matrix" aria-label="智能体安全基线自评，回到覆盖矩阵">
+    <a class="brand" href="#matrix" aria-label="智能体安全基线自评，回到覆盖矩阵" data-i18n-attr="aria-label">
       <svg class="mark" viewBox="0 0 22 22" aria-hidden="true"><rect x="2" y="13" width="4.5" height="7" rx="1.2" fill="var(--accent)" opacity=".45"/><rect x="8.75" y="8" width="4.5" height="12" rx="1.2" fill="var(--accent)" opacity=".72"/><rect x="15.5" y="2" width="4.5" height="18" rx="1.2" fill="var(--accent)"/></svg>
-      <span class="name">智能体安全基线自评</span><span class="ver" id="ver"></span>
+      <span class="name" data-i18n="智能体安全基线自评">智能体安全基线自评</span><span class="ver" id="ver"></span>
     </a>
-    <nav class="tabs" aria-label="页面">
-      <a href="#matrix">覆盖矩阵</a>
-      <a href="#items">逐条评估</a>
-      <a href="#results">评估报告</a>
-      <a href="#data">数据</a>
-      <a href="#about">说明</a>
+    <nav class="tabs" aria-label="页面" data-i18n-attr="aria-label">
+      <a href="#matrix" data-i18n="覆盖矩阵">覆盖矩阵</a>
+      <a href="#items" data-i18n="逐条评估">逐条评估</a>
+      <a href="#results" data-i18n="评估报告">评估报告</a>
+      <a href="#data" data-i18n="数据">数据</a>
+      <a href="#about" data-i18n="说明">说明</a>
     </nav>
     <div class="bar-right">
       <span class="who" id="who"></span>
-      <div class="target"><span>目标等级</span><div class="seg" id="targetSeg" role="group" aria-label="目标等级"></div></div>
+      <div class="target"><span data-i18n="目标等级">目标等级</span><div class="seg" id="targetSeg" role="group" aria-label="目标等级" data-i18n-attr="aria-label"></div></div>
+      <select class="lang-sel" id="langSel" aria-label="语言" data-i18n-attr="aria-label"></select>
     </div>
   </div>
 </header>
 <main>
-  <section class="panel" id="p-matrix" aria-label="覆盖矩阵"></section>
-  <section class="panel" id="p-items" aria-label="逐条评估" hidden></section>
-  <section class="panel" id="p-results" aria-label="评估报告" hidden></section>
-  <section class="panel" id="p-data" aria-label="数据" hidden></section>
-  <section class="panel" id="p-about" aria-label="说明" hidden></section>
+  <section class="panel" id="p-matrix" aria-label="覆盖矩阵" data-i18n-attr="aria-label"></section>
+  <section class="panel" id="p-items" aria-label="逐条评估" data-i18n-attr="aria-label" hidden></section>
+  <section class="panel" id="p-results" aria-label="评估报告" data-i18n-attr="aria-label" hidden></section>
+  <section class="panel" id="p-data" aria-label="数据" data-i18n-attr="aria-label" hidden></section>
+  <section class="panel" id="p-about" aria-label="说明" data-i18n-attr="aria-label" hidden></section>
 </main>
 <div id="drawer-root"></div>
 <div class="tip" id="tip" hidden></div>
 <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 <noscript><p style="padding:24px">本工具需要启用 JavaScript。</p></noscript>
+<script src="assets/i18n.js"></script>
+<script src="data/i18n.en.js"></script>
+<script src="data/i18n.ja.js"></script>
+<script src="data/i18n.ko.js"></script>
+<script src="data/i18n.de.js"></script>
+<script src="data/i18n.fr.js"></script>
+<script src="data/i18n.es.js"></script>
 <script src="data/baseline.js"></script>
 <script src="assets/score.js"></script>
 <script src="assets/charts.js"></script>

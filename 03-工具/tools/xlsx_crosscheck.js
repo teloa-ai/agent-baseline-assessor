@@ -10,6 +10,10 @@ const ExcelJS = require('exceljs');
 const B = require('../data/baseline.json');
 const Score = require('../assets/score.js');
 const WB = require('../assets/workbook.js');
+const L10N = require('./i18n_node.js');
+
+const I18N = L10N.init(L10N.localeFromEnv());
+const lvName = (n) => (n ? Score.levelName(n) : I18N.t('未达 L1'));
 
 const R = B.requirements;
 const sampleFile = process.argv[2];
@@ -38,7 +42,7 @@ const same = (a, b) => a === b || (typeof a === 'number' && typeof b === 'number
 (async () => {
   const files = [];
   for (const [name, A] of Object.entries(cases)) {
-    const wb = WB.build(ExcelJS, B, Object.assign({ meta: {} }, A), Score);
+    const wb = WB.build(ExcelJS, B, Object.assign({ meta: {} }, A), Score, { t: I18N.t });
     const f = path.join(work, name + '.xlsx');
     await wb.xlsx.writeFile(f);
     files.push(f);
@@ -50,20 +54,20 @@ const same = (a, b) => a === b || (typeof a === 'number' && typeof b === 'number
   for (const [name, A] of Object.entries(cases)) {
     const wb = new ExcelJS.Workbook();
     await wb.xlsx.readFile(path.join(out, name + '.xlsx'));
-    const sm = wb.getWorksheet('汇总');
+    const sm = wb.worksheets[1];
     const bad = [];
     [1, 2, 3].forEach((L, i) => {
       const s = Score.stats(R, A.items, L);
-      const want = [s.inTarget, s.met, s.partial, s.unmet, s.na, s.none, s.rate == null ? '—' : s.rate, s.gap === 0 ? '已达到' : '未达到'];
+      const want = [s.inTarget, s.met, s.partial, s.unmet, s.na, s.none, s.rate == null ? '—' : s.rate, s.gap === 0 ? I18N.t('已达到') : I18N.t('未达到')];
       [2, 3, 4, 5, 6, 7, 8, 9].forEach((j, k) => { const g = val(sm.getCell(5 + i, j)); if (!same(g, want[k])) bad.push(`L${L} 第 ${j} 列：Excel ${g}，网页 ${want[k]}`); });
     });
     const rows = {};
     sm.eachRow((row, r) => { const a = val(row.getCell(1)); if (typeof a === 'string') (rows[a] = rows[a] || []).push(r); });
-    const dims = B.components.map((c) => [c.name, R.filter((q) => q.component === c.name)])
-      .concat(B.chapters.map((c) => [c.id + ' ' + c.name, R.filter((q) => q.chapter === c.id)]));
+    const dims = B.components.map((c) => [I18N.t(c.name), R.filter((q) => q.component === c.name)])
+      .concat(B.chapters.map((c) => [c.id + ' ' + I18N.t(c.name), R.filter((q) => q.chapter === c.id)]));
     dims.forEach(([label, reqs]) => {
       const s = Score.stats(reqs, A.items, A.target);
-      const want = [s.inTarget, s.met, s.partial, s.unmet, s.na, s.none, s.rate == null ? '—' : s.rate, Score.levelName(s.achieved)];
+      const want = [s.inTarget, s.met, s.partial, s.unmet, s.na, s.none, s.rate == null ? '—' : s.rate, lvName(s.achieved)];
       const r = (rows[label] || [])[0];
       if (!r) { bad.push(`找不到「${label}」行`); return; }
       [6, 7, 8, 9, 10, 11, 12, 13].forEach((j, k) => { const g = val(sm.getCell(r, j)); if (!same(g, want[k])) bad.push(`${label} 第 ${j} 列：Excel ${g}，网页 ${want[k]}`); });

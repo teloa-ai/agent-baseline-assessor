@@ -5,6 +5,7 @@
   "description": "企业智能体身份与授权安全基线自评工具：纯静态页面，可在线、离线和私有化部署",
   "scripts": {
     "build:xlsx": "node tools/build_xlsx.js",
+    "build:i18n": "node tools/build_i18n.js",
     "test": "node tools/selftest.js",
     "check:xlsx": "node tools/xlsx_crosscheck.js"
   },
