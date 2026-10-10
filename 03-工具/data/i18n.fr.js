@@ -534,7 +534,7 @@ I18N.register("fr", {
  "斜纹表示全部不适用或高于目标等级，横线表示该组件在这一章没有要求。点格子查看对应要求。": "Les hachures indiquent que tout est non applicable ou au-dessus du niveau cible ; le trait horizontal indique que le composant n'a pas d'exigence dans ce chapitre. Cliquez sur une case pour voir les exigences correspondantes.",
  "显示 {n} 条 · 目标内差距 {gap} 条": "Affichage de {n} · écarts dans la cible : {gap}",
  "显示全部 {n} 条": "Afficher les {n} exigences",
- "智能体安全基线自评": "Auto-évaluation du socle de sécurité des agents",
+ "智能体安全基线自评": "Auto-évaluation du référentiel de sécurité des agents",
  "更换对比文件": "Remplacer le fichier de comparaison",
  "最低等级": "Niveau minimal",
  "未填写评估对象": "Objet de l'évaluation non renseigné",
@@ -543,7 +543,7 @@ I18N.register("fr", {
  "未知原因": "Cause inconnue",
  "未知错误": "Erreur inconnue",
  "未评估": "Non évalué",
- "未达": "Non atteint",
+ "未达": "Aucun",
  "未达 L1": "L1 non atteint",
  "本工具用于对照《{title}》做自评。基线共 {total} 条要求，分布在 {chapters} 章 {sections} 个小节：L1 {l1} 条，L2 在此基础上增加 {l2} 条，L3 再增加 {l3} 条。完整条文、术语、架构和威胁模型见 <a href=\"{url}\" target=\"_blank\" rel=\"noopener\">基线文档</a>。": "Cet outil permet une auto-évaluation au regard du « {title} ». Le socle compte {total} exigences réparties en {chapters} chapitres et {sections} sections : L1 {l1} exigences, L2 en ajoute {l2}, L3 en ajoute {l3} de plus. Le texte intégral, la terminologie, l'architecture et le modèle de menace figurent dans le <a href=\"{url}\" target=\"_blank\" rel=\"noopener\">document de référence</a>.",
  "本次评估": "Cette évaluation",
@@ -650,5 +650,12 @@ I18N.register("fr", {
  "，未评估": ", non évalué",
  "，部分满足": ", partiellement satisfait",
  "；对比 {rate}": "; comparaison {rate}",
- "；距目标 L{t} 共差 <b>{gap}</b> 条": "; il manque <b>{gap}</b> exigences pour la cible L{t}"
+ "；距目标 L{t} 共差 <b>{gap}</b> 条": "; il manque <b>{gap}</b> exigences pour la cible L{t}",
+ "不可信": "Non fiable",
+ "平台托管时可信": "Fiable si hébergé par la plateforme",
+ "自行作出授权判定": "Prend ses propres décisions d'autorisation",
+ "对照《企业智能体身份与授权安全基线》做自评：覆盖矩阵、逐条评估、成熟度报告与图表，数据只保存在本地浏览器。": "Auto-évaluation au regard du Référentiel de sécurité de l'identité et de l'autorisation des agents d'entreprise : matrice de couverture, évaluation détaillée, rapport de maturité et graphiques. Les données restent dans le navigateur local.",
+ "智能体安全基线自评，回到覆盖矩阵": "Auto-évaluation du référentiel de sécurité des agents, retour à la matrice de couverture",
+ "语言": "Langue",
+ "页面": "Pages"
 });

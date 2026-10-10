@@ -82,9 +82,10 @@ p { margin: 0; }
 /* ---------- 应用栏 ---------- */
 .app-bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: color-mix(in oklab, var(--surface) 92%, transparent); backdrop-filter: saturate(1.4) blur(10px); border-bottom: 1px solid var(--line); }
 .bar-in { max-width: 1440px; margin: 0 auto; padding: 0 24px; min-height: 56px; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 24px; }
-.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); white-space: nowrap; }
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); white-space: nowrap; min-width: 0; max-width: 100%; }
 .brand .mark { width: 22px; height: 22px; flex: none; }
-.brand .name { font-weight: 600; font-size: 15px; letter-spacing: .01em; }
+.brand .name { font-weight: 600; font-size: 15px; letter-spacing: .01em; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.brand .ver { flex: none; }
 .brand .ver { font: 500 11.5px var(--mono); color: var(--ink-3); background: var(--surface-2); border: 1px solid var(--line); padding: 1px 6px; border-radius: 999px; }
 .tabs { display: flex; align-items: stretch; gap: 2px; align-self: stretch; overflow-x: auto; scrollbar-width: none; }
 .tabs a { display: inline-flex; align-items: center; padding: 0 12px; color: var(--ink-2); text-decoration: none; font-size: 14px; border-bottom: 2px solid transparent; margin-bottom: -1px; white-space: nowrap; }

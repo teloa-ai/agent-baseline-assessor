@@ -32,6 +32,8 @@ jobs:
           node-version: 22
       - name: Install
         run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Rebuild dictionaries
+        run: npm run build:i18n
       - name: Rebuild offline workbook
         run: npm run build:xlsx
       - name: Self-test

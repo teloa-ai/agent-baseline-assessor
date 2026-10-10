@@ -10,20 +10,26 @@ Das Verzeichnis, in dem sich diese Datei befindet, ist das Werkzeug-Stammverzeic
 index.html               Einstiegsseite
 assets/
   app.js                 Oberfläche und Interaktion
-  score.js               Bewertungsregeln (von Webseite und Node gemeinsam genutzt)
+  i18n.js                Mehrsprachigkeit: Spracherkennung, Umschaltung, Übersetzungen (Seite und Node)
+  score.js               Bewertungsregeln (Seite und Node)
   charts.js              Radar-, Lücken- und Verteilungsdiagramme (reines SVG)
-  workbook.js            Erzeugung und Einlesen von Excel (von Webseite und Node gemeinsam genutzt)
+  workbook.js            Erzeugen und Einlesen von Excel (Seite und Node)
   styles.css
 data/
   baseline.json          Baseline-Daten: Kapitel, Abschnitte, Anforderungen, Stufen, Durchsetzungskomponenten, Prüfpunkte
-  baseline.js            Dieselben Daten für das Öffnen per Doppelklick im Offline-Modus
-vendor/exceljs.min.js    ExcelJS 4.4.0 (MIT), wird nur beim Import und Export von Excel geladen
-vendor/fonts/            IBM-Plex-Teilmenge für lateinische Zeichen (OFL), wird lokal geladen, keine externen Verbindungen
-offline/                 Offline-Excel-Bewertungstabelle
-tools/                   Skripte zur Erzeugung von Daten und Vorlagen, Selbstprüfung, Kreuzprüfung der Excel-Formeln
+  baseline.js            Dieselben Daten für das Öffnen per Doppelklick ohne Server
+  i18n.<Sprache>.js      Aus i18n/<Sprache>.json erzeugte Wörterbücher, von der Seite geladen
+i18n/
+  <Sprache>.json         Wörterbuch je Sprache: chinesischer Originaltext → Übersetzung
+  glossary.md            Terminologietabelle für die sieben Sprachen
+  source-baseline.json   Zu übersetzende chinesische Zeichenketten aus den Baseline-Daten
+vendor/exceljs.min.js    ExcelJS 4.4.0 (MIT), nur beim Import und Export von Excel geladen
+vendor/fonts/            IBM-Plex-Teilmenge für lateinische Zeichen (OFL), lokal geladen, ohne externe Verbindungen
+offline/                 Offline-Excel-Bewertungstabelle (Chinesisch)
+tools/                   Skripte für Daten, Wörterbücher und Vorlage, Selbsttest, Abgleich der Excel-Formeln
 deploy/                  nginx-Konfiguration und Dockerfile
-_headers                 Sicherheits-Antwortheader für Cloudflare Pages
-.github/workflows/       Automatische Veröffentlichung auf GitHub Pages
+工具说明/                 Diese Anleitung in allen Sprachen
+_headers                 Sicherheits-Header für Cloudflare Pages
 ```
 
 ## 2 Häufig verwendete Befehle
@@ -32,7 +38,8 @@ _headers                 Sicherheits-Antwortheader für Cloudflare Pages
 | --- | --- |
 | `npm install` | Installiert die Abhängigkeiten (ExcelJS, nur zur Erzeugung und Prüfung der Excel-Dateien) |
 | `npm run build:xlsx` | Erzeugt die Offline-Bewertungstabelle unter `offline/` neu |
-| `npm test` | Prüft den Round-Trip zwischen Daten und Excel-Lesen bzw. -Schreiben |
+| `npm run build:i18n` | Erzeugt `data/i18n.*.js` aus `i18n/*.json` neu; nach Änderungen an einem Wörterbuch ausführen |
+| `npm test` | Prüft die Bewertungsregeln und den Excel-Round-Trip sowie, ob jedes Wörterbuch alle Oberflächen- und Baseline-Texte abdeckt |
 | `npm run check:xlsx` | Berechnet die exportierten Excel-Formeln mit LibreOffice unabhängig neu und vergleicht sie zellweise mit der Bewertung der Webseite (setzt eine lokale Installation von LibreOffice voraus) |
 
 ## 3 Aktualisierung der Baseline
@@ -47,7 +54,15 @@ Vorhandene Bewertungs-JSON-Dateien werden anhand der Nummern dem neuen Stand zug
 
 Außerdem ist der Text unter `01-标准/` im Repository durch die neue Fassung zu ersetzen und die Versionsnummer in der README zu aktualisieren.
 
-## 4 Drittanbieter-Komponenten
+## 4 Mehrsprachigkeit
+
+Oberflächentexte verwenden den chinesischen Originaltext als Schlüssel. Die Übersetzungen je Sprache liegen in `i18n/<Sprache>.json`; fehlt eine Übersetzung, wird der chinesische Text angezeigt. Unterstützt werden zh-CN, en, ja, ko, de, fr und es.
+
+- **Übersetzung ändern**: `i18n/<Sprache>.json` bearbeiten, mit `npm run build:i18n` die Datei `data/i18n.<Sprache>.js` neu erzeugen und anschließend `npm test` ausführen.
+- **Bei geänderten Oberflächentexten oder Baseline-Anforderungen**: `npm test` ausführen; der Test listet je Sprache die fehlenden chinesischen Zeichenketten auf. Diese ergänzen und die Wörterbücher neu erzeugen. Die Terminologie richtet sich nach `i18n/glossary.md`. Nach einer Revision der Baseline sind auch die Übersetzungen unter `01-标准/` nachzuziehen.
+- **Sprache hinzufügen**: Sprachcode und Namen in `LOCALES` in `assets/i18n.js` eintragen, `i18n/<Sprache>.json` anlegen, `data/i18n.<Sprache>.js` in `index.html` einbinden und danach die Übersetzungen wie oben ergänzen. Übersetzungen der Baseline, der Anleitung zur Verwendung und dieser Anleitung liegen in `01-标准/<Sprache>/`, `02-使用方法/<Sprache>/` und `工具说明/<Sprache>.md`.
+
+## 5 Drittanbieter-Komponenten
 
 - [ExcelJS](https://github.com/exceljs/exceljs) 4.4.0, MIT-Lizenz. Der Lizenztext befindet sich in `vendor/exceljs.LICENSE`.
 - [IBM Plex Sans / Mono](https://github.com/IBM/plex) lateinische Teilmenge, SIL Open Font License 1.1. Der Lizenztext befindet sich in `vendor/fonts/OFL.txt`. Für chinesische Zeichen werden Systemschriften verwendet (PingFang, Microsoft YaHei oder Source Han Sans).

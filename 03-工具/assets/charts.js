@@ -23,6 +23,52 @@
   }
   function tipAttr(tip) { return ' data-tip="' + esc(tip) + '" tabindex="0" role="img" aria-label="' + esc(tip) + '"'; }
 
+  /* 估算文字宽度，用于在不同语言下排版不越界：中日韩字符约一个字号宽，拉丁字符约半个字号 */
+  function wide(c) {
+    return (c >= 0x1100 && c <= 0x115f) || (c >= 0x2e80 && c <= 0xa4cf) || (c >= 0xac00 && c <= 0xd7a3) ||
+      (c >= 0xf900 && c <= 0xfaff) || (c >= 0xfe30 && c <= 0xfe4f) || (c >= 0xff00 && c <= 0xff60) || (c >= 0xffe0 && c <= 0xffe6);
+  }
+  function tw(s, size) {
+    s = String(s);
+    var w = 0;
+    for (var i = 0; i < s.length; i++) {
+      var ch = s[i];
+      w += wide(s.charCodeAt(i)) ? size : (ch === ' ' ? size * 0.3 : (/[A-Z0-9MWmw%]/.test(ch) ? size * 0.66 : size * 0.54));
+    }
+    return w;
+  }
+  /* 超宽时截断并加省略号；完整文字保留在悬停提示里 */
+  function fit(s, size, max) {
+    s = String(s);
+    if (tw(s, size) <= max) return s;
+    while (s.length > 1 && tw(s + '…', size) > max) s = s.slice(0, -1);
+    return s.replace(/\s+$/, '') + '…';
+  }
+  /* 最多折成两行：有空格的语言按词断，中日韩按字断 */
+  function wrap2(s, size, max) {
+    s = String(s);
+    if (tw(s, size) <= max) return [s];
+    var hasWide = false;
+    for (var k = 0; k < s.length; k++) if (wide(s.charCodeAt(k))) { hasWide = true; break; }
+    var parts = /\s/.test(s) ? s.split(/(\s+)/) : s.split('');
+    var hyphen = !hasWide && !/\s/.test(s); /* 单个超长的拉丁词（如德语复合词）按字母断开时补连字符 */
+    var line = '';
+    for (var i = 0; i < parts.length; i++) {
+      if (line.trim() && tw(line + parts[i] + (hyphen ? '-' : ''), size) > max) break;
+      line += parts[i];
+    }
+    var rest = s.slice(line.length).replace(/^\s+/, '');
+    line = fit(line.replace(/\s+$/, ''), size, max);
+    if (hyphen && rest) line += '-';
+    return rest ? [line, fit(rest, size, max)] : [line];
+  }
+  /* 图例右侧的脚注：与图例重叠时换到下一行，返回追加的高度 */
+  function footnote(text, legendEnd, ly, W, P) {
+    var w = tw(text, 11.5);
+    if (legendEnd + 16 + w <= W) return { s: T(text, W, ly, { anchor: 'end', size: 11.5, fill: P.muted }), h: 0 };
+    return { s: T(fit(text, 11.5, W), 0, ly + 18, { size: 11.5, fill: P.muted }), h: 18 };
+  }
+
   /* ---------- 雷达图 ---------- */
   function radar(opt, P) {
     var axes = opt.axes, n = axes.length;
@@ -49,21 +95,29 @@
       var c = Math.cos(ang(i)), sn = Math.sin(ang(i));
       var x = cx + c * (R + 16), y = cy + sn * (R + 16);
       var anchor = c > 0.25 ? 'start' : (c < -0.25 ? 'end' : 'middle');
-      var dy = sn < -0.6 ? -18 : (sn > 0.6 ? 10 : -2);
       var code = a.code ? a.code + ' ' : '';
+      var room = anchor === 'start' ? W - x : (anchor === 'end' ? x : 2 * Math.min(x, W - x));
+      var lines = wrap2(a.label, 12, Math.max(60, room - (code ? tw(code, 11) : 0) - 10));
+      var extra = (lines.length - 1) * 14;
+      var dy = sn < -0.6 ? -18 - extra : (sn > 0.6 ? 10 : -2 - extra / 2);
       s += '<g' + tipAttr(a.tip) + '>' +
         '<text x="' + n1(x) + '" y="' + n1(y + dy) + '" text-anchor="' + anchor + '" font-size="12" fill="' + P.ink + '">' +
-        (code ? '<tspan font-family="' + MONO + '" font-size="11" fill="' + P.muted + '">' + esc(code) + '</tspan>' : '') + esc(a.label) + '</text>' +
-        T(pct(a.value) + (opt.compare ? '  ' + I18N.t('对比 {rate}', { rate: pct(a.compare) }) : ''), x, y + dy + 15, { anchor: anchor, size: 11.5, weight: 600, fill: P.ink2 }) + '</g>';
+        (code ? '<tspan font-family="' + MONO + '" font-size="11" fill="' + P.muted + '">' + esc(code) + '</tspan>' : '') + esc(lines[0]) +
+        (lines[1] ? '<tspan x="' + n1(x) + '" dy="14">' + esc(lines[1]) + '</tspan>' : '') + '</text>' +
+        T(pct(a.value) + (opt.compare ? '  ' + I18N.t('对比 {rate}', { rate: pct(a.compare) }) : ''), x, y + dy + extra + 15, { anchor: anchor, size: 11.5, weight: 600, fill: P.ink2 }) + '</g>';
     });
-    var ly = H - 12, lx = 0;
-    s += '<line x1="' + lx + '" y1="' + (ly - 4) + '" x2="' + (lx + 16) + '" y2="' + (ly - 4) + '" stroke="' + P.s1 + '" stroke-width="2"/>' + T(opt.currentLabel || I18N.t('本次评估'), lx + 22, ly, { size: 11.5, fill: P.ink2 });
+    var ly = H - 12, lx = 0, cur = fit(opt.currentLabel || I18N.t('本次评估'), 11.5, 200);
+    s += '<line x1="' + lx + '" y1="' + (ly - 4) + '" x2="' + (lx + 16) + '" y2="' + (ly - 4) + '" stroke="' + P.s1 + '" stroke-width="2"/>' + T(cur, lx + 22, ly, { size: 11.5, fill: P.ink2 });
+    var lend = lx + 22 + tw(cur, 11.5);
     if (opt.compare) {
-      lx += 22 + 12 * (opt.currentLabel || I18N.t('本次评估')).length + 20;
-      s += '<line x1="' + lx + '" y1="' + (ly - 4) + '" x2="' + (lx + 16) + '" y2="' + (ly - 4) + '" stroke="' + P.compare + '" stroke-width="1.5"/>' + T(opt.compareLabel || I18N.t('对比'), lx + 22, ly, { size: 11.5, fill: P.ink2 });
+      var cmpl = fit(opt.compareLabel || I18N.t('对比'), 11.5, 200);
+      lx = lend + 20;
+      s += '<line x1="' + lx + '" y1="' + (ly - 4) + '" x2="' + (lx + 16) + '" y2="' + (ly - 4) + '" stroke="' + P.compare + '" stroke-width="1.5"/>' + T(cmpl, lx + 22, ly, { size: 11.5, fill: P.ink2 });
+      lend = lx + 22 + tw(cmpl, 11.5);
     }
-    s += T(I18N.t('外圈 = 目标等级内的适用要求全部满足'), W, ly, { anchor: 'end', size: 11.5, fill: P.muted });
-    return { w: W, h: H, body: s };
+    var f = footnote(I18N.t('外圈 = 目标等级内的适用要求全部满足'), lend, ly, W, P);
+    s += f.s;
+    return { w: W, h: H + f.h, body: s };
   }
 
   /* ---------- 章节成熟度（表格式图） ---------- */
@@ -72,16 +126,16 @@
     var H = top + rows.length * step + 30;
     var lx = [236, 276, 316, 356], bx = 400, bw = 150, gx = W;
     var s = '';
-    s += T(I18N.t('章'), 0, 16, { size: 11.5, fill: P.muted }) + T(I18N.t('达成等级'), 296, 16, { anchor: 'middle', size: 11.5, fill: P.muted }) +
-      T(I18N.t('满足率'), bx, 16, { size: 11.5, fill: P.muted }) + T(I18N.t('差距'), gx, 16, { anchor: 'end', size: 11.5, fill: P.muted });
-    [I18N.t('未达'), 'L1', 'L2', 'L3'].forEach(function (k, i) {
+    s += T(fit(I18N.t('章'), 11.5, 190), 0, 16, { size: 11.5, fill: P.muted }) + T(fit(I18N.t('达成等级'), 11.5, 150), 296, 16, { anchor: 'middle', size: 11.5, fill: P.muted }) +
+      T(fit(I18N.t('满足率'), 11.5, bw + 40), bx, 16, { size: 11.5, fill: P.muted }) + T(fit(I18N.t('差距'), 11.5, 46), gx, 16, { anchor: 'end', size: 11.5, fill: P.muted });
+    [fit(I18N.t('未达'), 10.5, 44), 'L1', 'L2', 'L3'].forEach(function (k, i) {
       s += T(k, lx[i], 34, { anchor: 'middle', size: 10.5, weight: i === t ? 600 : 400, fill: i === t ? P.ink : P.muted, mono: i > 0 });
     });
     s += '<line x1="0" y1="42" x2="' + W + '" y2="42" stroke="' + P.axis + '" stroke-width="1"/>';
     rows.forEach(function (r, i) {
       var y = top + i * step + 4;
       if (i > 0) s += '<line x1="0" y1="' + (y - step / 2 - 2) + '" x2="' + W + '" y2="' + (y - step / 2 - 2) + '" stroke="' + P.grid + '" stroke-width="1"/>';
-      s += '<g' + tipAttr(r.tip) + '>' + T(r.code, 0, y + 4, { size: 11.5, fill: P.muted, mono: true }) + T(r.name, 34, y + 4, { size: 13, fill: P.ink }) + '</g>';
+      s += '<g' + tipAttr(r.tip) + '>' + T(r.code, 0, y + 4, { size: 11.5, fill: P.muted, mono: true }) + T(fit(r.name, 13, lx[0] - 48), 34, y + 4, { size: 13, fill: P.ink }) + '</g>';
       s += '<line x1="' + lx[0] + '" y1="' + y + '" x2="' + lx[3] + '" y2="' + y + '" stroke="' + P.grid + '" stroke-width="2" stroke-linecap="round"/>';
       lx.forEach(function (x) { s += '<circle cx="' + x + '" cy="' + y + '" r="2.5" fill="' + P.axis + '"/>'; });
       if (r.achieved < t) s += '<line x1="' + lx[r.achieved] + '" y1="' + y + '" x2="' + lx[t] + '" y2="' + y + '" stroke="' + P.s1light + '" stroke-width="4" stroke-linecap="round"/>';
@@ -94,20 +148,31 @@
       s += T(pct(r.rate), bx + bw + 10, y + 4, { size: 12.5, weight: 600, fill: P.ink });
       s += T(r.gap ? String(r.gap) : I18N.t('达标'), gx, y + 4, { anchor: 'end', size: 12.5, weight: r.gap ? 600 : 400, fill: r.gap ? P.ink : P.ink2 });
     });
-    var ly = H - 8, x = 0;
-    s += '<circle cx="' + (x + 5) + '" cy="' + (ly - 4) + '" r="4.5" fill="' + P.s1 + '"/>' + T(I18N.t('当前'), x + 14, ly, { size: 11.5, fill: P.ink2 });
-    x += 54;
-    s += '<circle cx="' + (x + 5) + '" cy="' + (ly - 4) + '" r="5" fill="' + P.surface + '" stroke="' + P.s1dark + '" stroke-width="2"/>' + T(I18N.t('目标'), x + 15, ly, { size: 11.5, fill: P.ink2 });
-    x += 56;
-    if (opt.compare) { s += '<line x1="' + (x + 5) + '" y1="' + (ly - 10) + '" x2="' + (x + 5) + '" y2="' + (ly + 2) + '" stroke="' + P.ink2 + '" stroke-width="1.5"/>' + T(I18N.t('对比时的满足率'), x + 14, ly, { size: 11.5, fill: P.ink2 }); }
-    s += T(I18N.t('达到某级 = 该级及以下的适用要求全部满足'), W, ly, { anchor: 'end', size: 11.5, fill: P.muted });
-    return { w: W, h: H, body: s };
+    var ly = H - 8, x = 0, lbl;
+    lbl = I18N.t('当前');
+    s += '<circle cx="' + (x + 5) + '" cy="' + (ly - 4) + '" r="4.5" fill="' + P.s1 + '"/>' + T(lbl, x + 14, ly, { size: 11.5, fill: P.ink2 });
+    x += 14 + tw(lbl, 11.5) + 18;
+    lbl = I18N.t('目标');
+    s += '<circle cx="' + (x + 5) + '" cy="' + (ly - 4) + '" r="5" fill="' + P.surface + '" stroke="' + P.s1dark + '" stroke-width="2"/>' + T(lbl, x + 15, ly, { size: 11.5, fill: P.ink2 });
+    x += 15 + tw(lbl, 11.5);
+    if (opt.compare) {
+      lbl = I18N.t('对比时的满足率');
+      x += 18;
+      s += '<line x1="' + (x + 5) + '" y1="' + (ly - 10) + '" x2="' + (x + 5) + '" y2="' + (ly + 2) + '" stroke="' + P.ink2 + '" stroke-width="1.5"/>' + T(lbl, x + 14, ly, { size: 11.5, fill: P.ink2 });
+      x += 14 + tw(lbl, 11.5);
+    }
+    var f = footnote(I18N.t('达到某级 = 该级及以下的适用要求全部满足'), x, ly, W, P);
+    s += f.s;
+    return { w: W, h: H + f.h, body: s };
   }
 
   /* ---------- 差距分布（水平堆叠条） ---------- */
   function gapBars(opt, P) {
     var rows = opt.rows.filter(function (r) { return r.total > 0; });
-    var W = 600, top = 6, step = 32, x0 = 104, x1 = 548, bar = 12;
+    var W = 600, top = 6, step = 32, x1 = 548, bar = 12;
+    /* 标签列宽度随最长的组件名变化，译文较长时不会越出左边界 */
+    var labW = Math.max.apply(null, rows.map(function (r) { return tw(r.label, 12.5); }).concat([60]));
+    var x0 = Math.min(200, Math.max(104, Math.ceil(labW) + 14));
     var H = top + Math.max(rows.length, 1) * step + 40;
     var max = Math.max.apply(null, rows.map(function (r) { return r.total; }).concat([1]));
     var k = (x1 - x0) / max;
@@ -120,7 +185,7 @@
     if (!rows.length) s += T(I18N.t('目标等级内没有差距条目'), W / 2, top + 30, { anchor: 'middle', size: 13, fill: P.ink2 });
     rows.forEach(function (r, i) {
       var y = top + i * step + 4, x = x0, segs = parts.filter(function (p) { return r[p.key] > 0; });
-      s += T(r.label, x0 - 12, y + bar / 2 + 4, { anchor: 'end', size: 12.5, fill: P.ink });
+      s += T(fit(r.label, 12.5, x0 - 14), x0 - 12, y + bar / 2 + 4, { anchor: 'end', size: 12.5, fill: P.ink });
       s += '<rect x="' + x0 + '" y="' + y + '" width="' + (x1 - x0) + '" height="' + bar + '" rx="3" fill="' + P.grid + '" fill-opacity="0.55"/>';
       segs.forEach(function (p, j) {
         var lastSeg = j === segs.length - 1, w = Math.max(r[p.key] * k - (lastSeg ? 0 : 2), 2);
@@ -134,10 +199,11 @@
     var ly = H - 8, lx = 0;
     parts.forEach(function (p) {
       s += '<rect x="' + lx + '" y="' + (ly - 9) + '" width="10" height="10" rx="2" fill="' + p.color + '"/>' + T(p.label, lx + 16, ly, { size: 11.5, fill: P.ink2 });
-      lx += 16 + p.label.length * 12 + 18;
+      lx += 16 + tw(p.label, 11.5) + 18;
     });
-    s += T(I18N.t('单位：条，只计目标等级内的适用要求'), W, ly, { anchor: 'end', size: 11.5, fill: P.muted });
-    return { w: W, h: H, body: s };
+    var f = footnote(I18N.t('单位：条，只计目标等级内的适用要求'), lx - 18, ly, W, P);
+    s += f.s;
+    return { w: W, h: H + f.h, body: s };
   }
   function roundRect(x, y, w, h, rl, rr) {
     rl = Math.min(rl, w / 2); rr = Math.min(rr, w / 2);

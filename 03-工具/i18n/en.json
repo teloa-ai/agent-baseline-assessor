@@ -1,9 +1,9 @@
 {
-  "底线": "L1 Baseline",
+  "底线": "Baseline",
   "缺失会直接造成越权、凭证泄露或无法追责": "Absence directly causes unauthorized access, credential leakage, or an inability to assign accountability",
-  "标准": "L2 Standard",
+  "标准": "Standard",
   "主流企业安全评审会要求的能力": "Capabilities that mainstream enterprise security reviews require",
-  "增强": "L3 Enhanced",
+  "增强": "Enhanced",
   "纵深防御和精细治理": "Defense in depth and fine-grained governance",
   "身份与认证": "Identity and Authentication",
   "每个请求都要确定两个身份：发起的人和执行的 Agent。两者都由平台从可信来源得出，不采信请求或模型自报的身份。": "Every request shall determine two identities: the initiating person and the executing agent. Both are derived by the platform from trusted sources; identities self-reported by the request or the model are not accepted.",
@@ -542,7 +542,7 @@
   "未知原因": "Unknown reason",
   "未知错误": "Unknown error",
   "未评估": "Not assessed",
-  "未达": "Not reached",
+  "未达": "None",
   "未达 L1": "Below L1",
   "本工具用于对照《{title}》做自评。基线共 {total} 条要求，分布在 {chapters} 章 {sections} 个小节：L1 {l1} 条，L2 在此基础上增加 {l2} 条，L3 再增加 {l3} 条。完整条文、术语、架构和威胁模型见 <a href=\"{url}\" target=\"_blank\" rel=\"noopener\">基线文档</a>。": "This tool supports self-assessment against \"{title}\". The baseline contains {total} requirements across {chapters} chapters and {sections} sections: L1 has {l1} items, L2 adds {l2} items on top of that, and L3 adds {l3} more. For full requirement text, terminology, architecture, and threat model, see the <a href=\"{url}\" target=\"_blank\" rel=\"noopener\">baseline document</a>.",
   "本次评估": "This assessment",
@@ -649,5 +649,12 @@
   "，未评估": ", not assessed",
   "，部分满足": ", partially met",
   "；对比 {rate}": "; comparison {rate}",
-  "；距目标 L{t} 共差 <b>{gap}</b> 条": "; <b>{gap}</b> items short of target L{t} in total"
+  "；距目标 L{t} 共差 <b>{gap}</b> 条": "; <b>{gap}</b> items short of target L{t} in total",
+  "不可信": "Untrusted",
+  "平台托管时可信": "Trusted when platform-hosted",
+  "自行作出授权判定": "Makes its own authorization decisions",
+  "对照《企业智能体身份与授权安全基线》做自评：覆盖矩阵、逐条评估、成熟度报告与图表，数据只保存在本地浏览器。": "Self-assessment against the Enterprise Agent Identity and Authorization Security Baseline: coverage matrix, requirement-by-requirement assessment, maturity report and charts. Data stays in the local browser.",
+  "智能体安全基线自评，回到覆盖矩阵": "Agent Security Baseline Self-Assessment, back to the coverage matrix",
+  "语言": "Language",
+  "页面": "Pages"
 }

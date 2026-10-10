@@ -55,7 +55,7 @@ function strings(o, acc) {
   assert.strictEqual(L.t('共 {n} 条'), '共 {n} 条');
   L.setLocale('en');
   assert.strictEqual(L.t('一个没有译文的词'), '一个没有译文的词', '缺词条应回退到中文');
-  assert.strictEqual(L.t('底线'), 'L1 Baseline', 'en 词典应生效');
+  assert.strictEqual(L.t('底线'), 'Baseline', 'en 词典应生效');
   L.setLocale('zh-CN');
   assert.strictEqual(L.setLocale('xx'), 'zh-CN', '未知语言回退到 zh-CN');
 
@@ -82,6 +82,22 @@ function strings(o, acc) {
     const list = JSON.parse(fs.readFileSync(srcFile, 'utf8'));
     (Array.isArray(list) ? list : Object.keys(list)).filter((s) => CJK.test(s)).forEach((s) => need.add(s));
   }
+  // 代码里的界面文字：I18N.t('…')、data-i18n 和 data-i18n-attr 指向的属性值，以及热力表里截取的信任标签
+  const ROOT = path.join(__dirname, '..');
+  const unq = (s) => s.replace(/\\'/g, "'").replace(/\\"/g, '"').replace(/\\\\/g, '\\');
+  for (const f of ['assets/app.js', 'assets/charts.js', 'assets/workbook.js']) {
+    const src = fs.readFileSync(path.join(ROOT, f), 'utf8');
+    for (const m of src.matchAll(/I18N\.t\(\s*'((?:[^'\\]|\\.)*)'/g)) if (CJK.test(m[1])) need.add(unq(m[1]));
+  }
+  const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+  for (const m of html.matchAll(/data-i18n="([^"]*)"/g)) if (CJK.test(m[1])) need.add(m[1]);
+  for (const m of html.matchAll(/<[^>]*data-i18n-attr="([^"]+)"[^>]*>/g)) {
+    for (const a of m[1].split('|')) {
+      const v = m[0].match(new RegExp('\\s' + a.trim() + '="([^"]*)"'));
+      if (v && CJK.test(v[1])) need.add(v[1]);
+    }
+  }
+  B.components.forEach((c) => need.add(c.trust.split(/[，；]/)[0]));
   const present = I18N.LOCALES.filter((l) => l.code !== I18N.SOURCE && fs.existsSync(path.join(DIR, l.code + '.json')));
   for (const { code } of present) {
     const dict = JSON.parse(fs.readFileSync(path.join(DIR, code + '.json'), 'utf8'));
