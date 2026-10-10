@@ -20,6 +20,9 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+    defaults:
+      run:
+        working-directory: 03-工具
     steps:
       - uses: actions/checkout@v4
         with:
@@ -39,7 +42,7 @@ jobs:
           cp -r index.html assets data vendor offline _site/
       - uses: actions/upload-pages-artifact@v4
         with:
-          path: _site
+          path: 03-工具/_site
 
   deploy:
     needs: build
