@@ -1,0 +1,14 @@
+{
+  "name": "agent-identity-baseline-assessor",
+  "version": "1.0.0",
+  "private": true,
+  "description": "企业智能体身份与授权安全基线自评工具：纯静态页面，可在线、离线和私有化部署",
+  "scripts": {
+    "build:xlsx": "node tools/build_xlsx.js",
+    "test": "node tools/selftest.js",
+    "check:xlsx": "node tools/xlsx_crosscheck.js"
+  },
+  "devDependencies": {
+    "exceljs": "4.4.0"
+  }
+}

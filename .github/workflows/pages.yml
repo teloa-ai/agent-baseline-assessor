@@ -1,0 +1,56 @@
+# 推送到 main 分支后自动发布到 GitHub Pages。
+# 首次使用：仓库 Settings → Pages → Build and deployment → Source 选 GitHub Actions。
+# 构建与发布分成两个作业：构建作业只有读权限，不执行依赖包的安装脚本；发布作业不运行任何第三方代码。
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Rebuild offline workbook
+        run: npm run build:xlsx
+      - name: Self-test
+        run: npm test
+      - name: Assemble site
+        run: |
+          mkdir _site
+          cp -r index.html assets data vendor offline _site/
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/configure-pages@v5
+      - id: deployment
+        uses: actions/deploy-pages@v4

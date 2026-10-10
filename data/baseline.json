@@ -1,0 +1,2527 @@
+{
+ "schema": "baseline/1",
+ "title": "企业智能体身份与授权安全基线",
+ "titleEn": "Enterprise Agentic AI Identity & Authorization Security Baseline",
+ "version": "1.0",
+ "date": "2026-10-07",
+ "docUrl": "https://claude.ai/code/artifact/a89875c9-b306-4067-b517-e3a093231b20",
+ "levels": [
+  {
+   "id": 1,
+   "name": "L1",
+   "label": "底线",
+   "desc": "缺失会直接造成越权、凭证泄露或无法追责"
+  },
+  {
+   "id": 2,
+   "name": "L2",
+   "label": "标准",
+   "desc": "主流企业安全评审会要求的能力"
+  },
+  {
+   "id": 3,
+   "name": "L3",
+   "label": "增强",
+   "desc": "纵深防御和精细治理"
+  }
+ ],
+ "chapters": [
+  {
+   "id": "V1",
+   "name": "身份与认证",
+   "lead": "每个请求都要确定两个身份：发起的人和执行的 Agent。两者都由平台从可信来源得出，不采信请求或模型自报的身份。",
+   "stage": "行为之前",
+   "question": "谁在发起，哪个 Agent 在执行"
+  },
+  {
+   "id": "V2",
+   "name": "委托与有效权限",
+   "lead": "Agent 的权限上限来自它代表的人，而不是平台自己持有的凭证。有效权限按 3.14 取交集，并且只能沿委托链收窄。",
+   "stage": "行为之前",
+   "question": "代表谁，权限上限是多少"
+  },
+  {
+   "id": "V3",
+   "name": "授权决策",
+   "lead": "每一次工具调用在执行前都要经过平台的策略检查。能不能做、要不要人确认，由平台按工具和参数判定，模型说的不算。",
+   "stage": "行为之前",
+   "question": "这一次操作能不能做，要不要人确认"
+  },
+  {
+   "id": "V4",
+   "name": "凭证与出口执行",
+   "lead": "出口网关是 Agent 访问下游系统和互联网的唯一通道，真实凭证只在这里注入。没有绕开网关的路径，凭证也只发往它被授权的目标，「不漏」才有保证。",
+   "stage": "行为之中",
+   "question": "请求怎么出去，凭证怎么注入"
+  },
+  {
+   "id": "V5",
+   "name": "执行隔离",
+   "lead": "Agent 执行代码、命令、浏览器和端侧操作时，要被限定在可控的边界内。Harness 自身的配置也要由企业统一管控，不能由员工或代码仓库随意改写。",
+   "stage": "行为之中",
+   "question": "代码、命令、浏览器和扩展在什么边界内运行"
+  },
+  {
+   "id": "V6",
+   "name": "上下文与不可信输入",
+   "lead": "进入上下文的不可信内容只能当作数据，不能当作指令。会话读入不可信内容之后，Agent 能做的事要随之收紧。",
+   "stage": "行为之中",
+   "question": "读进来的内容能不能影响决策"
+  },
+  {
+   "id": "V7",
+   "name": "输出与可见性",
+   "lead": "权限检查要延伸到输出的那一刻。结果给谁看、会不会外泄，都要按接收方再判断一次。",
+   "stage": "行为之后",
+   "question": "结果给谁看，会不会外泄"
+  },
+  {
+   "id": "V8",
+   "name": "数据、记忆与产出物",
+   "lead": "Agent 留下的东西会被后来的人检索到。检索、记忆和产出物都要带着来源和权限标签，读取时按当前用户重新作出授权判定。",
+   "stage": "全周期",
+   "question": "数据怎么检索、沉淀和留存"
+  },
+  {
+   "id": "V9",
+   "name": "生命周期与治理",
+   "lead": "每个 Agent 都要有登记、有负责人、有复核，从创建到下线全程可管。平台提供方自身的访问也在治理范围之内。",
+   "stage": "全周期",
+   "question": "谁管 Agent，从登记到下线"
+  },
+  {
+   "id": "V10",
+   "name": "审计、检测与响应",
+   "lead": "出了事，要能还原谁让哪个 Agent 基于什么内容做了什么，并能在分钟级别内止损。本章覆盖记录、检测、撤销、紧急停用和事后恢复。",
+   "stage": "全周期",
+   "question": "怎么记录、发现和止损"
+  }
+ ],
+ "sections": [
+  {
+   "id": "V1.1",
+   "chapter": "V1",
+   "name": "用户认证",
+   "applies": null
+  },
+  {
+   "id": "V1.2",
+   "chapter": "V1",
+   "name": "渠道身份映射",
+   "applies": "支持 IM、邮件、浏览器插件等第三方渠道的平台"
+  },
+  {
+   "id": "V1.3",
+   "chapter": "V1",
+   "name": "Agent 身份",
+   "applies": null
+  },
+  {
+   "id": "V1.4",
+   "chapter": "V1",
+   "name": "工作负载身份",
+   "applies": "为会话分配独立执行实例（如容器、沙箱或虚拟机）的平台"
+  },
+  {
+   "id": "V1.5",
+   "chapter": "V1",
+   "name": "外部主体",
+   "applies": "向客户或合作伙伴开放 Agent 能力的平台"
+  },
+  {
+   "id": "V2.1",
+   "chapter": "V2",
+   "name": "代表用户访问",
+   "applies": null
+  },
+  {
+   "id": "V2.2",
+   "chapter": "V2",
+   "name": "有效权限",
+   "applies": null
+  },
+  {
+   "id": "V2.3",
+   "chapter": "V2",
+   "name": "离线委托任务",
+   "applies": "支持定时任务或长时任务的平台"
+  },
+  {
+   "id": "V2.4",
+   "chapter": "V2",
+   "name": "Agent 间委托",
+   "applies": "支持多 Agent 协作或子 Agent 的平台"
+  },
+  {
+   "id": "V2.5",
+   "chapter": "V2",
+   "name": "用户间委托与临时提权",
+   "applies": "支持用户代他人使用 Agent，或支持 Agent 临时提权的平台"
+  },
+  {
+   "id": "V2.6",
+   "chapter": "V2",
+   "name": "事件触发授权",
+   "applies": "支持 Webhook、告警、工单等事件触发 Agent 的平台"
+  },
+  {
+   "id": "V3.1",
+   "chapter": "V3",
+   "name": "操作风险分级",
+   "applies": null
+  },
+  {
+   "id": "V3.2",
+   "chapter": "V3",
+   "name": "工具调用前置校验",
+   "applies": null
+  },
+  {
+   "id": "V3.3",
+   "chapter": "V3",
+   "name": "工具暴露面",
+   "applies": null
+  },
+  {
+   "id": "V3.4",
+   "chapter": "V3",
+   "name": "人工审批",
+   "applies": null
+  },
+  {
+   "id": "V3.5",
+   "chapter": "V3",
+   "name": "二次认证与持续访问评估",
+   "applies": null
+  },
+  {
+   "id": "V3.6",
+   "chapter": "V3",
+   "name": "职责分离",
+   "applies": null
+  },
+  {
+   "id": "V3.7",
+   "chapter": "V3",
+   "name": "持久化操作",
+   "applies": null
+  },
+  {
+   "id": "V3.8",
+   "chapter": "V3",
+   "name": "数量、速率与配额",
+   "applies": null
+  },
+  {
+   "id": "V4.1",
+   "chapter": "V4",
+   "name": "凭证托管与注入",
+   "applies": null
+  },
+  {
+   "id": "V4.2",
+   "chapter": "V4",
+   "name": "统一出口",
+   "applies": null
+  },
+  {
+   "id": "V4.3",
+   "chapter": "V4",
+   "name": "下游身份传递",
+   "applies": null
+  },
+  {
+   "id": "V4.4",
+   "chapter": "V4",
+   "name": "静态凭证遗留系统",
+   "applies": "存在只支持共享静态凭证的下游系统的平台"
+  },
+  {
+   "id": "V4.5",
+   "chapter": "V4",
+   "name": "MCP 调用",
+   "applies": "支持 MCP 的平台"
+  },
+  {
+   "id": "V4.6",
+   "chapter": "V4",
+   "name": "令牌生命周期",
+   "applies": null
+  },
+  {
+   "id": "V4.7",
+   "chapter": "V4",
+   "name": "凭证库保护",
+   "applies": null
+  },
+  {
+   "id": "V5.1",
+   "chapter": "V5",
+   "name": "执行环境隔离",
+   "applies": "平台托管的执行环境；在员工终端上运行的 Agent 按 V5.4 执行"
+  },
+  {
+   "id": "V5.2",
+   "chapter": "V5",
+   "name": "代码与命令执行",
+   "applies": "支持代码或命令执行的平台"
+  },
+  {
+   "id": "V5.3",
+   "chapter": "V5",
+   "name": "浏览器与桌面操作",
+   "applies": "支持浏览器或桌面操作的平台"
+  },
+  {
+   "id": "V5.4",
+   "chapter": "V5",
+   "name": "端侧 Harness",
+   "applies": "在员工终端上运行的 Agent，如编码 Agent、桌面助手"
+  },
+  {
+   "id": "V5.5",
+   "chapter": "V5",
+   "name": "Harness 配置与权限模式",
+   "applies": null
+  },
+  {
+   "id": "V5.6",
+   "chapter": "V5",
+   "name": "Skill、插件与 MCP 供应链",
+   "applies": "支持安装 Skill、插件或第三方 MCP 的平台"
+  },
+  {
+   "id": "V6.1",
+   "chapter": "V6",
+   "name": "不可信内容标记",
+   "applies": null
+  },
+  {
+   "id": "V6.2",
+   "chapter": "V6",
+   "name": "接触不可信内容后的降级",
+   "applies": null
+  },
+  {
+   "id": "V6.3",
+   "chapter": "V6",
+   "name": "系统提示词与配置",
+   "applies": null
+  },
+  {
+   "id": "V6.4",
+   "chapter": "V6",
+   "name": "多 Agent 级联",
+   "applies": "支持多 Agent 编排的平台"
+  },
+  {
+   "id": "V7.1",
+   "chapter": "V7",
+   "name": "多人渠道",
+   "applies": "支持群聊、频道、共享文档评论等多人渠道的平台"
+  },
+  {
+   "id": "V7.2",
+   "chapter": "V7",
+   "name": "共享 Agent 会话隔离",
+   "applies": "多人共用同一个 Agent 的平台"
+  },
+  {
+   "id": "V7.3",
+   "chapter": "V7",
+   "name": "会话转交",
+   "applies": "支持会话转交或人工接管的平台"
+  },
+  {
+   "id": "V7.4",
+   "chapter": "V7",
+   "name": "输出渲染",
+   "applies": null
+  },
+  {
+   "id": "V7.5",
+   "chapter": "V7",
+   "name": "输出数据防泄漏",
+   "applies": null
+  },
+  {
+   "id": "V7.6",
+   "chapter": "V7",
+   "name": "代发消息",
+   "applies": "支持以用户名义发送邮件、IM 或公告的平台"
+  },
+  {
+   "id": "V8.1",
+   "chapter": "V8",
+   "name": "检索授权",
+   "applies": "支持 RAG 或知识库检索的平台"
+  },
+  {
+   "id": "V8.2",
+   "chapter": "V8",
+   "name": "数据库查询",
+   "applies": "Agent 直接查询业务数据库的平台"
+  },
+  {
+   "id": "V8.3",
+   "chapter": "V8",
+   "name": "记忆隔离",
+   "applies": "支持长期记忆或知识沉淀的平台"
+  },
+  {
+   "id": "V8.4",
+   "chapter": "V8",
+   "name": "记忆与知识投毒",
+   "applies": "支持长期记忆或知识沉淀的平台"
+  },
+  {
+   "id": "V8.5",
+   "chapter": "V8",
+   "name": "产出物",
+   "applies": null
+  },
+  {
+   "id": "V8.6",
+   "chapter": "V8",
+   "name": "缓存与留存",
+   "applies": null
+  },
+  {
+   "id": "V8.7",
+   "chapter": "V8",
+   "name": "模型路由",
+   "applies": "接入多个模型的平台。对话数据用于评估和微调属于模型训练的数据治理，参见 OWASP AISVS 的 C1 和 C3"
+  },
+  {
+   "id": "V9.1",
+   "chapter": "V9",
+   "name": "Agent 登记与发布",
+   "applies": null
+  },
+  {
+   "id": "V9.2",
+   "chapter": "V9",
+   "name": "连接器与凭证绑定",
+   "applies": null
+  },
+  {
+   "id": "V9.3",
+   "chapter": "V9",
+   "name": "配置变更",
+   "applies": null
+  },
+  {
+   "id": "V9.4",
+   "chapter": "V9",
+   "name": "生命周期与权限复核",
+   "applies": null
+  },
+  {
+   "id": "V9.5",
+   "chapter": "V9",
+   "name": "影子 Agent 发现",
+   "applies": null
+  },
+  {
+   "id": "V9.6",
+   "chapter": "V9",
+   "name": "工作空间隔离",
+   "applies": null
+  },
+  {
+   "id": "V9.7",
+   "chapter": "V9",
+   "name": "提供方人员访问",
+   "applies": null
+  },
+  {
+   "id": "V10.1",
+   "chapter": "V10",
+   "name": "审计记录",
+   "applies": null
+  },
+  {
+   "id": "V10.2",
+   "chapter": "V10",
+   "name": "审计数据保护与调阅",
+   "applies": null
+  },
+  {
+   "id": "V10.3",
+   "chapter": "V10",
+   "name": "行为检测",
+   "applies": null
+  },
+  {
+   "id": "V10.4",
+   "chapter": "V10",
+   "name": "权限撤销与紧急停用",
+   "applies": null
+  },
+  {
+   "id": "V10.5",
+   "chapter": "V10",
+   "name": "紧急访问",
+   "applies": null
+  },
+  {
+   "id": "V10.6",
+   "chapter": "V10",
+   "name": "事件响应与恢复",
+   "applies": null
+  }
+ ],
+ "components": [
+  {
+   "name": "身份层",
+   "duty": "企业 IdP、目录、SCIM，签发用户、Agent 和工作负载身份",
+   "trust": "可信"
+  },
+  {
+   "name": "交互渠道",
+   "duty": "Web、IM、邮件、IDE、API 等入口，负责身份映射和输出的可见范围",
+   "trust": "可信；经渠道进入的内容不可信"
+  },
+  {
+   "name": "Harness",
+   "duty": "Agent 循环、上下文管理、工具层、安全控制、编排、扩展接口",
+   "trust": "平台托管时可信；在员工终端运行时不可信，按 V5.4"
+  },
+  {
+   "name": "策略决策点",
+   "duty": "计算有效权限、判定风险等级、决定是否审批",
+   "trust": "可信"
+  },
+  {
+   "name": "出口网关",
+   "duty": "统一出口，注入凭证、校验目标、限流、吊销；凭证库归属于此",
+   "trust": "可信"
+  },
+  {
+   "name": "下游系统",
+   "duty": "被访问的 SaaS、内部 API、MCP Server、数据库",
+   "trust": "自行作出授权判定；返回内容不可信"
+  },
+  {
+   "name": "数据层",
+   "duty": "知识库、RAG、记忆、产出物",
+   "trust": "可信；存储的内容可能被污染，按不可信内容处理"
+  },
+  {
+   "name": "执行环境",
+   "duty": "执行代码、命令、文件和浏览器操作",
+   "trust": "不可信，可能被攻陷"
+  },
+  {
+   "name": "管理面",
+   "duty": "Agent 登记、连接器、托管策略、生命周期",
+   "trust": "可信"
+  },
+  {
+   "name": "审计",
+   "duty": "记录、调阅、导出与留存，以及检测与响应",
+   "trust": "可信"
+  }
+ ],
+ "checkpoints": [
+  {
+   "step": 1,
+   "name": "入口认证",
+   "what": "渠道账号映射到企业身份",
+   "components": "交互渠道、身份层",
+   "refs": "V1.1、V1.2"
+  },
+  {
+   "step": 2,
+   "name": "建立会话",
+   "what": "签发工作负载身份，确定用户和 Agent",
+   "components": "Harness、身份层",
+   "refs": "V1.4"
+  },
+  {
+   "step": 3,
+   "name": "组装上下文",
+   "what": "按有效权限过滤工具清单、记忆和检索结果",
+   "components": "Harness、数据层",
+   "refs": "V3.3、V8.1、V8.3"
+  },
+  {
+   "step": 4,
+   "name": "前置校验",
+   "what": "执行前做策略检查和风险分级",
+   "components": "Harness、策略决策点",
+   "refs": "V2.2、V3.1、V3.2"
+  },
+  {
+   "step": 5,
+   "name": "人工确认",
+   "what": "按真实参数生成审批，必要时二次认证",
+   "components": "Harness、身份层",
+   "refs": "V3.4、V3.5"
+  },
+  {
+   "step": 6,
+   "name": "出口执行",
+   "what": "经网关注入凭证、校验目标、限流",
+   "components": "出口网关",
+   "refs": "V4.1、V4.2、V3.8"
+  },
+  {
+   "step": 7,
+   "name": "下游授权判定",
+   "what": "下游按代表用户访问时传递的用户身份作出授权判定",
+   "components": "下游系统",
+   "refs": "V2.1、V4.3、V4.4"
+  },
+  {
+   "step": 8,
+   "name": "处理返回",
+   "what": "返回内容按不可信处理并标记来源",
+   "components": "Harness",
+   "refs": "V6.1、V6.2"
+  },
+  {
+   "step": 9,
+   "name": "输出检查",
+   "what": "检查接收方、敏感数据和渲染风险",
+   "components": "交互渠道、出口网关",
+   "refs": "V7.1、V7.4、V7.5"
+  },
+  {
+   "step": 10,
+   "name": "全程记录",
+   "what": "每一步写入审计，可追溯到人、Agent 和输入来源",
+   "components": "审计",
+   "refs": "V10.1"
+  }
+ ],
+ "requirements": [
+  {
+   "id": "V1.1.1",
+   "text": "平台及其全部渠道应只允许通过企业 IdP（OIDC 或 SAML）登录，不提供独立的本地账号，V10.5 规定的紧急访问账号除外",
+   "level": 1,
+   "section": "V1.1",
+   "chapter": "V1",
+   "component": "身份层"
+  },
+  {
+   "id": "V1.1.2",
+   "text": "应通过 SCIM 或等效机制同步用户和组，IdP 中禁用的用户在平台中同步禁用",
+   "level": 2,
+   "section": "V1.1",
+   "chapter": "V1",
+   "component": "身份层"
+  },
+  {
+   "id": "V1.1.3",
+   "text": "应在用户会话中保留 IdP 签发的认证时间和认证强度，供 V3.5 的二次认证判断使用",
+   "level": 2,
+   "section": "V1.1",
+   "chapter": "V1",
+   "component": "身份层"
+  },
+  {
+   "id": "V1.1.4",
+   "text": "通过 API 调用 Agent 的凭证（如 API Key、个人访问令牌）应绑定到企业 IdP 中的具体用户或非人类身份，设置到期时间和权限范围，身份禁用时同步失效",
+   "level": 1,
+   "section": "V1.1",
+   "chapter": "V1",
+   "component": "身份层"
+  },
+  {
+   "id": "V1.2.1",
+   "text": "渠道账号应先通过一次 SSO 登录与企业身份绑定，才能调用 Agent",
+   "level": 1,
+   "section": "V1.2",
+   "chapter": "V1",
+   "component": "交互渠道"
+  },
+  {
+   "id": "V1.2.2",
+   "text": "应以 SSO 绑定结果作为渠道账号的唯一身份依据，不按昵称、显示名或邮箱字符串匹配；邮件渠道按 V1.2.6 执行",
+   "level": 1,
+   "section": "V1.2",
+   "chapter": "V1",
+   "component": "交互渠道"
+  },
+  {
+   "id": "V1.2.3",
+   "text": "IdP 禁用用户后，该用户的全部渠道绑定应同步失效",
+   "level": 2,
+   "section": "V1.2",
+   "chapter": "V1",
+   "component": "交互渠道"
+  },
+  {
+   "id": "V1.2.4",
+   "text": "应识别外部访客和跨组织共享频道中的账号，并为其单独限定可用的 Agent 和能力",
+   "level": 2,
+   "section": "V1.2",
+   "chapter": "V1",
+   "component": "交互渠道"
+  },
+  {
+   "id": "V1.2.5",
+   "text": "在渠道内触发高风险操作时，应要求用户通过企业 IdP 完成二次认证",
+   "level": 2,
+   "section": "V1.2",
+   "chapter": "V1",
+   "component": "交互渠道"
+  },
+  {
+   "id": "V1.2.6",
+   "text": "邮件渠道应只受理通过 DMARC 校验的邮件（SPF 或 DKIM 通过且与发件域对齐），外部域的发件人不能触发代表用户的操作",
+   "level": 1,
+   "section": "V1.2",
+   "chapter": "V1",
+   "component": "交互渠道"
+  },
+  {
+   "id": "V1.3.1",
+   "text": "每个 Agent 应有平台签发的唯一身份标识，不采信 Agent 自报的身份",
+   "level": 1,
+   "section": "V1.3",
+   "chapter": "V1",
+   "component": "身份层"
+  },
+  {
+   "id": "V1.3.2",
+   "text": "应为自主 Agent 在企业目录中建立独立的非人类身份，不使用任何员工的个人账号",
+   "level": 1,
+   "section": "V1.3",
+   "chapter": "V1",
+   "component": "身份层"
+  },
+  {
+   "id": "V1.3.3",
+   "text": "自主 Agent 访问下游时应使用 V1.3.2 建立的身份，下游日志中记录的主体为该 Agent",
+   "level": 2,
+   "section": "V1.3",
+   "chapter": "V1",
+   "component": "下游系统"
+  },
+  {
+   "id": "V1.3.4",
+   "text": "自主 Agent 访问下游应使用短时效令牌，不使用长期静态密钥",
+   "level": 2,
+   "section": "V1.3",
+   "chapter": "V1",
+   "component": "身份层"
+  },
+  {
+   "id": "V1.3.5",
+   "text": "自主 Agent 的密钥和证书应有签发、轮换和吊销流程，轮换周期设上限",
+   "level": 2,
+   "section": "V1.3",
+   "chapter": "V1",
+   "component": "身份层"
+  },
+  {
+   "id": "V1.4.1",
+   "text": "平台应为每个会话的执行实例签发短期工作负载身份，并与该实例绑定",
+   "level": 1,
+   "section": "V1.4",
+   "chapter": "V1",
+   "component": "身份层"
+  },
+  {
+   "id": "V1.4.2",
+   "text": "工作负载身份的凭证应对模型不可见，不进入上下文和工具返回",
+   "level": 1,
+   "section": "V1.4",
+   "chapter": "V1",
+   "component": "Harness"
+  },
+  {
+   "id": "V1.4.3",
+   "text": "出口网关应只依据工作负载身份确定用户和 Agent，忽略请求中自报的用户或 Agent 标识",
+   "level": 1,
+   "section": "V1.4",
+   "chapter": "V1",
+   "component": "出口网关"
+  },
+  {
+   "id": "V1.4.4",
+   "text": "会话结束或执行实例销毁时，应立即吊销对应的工作负载身份",
+   "level": 2,
+   "section": "V1.4",
+   "chapter": "V1",
+   "component": "身份层"
+  },
+  {
+   "id": "V1.4.5",
+   "text": "平台签发工作负载身份前应对执行实例做工作负载证明（如 SPIFFE/SPIRE 的节点证明和工作负载证明），证明失败不签发",
+   "level": 3,
+   "section": "V1.4",
+   "chapter": "V1",
+   "component": "身份层"
+  },
+  {
+   "id": "V1.5.1",
+   "text": "应通过身份联邦接入外部主体，不为其创建共享账号",
+   "level": 2,
+   "section": "V1.5",
+   "chapter": "V1",
+   "component": "身份层"
+  },
+  {
+   "id": "V1.5.2",
+   "text": "外部主体应只能访问为其开放的工作空间和接口",
+   "level": 1,
+   "section": "V1.5",
+   "chapter": "V1",
+   "component": "策略决策点"
+  },
+  {
+   "id": "V1.5.3",
+   "text": "外部主体的调用应单独记录审计，可按外部组织筛选",
+   "level": 2,
+   "section": "V1.5",
+   "chapter": "V1",
+   "component": "审计"
+  },
+  {
+   "id": "V2.1.1",
+   "text": "用户在场时，Agent 访问下游应携带发起用户的身份，由下游按该用户作出授权判定；下游不支持用户级授权判定的按 V4.4 执行",
+   "level": 1,
+   "section": "V2.1",
+   "chapter": "V2",
+   "component": "出口网关"
+  },
+  {
+   "id": "V2.1.2",
+   "text": "不应使用权限高于发起用户的共享凭证替用户访问下游，只支持共享静态凭证的下游按 V4.4 执行补偿控制",
+   "level": 1,
+   "section": "V2.1",
+   "chapter": "V2",
+   "component": "出口网关"
+  },
+  {
+   "id": "V2.1.3",
+   "text": "下游令牌应同时标识发起用户和执行的 Agent（如 RFC 8693 的 act 声明）",
+   "level": 2,
+   "section": "V2.1",
+   "chapter": "V2",
+   "component": "身份层"
+  },
+  {
+   "id": "V2.2.1",
+   "text": "每次调用的有效权限应取用户权限与 Agent 授权范围的交集",
+   "level": 1,
+   "section": "V2.2",
+   "chapter": "V2",
+   "component": "策略决策点"
+  },
+  {
+   "id": "V2.2.2",
+   "text": "有效权限应由策略决策点计算，不依赖系统提示词或模型的判断",
+   "level": 1,
+   "section": "V2.2",
+   "chapter": "V2",
+   "component": "策略决策点"
+  },
+  {
+   "id": "V2.2.3",
+   "text": "任务开始时应声明所需的工具和数据范围，运行中只授予声明范围内的权限；声明由用户或 Agent 配置给出，模型提出的范围须经用户确认后生效",
+   "level": 2,
+   "section": "V2.2",
+   "chapter": "V2",
+   "component": "策略决策点"
+  },
+  {
+   "id": "V2.2.4",
+   "text": "超出任务声明范围的调用应被拒绝或转为审批",
+   "level": 2,
+   "section": "V2.2",
+   "chapter": "V2",
+   "component": "策略决策点"
+  },
+  {
+   "id": "V2.2.5",
+   "text": "有效权限应在每次工具调用时重新计算，不沿用会话开始时的授权结果",
+   "level": 2,
+   "section": "V2.2",
+   "chapter": "V2",
+   "component": "策略决策点"
+  },
+  {
+   "id": "V2.2.6",
+   "text": "高风险操作的授权应细化到具体资源和参数（如用 RFC 9396 RAR 描述授权细节），不只授予粗粒度角色",
+   "level": 3,
+   "section": "V2.2",
+   "chapter": "V2",
+   "component": "策略决策点"
+  },
+  {
+   "id": "V2.3.1",
+   "text": "离线委托任务应以创建用户为根，创建时固定权限上限，之后只能收窄",
+   "level": 1,
+   "section": "V2.3",
+   "chapter": "V2",
+   "component": "策略决策点"
+  },
+  {
+   "id": "V2.3.2",
+   "text": "每次运行前应复查创建用户的账号状态和当前权限",
+   "level": 1,
+   "section": "V2.3",
+   "chapter": "V2",
+   "component": "策略决策点"
+  },
+  {
+   "id": "V2.3.3",
+   "text": "调度器应只保存任务标识，不保存用户凭证或可直接使用的令牌",
+   "level": 1,
+   "section": "V2.3",
+   "chapter": "V2",
+   "component": "Harness"
+  },
+  {
+   "id": "V2.3.4",
+   "text": "创建用户被禁用后，其离线委托任务应自动停止并通知该 Agent 的负责人",
+   "level": 2,
+   "section": "V2.3",
+   "chapter": "V2",
+   "component": "管理面"
+  },
+  {
+   "id": "V2.3.5",
+   "text": "创建用户离职或转岗后仍需继续运行的任务，应在其账号禁用前转为自主 Agent，并重新审批授权",
+   "level": 2,
+   "section": "V2.3",
+   "chapter": "V2",
+   "component": "管理面"
+  },
+  {
+   "id": "V2.3.6",
+   "text": "离线委托任务的授权应设到期时间，到期后需创建用户重新确认",
+   "level": 2,
+   "section": "V2.3",
+   "chapter": "V2",
+   "component": "策略决策点"
+  },
+  {
+   "id": "V2.4.1",
+   "text": "下游 Agent 的有效权限不应超过发起用户的权限与上游的委托范围，发起用户不能经由下游 Agent 获得其本人没有的权限",
+   "level": 1,
+   "section": "V2.4",
+   "chapter": "V2",
+   "component": "策略决策点"
+  },
+  {
+   "id": "V2.4.2",
+   "text": "Harness 派生的子 Agent，可用工具和权限应是父 Agent 的子集",
+   "level": 2,
+   "section": "V2.4",
+   "chapter": "V2",
+   "component": "Harness"
+  },
+  {
+   "id": "V2.4.3",
+   "text": "委托链应由平台构建和记录，不采信未经平台或可信授权服务器签名的身份声明",
+   "level": 1,
+   "section": "V2.4",
+   "chapter": "V2",
+   "component": "策略决策点"
+  },
+  {
+   "id": "V2.4.4",
+   "text": "应显式配置哪些 Agent 可以调用哪些 Agent，未配置的调用被拒绝",
+   "level": 2,
+   "section": "V2.4",
+   "chapter": "V2",
+   "component": "策略决策点"
+  },
+  {
+   "id": "V2.4.5",
+   "text": "应限制委托链深度，并检测和阻断循环调用",
+   "level": 2,
+   "section": "V2.4",
+   "chapter": "V2",
+   "component": "策略决策点"
+  },
+  {
+   "id": "V2.4.6",
+   "text": "多跳委托时，下游令牌应携带完整的执行者链（如 RFC 8693 中嵌套的 act 声明），使下游能据此授权",
+   "level": 2,
+   "section": "V2.4",
+   "chapter": "V2",
+   "component": "身份层"
+  },
+  {
+   "id": "V2.4.7",
+   "text": "在同一信任域内跨服务调用时，应沿调用链传递携带用户、Agent 和任务上下文的令牌（如 Transaction Token 草案），下游据此授权",
+   "level": 3,
+   "section": "V2.4",
+   "chapter": "V2",
+   "component": "身份层"
+  },
+  {
+   "id": "V2.5.1",
+   "text": "用户允许他人代为使用自己的 Agent 时（如助理代主管），应显式登记委托关系，并限定范围和期限",
+   "level": 2,
+   "section": "V2.5",
+   "chapter": "V2",
+   "component": "策略决策点"
+  },
+  {
+   "id": "V2.5.2",
+   "text": "代为操作时，审计应同时记录委托人和实际操作人",
+   "level": 2,
+   "section": "V2.5",
+   "chapter": "V2",
+   "component": "审计"
+  },
+  {
+   "id": "V2.5.3",
+   "text": "Agent 需要超出其授权范围的权限时，应经申请和审批限时授予，到期自动收回",
+   "level": 3,
+   "section": "V2.5",
+   "chapter": "V2",
+   "component": "策略决策点"
+  },
+  {
+   "id": "V2.6.1",
+   "text": "入站事件应校验签名和来源，未通过校验的事件被拒绝",
+   "level": 1,
+   "section": "V2.6",
+   "chapter": "V2",
+   "component": "交互渠道"
+  },
+  {
+   "id": "V2.6.2",
+   "text": "每条触发规则应绑定执行身份，即自主 Agent 的身份或规则配置人的身份",
+   "level": 1,
+   "section": "V2.6",
+   "chapter": "V2",
+   "component": "管理面"
+  },
+  {
+   "id": "V2.6.3",
+   "text": "触发规则的创建和修改应记录审计，并标明配置人",
+   "level": 2,
+   "section": "V2.6",
+   "chapter": "V2",
+   "component": "审计"
+  },
+  {
+   "id": "V3.1.1",
+   "text": "应为每个工具标注操作类别（至少区分读取、写入、删除、外发、资金操作和生产变更）和风险等级",
+   "level": 1,
+   "section": "V3.1",
+   "chapter": "V3",
+   "component": "策略决策点"
+  },
+  {
+   "id": "V3.1.2",
+   "text": "风险等级应由平台按工具和参数判定，不采用模型给出的风险评估",
+   "level": 1,
+   "section": "V3.1",
+   "chapter": "V3",
+   "component": "策略决策点"
+  },
+  {
+   "id": "V3.1.3",
+   "text": "每个风险等级应对应确定的处置方式，如自动执行、事后通知、事前审批、二次认证或拒绝",
+   "level": 1,
+   "section": "V3.1",
+   "chapter": "V3",
+   "component": "策略决策点"
+  },
+  {
+   "id": "V3.1.4",
+   "text": "同一工具在影响范围不同的参数下（如删除 1 条与批量删除）应能落入不同等级",
+   "level": 2,
+   "section": "V3.1",
+   "chapter": "V3",
+   "component": "策略决策点"
+  },
+  {
+   "id": "V3.2.1",
+   "text": "每次工具调用执行前都应经过策略检查，检查在 Agent 无法修改的组件中执行（平台托管的 Harness、策略决策点或出口网关）；授权决定不采用被检查 Agent 所用模型的输出",
+   "level": 1,
+   "section": "V3.2",
+   "chapter": "V3",
+   "component": "Harness"
+  },
+  {
+   "id": "V3.2.2",
+   "text": "安全约束应由策略执行点（Harness 或出口网关）按策略决策点的决定强制执行，不能只写在系统提示词里",
+   "level": 2,
+   "section": "V3.2",
+   "chapter": "V3",
+   "component": "Harness"
+  },
+  {
+   "id": "V3.2.3",
+   "text": "前置检查的策略和钩子应由平台下发，Agent 自身不能修改或绕过",
+   "level": 2,
+   "section": "V3.2",
+   "chapter": "V3",
+   "component": "Harness"
+  },
+  {
+   "id": "V3.2.4",
+   "text": "策略检查出错或超时时应默认拒绝",
+   "level": 1,
+   "section": "V3.2",
+   "chapter": "V3",
+   "component": "Harness"
+  },
+  {
+   "id": "V3.2.5",
+   "text": "策略决策点应通过标准化授权接口（如 OpenID AuthZEN）与策略执行点交互，便于替换策略引擎",
+   "level": 3,
+   "section": "V3.2",
+   "chapter": "V3",
+   "component": "策略决策点"
+  },
+  {
+   "id": "V3.3.1",
+   "text": "交给模型的工具清单应按当前有效权限过滤，模型看不到无权使用的工具",
+   "level": 2,
+   "section": "V3.3",
+   "chapter": "V3",
+   "component": "Harness"
+  },
+  {
+   "id": "V3.3.2",
+   "text": "工具清单裁剪之外，执行前仍应按 V3.2 校验",
+   "level": 2,
+   "section": "V3.3",
+   "chapter": "V3",
+   "component": "Harness"
+  },
+  {
+   "id": "V3.4.1",
+   "text": "高风险操作应在执行前取得有权批准该操作的人批准；未列入双人控制的操作可由发起用户本人批准",
+   "level": 1,
+   "section": "V3.4",
+   "chapter": "V3",
+   "component": "Harness"
+  },
+  {
+   "id": "V3.4.2",
+   "text": "审批内容应由平台根据真实调用参数生成，不使用模型撰写的摘要",
+   "level": 1,
+   "section": "V3.4",
+   "chapter": "V3",
+   "component": "Harness"
+  },
+  {
+   "id": "V3.4.3",
+   "text": "执行时应校验实际参数与审批时一致，不一致则拒绝；按 V3.4.6 事先批准的计划执行的调用，校验其在计划范围内",
+   "level": 1,
+   "section": "V3.4",
+   "chapter": "V3",
+   "component": "Harness"
+  },
+  {
+   "id": "V3.4.4",
+   "text": "审批应设有效期，过期未批视为拒绝",
+   "level": 2,
+   "section": "V3.4",
+   "chapter": "V3",
+   "component": "Harness"
+  },
+  {
+   "id": "V3.4.5",
+   "text": "应限制审批请求的频率并合并同类请求，防止审批疲劳",
+   "level": 2,
+   "section": "V3.4",
+   "chapter": "V3",
+   "component": "Harness"
+  },
+  {
+   "id": "V3.4.6",
+   "text": "应支持事先批准的执行计划，写明工具、资源范围和上限；计划范围内的操作不再逐次审批，超出范围即中止并重新审批",
+   "level": 2,
+   "section": "V3.4",
+   "chapter": "V3",
+   "component": "策略决策点"
+  },
+  {
+   "id": "V3.5.1",
+   "text": "资金、生产变更、批量删除等操作应要求用户完成二次认证（如重新完成 MFA）",
+   "level": 2,
+   "section": "V3.5",
+   "chapter": "V3",
+   "component": "身份层"
+  },
+  {
+   "id": "V3.5.2",
+   "text": "平台应接收 IdP 的会话风险信号（如 CAEP），风险升高时降低 Agent 可执行的操作等级或暂停 Agent",
+   "level": 3,
+   "section": "V3.5",
+   "chapter": "V3",
+   "component": "策略决策点"
+  },
+  {
+   "id": "V3.6.1",
+   "text": "互斥职责（如提交与审批、开发与上线）不应分配给同一个 Agent",
+   "level": 2,
+   "section": "V3.6",
+   "chapter": "V3",
+   "component": "管理面"
+  },
+  {
+   "id": "V3.6.2",
+   "text": "对按职责分离要求双人控制的操作（如付款、生产变更、权限授予），审批人不应是发起人本人，也不应是代发起人行事的 Agent",
+   "level": 2,
+   "section": "V3.6",
+   "chapter": "V3",
+   "component": "策略决策点"
+  },
+  {
+   "id": "V3.7.1",
+   "text": "Agent 创建或修改定时任务、触发规则、Webhook、转发规则和 Skill，应经用户审批后才生效",
+   "level": 1,
+   "section": "V3.7",
+   "chapter": "V3",
+   "component": "Harness"
+  },
+  {
+   "id": "V3.7.2",
+   "text": "由 Agent 创建的全部持久化对象应能在管理面集中列出，并标明创建来源",
+   "level": 2,
+   "section": "V3.7",
+   "chapter": "V3",
+   "component": "管理面"
+  },
+  {
+   "id": "V3.8.1",
+   "text": "应按用户、Agent 和操作类型设置速率、批量和导出上限",
+   "level": 2,
+   "section": "V3.8",
+   "chapter": "V3",
+   "component": "出口网关"
+  },
+  {
+   "id": "V3.8.2",
+   "text": "超出上限的请求应被拦截并告警",
+   "level": 2,
+   "section": "V3.8",
+   "chapter": "V3",
+   "component": "出口网关"
+  },
+  {
+   "id": "V3.8.3",
+   "text": "应按部门、用户或 Agent 设置模型调用预算，超额时暂停或转为审批",
+   "level": 2,
+   "section": "V3.8",
+   "chapter": "V3",
+   "component": "Harness"
+  },
+  {
+   "id": "V3.8.4",
+   "text": "每次 Agent 运行应设置最大工具调用次数、最长运行时长和最大模型调用开销，由平台强制执行，达到上限即中止并通知发起人或负责人",
+   "level": 2,
+   "section": "V3.8",
+   "chapter": "V3",
+   "component": "Harness"
+  },
+  {
+   "id": "V4.1.1",
+   "text": "访问下游所需的令牌和密钥应由平台托管，平台托管的执行环境、上下文和模型中只出现占位凭证，V5.2.2 规定的情形除外",
+   "level": 1,
+   "section": "V4.1",
+   "chapter": "V4",
+   "component": "出口网关"
+  },
+  {
+   "id": "V4.1.2",
+   "text": "每个托管凭证应绑定允许的目标域名和路径，网关只在目标匹配时注入真实凭证",
+   "level": 1,
+   "section": "V4.1",
+   "chapter": "V4",
+   "component": "出口网关"
+  },
+  {
+   "id": "V4.1.3",
+   "text": "网关不应把凭证注入 URL 或查询参数；非 HTTP 协议的认证应由网关或平台侧代理完成，凭证不进入执行环境",
+   "level": 2,
+   "section": "V4.1",
+   "chapter": "V4",
+   "component": "出口网关"
+  },
+  {
+   "id": "V4.1.4",
+   "text": "目标不匹配的替换请求应被拒绝并告警",
+   "level": 2,
+   "section": "V4.1",
+   "chapter": "V4",
+   "component": "出口网关"
+  },
+  {
+   "id": "V4.1.5",
+   "text": "下游响应中回显的凭证应在返回执行环境前被剔除",
+   "level": 2,
+   "section": "V4.1",
+   "chapter": "V4",
+   "component": "出口网关"
+  },
+  {
+   "id": "V4.1.6",
+   "text": "平台应提供托管授权流程（如 OAuth），用户无需把个人凭证或 API Key 直接交给 Agent",
+   "level": 2,
+   "section": "V4.1",
+   "chapter": "V4",
+   "component": "出口网关"
+  },
+  {
+   "id": "V4.1.7",
+   "text": "对话和上传文件中出现的凭证应被识别，并阻止其写入记忆、产出物或 Agent 配置",
+   "level": 2,
+   "section": "V4.1",
+   "chapter": "V4",
+   "component": "Harness"
+  },
+  {
+   "id": "V4.2.1",
+   "text": "Agent 对执行环境之外的全部访问应只经过出口网关",
+   "level": 1,
+   "section": "V4.2",
+   "chapter": "V4",
+   "component": "出口网关"
+  },
+  {
+   "id": "V4.2.2",
+   "text": "执行环境的网络应默认拒绝出站，只放行出口网关",
+   "level": 1,
+   "section": "V4.2",
+   "chapter": "V4",
+   "component": "执行环境"
+  },
+  {
+   "id": "V4.2.3",
+   "text": "内网服务和数据库应拒绝来自执行环境网段、绕过网关的直连",
+   "level": 1,
+   "section": "V4.2",
+   "chapter": "V4",
+   "component": "下游系统"
+  },
+  {
+   "id": "V4.2.4",
+   "text": "应定期扫描执行环境、Agent 配置和镜像中的硬编码凭证",
+   "level": 2,
+   "section": "V4.2",
+   "chapter": "V4",
+   "component": "执行环境"
+  },
+  {
+   "id": "V4.2.5",
+   "text": "平台应维护已登记的下游系统清单（地址、所属系统和数据级别），出口网关据此区分企业内访问与外发",
+   "level": 1,
+   "section": "V4.2",
+   "chapter": "V4",
+   "component": "管理面"
+  },
+  {
+   "id": "V4.3.1",
+   "text": "访问第三方 SaaS 时，应取得用户级授权（由用户本人完成 OAuth 授权，或经企业 IdP 换取用户级令牌），不使用跨用户共享的应用凭证",
+   "level": 1,
+   "section": "V4.3",
+   "chapter": "V4",
+   "component": "出口网关"
+  },
+  {
+   "id": "V4.3.2",
+   "text": "用户撤销授权后，平台应立即停止使用对应凭证",
+   "level": 2,
+   "section": "V4.3",
+   "chapter": "V4",
+   "component": "出口网关"
+  },
+  {
+   "id": "V4.3.3",
+   "text": "下游支持令牌交换时，应通过企业 IdP 按 RFC 8693，或按基于 RFC 8693 与 RFC 7523 的 ID-JAG，换取用户级短期令牌",
+   "level": 2,
+   "section": "V4.3",
+   "chapter": "V4",
+   "component": "身份层"
+  },
+  {
+   "id": "V4.4.1",
+   "text": "遗留系统的共享密钥应由平台托管，不下发到执行环境",
+   "level": 1,
+   "section": "V4.4",
+   "chapter": "V4",
+   "component": "出口网关"
+  },
+  {
+   "id": "V4.4.2",
+   "text": "网关应按用户在接口级和操作级作出授权判定，弥补下游缺失的用户级授权",
+   "level": 1,
+   "section": "V4.4",
+   "chapter": "V4",
+   "component": "出口网关"
+  },
+  {
+   "id": "V4.4.3",
+   "text": "网关应向下游附带签名的用户身份信息，供下游校验和逐步改造",
+   "level": 2,
+   "section": "V4.4",
+   "chapter": "V4",
+   "component": "出口网关"
+  },
+  {
+   "id": "V4.4.4",
+   "text": "应登记由网关代为作出用户级授权判定的下游系统，并纳入定期复核",
+   "level": 2,
+   "section": "V4.4",
+   "chapter": "V4",
+   "component": "管理面"
+  },
+  {
+   "id": "V4.5.1",
+   "text": "远程 MCP Server 的请求应经过出口网关，并携带用户身份",
+   "level": 2,
+   "section": "V4.5",
+   "chapter": "V4",
+   "component": "出口网关"
+  },
+  {
+   "id": "V4.5.2",
+   "text": "平台自建或托管的 MCP Server 不应持有供所有用户共用的长期凭证",
+   "level": 2,
+   "section": "V4.5",
+   "chapter": "V4",
+   "component": "下游系统"
+  },
+  {
+   "id": "V4.5.3",
+   "text": "本地运行的 MCP 进程应同样只获得占位凭证，出网受执行环境的网络策略约束",
+   "level": 2,
+   "section": "V4.5",
+   "chapter": "V4",
+   "component": "执行环境"
+  },
+  {
+   "id": "V4.5.4",
+   "text": "支持 Enterprise-Managed Authorization 扩展的 MCP Server，应通过企业 IdP 授权接入",
+   "level": 3,
+   "section": "V4.5",
+   "chapter": "V4",
+   "component": "身份层"
+  },
+  {
+   "id": "V4.5.5",
+   "text": "平台自建或托管的 MCP Server 应只接受签发给自身的令牌（校验签发方和受众，如使用 RFC 8707 资源指示符），不应把收到的令牌透传给下游 API",
+   "level": 1,
+   "section": "V4.5",
+   "chapter": "V4",
+   "component": "下游系统"
+  },
+  {
+   "id": "V4.5.6",
+   "text": "平台应保存已审核 MCP Server 的工具定义快照，工具名称、描述或参数结构变化后，在重新审核前不向模型暴露",
+   "level": 2,
+   "section": "V4.5",
+   "chapter": "V4",
+   "component": "Harness"
+  },
+  {
+   "id": "V4.6.1",
+   "text": "网关注入或换取的下游令牌应设置短有效期",
+   "level": 2,
+   "section": "V4.6",
+   "chapter": "V4",
+   "component": "身份层"
+  },
+  {
+   "id": "V4.6.2",
+   "text": "对支持的下游，令牌应采用发送方绑定（DPoP 或 mTLS），防止被盗后重放",
+   "level": 2,
+   "section": "V4.6",
+   "chapter": "V4",
+   "component": "出口网关"
+  },
+  {
+   "id": "V4.6.3",
+   "text": "令牌应限定受众（audience），只能用于签发时指定的下游",
+   "level": 1,
+   "section": "V4.6",
+   "chapter": "V4",
+   "component": "身份层"
+  },
+  {
+   "id": "V4.7.1",
+   "text": "托管凭证应加密存储，数据库和备份中不出现明文",
+   "level": 1,
+   "section": "V4.7",
+   "chapter": "V4",
+   "component": "出口网关"
+  },
+  {
+   "id": "V4.7.2",
+   "text": "平台管理员和运维人员不应能读取或导出凭证明文",
+   "level": 1,
+   "section": "V4.7",
+   "chapter": "V4",
+   "component": "出口网关"
+  },
+  {
+   "id": "V4.7.3",
+   "text": "只有出口网关能在调用时取用凭证，每次取用都应记录审计",
+   "level": 1,
+   "section": "V4.7",
+   "chapter": "V4",
+   "component": "出口网关"
+  },
+  {
+   "id": "V4.7.4",
+   "text": "主密钥应由企业控制的 KMS 或 HSM 管理",
+   "level": 2,
+   "section": "V4.7",
+   "chapter": "V4",
+   "component": "出口网关"
+  },
+  {
+   "id": "V4.7.5",
+   "text": "应支持按用户、按连接或全量批量轮换和吊销凭证",
+   "level": 2,
+   "section": "V4.7",
+   "chapter": "V4",
+   "component": "出口网关"
+  },
+  {
+   "id": "V5.1.1",
+   "text": "每个会话应使用独立的执行环境，不同用户之间、同一用户的不同会话之间不共享文件和进程",
+   "level": 1,
+   "section": "V5.1",
+   "chapter": "V5",
+   "component": "执行环境"
+  },
+  {
+   "id": "V5.1.2",
+   "text": "执行环境应以非特权身份运行，不能访问宿主机或其他实例",
+   "level": 1,
+   "section": "V5.1",
+   "chapter": "V5",
+   "component": "执行环境"
+  },
+  {
+   "id": "V5.1.3",
+   "text": "会话结束后应销毁执行环境及其中的文件和临时凭证",
+   "level": 2,
+   "section": "V5.1",
+   "chapter": "V5",
+   "component": "执行环境"
+  },
+  {
+   "id": "V5.1.4",
+   "text": "多个用户或租户共享宿主机的执行环境，应采用独立内核或用户态内核隔离，如 gVisor、Kata Containers 或 Firecracker 微虚拟机",
+   "level": 2,
+   "section": "V5.1",
+   "chapter": "V5",
+   "component": "执行环境"
+  },
+  {
+   "id": "V5.2.1",
+   "text": "代码和命令应只在隔离的执行环境中运行，不在 Harness 或平台宿主上直接执行",
+   "level": 1,
+   "section": "V5.2",
+   "chapter": "V5",
+   "component": "执行环境"
+  },
+  {
+   "id": "V5.2.2",
+   "text": "无法由出口网关注入的凭证（如需在客户端签名的云 API 凭证），应按用户和任务签发限定权限和目标资源的短期凭证（如 AWS STS），不放长期密钥",
+   "level": 1,
+   "section": "V5.2",
+   "chapter": "V5",
+   "component": "身份层"
+  },
+  {
+   "id": "V5.2.3",
+   "text": "在员工终端或挂载持久数据的执行环境中，删除持久数据、提权和修改网络配置的命令应在执行前转为审批",
+   "level": 2,
+   "section": "V5.2",
+   "chapter": "V5",
+   "component": "Harness"
+  },
+  {
+   "id": "V5.2.4",
+   "text": "依赖包应只能从企业认可的镜像源安装",
+   "level": 2,
+   "section": "V5.2",
+   "chapter": "V5",
+   "component": "执行环境"
+  },
+  {
+   "id": "V5.3.1",
+   "text": "平台提供浏览器环境时，Agent 应使用独立的浏览器配置，不复用用户已登录的个人会话",
+   "level": 1,
+   "section": "V5.3",
+   "chapter": "V5",
+   "component": "执行环境"
+  },
+  {
+   "id": "V5.3.2",
+   "text": "提交会产生外部效果的表单（如下单、付款、发送消息、发布内容、修改账户设置）前应转为审批",
+   "level": 1,
+   "section": "V5.3",
+   "chapter": "V5",
+   "component": "Harness"
+  },
+  {
+   "id": "V5.3.3",
+   "text": "应逐站点授权 Agent 可访问的网站，未授权站点被拦截",
+   "level": 2,
+   "section": "V5.3",
+   "chapter": "V5",
+   "component": "出口网关"
+  },
+  {
+   "id": "V5.3.4",
+   "text": "桌面操作应限定在用户授权的应用范围内",
+   "level": 2,
+   "section": "V5.3",
+   "chapter": "V5",
+   "component": "执行环境"
+  },
+  {
+   "id": "V5.3.5",
+   "text": "在用户已登录的浏览器中运行的 Agent（如浏览器插件），应按站点白名单运行，默认拒绝未列入的站点，并默认禁止在身份认证、支付和管理后台类站点上操作",
+   "level": 1,
+   "section": "V5.3",
+   "chapter": "V5",
+   "component": "Harness"
+  },
+  {
+   "id": "V5.4.1",
+   "text": "端侧执行应默认放在系统级沙箱中，如 macOS Seatbelt 或 Linux bubblewrap",
+   "level": 1,
+   "section": "V5.4",
+   "chapter": "V5",
+   "component": "执行环境"
+  },
+  {
+   "id": "V5.4.2",
+   "text": "文件访问应按目录授权，默认不能读取密钥目录（如 ~/.ssh、~/.aws）和浏览器凭证存储",
+   "level": 1,
+   "section": "V5.4",
+   "chapter": "V5",
+   "component": "执行环境"
+  },
+  {
+   "id": "V5.4.3",
+   "text": "在受管终端上，企业应能通过托管策略统一下发端侧策略，员工不能在本机关闭；未受管终端上的端侧 Agent 不应获得企业资源的访问凭证",
+   "level": 1,
+   "section": "V5.4",
+   "chapter": "V5",
+   "component": "Harness"
+  },
+  {
+   "id": "V5.4.4",
+   "text": "端侧 Agent 访问企业资源应经过出口网关，不直接使用本机保存的企业凭证",
+   "level": 1,
+   "section": "V5.4",
+   "chapter": "V5",
+   "component": "出口网关"
+  },
+  {
+   "id": "V5.5.1",
+   "text": "企业应能下发不可被本地配置覆盖的托管策略",
+   "level": 1,
+   "section": "V5.5",
+   "chapter": "V5",
+   "component": "Harness"
+  },
+  {
+   "id": "V5.5.2",
+   "text": "托管策略应能禁止或限制自动批准、跳过确认等模式",
+   "level": 1,
+   "section": "V5.5",
+   "chapter": "V5",
+   "component": "Harness"
+  },
+  {
+   "id": "V5.5.3",
+   "text": "允许和禁止的工具清单应由企业统一配置",
+   "level": 2,
+   "section": "V5.5",
+   "chapter": "V5",
+   "component": "Harness"
+  },
+  {
+   "id": "V5.5.4",
+   "text": "项目目录（代码仓库或 IDE 中打开的工作区）中的规则文件、MCP 定义和钩子，应在用户确认信任后才加载",
+   "level": 1,
+   "section": "V5.5",
+   "chapter": "V5",
+   "component": "Harness"
+  },
+  {
+   "id": "V5.5.5",
+   "text": "项目目录中的上述配置变更后，应重新确认信任才能加载",
+   "level": 1,
+   "section": "V5.5",
+   "chapter": "V5",
+   "component": "Harness"
+  },
+  {
+   "id": "V5.5.6",
+   "text": "企业应能禁止加载项目目录级的 MCP 和钩子",
+   "level": 2,
+   "section": "V5.5",
+   "chapter": "V5",
+   "component": "Harness"
+  },
+  {
+   "id": "V5.6.1",
+   "text": "Skill、插件和 MCP Server 应经审核后才能安装",
+   "level": 1,
+   "section": "V5.6",
+   "chapter": "V5",
+   "component": "管理面"
+  },
+  {
+   "id": "V5.6.2",
+   "text": "管理员应能维护允许安装的白名单，并能立即下架",
+   "level": 2,
+   "section": "V5.6",
+   "chapter": "V5",
+   "component": "管理面"
+  },
+  {
+   "id": "V5.6.3",
+   "text": "应校验来源和签名并锁定版本，更新需重新审核",
+   "level": 2,
+   "section": "V5.6",
+   "chapter": "V5",
+   "component": "管理面"
+  },
+  {
+   "id": "V5.6.4",
+   "text": "每个 Skill 或插件应声明所需权限，执行时超出声明的调用被拒绝",
+   "level": 2,
+   "section": "V5.6",
+   "chapter": "V5",
+   "component": "Harness"
+  },
+  {
+   "id": "V6.1.1",
+   "text": "平台应将工具返回、检索结果、网页、邮件、文件和其他 Agent 的输出记为不可信内容，作为 V6.2 收紧规则的判断依据",
+   "level": 1,
+   "section": "V6.1",
+   "chapter": "V6",
+   "component": "Harness"
+  },
+  {
+   "id": "V6.1.2",
+   "text": "进入上下文的内容应标记来源，使策略检查能区分用户指令和不可信内容",
+   "level": 2,
+   "section": "V6.1",
+   "chapter": "V6",
+   "component": "Harness"
+  },
+  {
+   "id": "V6.1.3",
+   "text": "平台策略和系统提示词应通过消息角色或分隔结构与不可信内容隔开，不拼接在同一段文本中",
+   "level": 2,
+   "section": "V6.1",
+   "chapter": "V6",
+   "component": "Harness"
+  },
+  {
+   "id": "V6.2.1",
+   "text": "会话接触不可信内容后，任何外发都应默认禁止，经审批后方可执行",
+   "level": 1,
+   "section": "V6.2",
+   "chapter": "V6",
+   "component": "Harness"
+  },
+  {
+   "id": "V6.2.2",
+   "text": "会话接触不可信内容后，对执行环境以外系统的写入和删除应转为审批，或限定在 V3.4.6 事先批准的计划范围内",
+   "level": 2,
+   "section": "V6.2",
+   "chapter": "V6",
+   "component": "Harness"
+  },
+  {
+   "id": "V6.2.3",
+   "text": "应定期用嵌入注入指令的网页、邮件、文档和工具返回，对 Agent 做红队测试",
+   "level": 2,
+   "section": "V6.2",
+   "chapter": "V6",
+   "component": "Harness"
+  },
+  {
+   "id": "V6.2.4",
+   "text": "高风险场景应先由没有工具权限的隔离模型处理不可信内容，只把结构化结果交给有权限的 Agent（如 Dual LLM 模式，或在其上增加控制流与数据流分离的 CaMeL）",
+   "level": 3,
+   "section": "V6.2",
+   "chapter": "V6",
+   "component": "Harness"
+  },
+  {
+   "id": "V6.3.1",
+   "text": "系统提示词、Agent 配置和 Skill 文件中不应包含凭证或密钥",
+   "level": 1,
+   "section": "V6.3",
+   "chapter": "V6",
+   "component": "管理面"
+  },
+  {
+   "id": "V6.3.2",
+   "text": "应假定系统提示词可能泄露，其中不应包含个人信息，也不应包含超出该 Agent 全部使用者共同可见范围的数据",
+   "level": 1,
+   "section": "V6.3",
+   "chapter": "V6",
+   "component": "管理面"
+  },
+  {
+   "id": "V6.3.3",
+   "text": "Agent 配置和 Skill 文件在发布前应经过凭证扫描",
+   "level": 2,
+   "section": "V6.3",
+   "chapter": "V6",
+   "component": "管理面"
+  },
+  {
+   "id": "V6.4.1",
+   "text": "Agent 之间的消息应经平台转发并附带发送方身份，Agent 之间不直接通信",
+   "level": 2,
+   "section": "V6.4",
+   "chapter": "V6",
+   "component": "Harness"
+  },
+  {
+   "id": "V6.4.2",
+   "text": "关键节点应校验上游输出的格式和取值范围，不合规的结果不再向下传递",
+   "level": 2,
+   "section": "V6.4",
+   "chapter": "V6",
+   "component": "Harness"
+  },
+  {
+   "id": "V6.4.3",
+   "text": "链路中异常输出或错误率超过阈值时，应熔断整条链路并告警",
+   "level": 2,
+   "section": "V6.4",
+   "chapter": "V6",
+   "component": "Harness"
+  },
+  {
+   "id": "V7.1.1",
+   "text": "在多人渠道中，回复只能使用全部在场成员都有权访问的数据，否则按 V7.1.2 处理",
+   "level": 1,
+   "section": "V7.1",
+   "chapter": "V7",
+   "component": "交互渠道"
+  },
+  {
+   "id": "V7.1.2",
+   "text": "超出部分在场成员权限的结果应只私信给触发者，渠道内只显示提示",
+   "level": 1,
+   "section": "V7.1",
+   "chapter": "V7",
+   "component": "交互渠道"
+  },
+  {
+   "id": "V7.1.3",
+   "text": "渠道内有外部成员时，可展示内容的级别应进一步收紧",
+   "level": 2,
+   "section": "V7.1",
+   "chapter": "V7",
+   "component": "交互渠道"
+  },
+  {
+   "id": "V7.1.4",
+   "text": "判断可展示内容时，应考虑之后加入的成员能翻看历史回复",
+   "level": 2,
+   "section": "V7.1",
+   "chapter": "V7",
+   "component": "交互渠道"
+  },
+  {
+   "id": "V7.2.1",
+   "text": "共享 Agent 的会话应按用户隔离",
+   "level": 1,
+   "section": "V7.2",
+   "chapter": "V7",
+   "component": "Harness"
+  },
+  {
+   "id": "V7.2.2",
+   "text": "个人上下文与团队共享知识应分开存放，检索时按当前用户作出授权判定",
+   "level": 2,
+   "section": "V7.2",
+   "chapter": "V7",
+   "component": "数据层"
+  },
+  {
+   "id": "V7.3.1",
+   "text": "会话转交前应按接收人的权限检查已有上下文",
+   "level": 2,
+   "section": "V7.3",
+   "chapter": "V7",
+   "component": "Harness"
+  },
+  {
+   "id": "V7.3.2",
+   "text": "超出接收人权限的内容应脱敏或移除后再转交",
+   "level": 2,
+   "section": "V7.3",
+   "chapter": "V7",
+   "component": "Harness"
+  },
+  {
+   "id": "V7.4.1",
+   "text": "平台发往任何渠道的回复中，指向白名单以外域名的图片和资源应在发送前移除，或改为不自动加载的链接",
+   "level": 1,
+   "section": "V7.4",
+   "chapter": "V7",
+   "component": "交互渠道"
+  },
+  {
+   "id": "V7.4.2",
+   "text": "回复中的 HTML 和 Markdown 应在渲染前净化，去除脚本和事件属性",
+   "level": 1,
+   "section": "V7.4",
+   "chapter": "V7",
+   "component": "交互渠道"
+  },
+  {
+   "id": "V7.4.3",
+   "text": "回复中的链接应显示真实的目标地址",
+   "level": 2,
+   "section": "V7.4",
+   "chapter": "V7",
+   "component": "交互渠道"
+  },
+  {
+   "id": "V7.5.1",
+   "text": "回复和外发内容中出现凭证或密钥时应被拦截",
+   "level": 2,
+   "section": "V7.5",
+   "chapter": "V7",
+   "component": "交互渠道"
+  },
+  {
+   "id": "V7.5.2",
+   "text": "回复、文件下载和外发的内容应经过敏感数据检测",
+   "level": 2,
+   "section": "V7.5",
+   "chapter": "V7",
+   "component": "交互渠道"
+  },
+  {
+   "id": "V7.5.3",
+   "text": "命中个人信息等敏感数据时，应按策略脱敏或转为审批",
+   "level": 2,
+   "section": "V7.5",
+   "chapter": "V7",
+   "component": "交互渠道"
+  },
+  {
+   "id": "V7.5.4",
+   "text": "会话读取过非公开数据后，任何外发都应默认禁止，经审批后方可执行",
+   "level": 1,
+   "section": "V7.5",
+   "chapter": "V7",
+   "component": "出口网关"
+  },
+  {
+   "id": "V7.6.1",
+   "text": "发往企业外部收件人的消息应经过审批",
+   "level": 2,
+   "section": "V7.6",
+   "chapter": "V7",
+   "component": "出口网关"
+  },
+  {
+   "id": "V7.6.2",
+   "text": "代发的默认方式应为生成草稿，由用户确认后发出",
+   "level": 2,
+   "section": "V7.6",
+   "chapter": "V7",
+   "component": "Harness"
+  },
+  {
+   "id": "V7.6.3",
+   "text": "由 Agent 代发的消息应带有可识别的代发标识",
+   "level": 2,
+   "section": "V7.6",
+   "chapter": "V7",
+   "component": "出口网关"
+  },
+  {
+   "id": "V8.1.1",
+   "text": "检索结果应按源系统的访问控制过滤，可将访问控制列表同步到每个文本块（chunk），或在检索时回源校验",
+   "level": 1,
+   "section": "V8.1",
+   "chapter": "V8",
+   "component": "数据层"
+  },
+  {
+   "id": "V8.1.2",
+   "text": "应在检索阶段按当前用户过滤结果，而不是生成回答后再删除",
+   "level": 1,
+   "section": "V8.1",
+   "chapter": "V8",
+   "component": "数据层"
+  },
+  {
+   "id": "V8.1.3",
+   "text": "源系统撤销权限后，应在约定时长内反映到检索结果，并监控同步延迟",
+   "level": 2,
+   "section": "V8.1",
+   "chapter": "V8",
+   "component": "数据层"
+  },
+  {
+   "id": "V8.2.1",
+   "text": "Agent 查询数据库应以用户身份连接，或由平台注入该用户的行级、列级策略",
+   "level": 1,
+   "section": "V8.2",
+   "chapter": "V8",
+   "component": "出口网关"
+  },
+  {
+   "id": "V8.2.2",
+   "text": "Agent 使用的数据库连接默认应为只读",
+   "level": 1,
+   "section": "V8.2",
+   "chapter": "V8",
+   "component": "出口网关"
+  },
+  {
+   "id": "V8.2.3",
+   "text": "单次查询返回的行数应设上限",
+   "level": 2,
+   "section": "V8.2",
+   "chapter": "V8",
+   "component": "出口网关"
+  },
+  {
+   "id": "V8.3.1",
+   "text": "记忆应记录来源用户和权限标签",
+   "level": 2,
+   "section": "V8.3",
+   "chapter": "V8",
+   "component": "数据层"
+  },
+  {
+   "id": "V8.3.2",
+   "text": "检索记忆时应按当前用户过滤，一个用户的个人记忆不能出现在其他用户的会话中",
+   "level": 1,
+   "section": "V8.3",
+   "chapter": "V8",
+   "component": "数据层"
+  },
+  {
+   "id": "V8.3.3",
+   "text": "个人内容沉淀为团队共享知识前应经过审核",
+   "level": 2,
+   "section": "V8.3",
+   "chapter": "V8",
+   "component": "数据层"
+  },
+  {
+   "id": "V8.4.1",
+   "text": "写入记忆和知识库的内容应标记来源和可信度",
+   "level": 2,
+   "section": "V8.4",
+   "chapter": "V8",
+   "component": "数据层"
+  },
+  {
+   "id": "V8.4.2",
+   "text": "来自不可信内容的沉淀应经人工审核后才能被检索",
+   "level": 2,
+   "section": "V8.4",
+   "chapter": "V8",
+   "component": "数据层"
+  },
+  {
+   "id": "V8.4.3",
+   "text": "检索出的记忆应作为数据交给模型，不作为系统指令",
+   "level": 2,
+   "section": "V8.4",
+   "chapter": "V8",
+   "component": "Harness"
+  },
+  {
+   "id": "V8.4.4",
+   "text": "应支持按来源回溯，并批量清除记忆和知识条目",
+   "level": 2,
+   "section": "V8.4",
+   "chapter": "V8",
+   "component": "数据层"
+  },
+  {
+   "id": "V8.5.1",
+   "text": "产出物应继承其来源中的最高数据级别，并记录来源",
+   "level": 2,
+   "section": "V8.5",
+   "chapter": "V8",
+   "component": "数据层"
+  },
+  {
+   "id": "V8.5.2",
+   "text": "共享产出物时，应检查接收人对来源数据的权限",
+   "level": 2,
+   "section": "V8.5",
+   "chapter": "V8",
+   "component": "数据层"
+  },
+  {
+   "id": "V8.5.3",
+   "text": "对敏感维度的聚合和统计请求应转为审批",
+   "level": 3,
+   "section": "V8.5",
+   "chapter": "V8",
+   "component": "策略决策点"
+  },
+  {
+   "id": "V8.6.1",
+   "text": "缓存的检索结果和回答应带权限标签，权限变更后失效",
+   "level": 2,
+   "section": "V8.6",
+   "chapter": "V8",
+   "component": "数据层"
+  },
+  {
+   "id": "V8.6.2",
+   "text": "历史会话应按当前权限展示，已收回权限的内容不再显示",
+   "level": 2,
+   "section": "V8.6",
+   "chapter": "V8",
+   "component": "交互渠道"
+  },
+  {
+   "id": "V8.6.3",
+   "text": "应为会话、记忆和审计分别设置保留期限",
+   "level": 2,
+   "section": "V8.6",
+   "chapter": "V8",
+   "component": "数据层"
+  },
+  {
+   "id": "V8.6.4",
+   "text": "用户离职后，其托管凭证应在约定时间内删除，个人记忆按策略删除或移交",
+   "level": 2,
+   "section": "V8.6",
+   "chapter": "V8",
+   "component": "管理面"
+  },
+  {
+   "id": "V8.7.1",
+   "text": "应按数据分级配置每类数据可以发往的模型，敏感数据只发往本地或指定模型",
+   "level": 2,
+   "section": "V8.7",
+   "chapter": "V8",
+   "component": "Harness"
+  },
+  {
+   "id": "V8.7.2",
+   "text": "发往未授权模型的敏感数据应被拦截",
+   "level": 2,
+   "section": "V8.7",
+   "chapter": "V8",
+   "component": "Harness"
+  },
+  {
+   "id": "V9.1.1",
+   "text": "创建、发布和下线 Agent 应分别授权",
+   "level": 2,
+   "section": "V9.1",
+   "chapter": "V9",
+   "component": "管理面"
+  },
+  {
+   "id": "V9.1.2",
+   "text": "Agent 发布前应经过审核，未指定负责人的 Agent 不能发布",
+   "level": 1,
+   "section": "V9.1",
+   "chapter": "V9",
+   "component": "管理面"
+  },
+  {
+   "id": "V9.1.3",
+   "text": "平台应能列出全部已发布的 Agent，以及各自的授权范围、连接和负责人",
+   "level": 1,
+   "section": "V9.1",
+   "chapter": "V9",
+   "component": "管理面"
+  },
+  {
+   "id": "V9.1.4",
+   "text": "Agent 登记信息应包含所用模型及版本、Harness 版本和已连接的工具，变更时同步更新",
+   "level": 2,
+   "section": "V9.1",
+   "chapter": "V9",
+   "component": "管理面"
+  },
+  {
+   "id": "V9.2.1",
+   "text": "为 Agent 绑定连接器应需要相应权限，且不能超出该 Agent 登记的授权范围",
+   "level": 1,
+   "section": "V9.2",
+   "chapter": "V9",
+   "component": "管理面"
+  },
+  {
+   "id": "V9.2.2",
+   "text": "凭证绑定后，绑定人不应能再查看或导出其明文",
+   "level": 2,
+   "section": "V9.2",
+   "chapter": "V9",
+   "component": "管理面"
+  },
+  {
+   "id": "V9.2.3",
+   "text": "连接器的绑定和变更应记录审计",
+   "level": 2,
+   "section": "V9.2",
+   "chapter": "V9",
+   "component": "审计"
+  },
+  {
+   "id": "V9.3.1",
+   "text": "修改 Agent 的系统提示词、工具、授权范围和策略应经过审批",
+   "level": 2,
+   "section": "V9.3",
+   "chapter": "V9",
+   "component": "管理面"
+  },
+  {
+   "id": "V9.3.2",
+   "text": "未经审批的配置变更不应生效",
+   "level": 2,
+   "section": "V9.3",
+   "chapter": "V9",
+   "component": "管理面"
+  },
+  {
+   "id": "V9.3.3",
+   "text": "配置应保留版本记录，可回滚到任一历史版本",
+   "level": 2,
+   "section": "V9.3",
+   "chapter": "V9",
+   "component": "管理面"
+  },
+  {
+   "id": "V9.3.4",
+   "text": "更换 Agent 使用的模型或模型版本，应按配置变更审批，并重新评估其行为",
+   "level": 2,
+   "section": "V9.3",
+   "chapter": "V9",
+   "component": "管理面"
+  },
+  {
+   "id": "V9.3.5",
+   "text": "风险分级、凭证目标绑定、出口放行清单和托管策略等全局策略的变更，应限定专门角色执行，并记录操作人、时间和变更前后内容",
+   "level": 1,
+   "section": "V9.3",
+   "chapter": "V9",
+   "component": "管理面"
+  },
+  {
+   "id": "V9.3.6",
+   "text": "上述全局策略的变更应经第二人审批后生效",
+   "level": 2,
+   "section": "V9.3",
+   "chapter": "V9",
+   "component": "管理面"
+  },
+  {
+   "id": "V9.4.1",
+   "text": "负责人离职或转岗时，其名下 Agent 应进入待转交状态，限期未转交则自动停用",
+   "level": 2,
+   "section": "V9.4",
+   "chapter": "V9",
+   "component": "管理面"
+  },
+  {
+   "id": "V9.4.2",
+   "text": "应定期复核 Agent 的连接和权限，到期未确认的权限自动收回",
+   "level": 2,
+   "section": "V9.4",
+   "chapter": "V9",
+   "component": "管理面"
+  },
+  {
+   "id": "V9.4.3",
+   "text": "长期未使用的 Agent 应被识别并下线",
+   "level": 2,
+   "section": "V9.4",
+   "chapter": "V9",
+   "component": "管理面"
+  },
+  {
+   "id": "V9.5.1",
+   "text": "应通过 IdP 的 OAuth 授权记录，发现员工自行接入、未经登记的 Agent",
+   "level": 2,
+   "section": "V9.5",
+   "chapter": "V9",
+   "component": "身份层"
+  },
+  {
+   "id": "V9.5.2",
+   "text": "发现的未登记 Agent 应在约定时间内登记纳管或封禁",
+   "level": 2,
+   "section": "V9.5",
+   "chapter": "V9",
+   "component": "管理面"
+  },
+  {
+   "id": "V9.5.3",
+   "text": "应结合终端和网络检测，发现端侧和浏览器中的未登记 Agent",
+   "level": 3,
+   "section": "V9.5",
+   "chapter": "V9",
+   "component": "管理面"
+  },
+  {
+   "id": "V9.6.1",
+   "text": "数据、知识库、凭证和 Agent 应按工作空间隔离",
+   "level": 1,
+   "section": "V9.6",
+   "chapter": "V9",
+   "component": "管理面"
+  },
+  {
+   "id": "V9.6.2",
+   "text": "跨工作空间访问应经过显式授权",
+   "level": 1,
+   "section": "V9.6",
+   "chapter": "V9",
+   "component": "策略决策点"
+  },
+  {
+   "id": "V9.6.3",
+   "text": "以 SaaS 交付时，不同租户的数据、凭证和执行环境应完全隔离",
+   "level": 1,
+   "section": "V9.6",
+   "chapter": "V9",
+   "component": "管理面"
+  },
+  {
+   "id": "V9.7.1",
+   "text": "提供方对客户环境和数据的访问应默认关闭，开启需客户审批并限定时长",
+   "level": 1,
+   "section": "V9.7",
+   "chapter": "V9",
+   "component": "管理面"
+  },
+  {
+   "id": "V9.7.2",
+   "text": "提供方的每次访问都应全程审计，审计记录对客户可见",
+   "level": 1,
+   "section": "V9.7",
+   "chapter": "V9",
+   "component": "审计"
+  },
+  {
+   "id": "V9.7.3",
+   "text": "遥测数据应只包含公开清单中的字段，且客户可以关闭",
+   "level": 2,
+   "section": "V9.7",
+   "chapter": "V9",
+   "component": "管理面"
+  },
+  {
+   "id": "V9.7.4",
+   "text": "私有化部署的登录和授权判定不应依赖提供方的在线服务",
+   "level": 2,
+   "section": "V9.7",
+   "chapter": "V9",
+   "component": "管理面"
+  },
+  {
+   "id": "V10.1.1",
+   "text": "每次工具调用都应记录发起用户、执行的 Agent、委托链、触发源、工具参数和结果状态",
+   "level": 1,
+   "section": "V10.1",
+   "chapter": "V10",
+   "component": "审计"
+  },
+  {
+   "id": "V10.1.2",
+   "text": "经过审批的操作应记录审批人、审批内容和审批时间",
+   "level": 1,
+   "section": "V10.1",
+   "chapter": "V10",
+   "component": "审计"
+  },
+  {
+   "id": "V10.1.3",
+   "text": "审计应记录进入上下文的不可信内容的来源，使事后能判断操作是否由注入引起",
+   "level": 2,
+   "section": "V10.1",
+   "chapter": "V10",
+   "component": "审计"
+  },
+  {
+   "id": "V10.1.4",
+   "text": "审计应能导出到企业 SIEM",
+   "level": 2,
+   "section": "V10.1",
+   "chapter": "V10",
+   "component": "审计"
+  },
+  {
+   "id": "V10.1.5",
+   "text": "审计日志应以只追加方式写入与平台运维隔离的存储，或以哈希链等方式使篡改可被发现",
+   "level": 2,
+   "section": "V10.1",
+   "chapter": "V10",
+   "component": "审计"
+  },
+  {
+   "id": "V10.1.6",
+   "text": "审计记录应以密码学方式绑定执行它的 Agent 身份，以及授权它的用户或审批，保证不可抵赖",
+   "level": 3,
+   "section": "V10.1",
+   "chapter": "V10",
+   "component": "审计"
+  },
+  {
+   "id": "V10.2.1",
+   "text": "管理员调阅审计或对话的行为本身应记录审计",
+   "level": 1,
+   "section": "V10.2",
+   "chapter": "V10",
+   "component": "审计"
+  },
+  {
+   "id": "V10.2.2",
+   "text": "审计日志中的敏感字段应脱敏存储，或按角色控制可见",
+   "level": 2,
+   "section": "V10.2",
+   "chapter": "V10",
+   "component": "审计"
+  },
+  {
+   "id": "V10.2.3",
+   "text": "管理员调阅用户与 Agent 的对话应经过审批",
+   "level": 2,
+   "section": "V10.2",
+   "chapter": "V10",
+   "component": "审计"
+  },
+  {
+   "id": "V10.2.4",
+   "text": "审计记录在保留期内不应能被删除",
+   "level": 2,
+   "section": "V10.2",
+   "chapter": "V10",
+   "component": "审计"
+  },
+  {
+   "id": "V10.3.1",
+   "text": "策略拒绝、审批拒绝、凭证目标不匹配等事件应实时告警",
+   "level": 2,
+   "section": "V10.3",
+   "chapter": "V10",
+   "component": "审计"
+  },
+  {
+   "id": "V10.3.2",
+   "text": "应能按 Agent、用户和委托链检索并关联告警",
+   "level": 2,
+   "section": "V10.3",
+   "chapter": "V10",
+   "component": "审计"
+  },
+  {
+   "id": "V10.3.3",
+   "text": "应为每个 Agent 建立行为基线（调用频率、工具分布、数据量），偏离时告警",
+   "level": 3,
+   "section": "V10.3",
+   "chapter": "V10",
+   "component": "审计"
+  },
+  {
+   "id": "V10.4.1",
+   "text": "IdP 禁用用户或降权后，相关调用应在约定时长内（如 5 分钟）全部被拒",
+   "level": 1,
+   "section": "V10.4",
+   "chapter": "V10",
+   "component": "策略决策点"
+  },
+  {
+   "id": "V10.4.2",
+   "text": "权限缓存应设时长上限",
+   "level": 2,
+   "section": "V10.4",
+   "chapter": "V10",
+   "component": "策略决策点"
+  },
+  {
+   "id": "V10.4.3",
+   "text": "应能通过单次操作停用单个 Agent，停用时网关停止为其注入凭证，并吊销其刷新令牌、中止运行中的任务、结束会话",
+   "level": 1,
+   "section": "V10.4",
+   "chapter": "V10",
+   "component": "管理面"
+  },
+  {
+   "id": "V10.4.4",
+   "text": "平台应接收 IdP 的会话撤销事件（如 CAEP），收到后立即生效",
+   "level": 2,
+   "section": "V10.4",
+   "chapter": "V10",
+   "component": "策略决策点"
+  },
+  {
+   "id": "V10.4.5",
+   "text": "应能按负责人、工作空间或连接器批量停用 Agent",
+   "level": 2,
+   "section": "V10.4",
+   "chapter": "V10",
+   "component": "管理面"
+  },
+  {
+   "id": "V10.5.1",
+   "text": "应预置在 IdP 不可用时也能登录管理面的紧急访问账号",
+   "level": 2,
+   "section": "V10.5",
+   "chapter": "V10",
+   "component": "管理面"
+  },
+  {
+   "id": "V10.5.2",
+   "text": "紧急访问账号的凭证应分割保管、双人控制，使用即告警并全程审计",
+   "level": 2,
+   "section": "V10.5",
+   "chapter": "V10",
+   "component": "管理面"
+  },
+  {
+   "id": "V10.6.1",
+   "text": "应制定 Agent 被注入或被攻陷时的响应流程，覆盖停用、凭证轮换和影响范围排查",
+   "level": 2,
+   "section": "V10.6",
+   "chapter": "V10",
+   "component": "审计"
+  },
+  {
+   "id": "V10.6.2",
+   "text": "应能按会话或委托链还原 Agent 在指定时段内的全部操作，用于确定影响范围",
+   "level": 2,
+   "section": "V10.6",
+   "chapter": "V10",
+   "component": "审计"
+  },
+  {
+   "id": "V10.6.3",
+   "text": "写入类操作应可撤销，或在执行前保留可回滚的快照",
+   "level": 3,
+   "section": "V10.6",
+   "chapter": "V10",
+   "component": "Harness"
+  }
+ ],
+ "counts": {
+  "total": 240,
+  "sections": 62,
+  "L1": 90,
+  "L2": 137,
+  "L3": 13
+ }
+}
