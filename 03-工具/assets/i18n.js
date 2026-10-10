@@ -39,14 +39,16 @@
   function writeStored(code) {
     try { localStorage.setItem(KEY, code); } catch (e) { /* 隐私模式或禁用存储时忽略 */ }
   }
-  /* 顺序：?lang= 参数 → localStorage → navigator.language；都没有则 zh-CN。仅在浏览器里生效 */
+  /* 顺序：?lang= 参数 → localStorage → navigator.language；都没有则 zh-CN。仅在浏览器里生效。
+     参数里是不认识的语言时，不强制中文，继续按后面的顺序判断 */
   function detect() {
     if (typeof window === 'undefined' || typeof document === 'undefined') return SOURCE;
     var m = /[?&]lang=([^&#]*)/.exec(location.search || '');
     if (m) {
       var q = m[1];
       try { q = decodeURIComponent(q); } catch (e) { /* 保留原值 */ }
-      return match(q) || SOURCE;
+      var hit = match(q);
+      if (hit) return hit;
     }
     var saved = readStored();
     if (saved && known(saved)) return saved;

@@ -11,7 +11,7 @@ const I18N = require('../assets/i18n.js');
 const L10N = require('./i18n_node.js');
 
 const DIR = path.join(__dirname, '..', 'i18n');
-const CJK = /[぀-ヿ㐀-鿿가-힯豈-﫿]/; // 汉字、假名、谚文
+const CJK = /[\u3000-\u303f\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af\uf900-\ufaff\uff00-\uffef]/; // 汉字、假名、谚文、中文标点与全角符号
 
 const codes = ['met', 'partial', 'unmet', 'na', ''];
 let seed = 7;
@@ -89,6 +89,14 @@ function strings(o, acc) {
     const src = fs.readFileSync(path.join(ROOT, f), 'utf8');
     for (const m of src.matchAll(/I18N\.t\(\s*'((?:[^'\\]|\\.)*)'/g)) if (CJK.test(m[1])) need.add(unq(m[1]));
   }
+  // workbook.js 里经 tr() 翻译的文字，以及表名、表头和状态名
+  {
+    const wsrc = fs.readFileSync(path.join(ROOT, 'assets/workbook.js'), 'utf8');
+    for (const m of wsrc.matchAll(/\btr\(\s*'((?:[^'\\]|\\.)*)'/g)) if (CJK.test(m[1])) need.add(unq(m[1]));
+    Object.values(Workbook.SHEETS).forEach((v) => need.add(v));
+    (Workbook.HEADS || []).filter((v) => CJK.test(v)).forEach((v) => need.add(v));
+    Score.STATUSES.forEach((st) => { if (CJK.test(st.label)) need.add(st.label); });
+  }
   const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
   for (const m of html.matchAll(/data-i18n="([^"]*)"/g)) if (CJK.test(m[1])) need.add(m[1]);
   for (const m of html.matchAll(/<[^>]*data-i18n-attr="([^"]+)"[^>]*>/g)) {
@@ -104,6 +112,14 @@ function strings(o, acc) {
     for (const [k, v] of Object.entries(dict)) assert.ok(typeof v === 'string' && v.trim() !== '', `${code}：「${k}」的译文为空`);
     const missing = [...need].filter((s) => !Object.prototype.hasOwnProperty.call(dict, s));
     assert.deepStrictEqual(missing, [], `${code}.json 缺少 ${missing.length} 条中文字符串：${missing.join('；')}`);
+    // 译文与原文的占位符和 HTML 标签必须一致；原文没有的英文双引号不能出现在译文里（译文会拼进 HTML 属性）
+    const ph = (x) => (x.match(/\{\w+\}/g) || []).sort().join(' ');
+    const tags = (x) => (x.match(/<\/?[a-z]+\b/gi) || []).map((z) => z.toLowerCase()).sort().join(' ');
+    for (const [k, v] of Object.entries(dict)) {
+      assert.strictEqual(ph(v), ph(k), `${code}：「${k}」的占位符与原文不一致`);
+      assert.strictEqual(tags(v), tags(k), `${code}：「${k}」的 HTML 标签与原文不一致`);
+      if (!k.includes('"')) assert.ok(!v.includes('"'), `${code}：「${k}」的译文含英文双引号，会破坏 HTML 属性，请改用当地引号`);
+    }
   }
 
   // 5. 其他语言导出的 Excel 能导回同样的评分结果
@@ -126,6 +142,26 @@ function strings(o, acc) {
     }
   }
   L10N.init('zh-CN');
+
+  // 6. 改动过的文件：用户插入一列、删掉差距清单页后，仍按表头和表名读对（德语导出、日语界面导入）
+  {
+    L10N.init('de');
+    const { wb2: t1 } = await roundTrip(Workbook.build(ExcelJS, B, A, Score, { t: I18N.t }));
+    t1.worksheets[0].spliceColumns(12, 0, ['X']);
+    t1.removeWorksheet(t1.worksheets[2].id);
+    const { wb2: t2 } = await roundTrip(t1);
+    L10N.init('ja');
+    const pt = Workbook.parse(t2, B, Score, { t: I18N.t, dicts: I18N.dictionaries() });
+    assert.deepStrictEqual(pt.missingCols, [], '插列后应仍能找到证据、负责人和计划完成列');
+    assert.deepStrictEqual(pt.meta, A.meta, '删掉一页后评估信息仍应读出');
+    for (const q of B.requirements) {
+      const a = items[q.id] || {}, b = pt.items[q.id] || {};
+      assert.strictEqual(b.status || '', a.status || '', `插列后 ${q.id} 状态`);
+      assert.strictEqual(b.evidence || '', a.evidence || '', `插列后 ${q.id} 证据`);
+      assert.strictEqual(b.owner || '', a.owner || '', `插列后 ${q.id} 负责人`);
+    }
+    L10N.init('zh-CN');
+  }
 
   if (process.argv[2]) { fs.writeFileSync(process.argv[2], Buffer.from(buf)); }
   console.log(`ok：${B.requirements.length} 条往返一致（中文与 ${present.length} 种其他语言）；目标 L2 满足率 ${Math.round(all.rate * 100)}%，达成 ${Score.levelName(all.achieved)}，差距 ${all.gap} 条`);

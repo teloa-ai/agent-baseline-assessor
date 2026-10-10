@@ -16,14 +16,12 @@
     met: 'FFD9EAD3', partial: 'FFFFF2CC', unmet: 'FFF4CCCC', na: 'FFEEEEEE',
     heat2: 'FF9EC5F4', heat1: 'FFCDE2FB', faint: 'FFBBBBBB'
   };
-  /* 源文（中文）。工作表顺序固定：评估表、汇总、差距清单、架构视角、说明。解析时按顺序取表，不按表名 */
+  /* 源文（中文）。导出时的工作表顺序：评估表、汇总、差距清单、架构视角、说明。解析时按表名和表头识别，顺序只作后备 */
   var SHEETS = { main: '评估表', sum: '汇总', gap: '差距清单', arch: '架构视角', note: '说明' };
   var SHEET_ORDER = ['main', 'sum', 'gap', 'arch', 'note'];
   var HEADS = ['编号', '章', '小节', '落点组件', '要求', '最低等级', 'L1', 'L2', 'L3', '适用条件', '状态', '证据与说明', '负责人', '计划完成', '等级序号'];
   var WIDTHS = [10, 18, 22, 11, 56, 8, 5, 5, 5, 26, 9, 30, 9, 11, 6];
   var INPUT = [11, 12, 13, 14];
-  /* 列的位置（从 1 开始）。解析只看这些位置 */
-  var COL = { id: 1, status: 11, evidence: 12, owner: 13, due: 14 };
 
   /* 没有传入翻译函数时输出中文，但仍替换 {name} 占位符 */
   function interp(s, vars) {
@@ -151,7 +149,8 @@
     sm.getCell('A1').value = tr('评估进度'); sm.getCell('A1').font = font({ size: 14, bold: true });
     sm.getCell('A2').value = tr('数字由公式从「{sheet}」实时计算。目标等级内的条目 = 该等级及以下全部条目；满足率 = 已满足 ÷（条目数 − 不适用）；未评估按未满足计。', { sheet: NM.main });
     sm.getCell('A2').font = font({ size: 9, italic: true, color: C.note });
-    var RG = function (c) { return "'" + NM.main + "'!$" + c + '$2:$' + c + '$' + last; };
+    /* 表名里的单引号（如法语 Grille d'évaluation）在公式引用中要写成两个 */
+    var RG = function (c) { return "'" + NM.main.replace(/'/g, "''") + "'!$" + c + '$2:$' + c + '$' + last; };
     var R_CH = RG('B'), R_CO = RG('D'), R_LV = RG('F'), R_ST = RG('K'), R_LN = RG('O');
     var CODE5 = ['met', 'partial', 'unmet', 'na', ''];
     var ST5 = CODE5.map(stLabel);
@@ -405,24 +404,41 @@
       variants(s.label).forEach(function (v) { if (!own.call(codeOf, v)) codeOf[v] = s.code; });
     });
 
-    var ws = wb.worksheets[0];
-    if (!ws) throw new Error(tr('文件里没有工作表'));
-    var head = ws.getRow(1);
-    if (variants('编号').indexOf(text(head.getCell(COL.id).value)) < 0 || variants('状态').indexOf(text(head.getCell(COL.status).value)) < 0) {
-      throw new Error(tr('找不到「编号」和「状态」两列，这不是本基线的评估表'));
+    if (!wb.worksheets.length) throw new Error(tr('文件里没有工作表'));
+    /* 按表头找列：用户在 Excel 里插入、删除或调整列之后仍能读对；表头认任何已知语言的写法 */
+    var FIELD = { id: '编号', status: '状态', evidence: '证据与说明', owner: '负责人', due: '计划完成' };
+    var colsOf = function (sheet) {
+      var head = sheet.getRow(1), found = {};
+      Object.keys(FIELD).forEach(function (f) {
+        var vs = variants(FIELD[f]);
+        for (var c = 1; c <= Math.max(head.cellCount, 20); c++) {
+          if (vs.indexOf(text(head.getCell(c).value)) >= 0) { found[f] = c; break; }
+        }
+      });
+      return found;
+    };
+    /* 评估表：第一张同时有「编号」和「状态」表头的工作表，不依赖表的顺序 */
+    var ws = null, cols = null;
+    for (var i = 0; i < wb.worksheets.length && !ws; i++) {
+      var cc = colsOf(wb.worksheets[i]);
+      if (cc.id && cc.status) { ws = wb.worksheets[i]; cols = cc; }
     }
+    if (!ws) throw new Error(tr('找不到「编号」和「状态」两列，这不是本基线的评估表'));
     var known = Object.create(null); B.requirements.forEach(function (q) { known[q.id] = true; });
-    var out = { items: Object.create(null), meta: {}, target: null, matched: 0, unknown: [], badStatus: [] };
+    var out = { items: Object.create(null), meta: {}, target: null, matched: 0, unknown: [], badStatus: [], missingCols: [] };
+    /* 证据、负责人、计划完成三列找不到表头时不读取，避免把别的列读进来 */
+    ['evidence', 'owner', 'due'].forEach(function (f) { if (!cols[f]) out.missingCols.push(tr(FIELD[f])); });
+    var cell = function (row, f) { return cols[f] ? text(row.getCell(cols[f]).value) : ''; };
     ws.eachRow(function (row, r) {
       if (r === 1) return;
-      var id = text(row.getCell(COL.id).value);
+      var id = cell(row, 'id');
       if (!id) return;
       if (!known[id]) { out.unknown.push(id); return; }
-      var label = text(row.getCell(COL.status).value);
+      var label = cell(row, 'status');
       var code = own.call(codeOf, label) ? codeOf[label] : undefined;
       if (code === undefined) { if (label) out.badStatus.push(id); code = ''; }
       var it = { status: code };
-      var ev = text(row.getCell(COL.evidence).value), ow = text(row.getCell(COL.owner).value), du = text(row.getCell(COL.due).value);
+      var ev = cell(row, 'evidence'), ow = cell(row, 'owner'), du = cell(row, 'due');
       if (ev) it.evidence = ev;
       if (ow) it.owner = ow;
       if (du) it.due = du;
@@ -430,8 +446,15 @@
       out.matched++;
     });
 
-    /* 说明页：按标签匹配（任何已知语言的写法都认），取值在第 2 列 */
-    var nt = wb.worksheets[SHEET_ORDER.indexOf('note')];
+    /* 其他工作表按表名找（任何已知语言的写法都认），找不到再按导出时的顺序取 */
+    var byName = function (key) {
+      var names = variants(SHEETS[key]).map(sheetName);
+      for (var j = 0; j < wb.worksheets.length; j++) if (names.indexOf(wb.worksheets[j].name) >= 0) return wb.worksheets[j];
+      var fb = wb.worksheets[SHEET_ORDER.indexOf(key)];
+      return fb && fb !== ws ? fb : null;
+    };
+    /* 说明页：按标签匹配，取值在第 2 列 */
+    var nt = byName('note');
     if (nt) {
       var keys = { org: '评估对象', scope: '评估范围', assessor: '评估人', date: '评估日期', target: '目标等级' };
       nt.eachRow(function (row) {
@@ -444,10 +467,10 @@
       });
     }
     /* 汇总页 B10：下拉选择的目标等级 */
-    var sm = wb.worksheets[SHEET_ORDER.indexOf('sum')];
+    var sm = byName('sum');
     if (sm) { var m2 = /^L([123])$/.exec(text(sm.getCell('B10').value)); if (m2) out.target = +m2[1]; }
     return out;
   }
 
-  return { build: build, parse: parse, SHEETS: SHEETS, SHEET_ORDER: SHEET_ORDER };
+  return { build: build, parse: parse, SHEETS: SHEETS, SHEET_ORDER: SHEET_ORDER, HEADS: HEADS };
 });

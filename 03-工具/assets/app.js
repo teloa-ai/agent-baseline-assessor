@@ -232,7 +232,7 @@
         if (UI.inTargetOnly && !ss.inTarget) return;
         var out = !ss.inTarget, done = ss.applicable > 0 && ss.gap === 0;
         var frac = out ? I18N.t('高于目标') : (ss.applicable ? ss.met + '/' + ss.applicable : I18N.t('不适用'));
-        cells += '<button type="button" class="cell' + (out ? ' out' : '') + (done ? ' done' : '') + '" data-sec="' + sec.id + '" aria-label="' + esc(sec.id + ' ' + I18N.t(sec.name) + '，' + frac) + '">' +
+        cells += '<button type="button" class="cell' + (out ? ' out' : '') + (done ? ' done' : '') + '" data-sec="' + sec.id + '" aria-label="' + esc(sec.id + ' ' + I18N.t(sec.name) + I18N.t('，') + frac) + '">' +
           '<span class="ch"><span class="code">' + sec.id + '</span>' + (sec.applies ? '<span data-tip="' + esc(I18N.t('本节适用于{applies}', { applies: I18N.t(sec.applies) })) + '">' + ICON.cond + '</span>' : '') +
           '<span class="frac">' + (done ? ICON.check.replace('<svg', '<svg style="vertical-align:-1px;margin-right:3px"') : '') + frac + '</span></span>' +
           '<span class="nm">' + esc(I18N.t(sec.name)) + '</span>' + segs(rs) + '</button>';
@@ -260,7 +260,7 @@
         if (!rs.length) { html += '<td><span class="hc void" aria-hidden="true">—</span></td>'; return; }
         var st = S.stats(rs, A.items, t), label = esc(I18N.t(cp.name) + ' × ' + c.id + ' ' + I18N.t(c.name));
         if (!st.applicable) {
-          html += '<td><button type="button" class="hc na" data-cc="' + esc(cp.name) + '|' + c.id + '" aria-label="' + label + '，' + (st.inTarget ? I18N.t('全部不适用') : I18N.t('高于目标等级')) + '"><small>' + (st.inTarget ? I18N.t('不适用') : I18N.t('高于目标')) + '</small></button></td>';
+          html += '<td><button type="button" class="hc na" data-cc="' + esc(cp.name) + '|' + c.id + '" aria-label="' + label + I18N.t('，') + (st.inTarget ? I18N.t('全部不适用') : I18N.t('高于目标等级')) + '"><small>' + (st.inTarget ? I18N.t('不适用') : I18N.t('高于目标')) + '</small></button></td>';
           return;
         }
         html += '<td><button type="button" class="hc ' + heatClass(st.rate) + '" data-cc="' + esc(cp.name) + '|' + c.id + '" data-tip="' + I18N.t('{label}：满足 {met}/{applicable}，差 {gap} 条', { label: label, met: st.met, applicable: st.applicable, gap: st.gap }) + '" aria-label="' + I18N.t('{label}，满足 {met}/{applicable}', { label: label, met: st.met, applicable: st.applicable }) + '"><b>' + st.met + '/' + st.applicable + '</b><small>' + pct(st.rate) + '</small></button></td>';
@@ -619,13 +619,13 @@
         var wb = new r[0].Workbook();
         return wb.xlsx.load(r[1]).then(function () {
           var x = WB.parse(wb, B, S, { t: I18N.t, dicts: I18N.dictionaries() }), c = cleanItems(x.items);
-          return { items: c.items, meta: cleanMeta(x.meta), target: x.target, unknown: x.unknown, bad: x.badStatus };
+          return { items: c.items, meta: cleanMeta(x.meta), target: x.target, unknown: x.unknown, bad: x.badStatus, missing: x.missingCols || [] };
         });
       });
     } else { toast(I18N.t('只支持 .json 和 .xlsx 文件')); return; }
     p.then(function (res) {
       var n = Object.keys(res.items).length;
-      var warn = (res.unknown.length ? I18N.t('，忽略未知编号 {n} 个', { n: res.unknown.length }) : '') + (res.bad.length ? I18N.t('，{n} 条状态无法识别', { n: res.bad.length }) : '');
+      var warn = (res.unknown.length ? I18N.t('，忽略未知编号 {n} 个', { n: res.unknown.length }) : '') + (res.bad.length ? I18N.t('，{n} 条状态无法识别', { n: res.bad.length }) : '') + (res.missing && res.missing.length ? I18N.t('，未找到这些列，未导入：{cols}', { cols: res.missing.join(I18N.t('、')) }) : '');
       if (asCompare) {
         CMP = { label: file.name.replace(/\.(json|xlsx)$/i, '').slice(0, 80), items: res.items, meta: res.meta, at: new Date().toISOString() };
         store.set(KEY.c, CMP);
@@ -701,6 +701,13 @@
   function setLang(code) {
     I18N.setLocale(code);
     $('#langSel').value = I18N.getLocale();
+    /* 地址里带 ?lang= 时同步改掉，否则刷新后又会回到参数指定的语言 */
+    try {
+      if (/[?&]lang=/.test(location.search)) {
+        var qs = location.search.replace(/([?&])lang=[^&#]*/, '$1lang=' + encodeURIComponent(I18N.getLocale()));
+        history.replaceState(null, '', location.pathname + qs + location.hash);
+      }
+    } catch (e) { /* file:// 下部分浏览器不允许改地址，忽略 */ }
     applyStatic();
     renderTargetSeg();
     renderTop();

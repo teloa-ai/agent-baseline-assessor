@@ -1,6 +1,6 @@
 /* 用 LibreOffice 独立重算导出的 Excel，再和网页的评分结果逐格比对。
    npm test 只核对字段往返；这个脚本核对公式本身，需要本机装有 LibreOffice（soffice）。
-   用法：node tools/xlsx_crosscheck.js [样例 JSON] */
+   用法：node tools/xlsx_crosscheck.js [样例 JSON]；默认核对所有语言，ASSESSOR_LANG=fr 只核对一种 */
 'use strict';
 const fs = require('fs');
 const os = require('os');
@@ -12,6 +12,18 @@ const Score = require('../assets/score.js');
 const WB = require('../assets/workbook.js');
 const L10N = require('./i18n_node.js');
 
+/* 没有指定 ASSESSOR_LANG 时，逐个语言各跑一遍（表名、标签和公式里的文字随语言变化，都要核对） */
+if (!process.env.ASSESSOR_LANG) {
+  const { spawnSync } = require('child_process');
+  const codes = require('../assets/i18n.js').LOCALES.map((l) => l.code);
+  let worst = 0;
+  for (const code of codes) {
+    console.log(`── ${code}`);
+    const r = spawnSync(process.execPath, [__filename].concat(process.argv.slice(2)), { stdio: 'inherit', env: Object.assign({}, process.env, { ASSESSOR_LANG: code }) });
+    worst = Math.max(worst, r.status == null ? 2 : r.status);
+  }
+  process.exit(worst);
+}
 const I18N = L10N.init(L10N.localeFromEnv());
 const lvName = (n) => (n ? Score.levelName(n) : I18N.t('未达 L1'));
 
