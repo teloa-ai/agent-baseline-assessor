@@ -1,6 +1,8 @@
-# Enterprise Agent Identity and Authorization Security Baseline
+<p align="center">
+  <a href="https://security.teloa.ai/agent-baseline-assessor/?lang=en"><img src="03-tool/assets/brand/readme-hero.en.png" width="100%" alt="Teloa AI Security · Enterprise Agent Identity and Authorization Security Baseline"></a>
+</p>
 
-<p><img src="03-tool/assets/brand/teloa-avatar.png" width="64" height="64" alt="Teloa"></p>
+# Enterprise Agent Identity and Authorization Security Baseline
 
 An enterprise agent identity and authorization security baseline and self-assessment tool derived from Teloa development, maintained by Teloa AI Security.
 

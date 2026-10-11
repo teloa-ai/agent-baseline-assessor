@@ -1,6 +1,8 @@
-# Sicherheitsbaseline für Identität und Autorisierung von Unternehmensagenten
+<p align="center">
+  <a href="https://security.teloa.ai/agent-baseline-assessor/?lang=de"><img src="03-tool/assets/brand/readme-hero.de.png" width="100%" alt="Teloa AI Security · Sicherheitsbaseline für Identität und Autorisierung von Unternehmensagenten"></a>
+</p>
 
-<p><img src="03-tool/assets/brand/teloa-avatar.png" width="64" height="64" alt="Teloa"></p>
+# Sicherheitsbaseline für Identität und Autorisierung von Unternehmensagenten
 
 Eine offene Sicherheitsbaseline mit Selbstbewertung aus der Entwicklung von Teloa
 

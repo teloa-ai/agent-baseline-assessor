@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Teloa AI Security — README poster</title>
+  <style>
+    @font-face{font-family:Plex;src:url(../../vendor/fonts/ibm-plex-sans-latin-400-normal.woff2);font-weight:400}
+    @font-face{font-family:Plex;src:url(../../vendor/fonts/ibm-plex-sans-latin-600-normal.woff2);font-weight:600}
+    *{box-sizing:border-box}body{margin:0;background:#fff;color:#294c3d;font-family:Plex,"PingFang SC","Hiragino Sans","Apple SD Gothic Neo",sans-serif}
+    .poster{position:relative;width:1600px;height:600px;overflow:hidden;border-radius:20px;background:linear-gradient(105deg,#f5f4ed 50%,#eef0e4 100%)}
+    .copy{position:absolute;left:76px;top:50px;width:920px;z-index:2}
+    .brand{font-size:36px;font-weight:600;letter-spacing:-.5px}
+    .eyebrow{font-size:18px;letter-spacing:2px;text-transform:uppercase;color:#677c67;margin-top:14px}
+    h1{font-size:68px;font-weight:600;line-height:1.08;letter-spacing:-1.8px;margin:48px 0 22px}
+    h1 span{display:block}
+    .summary{font-size:27px;line-height:1.4;color:#50644e;margin:0;white-space:nowrap}
+    .stats{position:absolute;left:76px;bottom:55px;display:flex;gap:34px;z-index:2}
+    .stat{display:flex;gap:12px;align-items:baseline;padding-right:34px;border-right:1px solid #cdd3c2}
+    .stat:last-child{border:0;padding:0}.stat b{font-size:30px;font-weight:600}.stat span{font-size:21px;color:#61745e}
+    .halo{position:absolute;width:540px;height:540px;border-radius:50%;right:12px;top:114px;background:#e5e8d7}
+    .character{position:absolute;right:6px;top:32px;width:606px;height:606px;object-fit:contain;z-index:1}
+    html[lang="zh-CN"] h1,html[lang="ja"] h1,html[lang="ko"] h1{letter-spacing:0;line-height:1.16}
+    html[lang="de"] h1,html[lang="fr"] h1,html[lang="es"] h1{font-size:62px}
+  </style>
+</head>
+<body>
+  <main class="poster" aria-label="Teloa AI Security project poster">
+    <div class="copy">
+      <div class="brand">Teloa AI Security</div>
+      <div class="eyebrow" id="eyebrow">Open baseline &amp; self-assessment</div>
+      <h1 id="headline"><span>Agent Security</span><span>Baseline</span></h1>
+      <p class="summary" id="summary">Identity · Authorization · Execution boundaries</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>240</b><span id="requirements">requirements</span></div>
+      <div class="stat"><b>3</b><span id="levels">levels</span></div>
+      <div class="stat"><b>7</b><span id="languages">languages</span></div>
+    </div>
+    <div class="halo" aria-hidden="true"></div>
+    <img class="character" src="teloa-security-master.png" width="1254" height="1254" alt="Teloa, the security team's squirrel companion holding a shield tablet">
+  </main>
+  <script>
+    const editions = {
+      en: ['Open baseline & self-assessment', ['Agent Security', 'Baseline'], 'Identity · Authorization · Execution boundaries', 'requirements', 'levels', 'languages'],
+      'zh-CN': ['开放安全基线与自评工具', ['企业智能体', '安全基线'], '身份 · 授权 · 执行边界', '条要求', '个等级', '种语言'],
+      ja: ['オープンな安全基線と自己評価ツール', ['エージェント', '安全基線'], 'アイデンティティ · 認可 · 実行境界', '要件', 'レベル', '言語'],
+      ko: ['개방형 보안 기준 및 자체 평가 도구', ['에이전트', '보안 기준'], '신원 · 인가 · 실행 경계', '개 요구사항', '개 수준', '개 언어'],
+      de: ['Offene Baseline und Selbstbewertung', ['Sicherheitsbaseline', 'für Agenten'], 'Identität · Autorisierung · Ausführungsgrenzen', 'Anforderungen', 'Stufen', 'Sprachen'],
+      fr: ['Référentiel ouvert et auto-évaluation', ['Sécurité des agents', 'Référentiel'], 'Identité · Autorisation · Limites d’exécution', 'exigences', 'niveaux', 'langues'],
+      es: ['Línea base abierta y autoevaluación', ['Línea base de', 'seguridad de agentes'], 'Identidad · Autorización · Límites de ejecución', 'requisitos', 'niveles', 'idiomas']
+    };
+    const requested = new URLSearchParams(location.search).get('lang');
+    const lang = Object.prototype.hasOwnProperty.call(editions, requested) ? requested : 'en';
+    const edition = editions[lang];
+    document.documentElement.lang = lang;
+    document.getElementById('eyebrow').textContent = edition[0];
+    document.getElementById('headline').replaceChildren(...edition[1].map(text => {
+      const line = document.createElement('span');
+      line.textContent = text;
+      return line;
+    }));
+    ['summary', 'requirements', 'levels', 'languages'].forEach((id, index) => {
+      document.getElementById(id).textContent = edition[index + 2];
+    });
+  </script>
+</body>
+</html>

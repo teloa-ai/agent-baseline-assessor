@@ -1,6 +1,8 @@
-# 엔터프라이즈 에이전트 신원 및 인가 보안 기준선
+<p align="center">
+  <a href="https://security.teloa.ai/agent-baseline-assessor/?lang=ko"><img src="03-tool/assets/brand/readme-hero.ko.png" width="100%" alt="Teloa AI Security · 엔터프라이즈 에이전트 신원 및 인가 보안 기준선"></a>
+</p>
 
-<p><img src="03-tool/assets/brand/teloa-avatar.png" width="64" height="64" alt="Teloa"></p>
+# 엔터프라이즈 에이전트 신원 및 인가 보안 기준선
 
 Teloa 개발에서 도출한 개방형 보안 기준선과 자가 평가 도구
 

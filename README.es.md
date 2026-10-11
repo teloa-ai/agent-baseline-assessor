@@ -1,6 +1,8 @@
-# Línea base de seguridad de identidad y autorización para agentes empresariales
+<p align="center">
+  <a href="https://security.teloa.ai/agent-baseline-assessor/?lang=es"><img src="03-tool/assets/brand/readme-hero.es.png" width="100%" alt="Teloa AI Security · Línea base de seguridad de identidad y autorización para agentes empresariales"></a>
+</p>
 
-<p><img src="03-tool/assets/brand/teloa-avatar.png" width="64" height="64" alt="Teloa"></p>
+# Línea base de seguridad de identidad y autorización para agentes empresariales
 
 Una línea base abierta de seguridad y autoevaluación derivada del desarrollo de Teloa
 

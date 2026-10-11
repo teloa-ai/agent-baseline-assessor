@@ -1,6 +1,8 @@
-# Référentiel de sécurité de l'identité et de l'autorisation des agents d'entreprise
+<p align="center">
+  <a href="https://security.teloa.ai/agent-baseline-assessor/?lang=fr"><img src="03-tool/assets/brand/readme-hero.fr.png" width="100%" alt="Teloa AI Security · Référentiel de sécurité de l'identité et de l'autorisation des agents d'entreprise"></a>
+</p>
 
-<p><img src="03-tool/assets/brand/teloa-avatar.png" width="64" height="64" alt="Teloa"></p>
+# Référentiel de sécurité de l'identité et de l'autorisation des agents d'entreprise
 
 Un référentiel de sécurité ouvert et un outil d'auto-évaluation issus du développement de Teloa
 

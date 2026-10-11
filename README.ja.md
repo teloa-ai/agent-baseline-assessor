@@ -1,6 +1,8 @@
-# エンタープライズエージェントのID・認可セキュリティベースライン
+<p align="center">
+  <a href="https://security.teloa.ai/agent-baseline-assessor/?lang=ja"><img src="03-tool/assets/brand/readme-hero.ja.png" width="100%" alt="Teloa AI Security · エンタープライズエージェントのID・認可セキュリティベースライン"></a>
+</p>
 
-<p><img src="03-tool/assets/brand/teloa-avatar.png" width="64" height="64" alt="Teloa"></p>
+# エンタープライズエージェントのID・認可セキュリティベースライン
 
 Teloa の開発から生まれたオープンなセキュリティベースラインと自己評価ツール
 
