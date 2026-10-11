@@ -1,0 +1,21 @@
+name: 工具问题 / Tool bug
+description: 自评页面、报告或 Excel 导入导出的问题（安全漏洞请走 SECURITY.md）/ A problem with the page, report or Excel import/export (report vulnerabilities via SECURITY.md)
+labels: ["tool"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: 现象与复现步骤 / What happened and how to reproduce
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: 环境 / Environment
+      description: 浏览器与版本、在线或离线、界面语言 / Browser and version, online or file://, interface language
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期望结果 / Expected result

@@ -2,6 +2,8 @@
 
 Auteur : Max · 2026-10-07
 
+Ce référentiel est publié sous licence [CC BY 4.0](../../LICENSE-DOCS).
+
 ## Préambule
 
 Le présent référentiel définit les exigences de sécurité en matière d'identité et d'autorisation que doivent satisfaire les agents évoluant en environnement d'entreprise. Les exigences sont réparties en dix chapitres, d'abord selon l'ordre dans lequel se déroule un comportement de l'agent, puis selon les objets qui persistent d'une session à l'autre. Chaque exigence peut être vérifiée isolément. Elles sont réparties en trois niveaux, L1 à L3.

@@ -39,6 +39,7 @@ _headers                 Security response headers for Cloudflare Pages
 | `npm install` | Install dependencies (ExcelJS, used only to generate and verify Excel files) |
 | `npm run build:xlsx` | Regenerate the offline assessment workbook under `offline/` |
 | `npm run build:i18n` | Regenerate `data/i18n.*.js` from `i18n/*.json`; run after editing a dictionary |
+| `npm run build:readme` | Refresh the coverage tables in the READMEs after the baseline data changes |
 | `npm test` | Check the scoring rules and the Excel round-trip, and verify that every language dictionary covers all interface and baseline text |
 | `npm run check:xlsx` | Use LibreOffice to independently recalculate the formulas in the exported Excel file, and compare each cell with the web page scoring (requires LibreOffice installed locally) |
 

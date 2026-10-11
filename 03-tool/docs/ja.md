@@ -39,6 +39,7 @@ _headers                 Cloudflare Pages 用のセキュリティレスポン�
 | `npm install` | 依存関係をインストールする（ExcelJS。Excel の生成と検証にのみ使用） |
 | `npm run build:xlsx` | `offline/` 配下のオフライン評価表を再生成する |
 | `npm run build:i18n` | `i18n/*.json` から `data/i18n.*.js` を再生成する。辞書を編集した後に実行する |
+| `npm run build:readme` | ベースラインデータの変更後、各 README のカバレッジ表を更新する |
 | `npm test` | 評価ルールと Excel の読み書きの往復一致を検証し、各言語の辞書が画面とベースラインの文字列をすべて網羅しているかを確認する |
 | `npm run check:xlsx` | LibreOffice でエクスポートされた Excel の数式を独立に再計算し、Web ページの評価結果とセル単位で比較する（ローカルに LibreOffice のインストールが必要） |
 

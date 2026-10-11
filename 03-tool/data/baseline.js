@@ -2,7 +2,7 @@
 window.BASELINE = {
  "schema": "baseline/1",
  "title": "企业智能体身份与授权安全基线",
- "titleEn": "Enterprise Agentic AI Identity & Authorization Security Baseline",
+ "titleEn": "Enterprise Agent Identity and Authorization Security Baseline",
  "version": "1.0",
  "date": "2026-10-07",
  "docUrl": "https://claude.ai/code/artifact/a89875c9-b306-4067-b517-e3a093231b20",

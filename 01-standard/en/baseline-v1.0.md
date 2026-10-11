@@ -2,6 +2,8 @@
 
 Author: Max · 2026-10-07
 
+This baseline is licensed under [CC BY 4.0](../../LICENSE-DOCS).
+
 ## Preface
 
 This baseline specifies the security requirements that agents in enterprise environments shall satisfy with respect to identity and authorization. The requirements are organized into ten chapters, first by the order in which an agent action occurs and then by the cross-session objects concerned. Each requirement can be verified independently, and the requirements are grouped into three levels, L1 to L3.
@@ -231,7 +233,7 @@ Chapters 7 through 16, that is, V1 through V10, are organized as follows. The fi
 | Before the action | V1 Identity and Authentication | Who is initiating, and which agent is executing |
 | Before the action | V2 Delegation and Effective Permissions | On whose behalf, and what is the upper limit of permissions |
 | Before the action | V3 Authorization Decisions | Can this operation be performed, and does it require human confirmation |
-| During the action | V4 Credentials and Egress Execution | How requests leave, and how credentials are injected |
+| During the action | V4 Credentials and Egress Enforcement | How requests leave, and how credentials are injected |
 | During the action | V5 Execution Isolation | Within what boundaries code, commands, browsers, and extensions run |
 | During the action | V6 Context and Untrusted Input | Can content that was read in influence decisions |
 | After the action | V7 Output and Visibility | To whom are results shown, and could they be leaked |
@@ -470,7 +472,7 @@ Each tool invocation shall pass the platform's policy checks before execution. W
 | V3.8.3 | Model invocation budgets shall be set by department, user, or agent. When a budget is exceeded, the invocations shall be paused or require approval. | | ✓ | ✓ |
 | V3.8.4 | Each agent run shall have a maximum number of tool invocations, a maximum run duration, and a maximum model invocation cost, enforced by the platform. When a limit is reached, the run shall be aborted and the initiator or owner notified. | | ✓ | ✓ |
 
-## 10. V4 Credentials and Egress Execution
+## 10. V4 Credentials and Egress Enforcement
 
 The egress gateway is the only channel through which an agent accesses downstream systems and the internet, and real credentials are injected only there. The guarantee that credentials do not leak holds only if no path bypasses the gateway and credentials are sent only to the destinations it authorizes.
 
@@ -1020,7 +1022,7 @@ This appendix maps by control domain. AICM applies to all AI systems and is coar
 | V1 Identity and Authentication | IAM Identity & Access Management | Entire chapter |
 | V2 Delegation and Effective Permissions | IAM Identity & Access Management | Entire chapter; V2.5 temporary privilege elevation corresponds to privileged access management |
 | V3 Authorization Decisions | IAM Identity & Access Management; AIS Application & Interface Security | V3.6 separation of duties belongs to IAM; V3.2 and V3.3 belong to AIS |
-| V4 Credentials and Egress Execution | IAM Identity & Access Management; CEK Cryptography, Encryption & Key Management; I&S Infrastructure & Virtualization Security | V4.7 credential store protection belongs to CEK; V4.2 unified egress belongs to I&S |
+| V4 Credentials and Egress Enforcement | IAM Identity & Access Management; CEK Cryptography, Encryption & Key Management; I&S Infrastructure & Virtualization Security | V4.7 credential store protection belongs to CEK; V4.2 unified egress belongs to I&S |
 | V5 Execution Isolation | I&S Infrastructure & Virtualization Security; UEM Universal Endpoint Management; CCC Change Control & Configuration Management; STA Supply Chain Management, Transparency and Accountability | V5.4 endpoint belongs to UEM; V5.5 managed policy belongs to CCC; V5.6 supply chain belongs to STA |
 | V6 Context and Untrusted Input | MDS Model Security; AIS Application & Interface Security | Entire chapter |
 | V7 Output and Visibility | DSP Data Security & Privacy Lifecycle Management; AIS Application & Interface Security | V7.5 data leakage prevention belongs to DSP |

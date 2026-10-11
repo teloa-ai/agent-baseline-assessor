@@ -1,0 +1,25 @@
+name: 译文问题 / Translation issue
+description: 报告译文与中文正本不一致或术语不当 / Report a translation that differs from the Chinese original or uses a wrong term
+labels: ["translation"]
+body:
+  - type: dropdown
+    id: lang
+    attributes:
+      label: 语言 / Language
+      options: [English, 日本語, 한국어, Deutsch, Français, Español]
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: 位置 / Location
+      description: 要求编号、章节号或界面位置 / Requirement ID, section number or place in the tool
+    validations:
+      required: true
+  - type: textarea
+    id: issue
+    attributes:
+      label: 问题与建议译法 / Problem and suggested wording
+      description: 当前译文、问题所在、建议译法 / Current text, what is wrong, suggested text
+    validations:
+      required: true

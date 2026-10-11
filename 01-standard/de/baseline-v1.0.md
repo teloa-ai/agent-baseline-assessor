@@ -2,6 +2,8 @@
 
 Autor: Max · 2026-10-07
 
+Diese Baseline steht unter der Lizenz [CC BY 4.0](../../LICENSE-DOCS).
+
 ## Vorwort
 
 Diese Baseline legt die Sicherheitsanforderungen fest, die Agenten in Unternehmensumgebungen hinsichtlich Identität und Autorisierung erfüllen sollen. Die Anforderungen sind nach dem Ablauf eines einzelnen Agentenvorgangs und danach nach den sitzungsübergreifenden Objekten in zehn Kapitel gegliedert. Jede Anforderung ist einzeln überprüfbar und ist in drei Stufen L1 bis L3 eingeteilt.

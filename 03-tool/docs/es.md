@@ -39,6 +39,7 @@ _headers                 Encabezados de seguridad para Cloudflare Pages
 | `npm install` | Instala las dependencias (ExcelJS, utilizado únicamente para generar y validar los Excel) |
 | `npm run build:xlsx` | Regenera la hoja de evaluación sin conexión de `offline/` |
 | `npm run build:i18n` | Regenera `data/i18n.*.js` a partir de `i18n/*.json`; ejecutar tras modificar un diccionario |
+| `npm run build:readme` | Actualiza las tablas de cobertura de los README tras cambiar los datos de la línea base |
 | `npm test` | Comprueba las reglas de puntuación y la ida y vuelta con Excel, y que cada diccionario cubra todos los textos de la interfaz y de la línea base |
 | `npm run check:xlsx` | Recalcula de forma independiente, con LibreOffice, las fórmulas del Excel exportado y las compara celda por celda con la puntuación de la página web (requiere tener LibreOffice instalado en el equipo) |
 

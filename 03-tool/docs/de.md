@@ -39,6 +39,7 @@ _headers                 Sicherheits-Header für Cloudflare Pages
 | `npm install` | Installiert die Abhängigkeiten (ExcelJS, nur zur Erzeugung und Prüfung der Excel-Dateien) |
 | `npm run build:xlsx` | Erzeugt die Offline-Bewertungstabelle unter `offline/` neu |
 | `npm run build:i18n` | Erzeugt `data/i18n.*.js` aus `i18n/*.json` neu; nach Änderungen an einem Wörterbuch ausführen |
+| `npm run build:readme` | Aktualisiert nach Änderungen der Baseline-Daten die Abdeckungstabellen in den README-Dateien |
 | `npm test` | Prüft die Bewertungsregeln und den Excel-Round-Trip sowie, ob jedes Wörterbuch alle Oberflächen- und Baseline-Texte abdeckt |
 | `npm run check:xlsx` | Berechnet die exportierten Excel-Formeln mit LibreOffice unabhängig neu und vergleicht sie zellweise mit der Bewertung der Webseite (setzt eine lokale Installation von LibreOffice voraus) |
 

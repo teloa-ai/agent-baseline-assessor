@@ -15,7 +15,7 @@
   "授权决策": "Authorization Decisions",
   "每一次工具调用在执行前都要经过平台的策略检查。能不能做、要不要人确认，由平台按工具和参数判定，模型说的不算。": "Every tool invocation shall pass the platform's policy check before execution. Whether it may be performed and whether a human must confirm are determined by the platform based on the tool and its parameters; the model's statements do not count.",
   "这一次操作能不能做，要不要人确认": "Can this operation be performed, and does it require human confirmation",
-  "凭证与出口执行": "Credentials and Egress Execution",
+  "凭证与出口执行": "Credentials and Egress Enforcement",
   "出口网关是 Agent 访问下游系统和互联网的唯一通道，真实凭证只在这里注入。没有绕开网关的路径，凭证也只发往它被授权的目标，「不漏」才有保证。": "The egress gateway is the only channel through which agents access downstream systems and the internet, and real credentials are injected only there. With no path that bypasses the gateway, and credentials sent only to their authorized targets, the guarantee against leakage holds.",
   "行为之中": "During the action",
   "请求怎么出去，凭证怎么注入": "How requests leave, and how credentials are injected",

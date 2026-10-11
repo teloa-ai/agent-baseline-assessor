@@ -2,6 +2,8 @@
 
 Autor: Max · 2026-10-07
 
+Esta línea base se publica bajo la licencia [CC BY 4.0](../../LICENSE-DOCS).
+
 ## Prólogo
 
 Esta línea base establece los requisitos de seguridad en materia de identidad y autorización que deben cumplir los agentes en entornos empresariales. Los requisitos se organizan en diez capítulos, primero según el orden en que ocurre una acción del agente y después según los objetos que persisten entre sesiones. Cada requisito puede verificarse de forma independiente y se clasifica en tres niveles, de L1 a L3.

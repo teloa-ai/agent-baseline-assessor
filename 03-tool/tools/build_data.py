@@ -178,7 +178,7 @@ def main():
     data = {
         "schema": "baseline/1",
         "title": title,
-        "titleEn": "Enterprise Agentic AI Identity & Authorization Security Baseline",
+        "titleEn": "Enterprise Agent Identity and Authorization Security Baseline",
         "version": a.version,
         "date": a.date,
         "docUrl": DOC_URL,

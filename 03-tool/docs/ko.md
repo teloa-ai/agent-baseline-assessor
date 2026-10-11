@@ -39,6 +39,7 @@ _headers                 Cloudflare Pages용 보안 응답 헤더
 | `npm install` | 의존성 설치(ExcelJS, Excel 생성과 검증에만 사용) |
 | `npm run build:xlsx` | `offline/` 아래 오프라인 평가표를 다시 생성 |
 | `npm run build:i18n` | `i18n/*.json`에서 `data/i18n.*.js`를 다시 생성. 사전을 수정한 뒤 실행 |
+| `npm run build:readme` | 기준선 데이터가 바뀐 뒤 각 README의 범위 표를 갱신 |
 | `npm test` | 채점 규칙과 Excel 읽기/쓰기 왕복 일치를 확인하고, 언어별 사전이 화면과 기준선 문자열을 모두 포함하는지 점검 |
 | `npm run check:xlsx` | 로컬에 설치된 LibreOffice로 내보낸 Excel의 수식을 독립적으로 재계산하고, 웹 채점 결과와 셀 단위로 비교(LibreOffice 필요) |
 

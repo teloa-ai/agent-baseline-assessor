@@ -39,6 +39,7 @@ _headers                 Cloudflare Pages 的安全响应头
 | `npm install` | 安装依赖（ExcelJS，仅用于生成和校验 Excel） |
 | `npm run build:xlsx` | 重新生成 `offline/` 下的离线评估表 |
 | `npm run build:i18n` | 由 `i18n/*.json` 重新生成 `data/i18n.*.js`，修改词典后运行 |
+| `npm run build:readme` | 基线数据变化后，更新各 README 的覆盖范围表 |
 | `npm test` | 核对评分规则和 Excel 读写往返，并检查各语言词典是否覆盖全部界面文字和基线文字 |
 | `npm run check:xlsx` | 用 LibreOffice 独立重算导出的 Excel 公式，与网页评分逐格比对（需要本机装有 LibreOffice） |
 

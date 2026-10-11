@@ -1,0 +1,40 @@
+name: 基线要求 / Requirement feedback
+description: 对某条要求提出修改、补充或新增建议 / Propose a change, clarification or new requirement
+labels: ["standard"]
+body:
+  - type: input
+    id: ref
+    attributes:
+      label: 要求编号与版本 / Requirement ID and version
+      description: 例如 V4.2.1（v1.0）；新增要求写建议放入的小节 / e.g. V4.2.1 (v1.0); for a new requirement, the target section
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 类型 / Type
+      options:
+        - 修改条文 / Change wording
+        - 调整等级 / Change level
+        - 新增要求 / New requirement
+        - 删除要求 / Remove requirement
+        - 映射或引用 / Mapping or reference
+    validations:
+      required: true
+  - type: textarea
+    id: threat
+    attributes:
+      label: 对应的威胁 / Threat addressed
+      description: 这条要求防的是什么攻击或失效，最好对应正文第 5 章 / What attack or failure it prevents, ideally mapped to chapter 5
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 建议的条文 / Proposed text
+      description: 用「应」写出一个可验证的结果 / One verifiable outcome, written with "shall"
+  - type: textarea
+    id: verify
+    attributes:
+      label: 如何判定满足 / How to verify
+      description: 评估人员看什么证据或做什么测试 / Evidence an assessor checks or a test they run

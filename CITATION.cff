@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use or reference this baseline, please cite it as below, including the version."
+title: "Enterprise Agent Identity and Authorization Security Baseline"
+version: "1.0"
+date-released: 2026-10-07
+type: dataset
+authors:
+  - given-names: "Max"
+    alias: "cybermaxluo"
+license: CC-BY-4.0
+keywords:
+  - AI agent
+  - agentic AI
+  - identity
+  - authorization
+  - security baseline
+  - least privilege
