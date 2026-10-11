@@ -1,5 +1,7 @@
 # エンタープライズエージェントのID・認可セキュリティベースライン
 
+<p><img src="03-tool/assets/brand/teloa-avatar.png" width="64" height="64" alt="Teloa"></p>
+
 Teloa の開発から生まれたオープンなセキュリティベースラインと自己評価ツール
 
 [简体中文](README.md) · [English](README.en.md) · **日本語** · [한국어](README.ko.md) · [Deutsch](README.de.md) · [Français](README.fr.md) · [Español](README.es.md)
@@ -10,13 +12,21 @@ Teloa の開発から生まれたオープンなセキュリティベースラ�
 
 本リポジトリには、ベースライン本文と付属の自己評価ツールが含まれる。本文は、プラットフォーム構築の設計インプット、ベンダー評価の質問票、セキュリティレビューのチェックリストとしてそのまま利用できる。自己評価ツールは静的な Web ページであり、要件ごとに評価結果を記録し、成熟度レポートと Excel 評価表を生成する。評価データは利用者自身のブラウザにのみ保存される。
 
-著者：Max（[GitHub @cybermaxluo](https://github.com/cybermaxluo)）
+著者：Max Luo（[GitHub @cybermaxluo](https://github.com/cybermaxluo)）
 
-発起・保守：[Teloa](https://github.com/teloa-ai)
+発起・保守：[Teloa AI Security](https://github.com/teloa-ai)
+
+Teloa AI Security は、Teloa の開発実践に基づく AI セキュリティ研究とオープンソースの取り組みです。エージェントのアイデンティティ、認可、実行境界、セキュリティガバナンスに焦点を当て、設計経験を公開ベースライン、参照アーキテクチャ、評価ツールとしてまとめています。
+
+**小さなリス Teloa がセキュリティチームに参加**
+
+| まずアイデンティティを確認 | 権限は最小限に | 証拠を残す |
+| :---: | :---: | :---: |
+| <img src="03-tool/assets/brand/teloa-security.webp" width="100" alt="Teloa"> | <img src="03-tool/assets/brand/teloa-focused.png" width="100" alt="Teloa"> | <img src="03-tool/assets/brand/teloa-nailed-it.png" width="100" alt="Teloa"> |
 
 ## 背景と位置付け
 
-本プロジェクトは、Max が [Teloa](https://github.com/teloa-ai/teloa) の開発とセキュリティ設計の過程で整理したものである。AI社員のツール認可、承認、資格情報、実行隔離、共同作業でのデータ可視性を出発点とし、公開仕様と合わせて企業向けエージェントプラットフォームの検証可能な要件にまとめている。各種プラットフォームでの利用とレビューに開かれており、Teloa 固有の実装には依存しない。
+本プロジェクトは、Max Luo が [Teloa](https://github.com/teloa-ai/teloa) の開発とセキュリティ設計の過程で整理したものである。AI社員のツール認可、承認、資格情報、実行隔離、共同作業でのデータ可視性を出発点とし、公開仕様と合わせて企業向けエージェントプラットフォームの検証可能な要件にまとめている。各種プラットフォームでの利用とレビューに開かれており、Teloa 固有の実装には依存しない。
 
 本ベースラインは設計・評価の目標を示す。適合性は製品の具体的なバージョン、配備範囲、証跡に基づき要件ごとに判定する。自己評価は独立した認証ではなく、OWASP、NIST、CSA 等への参照や対応付けは、各団体による支持を意味しない。
 
@@ -75,7 +85,7 @@ V1〜V7 は、エージェントの1回の行為が進む順序に沿って並�
 ## クイックスタート
 
 - **ベースラインを読む**：[01-standard/ja/baseline-v1.0.md](01-standard/ja/baseline-v1.0.md)
-- **オンラインで評価する**：本リポジトリから公開される [GitHub Pages](https://teloa-ai.github.io/agent-baseline-assessor/) のサイトを開く。右上で言語を切り替えられる。
+- **オンラインで評価する**：本リポジトリから公開される [GitHub Pages](https://security.teloa.ai/agent-baseline-assessor/?lang=zh-CN) のサイトを開く。右上で言語を切り替えられる。
 - **オフラインで評価する**：リポジトリをダウンロードし、`03-tool/index.html` を開く。機能はオンライン版と同じで、ネットワーク接続は不要である。
 - **Excel を使う**：[`03-tool/offline/baseline-assessment.xlsx`](03-tool/offline/baseline-assessment.xlsx)（中国語）に入力するか、ツールの **データ** ページにある「空白の評価表をダウンロード」から日本語の空白の評価表を取得する。評価表には集計数式とギャップ一覧が含まれ、入力後はツールに読み込み直すことができる。
 - **私有化デプロイ**：ツールは静的ファイルのみで構成され、強化済みの nginx 設定と Dockerfile が付属する。手順は[利用方法](02-usage/ja/usage.md)を参照。
@@ -102,7 +112,7 @@ V1〜V7 は、エージェントの1回の行為が進む順序に沿って並�
 | [利用方法](02-usage/ja/usage.md) | オンライン、オフライン、私有化デプロイの3つの利用方法、評価ルール、GitHub Pages 又は Cloudflare Pages への公開 |
 | [ツール説明](03-tool/docs/ja.md) | ディレクトリ構成、主なコマンド、ベースライン改訂後のツール更新手順、翻訳の保守 |
 | [設計上の考察（英語）](04-design/en/design-rationale.md) | Teloa 開発時の安全上の問題、設計のトレードオフ、対応要件と検証方法 |
-| [エージェント安全基線アーキテクチャ](https://teloa-ai.github.io/agent-baseline-assessor/architecture.html?lang=ja) | 技術スタック · プラットフォーム参照アーキテクチャ · PNG / SVG / Mermaid |
+| [エージェント安全基線アーキテクチャ](https://security.teloa.ai/agent-baseline-assessor/architecture.html?lang=ja) | 技術スタック · プラットフォーム参照アーキテクチャ · PNG / SVG / Mermaid |
 | [用語集](03-tool/i18n/glossary.md) | 7 言語の用語対照 |
 | [変更履歴](CHANGELOG.md) | バージョンごとの変更内容（中国語・英語） |
 
@@ -122,7 +132,7 @@ V1〜V7 は、エージェントの1回の行為が進む順序に沿って並�
 
 引用する際はバージョンを明記すること。例：
 
-> Max. エンタープライズエージェントのID・認可セキュリティベースライン（Enterprise Agent Identity and Authorization Security Baseline）v1.0, 2026.
+> Max Luo. エンタープライズエージェントのID・認可セキュリティベースライン（Enterprise Agent Identity and Authorization Security Baseline）v1.0, 2026.
 
 特定の要件を引用する場合は、番号とバージョンを示す（例：「V4.2.1（v1.0）」）。機械可読な引用メタデータは [CITATION.cff](CITATION.cff) にある。
 
@@ -131,3 +141,4 @@ V1〜V7 は、エージェントの1回の行為が進む順序に沿って並�
 - ベースライン本文、利用方法その他のドキュメント：[CC BY 4.0](LICENSE-DOCS)。複製、改変及び商用利用が可能である。ただし、クレジットを表示し、変更の有無を示す必要がある。
 - 自己評価ツールのコード：[Apache License 2.0](LICENSE)。
 - サードパーティコンポーネント：ExcelJS 4.4.0（MIT）、IBM Plex フォント（SIL OFL 1.1）。ライセンス文は `03-tool/vendor/` に同梱している。
+- Teloa ブランドと小松鼠の素材：[ブランド素材の説明](03-tool/assets/brand/README.md)。ブランドの使用権は別途留保します。

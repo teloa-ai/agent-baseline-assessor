@@ -1,5 +1,7 @@
 # Sicherheitsbaseline für Identität und Autorisierung von Unternehmensagenten
 
+<p><img src="03-tool/assets/brand/teloa-avatar.png" width="64" height="64" alt="Teloa"></p>
+
 Eine offene Sicherheitsbaseline mit Selbstbewertung aus der Entwicklung von Teloa
 
 [简体中文](README.md) · [English](README.en.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · **Deutsch** · [Français](README.fr.md) · [Español](README.es.md)
@@ -10,13 +12,21 @@ Die Sicherheitsbaseline für Identität und Autorisierung von Unternehmensagente
 
 Dieses Repository enthält die Baseline und ein zugehöriges Selbstbewertungswerkzeug. Die Baseline kann unmittelbar als Designvorgabe beim Aufbau einer Plattform, als Fragebogen für die Lieferantenbewertung oder als Checkliste für Sicherheitsreviews verwendet werden. Das Werkzeug ist eine statische Webseite, die Ergebnisse je Anforderung erfasst und daraus einen Reifegradbericht und eine Excel-Arbeitsmappe erstellt. Die Bewertungsdaten verbleiben im Browser des Nutzers.
 
-Autor: Max ([GitHub @cybermaxluo](https://github.com/cybermaxluo))
+Autor: Max Luo ([GitHub @cybermaxluo](https://github.com/cybermaxluo))
 
-Initiiert und gepflegt von [Teloa](https://github.com/teloa-ai)
+Initiiert und gepflegt von [Teloa AI Security](https://github.com/teloa-ai)
+
+Teloa AI Security ist eine Initiative für KI-Sicherheitsforschung und Open Source, die aus der Entwicklung von Teloa hervorgegangen ist. Sie untersucht Agentenidentität, Autorisierung, Ausführungsgrenzen und Sicherheitsgovernance und überführt Entwurfserfahrungen in eine offene Sicherheitsbaseline, Referenzarchitekturen und Bewertungswerkzeuge.
+
+**Teloa, das Eichhörnchen im Sicherheitsteam**
+
+| Zuerst die Identität prüfen | Berechtigungen begrenzen | Nachweise aufbewahren |
+| :---: | :---: | :---: |
+| <img src="03-tool/assets/brand/teloa-security.webp" width="100" alt="Teloa"> | <img src="03-tool/assets/brand/teloa-focused.png" width="100" alt="Teloa"> | <img src="03-tool/assets/brand/teloa-nailed-it.png" width="100" alt="Teloa"> |
 
 ## Hintergrund und Ziel
 
-Max hat dieses Projekt während der Entwicklung und Sicherheitsplanung von [Teloa](https://github.com/teloa-ai/teloa) erarbeitet. Ausgangspunkte sind Tool-Berechtigungen von KI-Mitarbeitern, menschliche Freigaben, Zugangsdaten, Ausführungsisolation und Datensichtbarkeit bei der Zusammenarbeit. Zusammen mit öffentlichen Spezifikationen werden daraus überprüfbare Anforderungen für Unternehmensagenten. Die Baseline ist für verschiedene Plattformen offen und nicht an Teloas Implementierung gebunden.
+Max Luo hat dieses Projekt während der Entwicklung und Sicherheitsplanung von [Teloa](https://github.com/teloa-ai/teloa) erarbeitet. Ausgangspunkte sind Tool-Berechtigungen von KI-Mitarbeitern, menschliche Freigaben, Zugangsdaten, Ausführungsisolation und Datensichtbarkeit bei der Zusammenarbeit. Zusammen mit öffentlichen Spezifikationen werden daraus überprüfbare Anforderungen für Unternehmensagenten. Die Baseline ist für verschiedene Plattformen offen und nicht an Teloas Implementierung gebunden.
 
 Die Baseline beschreibt Sicherheitsziele für Entwurf und Bewertung. Die Erfüllung ist je Anforderung anhand einer konkreten Produktversion, des Bereitstellungsumfangs und von Nachweisen zu prüfen. Selbstbewertung ist keine unabhängige Zertifizierung. Verweise und Zuordnungen zu OWASP, NIST, CSA und anderen Quellen bedeuten keine Unterstützung durch diese Organisationen.
 
@@ -75,7 +85,7 @@ Fehlt einer Plattform eine Fähigkeit (etwa weil sie MCP nicht unterstützt), wi
 ## Schnellstart
 
 - **Baseline lesen**: [01-standard/de/baseline-v1.0.md](01-standard/de/baseline-v1.0.md)
-- **Online bewerten**: Die aus diesem Repository veröffentlichte [GitHub-Pages-Seite](https://teloa-ai.github.io/agent-baseline-assessor/) öffnen; die Sprache lässt sich oben rechts umschalten.
+- **Online bewerten**: Die aus diesem Repository veröffentlichte [GitHub-Pages-Seite](https://security.teloa.ai/agent-baseline-assessor/?lang=zh-CN) öffnen; die Sprache lässt sich oben rechts umschalten.
 - **Offline bewerten**: Das Repository herunterladen und `03-tool/index.html` öffnen. Der Funktionsumfang entspricht der Online-Version; eine Netzwerkverbindung ist nicht erforderlich.
 - **Excel verwenden**: [`03-tool/offline/baseline-assessment.xlsx`](03-tool/offline/baseline-assessment.xlsx) (Chinesisch) ausfüllen oder auf der Seite **Daten** des Werkzeugs über „Leere Bewertungstabelle herunterladen“ ein leeres Formular auf Deutsch herunterladen. Die Arbeitsmappe enthält Summenformeln und eine Lückenliste und kann wieder in das Werkzeug importiert werden.
 - **Private Bereitstellung**: Das Werkzeug besteht ausschließlich aus statischen Dateien und wird mit einer gehärteten nginx-Konfiguration und einem Dockerfile ausgeliefert. Einzelheiten enthält die [Anleitung zur Verwendung](02-usage/de/usage.md).
@@ -102,7 +112,7 @@ Fehlt einer Plattform eine Fähigkeit (etwa weil sie MCP nicht unterstützt), wi
 | [Verwendung](02-usage/de/usage.md) | Online-, Offline- und private Bereitstellung; Bewertungsregeln; Veröffentlichung auf GitHub Pages oder Cloudflare Pages |
 | [Werkzeugbeschreibung](03-tool/docs/de.md) | Verzeichnisstruktur, Befehle, Aktualisierung des Werkzeugs nach einer Revision der Baseline, Pflege der Übersetzungen |
 | [Entwurfsbegründung (Englisch)](04-design/en/design-rationale.md) | Sicherheitsfragen aus der Teloa-Entwicklung, Abwägungen, Anforderungszuordnung und Prüfmethoden |
-| [Architektur der Agent-Sicherheitsbaseline](https://teloa-ai.github.io/agent-baseline-assessor/architecture.html?lang=de) | Technologiestack · Plattform-Referenzarchitektur · PNG / SVG / Mermaid |
+| [Architektur der Agent-Sicherheitsbaseline](https://security.teloa.ai/agent-baseline-assessor/architecture.html?lang=de) | Technologiestack · Plattform-Referenzarchitektur · PNG / SVG / Mermaid |
 | [Glossar](03-tool/i18n/glossary.md) | Terminologie in den sieben Sprachen |
 | [Änderungsprotokoll](CHANGELOG.md) | Änderungen je Version (Chinesisch/Englisch) |
 
@@ -122,7 +132,7 @@ Sicherheitslücken im Werkzeug sind vertraulich gemäß der [Sicherheitsrichtlin
 
 Bei Zitaten ist die Version anzugeben, zum Beispiel:
 
-> Max. Sicherheitsbaseline für Identität und Autorisierung von Unternehmensagenten (Enterprise Agent Identity and Authorization Security Baseline), v1.0, 2026.
+> Max Luo. Sicherheitsbaseline für Identität und Autorisierung von Unternehmensagenten (Enterprise Agent Identity and Authorization Security Baseline), v1.0, 2026.
 
 Bei Verweisen auf eine einzelne Anforderung sind Nummer und Version anzugeben, z. B. „V4.2.1 (v1.0)“. Maschinenlesbare Zitationsmetadaten enthält [CITATION.cff](CITATION.cff).
 
@@ -131,3 +141,4 @@ Bei Verweisen auf eine einzelne Anforderung sind Nummer und Version anzugeben, z
 - Baseline, Anleitung zur Verwendung und weitere Dokumentation: [CC BY 4.0](LICENSE-DOCS). Kopieren, Bearbeiten und kommerzielle Nutzung sind mit Namensnennung und Kennzeichnung von Änderungen gestattet.
 - Code des Selbstbewertungswerkzeugs: [Apache License 2.0](LICENSE).
 - Komponenten Dritter: ExcelJS 4.4.0 (MIT) und IBM-Plex-Schriften (SIL OFL 1.1); die Lizenztexte liegen in `03-tool/vendor/`.
+- Teloa-Marke und Eichhörnchen-Grafiken: siehe [Markenmaterial](03-tool/assets/brand/README.md); Markennutzungsrechte bleiben gesondert vorbehalten.

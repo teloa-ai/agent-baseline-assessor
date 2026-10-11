@@ -1,5 +1,7 @@
 # Enterprise Agent Identity and Authorization Security Baseline
 
+<p><img src="03-tool/assets/brand/teloa-avatar.png" width="64" height="64" alt="Teloa"></p>
+
 An open security baseline and self-assessment tool derived from Teloa development
 
 [简体中文](README.md) · **English** · [日本語](README.ja.md) · [한국어](README.ko.md) · [Deutsch](README.de.md) · [Français](README.fr.md) · [Español](README.es.md)
@@ -10,13 +12,21 @@ The Enterprise Agent Identity and Authorization Security Baseline sets out the i
 
 This repository contains the standard and a companion self-assessment tool. The standard can be used directly as design input for building a platform, as a questionnaire for vendor assessment, or as a checklist for security review. The tool is a static web page that records results requirement by requirement and produces a maturity report and an Excel workbook. Assessment data stays in the user's own browser.
 
-Author: Max ([GitHub @cybermaxluo](https://github.com/cybermaxluo))
+Author: Max Luo ([GitHub @cybermaxluo](https://github.com/cybermaxluo))
 
-Initiated and maintained by [Teloa](https://github.com/teloa-ai)
+Initiated and maintained by [Teloa AI Security](https://github.com/teloa-ai)
+
+Teloa AI Security is an AI security research and open-source initiative rooted in Teloa development. It focuses on agent identity, authorization, execution boundaries, and security governance, turning design experience into an open baseline, reference architectures, and assessment tools.
+
+**Teloa the squirrel joins the security team**
+
+| Verify identity first | Keep permissions narrow | Keep the evidence |
+| :---: | :---: | :---: |
+| <img src="03-tool/assets/brand/teloa-security.webp" width="100" alt="Teloa"> | <img src="03-tool/assets/brand/teloa-focused.png" width="100" alt="Teloa"> | <img src="03-tool/assets/brand/teloa-nailed-it.png" width="100" alt="Teloa"> |
 
 ## Origins and purpose
 
-Max developed this project during the development and security design of [Teloa](https://github.com/teloa-ai/teloa). It draws on questions about AI employee tool access, human approval, credentials, execution isolation, and data visibility in collaboration. Combined with public specifications, these questions become verifiable requirements for enterprise agent platforms. The baseline is open to use and review across platforms and does not depend on Teloa's implementation.
+Max Luo developed this project during the development and security design of [Teloa](https://github.com/teloa-ai/teloa). It draws on questions about AI employee tool access, human approval, credentials, execution isolation, and data visibility in collaboration. Combined with public specifications, these questions become verifiable requirements for enterprise agent platforms. The baseline is open to use and review across platforms and does not depend on Teloa's implementation.
 
 This baseline describes security design and assessment goals. Compliance must be assessed requirement by requirement against a specific product version, deployment scope, and evidence. Self-assessment is not independent certification. References and mappings to OWASP, NIST, CSA, and other sources do not imply endorsement by those organizations.
 
@@ -75,7 +85,7 @@ When a platform lacks a capability (for example, it does not support MCP), the c
 ## Quick start
 
 - **Read the standard**: [01-standard/en/baseline-v1.0.md](01-standard/en/baseline-v1.0.md)
-- **Assess online**: open the [GitHub Pages](https://teloa-ai.github.io/agent-baseline-assessor/) site published from this repository; switch languages in the top-right corner.
+- **Assess online**: open the [GitHub Pages](https://security.teloa.ai/agent-baseline-assessor/?lang=zh-CN) site published from this repository; switch languages in the top-right corner.
 - **Assess offline**: download the repository and open `03-tool/index.html`. It works the same as the online version and needs no network.
 - **Use Excel**: fill in [`03-tool/offline/baseline-assessment.xlsx`](03-tool/offline/baseline-assessment.xlsx) (Chinese), or download a blank form in your language from the tool's **Data** page. The workbook includes summary formulas and a gap list, and can be imported back into the tool.
 - **Self-host**: the tool is plain static files and ships with a hardened nginx configuration and a Dockerfile. See the [usage guide](02-usage/en/usage.md).
@@ -102,7 +112,7 @@ When a platform lacks a capability (for example, it does not support MCP), the c
 | [Usage guide](02-usage/en/usage.md) | Online, offline and self-hosted use; scoring rules; publishing to GitHub Pages or Cloudflare Pages |
 | [Tool guide](03-tool/docs/en.md) | Layout, commands, updating the tool after a revision of the standard, maintaining translations |
 | [Design rationale](04-design/en/design-rationale.md) | Security questions from Teloa development, design trade-offs, requirement mappings, and verification methods |
-| [Agent Security Baseline Architecture](https://teloa-ai.github.io/agent-baseline-assessor/architecture.html?lang=en) | Technology stack · Platform reference architecture · PNG / SVG / Mermaid |
+| [Agent Security Baseline Architecture](https://security.teloa.ai/agent-baseline-assessor/architecture.html?lang=en) | Technology stack · Platform reference architecture · PNG / SVG / Mermaid |
 | [Glossary](03-tool/i18n/glossary.md) | Terminology across the seven languages |
 | [Changelog](CHANGELOG.md) | Changes by version |
 
@@ -122,7 +132,7 @@ Report security vulnerabilities in the tool privately as described in the [secur
 
 Please cite the version, for example:
 
-> Max. Enterprise Agent Identity and Authorization Security Baseline, v1.0, 2026.
+> Max Luo. Enterprise Agent Identity and Authorization Security Baseline, v1.0, 2026.
 
 When citing a specific requirement, give its ID and version, e.g. "V4.2.1 (v1.0)". Machine-readable citation metadata is in [CITATION.cff](CITATION.cff).
 
@@ -131,3 +141,4 @@ When citing a specific requirement, give its ID and version, e.g. "V4.2.1 (v1.0)
 - The standard, usage guide and other documentation: [CC BY 4.0](LICENSE-DOCS). You may copy, adapt and use them commercially, with attribution and an indication of any changes.
 - The self-assessment tool's code: [Apache License 2.0](LICENSE).
 - Third-party components: ExcelJS 4.4.0 (MIT) and IBM Plex fonts (SIL OFL 1.1); license texts are included in `03-tool/vendor/`.
+- Teloa brand and squirrel artwork: see [brand assets](03-tool/assets/brand/README.md); brand usage rights are reserved separately.

@@ -1,5 +1,7 @@
 # Référentiel de sécurité de l'identité et de l'autorisation des agents d'entreprise
 
+<p><img src="03-tool/assets/brand/teloa-avatar.png" width="64" height="64" alt="Teloa"></p>
+
 Un référentiel de sécurité ouvert et un outil d'auto-évaluation issus du développement de Teloa
 
 [简体中文](README.md) · [English](README.en.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Deutsch](README.de.md) · **Français** · [Español](README.es.md)
@@ -10,13 +12,21 @@ Le Référentiel de sécurité de l'identité et de l'autorisation des agents d'
 
 Ce dépôt contient le référentiel et un outil d'auto-évaluation associé. Le référentiel peut servir directement de donnée d'entrée pour la conception d'une plateforme, de questionnaire pour l'évaluation des fournisseurs ou de liste de contrôle pour les revues de sécurité. L'outil est une page web statique qui enregistre les résultats exigence par exigence et produit un rapport de maturité ainsi qu'un classeur Excel. Les données d'évaluation restent dans le navigateur de l'utilisateur.
 
-Auteur : Max ([GitHub @cybermaxluo](https://github.com/cybermaxluo))
+Auteur : Max Luo ([GitHub @cybermaxluo](https://github.com/cybermaxluo))
 
-Projet initié et maintenu par [Teloa](https://github.com/teloa-ai)
+Projet initié et maintenu par [Teloa AI Security](https://github.com/teloa-ai)
+
+Teloa AI Security est une initiative de recherche en sécurité de l’IA et d’open source issue du développement de Teloa. Elle étudie l’identité des agents, l’autorisation, les frontières d’exécution et la gouvernance de la sécurité, et transforme l’expérience de conception en référentiel ouvert, architectures de référence et outils d’évaluation.
+
+**Teloa, l’écureuil de l’équipe sécurité**
+
+| Vérifier d’abord l’identité | Limiter les permissions | Conserver les preuves |
+| :---: | :---: | :---: |
+| <img src="03-tool/assets/brand/teloa-security.webp" width="100" alt="Teloa"> | <img src="03-tool/assets/brand/teloa-focused.png" width="100" alt="Teloa"> | <img src="03-tool/assets/brand/teloa-nailed-it.png" width="100" alt="Teloa"> |
 
 ## Origine et objectif
 
-Max a élaboré ce projet pendant le développement et la conception de la sécurité de [Teloa](https://github.com/teloa-ai/teloa). Les questions d'accès aux outils, d'approbation humaine, d'identifiants, d'isolation et de visibilité des données en collaboration sont rapprochées de spécifications publiques pour produire des exigences vérifiables. Le référentiel est ouvert à l'utilisation et à la revue pour différentes plateformes, sans dépendre de l'implémentation de Teloa.
+Max Luo a élaboré ce projet pendant le développement et la conception de la sécurité de [Teloa](https://github.com/teloa-ai/teloa). Les questions d'accès aux outils, d'approbation humaine, d'identifiants, d'isolation et de visibilité des données en collaboration sont rapprochées de spécifications publiques pour produire des exigences vérifiables. Le référentiel est ouvert à l'utilisation et à la revue pour différentes plateformes, sans dépendre de l'implémentation de Teloa.
 
 Ce référentiel décrit des objectifs de conception et d'évaluation de la sécurité. Leur respect doit être vérifié exigence par exigence selon une version, un périmètre de déploiement et des preuves précises. L'auto-évaluation n'est pas une certification indépendante. Les références et correspondances avec OWASP, NIST, CSA ou d'autres sources ne constituent pas une approbation de ces organismes.
 
@@ -75,7 +85,7 @@ Lorsqu'une plateforme ne dispose pas d'une capacité (par exemple, si elle ne pr
 ## Démarrage rapide
 
 - **Lire le référentiel** : [01-standard/fr/baseline-v1.0.md](01-standard/fr/baseline-v1.0.md)
-- **Évaluer en ligne** : ouvrir le site [GitHub Pages](https://teloa-ai.github.io/agent-baseline-assessor/) publié à partir de ce dépôt ; la langue se change en haut à droite.
+- **Évaluer en ligne** : ouvrir le site [GitHub Pages](https://security.teloa.ai/agent-baseline-assessor/?lang=zh-CN) publié à partir de ce dépôt ; la langue se change en haut à droite.
 - **Évaluer hors ligne** : télécharger le dépôt et ouvrir `03-tool/index.html`. Les fonctionnalités sont identiques à celles de la version en ligne et aucune connexion réseau n'est nécessaire.
 - **Utiliser Excel** : remplir [`03-tool/offline/baseline-assessment.xlsx`](03-tool/offline/baseline-assessment.xlsx) (en chinois), ou télécharger une grille vierge en français depuis la page **Données** de l'outil, avec le bouton « Télécharger la grille d'évaluation vierge ». Le classeur comporte des formules de synthèse et une liste des écarts, et peut être réimporté dans l'outil.
 - **Déploiement privé** : l'outil se compose uniquement de fichiers statiques et est fourni avec une configuration nginx durcie et un Dockerfile. Voir le [mode d'emploi](02-usage/fr/usage.md).
@@ -102,7 +112,7 @@ Lorsqu'une plateforme ne dispose pas d'une capacité (par exemple, si elle ne pr
 | [Mode d'emploi](02-usage/fr/usage.md) | Utilisation en ligne, hors ligne et en déploiement privé ; règles de notation ; publication sur GitHub Pages ou Cloudflare Pages |
 | [Notes sur l'outil](03-tool/docs/fr.md) | Structure, commandes, mise à jour de l'outil après une révision du référentiel, maintenance des traductions |
 | [Choix de conception (en anglais)](04-design/en/design-rationale.md) | Questions de sécurité issues de Teloa, compromis, correspondances et vérification |
-| [Architecture de la baseline de sécurité des agents](https://teloa-ai.github.io/agent-baseline-assessor/architecture.html?lang=fr) | Pile technologique · Architecture de référence · PNG / SVG / Mermaid |
+| [Architecture de la baseline de sécurité des agents](https://security.teloa.ai/agent-baseline-assessor/architecture.html?lang=fr) | Pile technologique · Architecture de référence · PNG / SVG / Mermaid |
 | [Glossaire](03-tool/i18n/glossary.md) | Terminologie dans les sept langues |
 | [Journal des modifications](CHANGELOG.md) | Modifications par version (en chinois et en anglais) |
 
@@ -122,7 +132,7 @@ Les vulnérabilités de l'outil sont à signaler de manière confidentielle, sel
 
 Merci d'indiquer la version, par exemple :
 
-> Max. Référentiel de sécurité de l'identité et de l'autorisation des agents d'entreprise (Enterprise Agent Identity and Authorization Security Baseline), v1.0, 2026.
+> Max Luo. Référentiel de sécurité de l'identité et de l'autorisation des agents d'entreprise (Enterprise Agent Identity and Authorization Security Baseline), v1.0, 2026.
 
 Pour citer une exigence précise, indiquer son identifiant et la version, par exemple « V4.2.1 (v1.0) ». Les métadonnées de citation lisibles par machine se trouvent dans [CITATION.cff](CITATION.cff).
 
@@ -131,3 +141,4 @@ Pour citer une exigence précise, indiquer son identifiant et la version, par ex
 - Le référentiel, le mode d'emploi et les autres documents : [CC BY 4.0](LICENSE-DOCS). Ils peuvent être copiés, adaptés et utilisés à des fins commerciales, à condition d'en citer l'auteur et d'indiquer les modifications éventuelles.
 - Le code de l'outil d'auto-évaluation : [Apache License 2.0](LICENSE).
 - Composants tiers : ExcelJS 4.4.0 (MIT) et polices IBM Plex (SIL OFL 1.1) ; les textes de licence sont fournis dans `03-tool/vendor/`.
+- Marque Teloa et illustrations de l’écureuil : voir les [éléments de marque](03-tool/assets/brand/README.md) ; les droits d’utilisation de la marque sont réservés séparément.

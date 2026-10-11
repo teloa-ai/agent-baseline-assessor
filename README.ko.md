@@ -1,5 +1,7 @@
 # 엔터프라이즈 에이전트 신원 및 인가 보안 기준선
 
+<p><img src="03-tool/assets/brand/teloa-avatar.png" width="64" height="64" alt="Teloa"></p>
+
 Teloa 개발에서 도출한 개방형 보안 기준선과 자가 평가 도구
 
 [简体中文](README.md) · [English](README.en.md) · [日本語](README.ja.md) · **한국어** · [Deutsch](README.de.md) · [Français](README.fr.md) · [Español](README.es.md)
@@ -10,9 +12,17 @@ Teloa 개발에서 도출한 개방형 보안 기준선과 자가 평가 도구
 
 이 저장소에는 기준선 본문과 함께 사용하는 자가 평가 도구가 들어 있습니다. 본문은 플랫폼 구축의 설계 입력, 공급업체 평가 질문지, 보안 검토 체크리스트로 바로 사용할 수 있습니다. 자가 평가 도구는 정적 웹페이지로, 요구사항별로 평가 결과를 기록하고 성숙도 보고서와 Excel 평가표를 생성합니다. 평가 데이터는 사용자 자신의 브라우저에만 저장됩니다.
 
-저자: Max ([GitHub @cybermaxluo](https://github.com/cybermaxluo))
+저자: Max Luo ([GitHub @cybermaxluo](https://github.com/cybermaxluo))
 
-발의 및 유지보수: [Teloa](https://github.com/teloa-ai)
+발의 및 유지보수: [Teloa AI Security](https://github.com/teloa-ai)
+
+Teloa AI Security는 Teloa 개발 경험에서 출발한 AI 보안 연구 및 오픈 소스 프로젝트입니다. 에이전트 신원, 인가, 실행 경계와 보안 거버넌스에 집중하며, 설계 경험을 개방형 보안 기준선, 참조 아키텍처와 평가 도구로 정리합니다.
+
+**다람쥐 Teloa가 보안 팀에 합류합니다**
+
+| 먼저 신원을 확인하세요 | 권한은 최소한으로 | 증거를 남기세요 |
+| :---: | :---: | :---: |
+| <img src="03-tool/assets/brand/teloa-security.webp" width="100" alt="Teloa"> | <img src="03-tool/assets/brand/teloa-focused.png" width="100" alt="Teloa"> | <img src="03-tool/assets/brand/teloa-nailed-it.png" width="100" alt="Teloa"> |
 
 ## 배경과 목적
 
@@ -75,7 +85,7 @@ V1부터 V7까지는 에이전트의 행위 하나가 진행되는 순서를 따
 ## 빠른 시작
 
 - **기준선 읽기**: [01-standard/ko/baseline-v1.0.md](01-standard/ko/baseline-v1.0.md)
-- **온라인 평가**: 이 저장소에서 게시한 [GitHub Pages](https://teloa-ai.github.io/agent-baseline-assessor/) 사이트를 엽니다. 오른쪽 위에서 언어를 바꿀 수 있습니다.
+- **온라인 평가**: 이 저장소에서 게시한 [GitHub Pages](https://security.teloa.ai/agent-baseline-assessor/?lang=zh-CN) 사이트를 엽니다. 오른쪽 위에서 언어를 바꿀 수 있습니다.
 - **오프라인 평가**: 저장소를 내려받아 `03-tool/index.html`을 엽니다. 온라인 버전과 기능이 같으며 네트워크 연결이 필요하지 않습니다.
 - **Excel 사용**: [`03-tool/offline/baseline-assessment.xlsx`](03-tool/offline/baseline-assessment.xlsx)(중국어)를 작성하거나, 도구의 **데이터** 페이지에서 '빈 평가표 다운로드'를 눌러 한국어 빈 평가표를 내려받습니다. 평가표에는 요약 수식과 격차 목록이 포함되어 있으며, 작성 후 도구로 다시 가져올 수 있습니다.
 - **사내(프라이빗) 배포**: 도구는 정적 파일로만 구성되며, 보안을 강화한 nginx 설정과 Dockerfile이 함께 제공됩니다. 자세한 내용은 [사용 방법](02-usage/ko/usage.md)을 참고하십시오.
@@ -102,7 +112,7 @@ V1부터 V7까지는 에이전트의 행위 하나가 진행되는 순서를 따
 | [사용 방법](02-usage/ko/usage.md) | 온라인, 오프라인, 사내 배포의 세 가지 사용 방식, 채점 규칙, GitHub Pages 또는 Cloudflare Pages 게시 |
 | [도구 설명](03-tool/docs/ko.md) | 디렉터리 구조, 주요 명령, 기준선 개정 후 도구 업데이트 절차, 번역 유지보수 |
 | [설계 근거(영어)](04-design/en/design-rationale.md) | Teloa 개발의 보안 문제, 설계 절충, 요구사항 매핑과 검증 방법 |
-| [에이전트 보안 기준 아키텍처](https://teloa-ai.github.io/agent-baseline-assessor/architecture.html?lang=ko) | 기술 스택 · 플랫폼 참조 아키텍처 · PNG / SVG / Mermaid |
+| [에이전트 보안 기준 아키텍처](https://security.teloa.ai/agent-baseline-assessor/architecture.html?lang=ko) | 기술 스택 · 플랫폼 참조 아키텍처 · PNG / SVG / Mermaid |
 | [용어집](03-tool/i18n/glossary.md) | 7개 언어의 용어 대조 |
 | [변경 이력](CHANGELOG.md) | 버전별 변경 사항(중국어·영어) |
 
@@ -122,7 +132,7 @@ V1부터 V7까지는 에이전트의 행위 하나가 진행되는 순서를 따
 
 인용할 때는 버전을 밝혀 주십시오. 예:
 
-> Max. 엔터프라이즈 에이전트 신원 및 인가 보안 기준선 (Enterprise Agent Identity and Authorization Security Baseline), v1.0, 2026.
+> Max Luo. 엔터프라이즈 에이전트 신원 및 인가 보안 기준선 (Enterprise Agent Identity and Authorization Security Baseline), v1.0, 2026.
 
 특정 요구사항을 인용할 때는 번호와 버전을 함께 적습니다(예: "V4.2.1 (v1.0)"). 기계 판독 가능한 인용 메타데이터는 [CITATION.cff](CITATION.cff)에 있습니다.
 
@@ -131,3 +141,4 @@ V1부터 V7까지는 에이전트의 행위 하나가 진행되는 순서를 따
 - 기준선 본문, 사용 방법 및 기타 문서: [CC BY 4.0](LICENSE-DOCS). 출처를 표시하고 변경 여부를 밝히면 복제, 개작, 상업적 이용이 가능합니다.
 - 자가 평가 도구 코드: [Apache License 2.0](LICENSE).
 - 서드파티 구성 요소: ExcelJS 4.4.0(MIT), IBM Plex 글꼴(SIL OFL 1.1). 라이선스 전문은 `03-tool/vendor/`에 포함되어 있습니다.
+- Teloa 브랜드와 다람쥐 소재: [브랜드 소재 안내](03-tool/assets/brand/README.md)를 참조하세요. 브랜드 사용권은 별도로 유보됩니다.

@@ -1,6 +1,6 @@
 # 从 Teloa 开发到智能体安全基线：设计思考
 
-作者：Max · 发起与维护：[Teloa](https://github.com/teloa-ai) · 2026-10-11
+作者：Max Luo · 发起与维护：[Teloa AI Security](https://github.com/teloa-ai) · 2026-10-11
 
 **简体中文** · [English](../en/design-rationale.md) · [返回项目首页](../../README.md)
 

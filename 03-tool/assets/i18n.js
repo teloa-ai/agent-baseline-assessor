@@ -39,7 +39,7 @@
   function writeStored(code) {
     try { localStorage.setItem(KEY, code); } catch (e) { /* 隐私模式或禁用存储时忽略 */ }
   }
-  /* 顺序：?lang= 参数 → localStorage → navigator.language；都没有则 zh-CN。仅在浏览器里生效。
+  /* 顺序：?lang= 参数 → localStorage → zh-CN。首次访问默认中文，仅在浏览器里生效。
      参数里是不认识的语言时，不强制中文，继续按后面的顺序判断 */
   function detect() {
     if (typeof window === 'undefined' || typeof document === 'undefined') return SOURCE;
@@ -52,7 +52,7 @@
     }
     var saved = readStored();
     if (saved && known(saved)) return saved;
-    try { return match(navigator.language) || SOURCE; } catch (e) { return SOURCE; }
+    return SOURCE;
   }
 
   /* 译文：src 是中文源字符串；{name} 用 vars.name 替换 */

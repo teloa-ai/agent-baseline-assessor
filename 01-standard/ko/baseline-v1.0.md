@@ -1,14 +1,14 @@
 # 엔터프라이즈 에이전트 신원 및 인가 보안 기준선
 
-저자: Max · 2026-10-07
+저자: Max Luo · 2026-10-07
 
-발의 및 유지보수: [Teloa](https://github.com/teloa-ai)
+발의 및 유지보수: [Teloa AI Security](https://github.com/teloa-ai)
 
 이 기준선은 [CC BY 4.0](../../LICENSE-DOCS) 라이선스로 배포됩니다.
 
 ## 서문
 
-이 기준선은 Max가 [Teloa](https://github.com/teloa-ai/teloa)의 개발과 보안 설계 과정에서 정리했으며 Teloa가 발의하고 유지보수합니다. 기업용 에이전트 플랫폼 전반의 사용과 검토에 개방되어 있습니다. 보안 목표를 설명하며, Teloa나 다른 제품이 모든 요구사항을 충족한다는 선언은 아닙니다. 구현 상태는 구체적인 버전, 배포 범위, 증거로 확인해야 합니다. 자가 평가는 독립 인증이 아니며 참조와 매핑은 발행자의 보증을 뜻하지 않습니다. [설계 근거(영어)](../../04-design/en/design-rationale.md)를 참조하십시오.
+이 기준선은 Max가 [Teloa](https://github.com/teloa-ai/teloa)의 개발과 보안 설계 과정에서 정리했으며 Teloa AI Security가 발의하고 유지보수합니다. 기업용 에이전트 플랫폼 전반의 사용과 검토에 개방되어 있습니다. 보안 목표를 설명하며, Teloa나 다른 제품이 모든 요구사항을 충족한다는 선언은 아닙니다. 구현 상태는 구체적인 버전, 배포 범위, 증거로 확인해야 합니다. 자가 평가는 독립 인증이 아니며 참조와 매핑은 발행자의 보증을 뜻하지 않습니다. [설계 근거(영어)](../../04-design/en/design-rationale.md)를 참조하십시오.
 
 이 기준선은 기업 환경에서 에이전트가 신원과 인가 측면에서 충족해야 하는 보안 요구사항을 규정합니다. 요구사항은 에이전트 한 번의 행위가 발생하는 순서에 따라, 그다음 세션을 넘나드는 대상에 따라 열 개의 장으로 나뉘며, 각 요구사항은 개별적으로 검증할 수 있고 L1에서 L3까지 세 등급으로 구분됩니다.
 
@@ -140,7 +140,7 @@
 
 ![에이전트 기술 스택 계층](../diagrams/ko/agent-stack.png)
 
-[편집 가능한 SVG](../diagrams/ko/agent-stack.svg) · [에이전트 보안 기준 아키텍처](https://teloa-ai.github.io/agent-baseline-assessor/architecture.html?lang=ko) · [논리 구조(Mermaid)](../diagrams/ko/agent-stack.mmd)
+[편집 가능한 SVG](../diagrams/ko/agent-stack.svg) · [에이전트 보안 기준 아키텍처](https://security.teloa.ai/agent-baseline-assessor/architecture.html?lang=ko) · [논리 구조(Mermaid)](../diagrams/ko/agent-stack.mmd)
 
 Harness는 프레임워크를 활용하여 개발할 수도 있고, 런타임 위에서 직접 실행될 수도 있습니다. 제2장에서 인용한 LangChain의 분류에 따르면 Claude Code와 Claude Agent SDK는 Harness에, LangGraph는 런타임에, LangChain은 프레임워크에 속합니다. Harness의 보안 통제 하위 시스템은 V3과 V5 요구사항 대부분이 적용되는 지점입니다.
 
@@ -148,7 +148,7 @@ Harness는 프레임워크를 활용하여 개발할 수도 있고, 런타임 �
 
 ![플랫폼 참조 아키텍처와 신뢰 경계](../diagrams/ko/reference-architecture.png)
 
-[편집 가능한 SVG](../diagrams/ko/reference-architecture.svg) · [에이전트 보안 기준 아키텍처](https://teloa-ai.github.io/agent-baseline-assessor/architecture.html?lang=ko) · [논리 구조(Mermaid)](../diagrams/ko/reference-architecture.mmd)
+[편집 가능한 SVG](../diagrams/ko/reference-architecture.svg) · [에이전트 보안 기준 아키텍처](https://security.teloa.ai/agent-baseline-assessor/architecture.html?lang=ko) · [논리 구조(Mermaid)](../diagrams/ko/reference-architecture.mmd)
 
 연한 파란색은 신뢰하는 제어를, 진한 파란색은 주요 보안 제어를 나타냅니다. 주황색 사선 상자의 모델과 실행 환경은 신뢰하지 않습니다. 실선은 호출과 실행, 주황색 점선은 신뢰하지 않는 반환 콘텐츠, 그림 4.1의 회색 점선은 선택적 의존성을 나타냅니다. 화살표는 논리 관계이며 원격 모델의 실제 출구 접근에도 V4가 적용됩니다. 그림은 플랫폼이 호스팅하는 Harness를 나타내며 단말 Harness는 V5.4를 따릅니다. 데이터 계층의 콘텐츠는 V6와 V8에 따라 신뢰할 수 없는 입력으로 처리합니다.
 

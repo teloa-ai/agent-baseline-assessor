@@ -8,8 +8,16 @@ All notable changes are recorded here, following [Keep a Changelog](https://keep
 
 ### 文档 / Documentation
 
-- 明确项目源于 Teloa 开发与安全设计，由 Max 编写、Teloa 发起维护；区分安全目标、产品实现与自评结论。
-  Clarify the project's origin in Teloa development and security design, Max's authorship, Teloa's maintenance, and the distinction between goals, implementation, and assessment conclusions.
+- 演示站、公共安全站与七语言 README 复用 Teloa 已定稿的小松鼠头像、安全岗位形象及表情素材；提示文案随语言切换，品牌素材权利单独说明。
+  Reuse approved Teloa squirrel avatars, security-role artwork, and expressions in the demo, public security site, and seven README editions, with localized captions and separate brand-asset rights.
+
+- 统一署名为 Max Luo · Teloa AI Security，在工具说明中加入研究与开源计划介绍；首次访问默认中文，保留语言切换与选择记忆。
+  Use Max Luo · Teloa AI Security attribution, introduce the research and open-source initiative in About, and default first visits to Chinese while remembering manual language choices.
+- 在线入口迁至公共安全站点的 `/agent-baseline-assessor/` 子目录，首页由独立组织站点维护。
+  Move the online entry to `/agent-baseline-assessor/` under the public security site, whose homepage is maintained independently.
+
+- 明确项目源于 Teloa 开发与安全设计，由 Max Luo 编写、Teloa AI Security 发起维护；区分安全目标、产品实现与自评结论。
+  Clarify the project's origin in Teloa development and security design, Max Luo's authorship, Teloa AI Security's maintenance, and the distinction between goals, implementation, and assessment conclusions.
 - 新增中英文设计思考，按提供的 HTML 布局补齐七种语言的技术栈与平台信任边界架构图；提供 PNG、可编辑 SVG、Mermaid 逻辑结构和可切换语言的 HTML 图集。
   Add Chinese and English design rationale and restore technology-stack and platform trust-boundary diagrams in all seven languages using the supplied HTML layout, with PNGs, editable SVGs, Mermaid logical structures, and a multilingual HTML gallery.
 - 添加模拟评估数据及中英文成熟度报告、覆盖矩阵截图，用于文档中的评估示例。

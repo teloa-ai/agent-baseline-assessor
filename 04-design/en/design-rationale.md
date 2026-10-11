@@ -1,6 +1,6 @@
 # From Teloa Development to an Agent Security Baseline: Design Rationale
 
-Author: Max · Initiated and maintained by [Teloa](https://github.com/teloa-ai) · 2026-10-11
+Author: Max Luo · Initiated and maintained by [Teloa AI Security](https://github.com/teloa-ai) · 2026-10-11
 
 [简体中文](../zh-CN/design-rationale.md) · **English** · [Project home](../../README.en.md)
 

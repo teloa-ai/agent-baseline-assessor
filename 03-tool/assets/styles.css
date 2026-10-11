@@ -83,7 +83,7 @@ p { margin: 0; }
 .app-bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: color-mix(in oklab, var(--surface) 92%, transparent); backdrop-filter: saturate(1.4) blur(10px); border-bottom: 1px solid var(--line); }
 .bar-in { max-width: 1440px; margin: 0 auto; padding: 0 24px; min-height: 56px; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 24px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); white-space: nowrap; min-width: 0; max-width: 100%; }
-.brand .mark { width: 22px; height: 22px; flex: none; }
+.brand .mark { width: 32px; height: 32px; flex: none; }
 .brand .name { font-weight: 600; font-size: 15px; letter-spacing: .01em; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
 .brand .ver { flex: none; }
 .brand .ver { font: 500 11.5px var(--mono); color: var(--ink-3); background: var(--surface-2); border: 1px solid var(--line); padding: 1px 6px; border-radius: 999px; }
@@ -118,6 +118,7 @@ textarea { height: auto; padding: 8px 10px; width: 100%; resize: vertical; min-h
 .check input { width: 16px; height: 16px; accent-color: var(--accent); margin: 0; }
 
 main { max-width: 1440px; margin: 0 auto; padding: 28px 24px 72px; }
+.app-footer { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 8px; padding: 0 16px 24px; color: var(--ink-3); font-size: 12px; }
 .panel { display: grid; gap: 20px; }
 .page-head { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px 24px; }
 .page-head .t { display: grid; gap: 4px; margin-right: auto; min-width: 0; }
@@ -353,6 +354,17 @@ table.data .linkish:focus-visible { outline: 2px solid var(--accent); }
 .drop.over { border-color: var(--accent); background: var(--accent-wash); }
 .note { font-size: 12.5px; color: var(--ink-3); }
 .confirm { display: inline-flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 13px; }
+.security-intro { display: flex; align-items: center; gap: 24px; }
+.security-intro > img { width: 140px; height: 140px; object-fit: contain; flex: none; }
+.security-intro h3 { color: var(--ink); margin-bottom: 8px; }
+.security-intro p { color: var(--ink-2); line-height: 1.8; }
+.security-intro .security-signature { margin-top: 12px; color: var(--ink-3); font-size: 12px; }
+.security-companion h3 { margin-bottom: 12px; font-size: 15px; }
+.security-stickers { display: flex; flex-wrap: wrap; gap: 12px; }
+.security-stickers figure { margin: 0; display: flex; align-items: center; gap: 12px; padding: 12px 20px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); }
+.security-stickers img { width: 88px; height: 88px; object-fit: contain; }
+.security-stickers figcaption { color: var(--ink-2); }
+@media (max-width: 600px) { .security-intro { flex-direction: column; align-items: flex-start; gap: 16px; } .security-intro > img { width: 100px; height: 100px; } .security-stickers figure { flex: 1 1 100%; padding: 12px 16px; } }
 .prose { max-width: 78ch; display: grid; gap: 10px; }
 .prose h3 { font-size: 15px; margin-top: 10px; }
 .prose p, .prose li { color: var(--ink-2); }

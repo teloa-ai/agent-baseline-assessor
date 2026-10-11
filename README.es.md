@@ -1,5 +1,7 @@
 # Línea base de seguridad de identidad y autorización para agentes empresariales
 
+<p><img src="03-tool/assets/brand/teloa-avatar.png" width="64" height="64" alt="Teloa"></p>
+
 Una línea base abierta de seguridad y autoevaluación derivada del desarrollo de Teloa
 
 [简体中文](README.md) · [English](README.en.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Deutsch](README.de.md) · [Français](README.fr.md) · **Español**
@@ -10,13 +12,21 @@ La Línea base de seguridad de identidad y autorización para agentes empresaria
 
 Este repositorio contiene la línea base y una herramienta de autoevaluación complementaria. La línea base puede utilizarse directamente como insumo de diseño para construir una plataforma, como cuestionario para evaluar proveedores o como lista de verificación en revisiones de seguridad. La herramienta es una página web estática que registra los resultados requisito por requisito y genera un informe de madurez y un libro de Excel. Los datos de evaluación permanecen en el navegador del propio usuario.
 
-Autor: Max ([GitHub @cybermaxluo](https://github.com/cybermaxluo))
+Autor: Max Luo ([GitHub @cybermaxluo](https://github.com/cybermaxluo))
 
-Iniciada y mantenida por [Teloa](https://github.com/teloa-ai)
+Iniciada y mantenida por [Teloa AI Security](https://github.com/teloa-ai)
+
+Teloa AI Security es una iniciativa de investigación en seguridad de la IA y de código abierto surgida del desarrollo de Teloa. Se centra en la identidad de los agentes, la autorización, los límites de ejecución y la gobernanza de la seguridad, y convierte la experiencia de diseño en una línea base abierta, arquitecturas de referencia y herramientas de evaluación.
+
+**Teloa, la ardilla del equipo de seguridad**
+
+| Verificar primero la identidad | Limitar los permisos | Conservar las evidencias |
+| :---: | :---: | :---: |
+| <img src="03-tool/assets/brand/teloa-security.webp" width="100" alt="Teloa"> | <img src="03-tool/assets/brand/teloa-focused.png" width="100" alt="Teloa"> | <img src="03-tool/assets/brand/teloa-nailed-it.png" width="100" alt="Teloa"> |
 
 ## Origen y propósito
 
-Max elaboró este proyecto durante el desarrollo y el diseño de seguridad de [Teloa](https://github.com/teloa-ai/teloa). Parte de cuestiones de acceso a herramientas, aprobación humana, credenciales, aislamiento de ejecución y visibilidad de datos en la colaboración. Al combinarlas con especificaciones públicas, las convierte en requisitos verificables para plataformas empresariales. Su uso y revisión están abiertos a distintas plataformas y no dependen de la implementación de Teloa.
+Max Luo elaboró este proyecto durante el desarrollo y el diseño de seguridad de [Teloa](https://github.com/teloa-ai/teloa). Parte de cuestiones de acceso a herramientas, aprobación humana, credenciales, aislamiento de ejecución y visibilidad de datos en la colaboración. Al combinarlas con especificaciones públicas, las convierte en requisitos verificables para plataformas empresariales. Su uso y revisión están abiertos a distintas plataformas y no dependen de la implementación de Teloa.
 
 Esta línea base describe objetivos de diseño y evaluación de seguridad. El cumplimiento debe verificarse requisito por requisito según una versión, un alcance de despliegue y evidencias concretas. La autoevaluación no es una certificación independiente. Las referencias y correspondencias con OWASP, NIST, CSA y otras fuentes no implican el respaldo de esas organizaciones.
 
@@ -75,7 +85,7 @@ Cuando una plataforma carece de una capacidad (por ejemplo, no admite MCP), la s
 ## Inicio rápido
 
 - **Leer la línea base**: [01-standard/es/baseline-v1.0.md](01-standard/es/baseline-v1.0.md)
-- **Evaluar en línea**: abrir el sitio de [GitHub Pages](https://teloa-ai.github.io/agent-baseline-assessor/) publicado desde este repositorio; el idioma se cambia en la esquina superior derecha.
+- **Evaluar en línea**: abrir el sitio de [GitHub Pages](https://security.teloa.ai/agent-baseline-assessor/?lang=zh-CN) publicado desde este repositorio; el idioma se cambia en la esquina superior derecha.
 - **Evaluar sin conexión**: descargar el repositorio y abrir `03-tool/index.html`. Funciona igual que la versión en línea y no requiere conexión de red.
 - **Usar Excel**: completar [`03-tool/offline/baseline-assessment.xlsx`](03-tool/offline/baseline-assessment.xlsx) (en chino) o descargar una hoja en blanco en español desde la página **Datos** de la herramienta, con el botón «Descargar la hoja de evaluación en blanco». El libro incluye fórmulas de resumen y una lista de brechas, y puede volver a importarse en la herramienta.
 - **Despliegue privado**: la herramienta consta solo de archivos estáticos e incluye una configuración de nginx reforzada y un Dockerfile. Los detalles figuran en las [instrucciones de uso](02-usage/es/usage.md).
@@ -102,7 +112,7 @@ Cuando una plataforma carece de una capacidad (por ejemplo, no admite MCP), la s
 | [Instrucciones de uso](02-usage/es/usage.md) | Uso en línea, sin conexión y en despliegue privado; reglas de puntuación; publicación en GitHub Pages o Cloudflare Pages |
 | [Guía de la herramienta](03-tool/docs/es.md) | Estructura, comandos, actualización de la herramienta tras una revisión de la línea base, mantenimiento de las traducciones |
 | [Justificación de diseño (en inglés)](04-design/en/design-rationale.md) | Cuestiones de seguridad de Teloa, decisiones, correspondencias y métodos de verificación |
-| [Arquitectura de la línea base de seguridad de agentes](https://teloa-ai.github.io/agent-baseline-assessor/architecture.html?lang=es) | Pila tecnológica · Arquitectura de referencia · PNG / SVG / Mermaid |
+| [Arquitectura de la línea base de seguridad de agentes](https://security.teloa.ai/agent-baseline-assessor/architecture.html?lang=es) | Pila tecnológica · Arquitectura de referencia · PNG / SVG / Mermaid |
 | [Glosario](03-tool/i18n/glossary.md) | Terminología en los siete idiomas |
 | [Registro de cambios](CHANGELOG.md) | Cambios por versión (en chino e inglés) |
 
@@ -122,7 +132,7 @@ Las vulnerabilidades de seguridad de la herramienta deben notificarse de forma p
 
 Se ruega indicar la versión, por ejemplo:
 
-> Max. Línea base de seguridad de identidad y autorización para agentes empresariales (Enterprise Agent Identity and Authorization Security Baseline), v1.0, 2026.
+> Max Luo. Línea base de seguridad de identidad y autorización para agentes empresariales (Enterprise Agent Identity and Authorization Security Baseline), v1.0, 2026.
 
 Para citar un requisito concreto, se indican su identificador y la versión, por ejemplo «V4.2.1 (v1.0)». Los metadatos de cita legibles por máquina están en [CITATION.cff](CITATION.cff).
 
@@ -131,3 +141,4 @@ Para citar un requisito concreto, se indican su identificador y la versión, por
 - La línea base, las instrucciones de uso y el resto de la documentación: [CC BY 4.0](LICENSE-DOCS). Se permite copiarlos, adaptarlos y usarlos con fines comerciales, siempre que se reconozca la autoría y se indique si se han realizado cambios.
 - El código de la herramienta de autoevaluación: [Apache License 2.0](LICENSE).
 - Componentes de terceros: ExcelJS 4.4.0 (MIT) y fuentes IBM Plex (SIL OFL 1.1); los textos de las licencias se incluyen en `03-tool/vendor/`.
+- Marca Teloa e ilustraciones de la ardilla: consultar los [recursos de marca](03-tool/assets/brand/README.md); los derechos de uso de la marca se reservan por separado.

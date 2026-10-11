@@ -719,5 +719,10 @@ I18N.register("en", {
  "小节": "Section",
  "适用条件": "Applicability",
  "等级序号": "Level No.",
- "，": ", "
+ "，": ", ",
+ "Teloa AI Security 是源于 Teloa 开发实践的 AI 安全研究与开源计划，关注智能体身份、授权、执行边界与安全治理，并将设计经验整理为开放基线、参考架构和评估工具。": "Teloa AI Security is an AI security research and open-source initiative rooted in Teloa development. It focuses on agent identity, authorization, execution boundaries, and security governance, turning design experience into an open baseline, reference architectures, and assessment tools.",
+ "小松鼠 Teloa，加入安全团队": "Teloa the squirrel joins the security team",
+ "先核验身份": "Verify identity first",
+ "权限要收敛": "Keep permissions narrow",
+ "证据要留好": "Keep the evidence"
 });

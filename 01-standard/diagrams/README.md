@@ -1,6 +1,6 @@
 # 架构图 / Architecture figures
 
-两张图沿用提供的 HTML 设计的固定布局与视觉语义。[在线多语言图集](https://teloa-ai.github.io/agent-baseline-assessor/architecture.html)可切换语言并下载图片；[HTML 源码](../../%E6%99%BA%E8%83%BD%E4%BD%93%E5%AE%89%E5%85%A8%E5%9F%BA%E7%BA%BF%E6%9E%B6%E6%9E%84%E5%9B%BE.html)位于项目根目录，可在本地浏览器打开。
+两张图沿用提供的 HTML 设计的固定布局与视觉语义。[在线多语言图集](https://security.teloa.ai/agent-baseline-assessor/architecture.html)可切换语言并下载图片；[HTML 源码](../../%E6%99%BA%E8%83%BD%E4%BD%93%E5%AE%89%E5%85%A8%E5%9F%BA%E7%BA%BF%E6%9E%B6%E6%9E%84%E5%9B%BE.html)位于项目根目录，可在本地浏览器打开。
 
 - `agent-stack`：Agent = 模型 + Harness，包含 Harness 六个子系统、可选框架、运行时和执行环境。
 - `reference-architecture`：用户 → 交互渠道 → Harness → 策略决策点 → 出口网关 → 下游系统，以及模型、数据、执行环境、身份、管理与审计。

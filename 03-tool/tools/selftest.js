@@ -3,6 +3,7 @@
 const assert = require('assert');
 const fs = require('fs');
 const path = require('path');
+const vm = require('vm');
 const ExcelJS = require('exceljs');
 const B = require('../data/baseline.json');
 const Score = require('../assets/score.js');
@@ -38,6 +39,29 @@ function strings(o, acc) {
 }
 
 (async () => {
+  // 首次访问默认中文；显式语言链接和手动保存的语言仍优先。
+  const i18nSource = fs.readFileSync(path.join(__dirname, '../assets/i18n.js'), 'utf8');
+  function browserLocale({ search = '', saved = null, browserLanguage = 'en-US', storageBlocked = false } = {}) {
+    const sandbox = {
+      window: {}, document: {}, location: { search }, navigator: { language: browserLanguage },
+      localStorage: {
+        getItem() { if (storageBlocked) throw new Error('Storage blocked'); return saved; },
+        setItem() {}
+      }
+    };
+    vm.runInNewContext(i18nSource, sandbox);
+    return sandbox.I18N.getLocale();
+  }
+  for (const browserLanguage of ['en-US', 'ja-JP', 'ko-KR', 'de-DE', 'fr-FR', 'es-ES']) {
+    assert.strictEqual(browserLocale({ browserLanguage }), 'zh-CN', '首次访问不跟随浏览器语言');
+  }
+  assert.strictEqual(browserLocale({ saved: 'fr' }), 'fr', '保留手动选择的语言');
+  assert.strictEqual(browserLocale({ search: '?lang=zh-CN', saved: 'fr' }), 'zh-CN', '中文入口优先于已保存的语言');
+  assert.strictEqual(browserLocale({ search: '?lang=ja-JP', saved: 'fr' }), 'ja', '显式语言链接仍可打开译本');
+  assert.strictEqual(browserLocale({ search: '?lang=unknown', saved: 'es' }), 'es', '未知参数回退到已保存的语言');
+  assert.strictEqual(browserLocale({ saved: 'unknown', browserLanguage: 'en-US' }), 'zh-CN');
+  assert.strictEqual(browserLocale({ storageBlocked: true }), 'zh-CN', '禁用存储时仍默认中文');
+
   // 1. 评分规则的基本性质
   const all = Score.stats(B.requirements, items, 2);
   assert.strictEqual(all.inTarget, B.counts.L1 + B.counts.L2);

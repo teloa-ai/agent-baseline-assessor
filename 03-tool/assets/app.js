@@ -657,7 +657,12 @@
   /* ---------- 说明 ---------- */
   function renderAbout() {
     var c = B.counts;
-    $('#p-about').innerHTML = '<div class="page-head"><div class="t"><h2>' + I18N.t('说明') + '</h2><div class="sub">' + I18N.t('{title} v{version}（{date}）', { title: esc(I18N.t(B.title)), version: esc(B.version), date: esc(B.date) }) + '</div></div></div><div class="card prose">' +
+    $('#p-about').innerHTML = '<div class="page-head"><div class="t"><h2>' + I18N.t('说明') + '</h2><div class="sub">' + I18N.t('{title} v{version}（{date}）', { title: esc(I18N.t(B.title)), version: esc(B.version), date: esc(B.date) }) + '</div></div></div>' +
+      '<div class="card security-intro"><img src="assets/brand/teloa-security.webp" width="140" height="140" alt="" aria-hidden="true"><div><h3>Teloa AI Security</h3><p>' + I18N.t('Teloa AI Security 是源于 Teloa 开发实践的 AI 安全研究与开源计划，关注智能体身份、授权、执行边界与安全治理，并将设计经验整理为开放基线、参考架构和评估工具。') + '</p><p class="security-signature">Max Luo · Teloa AI Security</p></div></div>' +
+      '<div class="security-companion"><h3>' + I18N.t('小松鼠 Teloa，加入安全团队') + '</h3><div class="security-stickers">' +
+      '<figure><img src="assets/brand/teloa-security.webp" width="88" height="88" alt="" aria-hidden="true" loading="lazy"><figcaption>' + I18N.t('先核验身份') + '</figcaption></figure>' +
+      '<figure><img src="assets/brand/teloa-focused.png" width="88" height="88" alt="" aria-hidden="true" loading="lazy"><figcaption>' + I18N.t('权限要收敛') + '</figcaption></figure>' +
+      '<figure><img src="assets/brand/teloa-nailed-it.png" width="88" height="88" alt="" aria-hidden="true" loading="lazy"><figcaption>' + I18N.t('证据要留好') + '</figcaption></figure></div></div><div class="card prose">' +
       '<p>' + I18N.t('本工具用于对照《{title}》做自评。基线共 {total} 条要求，分布在 {chapters} 章 {sections} 个小节：L1 {l1} 条，L2 在此基础上增加 {l2} 条，L3 再增加 {l3} 条。完整条文、术语、架构和威胁模型见 <a href="{url}" target="_blank" rel="noopener">基线文档</a>。', { title: esc(I18N.t(B.title)), total: c.total, chapters: B.chapters.length, sections: c.sections, l1: c.L1, l2: c.L2, l3: c.L3, url: esc(docUrl()) }) + '</p>' +
       '<h3>' + I18N.t('怎么评') + '</h3><ul>' +
       '<li>' + I18N.t('先在应用栏选目标等级。L1 是底线，L2 是主流企业安全评审的标准，L3 面向高监管行业和高敏感数据。') + '</li>' +

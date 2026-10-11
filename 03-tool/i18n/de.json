@@ -718,5 +718,10 @@
   "V2.1、V4.3、V4.4": "V2.1, V4.3, V4.4",
   "V6.1、V6.2": "V6.1, V6.2",
   "V7.1、V7.4、V7.5": "V7.1, V7.4, V7.5",
-  "，": ", "
+  "，": ", ",
+  "Teloa AI Security 是源于 Teloa 开发实践的 AI 安全研究与开源计划，关注智能体身份、授权、执行边界与安全治理，并将设计经验整理为开放基线、参考架构和评估工具。": "Teloa AI Security ist eine Initiative für KI-Sicherheitsforschung und Open Source, die aus der Entwicklung von Teloa hervorgegangen ist. Sie untersucht Agentenidentität, Autorisierung, Ausführungsgrenzen und Sicherheitsgovernance und überführt Entwurfserfahrungen in eine offene Sicherheitsbaseline, Referenzarchitekturen und Bewertungswerkzeuge.",
+  "小松鼠 Teloa，加入安全团队": "Teloa, das Eichhörnchen im Sicherheitsteam",
+  "先核验身份": "Zuerst die Identität prüfen",
+  "权限要收敛": "Berechtigungen begrenzen",
+  "证据要留好": "Nachweise aufbewahren"
 }

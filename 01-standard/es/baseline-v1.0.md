@@ -1,14 +1,14 @@
 # Línea base de seguridad de identidad y autorización para agentes empresariales
 
-Autor: Max · 2026-10-07
+Autor: Max Luo · 2026-10-07
 
-Iniciada y mantenida por [Teloa](https://github.com/teloa-ai)
+Iniciada y mantenida por [Teloa AI Security](https://github.com/teloa-ai)
 
 Esta línea base se publica bajo la licencia [CC BY 4.0](../../LICENSE-DOCS).
 
 ## Prólogo
 
-Max elaboró esta línea base durante el desarrollo y el diseño de seguridad de [Teloa](https://github.com/teloa-ai/teloa). Teloa la inicia y mantiene, y está abierta al uso y revisión de distintas plataformas empresariales. Describe objetivos de seguridad sin afirmar que Teloa u otro producto cumplan todos los requisitos. La implementación debe verificarse según una versión, un alcance de despliegue y evidencias concretas. La autoevaluación no es una certificación independiente; las referencias y correspondencias no implican el respaldo de sus autores. Véase la [justificación de diseño (en inglés)](../../04-design/en/design-rationale.md).
+Max Luo elaboró esta línea base durante el desarrollo y el diseño de seguridad de [Teloa](https://github.com/teloa-ai/teloa). Teloa AI Security la inicia y mantiene, y está abierta al uso y revisión de distintas plataformas empresariales. Describe objetivos de seguridad sin afirmar que Teloa u otro producto cumplan todos los requisitos. La implementación debe verificarse según una versión, un alcance de despliegue y evidencias concretas. La autoevaluación no es una certificación independiente; las referencias y correspondencias no implican el respaldo de sus autores. Véase la [justificación de diseño (en inglés)](../../04-design/en/design-rationale.md).
 
 Esta línea base establece los requisitos de seguridad en materia de identidad y autorización que deben cumplir los agentes en entornos empresariales. Los requisitos se organizan en diez capítulos, primero según el orden en que ocurre una acción del agente y después según los objetos que persisten entre sesiones. Cada requisito puede verificarse de forma independiente y se clasifica en tres niveles, de L1 a L3.
 
@@ -140,7 +140,7 @@ El Agente está compuesto por el modelo y el Harness. La plataforma añade, fuer
 
 ![Capas de la pila tecnológica del Agente](../diagrams/es/agent-stack.png)
 
-[SVG editable](../diagrams/es/agent-stack.svg) · [Arquitectura de la línea base de seguridad de agentes](https://teloa-ai.github.io/agent-baseline-assessor/architecture.html?lang=es) · [Estructura lógica (Mermaid)](../diagrams/es/agent-stack.mmd)
+[SVG editable](../diagrams/es/agent-stack.svg) · [Arquitectura de la línea base de seguridad de agentes](https://security.teloa.ai/agent-baseline-assessor/architecture.html?lang=es) · [Estructura lógica (Mermaid)](../diagrams/es/agent-stack.mmd)
 
 El Harness puede apoyarse en un framework para su desarrollo, o bien ejecutarse directamente sobre un runtime. Según la clasificación de LangChain (véase el capítulo 2), Claude Code y Claude Agent SDK son Harness, LangGraph es un runtime y LangChain es un framework. El subsistema de controles de seguridad del Harness es el punto de aplicación de la mayoría de los requisitos de V3 y V5.
 
@@ -148,7 +148,7 @@ El Harness puede apoyarse en un framework para su desarrollo, o bien ejecutarse 
 
 ![Arquitectura de referencia y límites de confianza](../diagrams/es/reference-architecture.png)
 
-[SVG editable](../diagrams/es/reference-architecture.svg) · [Arquitectura de la línea base de seguridad de agentes](https://teloa-ai.github.io/agent-baseline-assessor/architecture.html?lang=es) · [Estructura lógica (Mermaid)](../diagrams/es/reference-architecture.mmd)
+[SVG editable](../diagrams/es/reference-architecture.svg) · [Arquitectura de la línea base de seguridad de agentes](https://security.teloa.ai/agent-baseline-assessor/architecture.html?lang=es) · [Estructura lógica (Mermaid)](../diagrams/es/reference-architecture.mmd)
 
 El azul claro indica controles de confianza y el azul oscuro destaca los controles principales. El modelo y el entorno de ejecución en cuadros naranjas rayados se tratan como no fiables. Las líneas continuas indican llamadas y ejecución; las discontinuas naranjas indican contenido devuelto no fiable. Las discontinuas grises de la figura 4.1 indican dependencias opcionales. Las flechas muestran relaciones lógicas; el acceso real a un modelo remoto también está sujeto a V4. El diagrama muestra un Harness alojado por la plataforma; los Harness de terminal siguen V5.4. El contenido de la capa de datos sigue siendo una entrada no fiable según V6 y V8.
 

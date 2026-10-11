@@ -718,5 +718,10 @@
   "小节": "Section",
   "适用条件": "Conditions d'application",
   "等级序号": "Numéro de niveau",
-  "，": ", "
+  "，": ", ",
+  "Teloa AI Security 是源于 Teloa 开发实践的 AI 安全研究与开源计划，关注智能体身份、授权、执行边界与安全治理，并将设计经验整理为开放基线、参考架构和评估工具。": "Teloa AI Security est une initiative de recherche en sécurité de l’IA et d’open source issue du développement de Teloa. Elle étudie l’identité des agents, l’autorisation, les frontières d’exécution et la gouvernance de la sécurité, et transforme l’expérience de conception en référentiel ouvert, architectures de référence et outils d’évaluation.",
+  "小松鼠 Teloa，加入安全团队": "Teloa, l’écureuil de l’équipe sécurité",
+  "先核验身份": "Vérifier d’abord l’identité",
+  "权限要收敛": "Limiter les permissions",
+  "证据要留好": "Conserver les preuves"
 }

@@ -1,5 +1,7 @@
 # 企业智能体身份与授权安全基线
 
+<p><img src="03-tool/assets/brand/teloa-avatar.png" width="64" height="64" alt="Teloa"></p>
+
 源于 Teloa 开发实践的开放安全基线与自评工具
 
 **简体中文** · [English](README.en.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Deutsch](README.de.md) · [Français](README.fr.md) · [Español](README.es.md)
@@ -10,13 +12,21 @@
 
 本仓库包含基线正文和配套的自评工具。正文可以直接用作平台建设的设计输入、供应商评估的问卷或安全评审的核对清单。自评工具是一个纯静态页面，逐条记录评估结果，生成成熟度报告和 Excel 评估表，数据只保存在使用者自己的浏览器里。
 
-作者：Max（[GitHub @cybermaxluo](https://github.com/cybermaxluo)）
+作者：Max Luo（[GitHub @cybermaxluo](https://github.com/cybermaxluo)）
 
-发起与维护：[Teloa](https://github.com/teloa-ai)
+发起与维护：[Teloa AI Security](https://github.com/teloa-ai)
+
+Teloa AI Security 是源于 Teloa 开发实践的 AI 安全研究与开源计划，关注智能体身份、授权、执行边界与安全治理，并将设计经验整理为开放基线、参考架构和评估工具。
+
+**小松鼠 Teloa，加入安全团队**
+
+| 先核验身份 | 权限要收敛 | 证据要留好 |
+| :---: | :---: | :---: |
+| <img src="03-tool/assets/brand/teloa-security.webp" width="100" alt="Teloa"> | <img src="03-tool/assets/brand/teloa-focused.png" width="100" alt="Teloa"> | <img src="03-tool/assets/brand/teloa-nailed-it.png" width="100" alt="Teloa"> |
 
 ## 项目缘起与定位
 
-本项目由 Max 在 [Teloa](https://github.com/teloa-ai/teloa) 开发与安全设计过程中整理。它从 AI 同事的工具授权、人工审批、凭据管理、执行隔离与协作数据可见性等问题出发，结合公开规范，归纳面向企业智能体平台的可验证要求。基线面向各类平台开放使用与评审，不依赖 Teloa 的具体实现。
+本项目由 Max Luo 在 [Teloa](https://github.com/teloa-ai/teloa) 开发与安全设计过程中整理。它从 AI 同事的工具授权、人工审批、凭据管理、执行隔离与协作数据可见性等问题出发，结合公开规范，归纳面向企业智能体平台的可验证要求。基线面向各类平台开放使用与评审，不依赖 Teloa 的具体实现。
 
 本基线描述安全设计与评估的目标；各产品是否满足要求，应按具体版本、部署范围和证据逐条判定。自评结果不构成独立认证，引用和映射 OWASP、NIST、CSA 等资料不代表这些组织的背书。
 
@@ -75,7 +85,7 @@ V1 至 V7 按一次智能体行为的发生顺序排列，V8 至 V10 覆盖跨�
 ## 快速开始
 
 - **阅读基线**：[01-standard/zh-CN/baseline-v1.0.md](01-standard/zh-CN/baseline-v1.0.md)
-- **在线自评**：打开本仓库发布的 [GitHub Pages](https://teloa-ai.github.io/agent-baseline-assessor/) 页面，右上角可切换语言。
+- **在线自评**：打开本仓库发布的 [GitHub Pages](https://security.teloa.ai/agent-baseline-assessor/?lang=zh-CN) 页面，首次访问默认中文，右上角可切换语言。
 - **离线自评**：下载仓库后双击 `03-tool/index.html`，功能与在线版相同，不需要联网。
 - **用 Excel 填写**：使用 [`03-tool/offline/baseline-assessment.xlsx`](03-tool/offline/baseline-assessment.xlsx)，表内带汇总公式和差距清单，填完可导回网页。
 - **私有化部署**：工具是纯静态文件，附带 nginx 安全配置和 Dockerfile，步骤见[使用方法](02-usage/zh-CN/usage.md)。
@@ -102,7 +112,7 @@ V1 至 V7 按一次智能体行为的发生顺序排列，V8 至 V10 覆盖跨�
 | [使用方法](02-usage/zh-CN/usage.md) | 在线、离线、私有化三种用法，评分规则，发布到 GitHub Pages 或 Cloudflare Pages |
 | [工具说明](03-tool/docs/zh-CN.md) | 目录结构、常用命令、基线修订后的更新流程、多语言维护 |
 | [设计思考](04-design/zh-CN/design-rationale.md) | Teloa 开发中的代表性安全问题、设计取舍、要求映射与核验方法 |
-| [智能体安全基线架构图](https://teloa-ai.github.io/agent-baseline-assessor/architecture.html?lang=zh-CN) | 技术栈分层 · 平台参考架构 · PNG / SVG / Mermaid |
+| [智能体安全基线架构图](https://security.teloa.ai/agent-baseline-assessor/architecture.html?lang=zh-CN) | 技术栈分层 · 平台参考架构 · PNG / SVG / Mermaid |
 | [术语表](03-tool/i18n/glossary.md) | 七种语言的术语对照 |
 | [变更记录](CHANGELOG.md) | 各版本的变更 |
 
@@ -122,7 +132,7 @@ V1 至 V7 按一次智能体行为的发生顺序排列，V8 至 V10 覆盖跨�
 
 引用时请注明版本号，例如：
 
-> Max. 企业智能体身份与授权安全基线（Enterprise Agent Identity and Authorization Security Baseline）v1.0, 2026.
+> Max Luo. 企业智能体身份与授权安全基线（Enterprise Agent Identity and Authorization Security Baseline）v1.0, 2026.
 
 引用具体要求时写出编号和版本，如「V4.2.1（v1.0）」。机器可读的引用信息见 [CITATION.cff](CITATION.cff)。
 
@@ -131,3 +141,4 @@ V1 至 V7 按一次智能体行为的发生顺序排列，V8 至 V10 覆盖跨�
 - 基线正文、使用方法和其他文档：[CC BY 4.0](LICENSE-DOCS)。可以复制、改编和商用，需署名并注明是否修改。
 - 自评工具代码：[Apache License 2.0](LICENSE)。
 - 第三方组件：ExcelJS 4.4.0（MIT），IBM Plex 字体（SIL OFL 1.1），许可文本随附于 `03-tool/vendor/`。
+- Teloa 品牌与小松鼠素材：[品牌素材说明](03-tool/assets/brand/README.md)，品牌使用权另行保留。

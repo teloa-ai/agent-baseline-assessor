@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "企业智能体身份与授权安全基线自评工具：纯静态页面，可在线、离线和私有化部署",
-  "author": "Max (https://github.com/cybermaxluo)",
+  "author": "Max Luo (https://github.com/cybermaxluo)",
   "scripts": {
     "build:xlsx": "node tools/build_xlsx.js",
     "build:i18n": "node tools/build_i18n.js",
