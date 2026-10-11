@@ -8,6 +8,8 @@ Eine offene Sicherheitsbaseline mit Selbstbewertung aus der Entwicklung von Telo
 
 [English](README.md) · [简体中文](README.zh-CN.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · **Deutsch** · [Français](README.fr.md) · [Español](README.es.md)
 
+[Website](https://www.teloa.ai/en/) · [Dokumentation](https://docs.teloa.ai/en/) · [Marktplatz](https://market.teloa.ai/en/) · [KI-Sicherheit](https://security.teloa.ai/?lang=en) · [Blog](https://www.teloa.ai/en/blog/) · [Sicherheitsmeldungen](https://security.teloa.ai/report/?lang=en)
+
 ![Version v1.0](https://img.shields.io/badge/version-v1.0-2a78d6) ![240 Anforderungen](https://img.shields.io/badge/requirements-240-2a78d6) ![7 Sprachen](https://img.shields.io/badge/languages-7-2a78d6) ![Lizenz der Baseline CC BY 4.0](https://img.shields.io/badge/standard-CC%20BY%204.0-555) ![Lizenz des Codes Apache-2.0](https://img.shields.io/badge/code-Apache--2.0-555)
 
 Die Sicherheitsbaseline für Identität und Autorisierung von Unternehmensagenten legt fest, welche Sicherheitsanforderungen an Identität und Autorisierung KI-Agenten in Unternehmensumgebungen erfüllen müssen. Sie beantwortet die grundlegenden Fragen hinter jeder Aktion eines Agenten: Wer hat sie ausgelöst, in wessen Auftrag wird sie ausgeführt, was darf der Agent tun, woher stammen die Zugangsdaten, wer sieht das Ergebnis und wie wird bei einem Vorfall die Zurechenbarkeit hergestellt?

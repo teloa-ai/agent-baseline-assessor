@@ -8,6 +8,8 @@ Teloa 개발에서 도출한 개방형 보안 기준선과 자가 평가 도구
 
 [English](README.md) · [简体中文](README.zh-CN.md) · [日本語](README.ja.md) · **한국어** · [Deutsch](README.de.md) · [Français](README.fr.md) · [Español](README.es.md)
 
+[공식 사이트](https://www.teloa.ai/en/) · [문서](https://docs.teloa.ai/en/) · [마켓플레이스](https://market.teloa.ai/en/) · [AI 보안](https://security.teloa.ai/?lang=en) · [블로그](https://www.teloa.ai/en/blog/) · [취약점 신고](https://security.teloa.ai/report/?lang=en)
+
 ![버전 v1.0](https://img.shields.io/badge/version-v1.0-2a78d6) ![요구사항 240개](https://img.shields.io/badge/requirements-240-2a78d6) ![언어 7개](https://img.shields.io/badge/languages-7-2a78d6) ![표준 라이선스 CC BY 4.0](https://img.shields.io/badge/standard-CC%20BY%204.0-555) ![코드 라이선스 Apache-2.0](https://img.shields.io/badge/code-Apache--2.0-555)
 
 엔터프라이즈 에이전트 신원 및 인가 보안 기준선은 기업 환경의 AI 에이전트가 신원과 인가 측면에서 충족해야 하는 보안 요구사항을 규정합니다. 에이전트의 행위 하나하나에 깔린 기본 질문, 즉 누가 시작했는지, 누구를 대신해 실행되는지, 무엇을 할 수 있는지, 자격 증명은 어디에서 오는지, 결과를 누가 보는지, 문제가 생겼을 때 책임을 어떻게 추적하는지에 답합니다.

@@ -8,6 +8,8 @@ Teloa の開発から生まれたオープンなセキュリティベースラ�
 
 [English](README.md) · [简体中文](README.zh-CN.md) · **日本語** · [한국어](README.ko.md) · [Deutsch](README.de.md) · [Français](README.fr.md) · [Español](README.es.md)
 
+[公式サイト](https://www.teloa.ai/en/) · [ドキュメント](https://docs.teloa.ai/en/) · [マーケットプレイス](https://market.teloa.ai/en/) · [AI セキュリティ](https://security.teloa.ai/?lang=en) · [ブログ](https://www.teloa.ai/en/blog/) · [脆弱性の報告](https://security.teloa.ai/report/?lang=en)
+
 ![バージョン v1.0](https://img.shields.io/badge/version-v1.0-2a78d6) ![要件 240 件](https://img.shields.io/badge/requirements-240-2a78d6) ![対応言語 7](https://img.shields.io/badge/languages-7-2a78d6) ![標準のライセンス CC BY 4.0](https://img.shields.io/badge/standard-CC%20BY%204.0-555) ![コードのライセンス Apache-2.0](https://img.shields.io/badge/code-Apache--2.0-555)
 
 エンタープライズエージェントのID・認可セキュリティベースラインは、企業環境で用いられる AI エージェントが ID と認可に関して満たすべきセキュリティ要件を定める。エージェントの1回の行為の背後にある基本的な問い、すなわち誰が開始したのか、誰の代理で実行されるのか、何をしてよいのか、資格情報はどこから来るのか、結果を誰が見るのか、問題が起きたときにどのように責任を追及するのか、に答えるものである。

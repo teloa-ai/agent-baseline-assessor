@@ -10,6 +10,8 @@
 
 报告中请写明受影响的版本或提交、复现步骤、影响范围，如有概念验证请一并附上。我们会在 7 天内确认收到，并在修复发布后致谢报告者（除非你希望匿名）。
 
+也可以通过 [security@teloa.ai](mailto:security@teloa.ai) 私下报告。跨项目的渠道与报告说明见 [Teloa AI Security 安全报告指引](https://security.teloa.ai/report/?lang=zh-CN)。
+
 ### 范围
 
 - 在范围内：`03-tool/` 下的页面、脚本、Excel 生成与解析、部署配置（`_headers`、`deploy/`、`.github/workflows/`）。
@@ -26,6 +28,8 @@
 If you find a security vulnerability in the self-assessment tool, such as cross-site scripting, code execution through an imported file, a content security policy bypass, or leakage of assessment data, report it privately through GitHub: open this repository's **Security** tab and choose **Report a vulnerability**. Please do not open a public issue.
 
 Include the affected version or commit, steps to reproduce, the impact, and a proof of concept if you have one. We will acknowledge the report within 7 days and credit the reporter once a fix is released, unless you prefer to remain anonymous.
+
+You can also report privately to [security@teloa.ai](mailto:security@teloa.ai). See the [Teloa AI Security reporting guidance](https://security.teloa.ai/report/?lang=en) for channels across projects.
 
 ### Scope
 

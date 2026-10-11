@@ -8,6 +8,8 @@ An enterprise agent identity and authorization security baseline and self-assess
 
 **English** · [简体中文](README.zh-CN.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Deutsch](README.de.md) · [Français](README.fr.md) · [Español](README.es.md)
 
+[Website](https://www.teloa.ai/en/) · [Docs](https://docs.teloa.ai/en/) · [Marketplace](https://market.teloa.ai/en/) · [AI Security](https://security.teloa.ai/?lang=en) · [Blog](https://www.teloa.ai/en/blog/) · [Security reports](https://security.teloa.ai/report/?lang=en)
+
 ![Version v1.0](https://img.shields.io/badge/version-v1.0-2a78d6) ![240 requirements](https://img.shields.io/badge/requirements-240-2a78d6) ![7 languages](https://img.shields.io/badge/languages-7-2a78d6) ![Standard license CC BY 4.0](https://img.shields.io/badge/standard-CC%20BY%204.0-555) ![Code license Apache-2.0](https://img.shields.io/badge/code-Apache--2.0-555)
 
 The Enterprise Agent Identity and Authorization Security Baseline sets out the identity and authorization security requirements that AI agents in an enterprise environment shall meet. It answers the basic questions behind every agent action: who initiated it, on whose behalf it runs, what it may do, where its credentials come from, who sees the result, and how accountability is established when something goes wrong.

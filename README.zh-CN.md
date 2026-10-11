@@ -8,6 +8,8 @@
 
 [English](README.md) · **简体中文** · [日本語](README.ja.md) · [한국어](README.ko.md) · [Deutsch](README.de.md) · [Français](README.fr.md) · [Español](README.es.md)
 
+[官网](https://www.teloa.ai/) · [文档](https://docs.teloa.ai/) · [资源市场](https://market.teloa.ai/) · [AI 安全研究](https://security.teloa.ai/?lang=zh-CN) · [博客](https://www.teloa.ai/blog/) · [安全报告](https://security.teloa.ai/report/?lang=zh-CN)
+
 ![版本 v1.0](https://img.shields.io/badge/version-v1.0-2a78d6) ![要求 240 条](https://img.shields.io/badge/requirements-240-2a78d6) ![语言 7 种](https://img.shields.io/badge/languages-7-2a78d6) ![标准许可 CC BY 4.0](https://img.shields.io/badge/standard-CC%20BY%204.0-555) ![代码许可 Apache-2.0](https://img.shields.io/badge/code-Apache--2.0-555)
 
 《企业智能体身份与授权安全基线》规定企业环境中的 AI 智能体在身份与授权上应满足的安全要求。它回答一次智能体行为背后的几个基本问题：谁在发起，代表谁，能做什么，凭证从哪里来，结果给谁看，出了问题怎么追责。

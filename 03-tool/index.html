@@ -9,8 +9,10 @@
 <title data-i18n="智能体安全基线自评">Agent Security Baseline Assessment</title>
 <link rel="icon" type="image/png" href="assets/brand/teloa-avatar.png">
 <link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/site-chrome.css">
 </head>
-<body>
+<body data-site-locales="en,zh-CN,ja,ko,de,fr,es">
+<div class="teloa-site-chrome" id="teloa-site-header"></div>
 <header class="app-bar">
   <div class="bar-in">
     <a class="brand" href="#matrix" aria-label="Agent Security Baseline Self-Assessment, back to the coverage matrix" data-i18n-attr="aria-label" data-i18n-source-aria-label="智能体安全基线自评，回到覆盖矩阵">
@@ -38,7 +40,7 @@
   <section class="panel" id="p-data" aria-label="Data" data-i18n-attr="aria-label" hidden data-i18n-source-aria-label="数据"></section>
   <section class="panel" id="p-about" aria-label="Notes" data-i18n-attr="aria-label" hidden data-i18n-source-aria-label="说明"></section>
 </main>
-<footer class="app-footer"><a href="https://github.com/teloa-ai" target="_blank" rel="noopener">Teloa AI Security</a></footer>
+<div class="teloa-site-chrome" id="teloa-site-footer"></div>
 <div id="drawer-root"></div>
 <div class="tip" id="tip" hidden></div>
 <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
@@ -54,6 +56,7 @@
 <script src="assets/score.js"></script>
 <script src="assets/charts.js"></script>
 <script src="assets/workbook.js"></script>
+<script src="assets/site-chrome.js"></script>
 <script src="assets/app.js"></script>
 </body>
 </html>

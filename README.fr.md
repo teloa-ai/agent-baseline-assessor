@@ -8,6 +8,8 @@ Un référentiel de sécurité ouvert et un outil d'auto-évaluation issus du d�
 
 [English](README.md) · [简体中文](README.zh-CN.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Deutsch](README.de.md) · **Français** · [Español](README.es.md)
 
+[Site officiel](https://www.teloa.ai/en/) · [Documentation](https://docs.teloa.ai/en/) · [Marketplace](https://market.teloa.ai/en/) · [Sécurité IA](https://security.teloa.ai/?lang=en) · [Blog](https://www.teloa.ai/en/blog/) · [Signalement de sécurité](https://security.teloa.ai/report/?lang=en)
+
 ![Version v1.0](https://img.shields.io/badge/version-v1.0-2a78d6) ![240 exigences](https://img.shields.io/badge/requirements-240-2a78d6) ![7 langues](https://img.shields.io/badge/languages-7-2a78d6) ![Licence du référentiel CC BY 4.0](https://img.shields.io/badge/standard-CC%20BY%204.0-555) ![Licence du code Apache-2.0](https://img.shields.io/badge/code-Apache--2.0-555)
 
 Le Référentiel de sécurité de l'identité et de l'autorisation des agents d'entreprise définit les exigences de sécurité en matière d'identité et d'autorisation que doivent respecter les agents d'IA dans un environnement d'entreprise. Il répond aux questions fondamentales que pose toute action d'un agent : qui l'a initiée, pour le compte de qui elle s'exécute, ce que l'agent peut faire, d'où proviennent ses identifiants, qui voit le résultat et comment imputer les actes en cas d'incident.

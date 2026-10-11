@@ -8,6 +8,8 @@ Una línea base abierta de seguridad y autoevaluación derivada del desarrollo d
 
 [English](README.md) · [简体中文](README.zh-CN.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Deutsch](README.de.md) · [Français](README.fr.md) · **Español**
 
+[Sitio web](https://www.teloa.ai/en/) · [Documentación](https://docs.teloa.ai/en/) · [Marketplace](https://market.teloa.ai/en/) · [Seguridad de IA](https://security.teloa.ai/?lang=en) · [Blog](https://www.teloa.ai/en/blog/) · [Informar de vulnerabilidades](https://security.teloa.ai/report/?lang=en)
+
 ![Versión v1.0](https://img.shields.io/badge/version-v1.0-2a78d6) ![240 requisitos](https://img.shields.io/badge/requirements-240-2a78d6) ![7 idiomas](https://img.shields.io/badge/languages-7-2a78d6) ![Licencia de la línea base CC BY 4.0](https://img.shields.io/badge/standard-CC%20BY%204.0-555) ![Licencia del código Apache-2.0](https://img.shields.io/badge/code-Apache--2.0-555)
 
 La Línea base de seguridad de identidad y autorización para agentes empresariales establece los requisitos de seguridad de identidad y autorización que deben cumplir los agentes de IA en un entorno empresarial. Responde a las preguntas básicas que hay detrás de cada acción de un agente: quién la inició, en nombre de quién se ejecuta, qué puede hacer, de dónde proceden sus credenciales, quién ve el resultado y cómo se atribuyen responsabilidades cuando algo sale mal.
