@@ -12,8 +12,6 @@ Le Référentiel de sécurité de l'identité et de l'autorisation des agents d'
 
 Ce dépôt contient le référentiel et un outil d'auto-évaluation associé. Le référentiel peut servir directement de donnée d'entrée pour la conception d'une plateforme, de questionnaire pour l'évaluation des fournisseurs ou de liste de contrôle pour les revues de sécurité. L'outil est une page web statique qui enregistre les résultats exigence par exigence et produit un rapport de maturité ainsi qu'un classeur Excel. Les données d'évaluation restent dans le navigateur de l'utilisateur.
 
-Auteur : Max Luo ([GitHub @cybermaxluo](https://github.com/cybermaxluo))
-
 Projet initié et maintenu par [Teloa AI Security](https://github.com/teloa-ai)
 
 Teloa AI Security est une initiative de recherche en sécurité de l’IA et d’open source issue du développement de Teloa. Elle étudie l’identité des agents, l’autorisation, les frontières d’exécution et la gouvernance de la sécurité, et transforme l’expérience de conception en référentiel ouvert, architectures de référence et outils d’évaluation.
@@ -25,6 +23,8 @@ Teloa AI Security est une initiative de recherche en sécurité de l’IA et d�
 | <img src="03-tool/assets/brand/teloa-security.webp" width="100" alt="Teloa"> | <img src="03-tool/assets/brand/teloa-focused.png" width="100" alt="Teloa"> | <img src="03-tool/assets/brand/teloa-nailed-it.png" width="100" alt="Teloa"> |
 
 ## Origine et objectif
+
+Auteur : Max Luo ([GitHub @cybermaxluo](https://github.com/cybermaxluo))
 
 Max Luo a élaboré ce projet pendant le développement et la conception de la sécurité de [Teloa](https://github.com/teloa-ai/teloa). Les questions d'accès aux outils, d'approbation humaine, d'identifiants, d'isolation et de visibilité des données en collaboration sont rapprochées de spécifications publiques pour produire des exigences vérifiables. Le référentiel est ouvert à l'utilisation et à la revue pour différentes plateformes, sans dépendre de l'implémentation de Teloa.
 

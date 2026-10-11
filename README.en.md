@@ -12,8 +12,6 @@ The Enterprise Agent Identity and Authorization Security Baseline sets out the i
 
 This repository contains the standard and a companion self-assessment tool. The standard can be used directly as design input for building a platform, as a questionnaire for vendor assessment, or as a checklist for security review. The tool is a static web page that records results requirement by requirement and produces a maturity report and an Excel workbook. Assessment data stays in the user's own browser.
 
-Author: Max Luo ([GitHub @cybermaxluo](https://github.com/cybermaxluo))
-
 Initiated and maintained by [Teloa AI Security](https://github.com/teloa-ai)
 
 Teloa AI Security is an AI security research and open-source initiative rooted in Teloa development. It focuses on agent identity, authorization, execution boundaries, and security governance, turning design experience into an open baseline, reference architectures, and assessment tools.
@@ -25,6 +23,8 @@ Teloa AI Security is an AI security research and open-source initiative rooted i
 | <img src="03-tool/assets/brand/teloa-security.webp" width="100" alt="Teloa"> | <img src="03-tool/assets/brand/teloa-focused.png" width="100" alt="Teloa"> | <img src="03-tool/assets/brand/teloa-nailed-it.png" width="100" alt="Teloa"> |
 
 ## Origins and purpose
+
+Author: Max Luo ([GitHub @cybermaxluo](https://github.com/cybermaxluo))
 
 Max Luo developed this project during the development and security design of [Teloa](https://github.com/teloa-ai/teloa). It draws on questions about AI employee tool access, human approval, credentials, execution isolation, and data visibility in collaboration. Combined with public specifications, these questions become verifiable requirements for enterprise agent platforms. The baseline is open to use and review across platforms and does not depend on Teloa's implementation.
 

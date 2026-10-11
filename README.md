@@ -2,7 +2,7 @@
 
 <p><img src="03-tool/assets/brand/teloa-avatar.png" width="64" height="64" alt="Teloa"></p>
 
-源于 Teloa 开发实践的开放安全基线与自评工具
+源于 Teloa 开发实践的企业智能体身份与授权安全基线及自评工具，由 Teloa AI Security 维护
 
 **简体中文** · [English](README.en.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Deutsch](README.de.md) · [Français](README.fr.md) · [Español](README.es.md)
 
@@ -11,8 +11,6 @@
 《企业智能体身份与授权安全基线》规定企业环境中的 AI 智能体在身份与授权上应满足的安全要求。它回答一次智能体行为背后的几个基本问题：谁在发起，代表谁，能做什么，凭证从哪里来，结果给谁看，出了问题怎么追责。
 
 本仓库包含基线正文和配套的自评工具。正文可以直接用作平台建设的设计输入、供应商评估的问卷或安全评审的核对清单。自评工具是一个纯静态页面，逐条记录评估结果，生成成熟度报告和 Excel 评估表，数据只保存在使用者自己的浏览器里。
-
-作者：Max Luo（[GitHub @cybermaxluo](https://github.com/cybermaxluo)）
 
 发起与维护：[Teloa AI Security](https://github.com/teloa-ai)
 
@@ -25,6 +23,8 @@ Teloa AI Security 是源于 Teloa 开发实践的 AI 安全研究与开源计划
 | <img src="03-tool/assets/brand/teloa-security.webp" width="100" alt="Teloa"> | <img src="03-tool/assets/brand/teloa-focused.png" width="100" alt="Teloa"> | <img src="03-tool/assets/brand/teloa-nailed-it.png" width="100" alt="Teloa"> |
 
 ## 项目缘起与定位
+
+作者：Max Luo（[GitHub @cybermaxluo](https://github.com/cybermaxluo)）
 
 本项目由 Max Luo 在 [Teloa](https://github.com/teloa-ai/teloa) 开发与安全设计过程中整理。它从 AI 同事的工具授权、人工审批、凭据管理、执行隔离与协作数据可见性等问题出发，结合公开规范，归纳面向企业智能体平台的可验证要求。基线面向各类平台开放使用与评审，不依赖 Teloa 的具体实现。
 

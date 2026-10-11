@@ -11,8 +11,8 @@ All notable changes are recorded here, following [Keep a Changelog](https://keep
 - 演示站、公共安全站与七语言 README 复用 Teloa 已定稿的小松鼠头像、安全岗位形象及表情素材；提示文案随语言切换，品牌素材权利单独说明。
   Reuse approved Teloa squirrel avatars, security-role artwork, and expressions in the demo, public security site, and seven README editions, with localized captions and separate brand-asset rights.
 
-- 统一署名为 Max Luo · Teloa AI Security，在工具说明中加入研究与开源计划介绍；首次访问默认中文，保留语言切换与选择记忆。
-  Use Max Luo · Teloa AI Security attribution, introduce the research and open-source initiative in About, and default first visits to Chinese while remembering manual language choices.
+- 项目简介与页面署名统一使用 Teloa AI Security，Max Luo 作者信息保留在详细介绍与标准正文中；工具说明加入研究与开源计划介绍，首次访问默认中文并记忆手动语言选择。
+  Use Teloa AI Security in project summaries and page attribution, retain Max Luo's authorship in detailed introductions and the standard, introduce the initiative in About, and default first visits to Chinese while remembering manual language choices.
 - 在线入口迁至公共安全站点的 `/agent-baseline-assessor/` 子目录，首页由独立组织站点维护。
   Move the online entry to `/agent-baseline-assessor/` under the public security site, whose homepage is maintained independently.
 

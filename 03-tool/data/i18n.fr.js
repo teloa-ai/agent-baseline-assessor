@@ -724,5 +724,6 @@ I18N.register("fr", {
  "小松鼠 Teloa，加入安全团队": "Teloa, l’écureuil de l’équipe sécurité",
  "先核验身份": "Vérifier d’abord l’identité",
  "权限要收敛": "Limiter les permissions",
- "证据要留好": "Conserver les preuves"
+ "证据要留好": "Conserver les preuves",
+ "作者：Max Luo": "Auteur : Max Luo"
 });

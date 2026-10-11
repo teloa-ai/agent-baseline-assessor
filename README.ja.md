@@ -12,8 +12,6 @@ Teloa の開発から生まれたオープンなセキュリティベースラ�
 
 本リポジトリには、ベースライン本文と付属の自己評価ツールが含まれる。本文は、プラットフォーム構築の設計インプット、ベンダー評価の質問票、セキュリティレビューのチェックリストとしてそのまま利用できる。自己評価ツールは静的な Web ページであり、要件ごとに評価結果を記録し、成熟度レポートと Excel 評価表を生成する。評価データは利用者自身のブラウザにのみ保存される。
 
-著者：Max Luo（[GitHub @cybermaxluo](https://github.com/cybermaxluo)）
-
 発起・保守：[Teloa AI Security](https://github.com/teloa-ai)
 
 Teloa AI Security は、Teloa の開発実践に基づく AI セキュリティ研究とオープンソースの取り組みです。エージェントのアイデンティティ、認可、実行境界、セキュリティガバナンスに焦点を当て、設計経験を公開ベースライン、参照アーキテクチャ、評価ツールとしてまとめています。
@@ -25,6 +23,8 @@ Teloa AI Security は、Teloa の開発実践に基づく AI セキュリティ�
 | <img src="03-tool/assets/brand/teloa-security.webp" width="100" alt="Teloa"> | <img src="03-tool/assets/brand/teloa-focused.png" width="100" alt="Teloa"> | <img src="03-tool/assets/brand/teloa-nailed-it.png" width="100" alt="Teloa"> |
 
 ## 背景と位置付け
+
+著者：Max Luo（[GitHub @cybermaxluo](https://github.com/cybermaxluo)）
 
 本プロジェクトは、Max Luo が [Teloa](https://github.com/teloa-ai/teloa) の開発とセキュリティ設計の過程で整理したものである。AI社員のツール認可、承認、資格情報、実行隔離、共同作業でのデータ可視性を出発点とし、公開仕様と合わせて企業向けエージェントプラットフォームの検証可能な要件にまとめている。各種プラットフォームでの利用とレビューに開かれており、Teloa 固有の実装には依存しない。
 

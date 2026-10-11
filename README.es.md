@@ -12,8 +12,6 @@ La Línea base de seguridad de identidad y autorización para agentes empresaria
 
 Este repositorio contiene la línea base y una herramienta de autoevaluación complementaria. La línea base puede utilizarse directamente como insumo de diseño para construir una plataforma, como cuestionario para evaluar proveedores o como lista de verificación en revisiones de seguridad. La herramienta es una página web estática que registra los resultados requisito por requisito y genera un informe de madurez y un libro de Excel. Los datos de evaluación permanecen en el navegador del propio usuario.
 
-Autor: Max Luo ([GitHub @cybermaxluo](https://github.com/cybermaxluo))
-
 Iniciada y mantenida por [Teloa AI Security](https://github.com/teloa-ai)
 
 Teloa AI Security es una iniciativa de investigación en seguridad de la IA y de código abierto surgida del desarrollo de Teloa. Se centra en la identidad de los agentes, la autorización, los límites de ejecución y la gobernanza de la seguridad, y convierte la experiencia de diseño en una línea base abierta, arquitecturas de referencia y herramientas de evaluación.
@@ -25,6 +23,8 @@ Teloa AI Security es una iniciativa de investigación en seguridad de la IA y de
 | <img src="03-tool/assets/brand/teloa-security.webp" width="100" alt="Teloa"> | <img src="03-tool/assets/brand/teloa-focused.png" width="100" alt="Teloa"> | <img src="03-tool/assets/brand/teloa-nailed-it.png" width="100" alt="Teloa"> |
 
 ## Origen y propósito
+
+Autor: Max Luo ([GitHub @cybermaxluo](https://github.com/cybermaxluo))
 
 Max Luo elaboró este proyecto durante el desarrollo y el diseño de seguridad de [Teloa](https://github.com/teloa-ai/teloa). Parte de cuestiones de acceso a herramientas, aprobación humana, credenciales, aislamiento de ejecución y visibilidad de datos en la colaboración. Al combinarlas con especificaciones públicas, las convierte en requisitos verificables para plataformas empresariales. Su uso y revisión están abiertos a distintas plataformas y no dependen de la implementación de Teloa.
 

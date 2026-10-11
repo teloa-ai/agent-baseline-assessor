@@ -12,8 +12,6 @@ Die Sicherheitsbaseline für Identität und Autorisierung von Unternehmensagente
 
 Dieses Repository enthält die Baseline und ein zugehöriges Selbstbewertungswerkzeug. Die Baseline kann unmittelbar als Designvorgabe beim Aufbau einer Plattform, als Fragebogen für die Lieferantenbewertung oder als Checkliste für Sicherheitsreviews verwendet werden. Das Werkzeug ist eine statische Webseite, die Ergebnisse je Anforderung erfasst und daraus einen Reifegradbericht und eine Excel-Arbeitsmappe erstellt. Die Bewertungsdaten verbleiben im Browser des Nutzers.
 
-Autor: Max Luo ([GitHub @cybermaxluo](https://github.com/cybermaxluo))
-
 Initiiert und gepflegt von [Teloa AI Security](https://github.com/teloa-ai)
 
 Teloa AI Security ist eine Initiative für KI-Sicherheitsforschung und Open Source, die aus der Entwicklung von Teloa hervorgegangen ist. Sie untersucht Agentenidentität, Autorisierung, Ausführungsgrenzen und Sicherheitsgovernance und überführt Entwurfserfahrungen in eine offene Sicherheitsbaseline, Referenzarchitekturen und Bewertungswerkzeuge.
@@ -25,6 +23,8 @@ Teloa AI Security ist eine Initiative für KI-Sicherheitsforschung und Open Sour
 | <img src="03-tool/assets/brand/teloa-security.webp" width="100" alt="Teloa"> | <img src="03-tool/assets/brand/teloa-focused.png" width="100" alt="Teloa"> | <img src="03-tool/assets/brand/teloa-nailed-it.png" width="100" alt="Teloa"> |
 
 ## Hintergrund und Ziel
+
+Autor: Max Luo ([GitHub @cybermaxluo](https://github.com/cybermaxluo))
 
 Max Luo hat dieses Projekt während der Entwicklung und Sicherheitsplanung von [Teloa](https://github.com/teloa-ai/teloa) erarbeitet. Ausgangspunkte sind Tool-Berechtigungen von KI-Mitarbeitern, menschliche Freigaben, Zugangsdaten, Ausführungsisolation und Datensichtbarkeit bei der Zusammenarbeit. Zusammen mit öffentlichen Spezifikationen werden daraus überprüfbare Anforderungen für Unternehmensagenten. Die Baseline ist für verschiedene Plattformen offen und nicht an Teloas Implementierung gebunden.
 
