@@ -1,48 +1,48 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="对照《企业智能体身份与授权安全基线》做自评：覆盖矩阵、逐条评估、成熟度报告与图表，数据只保存在本地浏览器。" data-i18n-attr="content">
+<meta name="description" content="Self-assessment against the Enterprise Agent Identity and Authorization Security Baseline: coverage matrix, requirement-by-requirement assessment, maturity report and charts. Data stays in the local browser." data-i18n-attr="content" data-i18n-source-content="对照《企业智能体身份与授权安全基线》做自评：覆盖矩阵、逐条评估、成熟度报告与图表，数据只保存在本地浏览器。">
 <meta name="referrer" content="no-referrer">
 <meta name="author" content="Teloa AI Security">
-<title data-i18n="智能体安全基线自评">智能体安全基线自评</title>
+<title data-i18n="智能体安全基线自评">Agent Security Baseline Assessment</title>
 <link rel="icon" type="image/png" href="assets/brand/teloa-avatar.png">
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
 <header class="app-bar">
   <div class="bar-in">
-    <a class="brand" href="#matrix" aria-label="智能体安全基线自评，回到覆盖矩阵" data-i18n-attr="aria-label">
+    <a class="brand" href="#matrix" aria-label="Agent Security Baseline Self-Assessment, back to the coverage matrix" data-i18n-attr="aria-label" data-i18n-source-aria-label="智能体安全基线自评，回到覆盖矩阵">
       <img class="mark" src="assets/brand/teloa-avatar.png" width="32" height="32" alt="" aria-hidden="true">
-      <span class="name" data-i18n="智能体安全基线自评">智能体安全基线自评</span><span class="ver" id="ver"></span>
+      <span class="name" data-i18n="智能体安全基线自评">Agent Security Baseline Assessment</span><span class="ver" id="ver"></span>
     </a>
-    <nav class="tabs" aria-label="页面" data-i18n-attr="aria-label">
-      <a href="#matrix" data-i18n="覆盖矩阵">覆盖矩阵</a>
-      <a href="#items" data-i18n="逐条评估">逐条评估</a>
-      <a href="#results" data-i18n="评估报告">评估报告</a>
-      <a href="#data" data-i18n="数据">数据</a>
-      <a href="#about" data-i18n="说明">说明</a>
+    <nav class="tabs" aria-label="Pages" data-i18n-attr="aria-label" data-i18n-source-aria-label="页面">
+      <a href="#matrix" data-i18n="覆盖矩阵">Coverage Matrix</a>
+      <a href="#items" data-i18n="逐条评估">Requirements</a>
+      <a href="#results" data-i18n="评估报告">Assessment Report</a>
+      <a href="#data" data-i18n="数据">Data</a>
+      <a href="#about" data-i18n="说明">About</a>
     </nav>
     <div class="bar-right">
       <span class="who" id="who"></span>
-      <div class="target"><span data-i18n="目标等级">目标等级</span><div class="seg" id="targetSeg" role="group" aria-label="目标等级" data-i18n-attr="aria-label"></div></div>
-      <select class="lang-sel" id="langSel" aria-label="语言" data-i18n-attr="aria-label"></select>
+      <div class="target"><span data-i18n="目标等级">Target Level</span><div class="seg" id="targetSeg" role="group" aria-label="Target Level" data-i18n-attr="aria-label" data-i18n-source-aria-label="目标等级"></div></div>
+      <select class="lang-sel" id="langSel" aria-label="Language" data-i18n-attr="aria-label" data-i18n-source-aria-label="语言"></select>
     </div>
   </div>
 </header>
 <main>
-  <section class="panel" id="p-matrix" aria-label="覆盖矩阵" data-i18n-attr="aria-label"></section>
-  <section class="panel" id="p-items" aria-label="逐条评估" data-i18n-attr="aria-label" hidden></section>
-  <section class="panel" id="p-results" aria-label="评估报告" data-i18n-attr="aria-label" hidden></section>
-  <section class="panel" id="p-data" aria-label="数据" data-i18n-attr="aria-label" hidden></section>
-  <section class="panel" id="p-about" aria-label="说明" data-i18n-attr="aria-label" hidden></section>
+  <section class="panel" id="p-matrix" aria-label="Coverage Matrix" data-i18n-attr="aria-label" data-i18n-source-aria-label="覆盖矩阵"></section>
+  <section class="panel" id="p-items" aria-label="Assess Individually" data-i18n-attr="aria-label" hidden data-i18n-source-aria-label="逐条评估"></section>
+  <section class="panel" id="p-results" aria-label="Assessment Report" data-i18n-attr="aria-label" hidden data-i18n-source-aria-label="评估报告"></section>
+  <section class="panel" id="p-data" aria-label="Data" data-i18n-attr="aria-label" hidden data-i18n-source-aria-label="数据"></section>
+  <section class="panel" id="p-about" aria-label="Notes" data-i18n-attr="aria-label" hidden data-i18n-source-aria-label="说明"></section>
 </main>
 <footer class="app-footer"><a href="https://github.com/teloa-ai" target="_blank" rel="noopener">Teloa AI Security</a></footer>
 <div id="drawer-root"></div>
 <div class="tip" id="tip" hidden></div>
 <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
-<noscript><p style="padding:24px">本工具需要启用 JavaScript。 This tool requires JavaScript.</p></noscript>
+<noscript><p style="padding:24px">This tool requires JavaScript. 本工具需要启用 JavaScript。</p></noscript>
 <script src="assets/i18n.js"></script>
 <script src="data/i18n.en.js"></script>
 <script src="data/i18n.ja.js"></script>

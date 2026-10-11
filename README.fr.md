@@ -4,7 +4,7 @@
 
 Un référentiel de sécurité ouvert et un outil d'auto-évaluation issus du développement de Teloa
 
-[简体中文](README.md) · [English](README.en.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Deutsch](README.de.md) · **Français** · [Español](README.es.md)
+[English](README.md) · [简体中文](README.zh-CN.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Deutsch](README.de.md) · **Français** · [Español](README.es.md)
 
 ![Version v1.0](https://img.shields.io/badge/version-v1.0-2a78d6) ![240 exigences](https://img.shields.io/badge/requirements-240-2a78d6) ![7 langues](https://img.shields.io/badge/languages-7-2a78d6) ![Licence du référentiel CC BY 4.0](https://img.shields.io/badge/standard-CC%20BY%204.0-555) ![Licence du code Apache-2.0](https://img.shields.io/badge/code-Apache--2.0-555)
 
@@ -85,9 +85,9 @@ Lorsqu'une plateforme ne dispose pas d'une capacité (par exemple, si elle ne pr
 ## Démarrage rapide
 
 - **Lire le référentiel** : [01-standard/fr/baseline-v1.0.md](01-standard/fr/baseline-v1.0.md)
-- **Évaluer en ligne** : ouvrir le site [GitHub Pages](https://security.teloa.ai/agent-baseline-assessor/?lang=zh-CN) publié à partir de ce dépôt ; la langue se change en haut à droite.
+- **Évaluer en ligne** : ouvrir le site [GitHub Pages](https://security.teloa.ai/agent-baseline-assessor/?lang=fr) publié à partir de ce dépôt ; la langue se change en haut à droite.
 - **Évaluer hors ligne** : télécharger le dépôt et ouvrir `03-tool/index.html`. Les fonctionnalités sont identiques à celles de la version en ligne et aucune connexion réseau n'est nécessaire.
-- **Utiliser Excel** : remplir [`03-tool/offline/baseline-assessment.xlsx`](03-tool/offline/baseline-assessment.xlsx) (en chinois), ou télécharger une grille vierge en français depuis la page **Données** de l'outil, avec le bouton « Télécharger la grille d'évaluation vierge ». Le classeur comporte des formules de synthèse et une liste des écarts, et peut être réimporté dans l'outil.
+- **Utiliser Excel** : remplir [`03-tool/offline/baseline-assessment.xlsx`](03-tool/offline/baseline-assessment.xlsx) (en anglais), ou télécharger une grille vierge en français depuis la page **Données** de l'outil, avec le bouton « Télécharger la grille d'évaluation vierge ». Le classeur comporte des formules de synthèse et une liste des écarts, et peut être réimporté dans l'outil.
 - **Déploiement privé** : l'outil se compose uniquement de fichiers statiques et est fourni avec une configuration nginx durcie et un Dockerfile. Voir le [mode d'emploi](02-usage/fr/usage.md).
 
 ## Structure du dépôt
@@ -100,7 +100,7 @@ Lorsqu'une plateforme ne dispose pas d'une capacité (par exemple, si elle ne pr
 03-tool/                                Outil d'auto-évaluation : page, données, modèle Excel, scripts, configuration de déploiement
 03-tool/docs/<langue>.md                Notes de maintenance de l'outil
 04-design/zh-CN/, en/                 Réflexions de conception en chinois et anglais
-智能体安全基线架构图.html             Architecture de la baseline de sécurité des agents
+01-standard/diagrams/index.html      Architecture de la baseline de sécurité des agents
 .github/                                Workflow GitHub Pages, modèles d'issues et de pull requests
 ```
 
@@ -112,7 +112,7 @@ Lorsqu'une plateforme ne dispose pas d'une capacité (par exemple, si elle ne pr
 | [Mode d'emploi](02-usage/fr/usage.md) | Utilisation en ligne, hors ligne et en déploiement privé ; règles de notation ; publication sur GitHub Pages ou Cloudflare Pages |
 | [Notes sur l'outil](03-tool/docs/fr.md) | Structure, commandes, mise à jour de l'outil après une révision du référentiel, maintenance des traductions |
 | [Choix de conception (en anglais)](04-design/en/design-rationale.md) | Questions de sécurité issues de Teloa, compromis, correspondances et vérification |
-| [Architecture de la baseline de sécurité des agents](https://security.teloa.ai/agent-baseline-assessor/architecture.html?lang=fr) | Pile technologique · Architecture de référence · PNG / SVG / Mermaid |
+| [Architecture de la baseline de sécurité des agents](https://security.teloa.ai/agent-baseline-assessor/01-standard/diagrams/?lang=fr) | Pile technologique · Architecture de référence · PNG / SVG / Mermaid |
 | [Glossaire](03-tool/i18n/glossary.md) | Terminologie dans les sept langues |
 | [Journal des modifications](CHANGELOG.md) | Modifications par version (en chinois et en anglais) |
 

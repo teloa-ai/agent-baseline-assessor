@@ -4,7 +4,7 @@
 
 Teloa の開発から生まれたオープンなセキュリティベースラインと自己評価ツール
 
-[简体中文](README.md) · [English](README.en.md) · **日本語** · [한국어](README.ko.md) · [Deutsch](README.de.md) · [Français](README.fr.md) · [Español](README.es.md)
+[English](README.md) · [简体中文](README.zh-CN.md) · **日本語** · [한국어](README.ko.md) · [Deutsch](README.de.md) · [Français](README.fr.md) · [Español](README.es.md)
 
 ![バージョン v1.0](https://img.shields.io/badge/version-v1.0-2a78d6) ![要件 240 件](https://img.shields.io/badge/requirements-240-2a78d6) ![対応言語 7](https://img.shields.io/badge/languages-7-2a78d6) ![標準のライセンス CC BY 4.0](https://img.shields.io/badge/standard-CC%20BY%204.0-555) ![コードのライセンス Apache-2.0](https://img.shields.io/badge/code-Apache--2.0-555)
 
@@ -85,9 +85,9 @@ V1〜V7 は、エージェントの1回の行為が進む順序に沿って並�
 ## クイックスタート
 
 - **ベースラインを読む**：[01-standard/ja/baseline-v1.0.md](01-standard/ja/baseline-v1.0.md)
-- **オンラインで評価する**：本リポジトリから公開される [GitHub Pages](https://security.teloa.ai/agent-baseline-assessor/?lang=zh-CN) のサイトを開く。右上で言語を切り替えられる。
+- **オンラインで評価する**：本リポジトリから公開される [GitHub Pages](https://security.teloa.ai/agent-baseline-assessor/?lang=ja) のサイトを開く。右上で言語を切り替えられる。
 - **オフラインで評価する**：リポジトリをダウンロードし、`03-tool/index.html` を開く。機能はオンライン版と同じで、ネットワーク接続は不要である。
-- **Excel を使う**：[`03-tool/offline/baseline-assessment.xlsx`](03-tool/offline/baseline-assessment.xlsx)（中国語）に入力するか、ツールの **データ** ページにある「空白の評価表をダウンロード」から日本語の空白の評価表を取得する。評価表には集計数式とギャップ一覧が含まれ、入力後はツールに読み込み直すことができる。
+- **Excel を使う**：[`03-tool/offline/baseline-assessment.xlsx`](03-tool/offline/baseline-assessment.xlsx)（英語）に入力するか、ツールの **データ** ページにある「空白の評価表をダウンロード」から日本語の空白の評価表を取得する。評価表には集計数式とギャップ一覧が含まれ、入力後はツールに読み込み直すことができる。
 - **私有化デプロイ**：ツールは静的ファイルのみで構成され、強化済みの nginx 設定と Dockerfile が付属する。手順は[利用方法](02-usage/ja/usage.md)を参照。
 
 ## リポジトリ構成
@@ -100,7 +100,7 @@ V1〜V7 は、エージェントの1回の行為が進む順序に沿って並�
 03-tool/                              自己評価ツール：ページ、データ、Excel テンプレート、スクリプト、デプロイ設定
 03-tool/docs/<言語>.md                ツールの保守説明
 04-design/zh-CN/, en/                 中国語・英語の設計考察
-智能体安全基线架构图.html             エージェント安全基線アーキテクチャ
+01-standard/diagrams/index.html      エージェント安全基線アーキテクチャ
 .github/                              GitHub Pages 公開ワークフロー、Issue と Pull Request のテンプレート
 ```
 
@@ -112,7 +112,7 @@ V1〜V7 は、エージェントの1回の行為が進む順序に沿って並�
 | [利用方法](02-usage/ja/usage.md) | オンライン、オフライン、私有化デプロイの3つの利用方法、評価ルール、GitHub Pages 又は Cloudflare Pages への公開 |
 | [ツール説明](03-tool/docs/ja.md) | ディレクトリ構成、主なコマンド、ベースライン改訂後のツール更新手順、翻訳の保守 |
 | [設計上の考察（英語）](04-design/en/design-rationale.md) | Teloa 開発時の安全上の問題、設計のトレードオフ、対応要件と検証方法 |
-| [エージェント安全基線アーキテクチャ](https://security.teloa.ai/agent-baseline-assessor/architecture.html?lang=ja) | 技術スタック · プラットフォーム参照アーキテクチャ · PNG / SVG / Mermaid |
+| [エージェント安全基線アーキテクチャ](https://security.teloa.ai/agent-baseline-assessor/01-standard/diagrams/?lang=ja) | 技術スタック · プラットフォーム参照アーキテクチャ · PNG / SVG / Mermaid |
 | [用語集](03-tool/i18n/glossary.md) | 7 言語の用語対照 |
 | [変更履歴](CHANGELOG.md) | バージョンごとの変更内容（中国語・英語） |
 

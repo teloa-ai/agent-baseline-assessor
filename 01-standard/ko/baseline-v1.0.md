@@ -140,7 +140,7 @@
 
 ![에이전트 기술 스택 계층](../diagrams/ko/agent-stack.png)
 
-[편집 가능한 SVG](../diagrams/ko/agent-stack.svg) · [에이전트 보안 기준 아키텍처](https://security.teloa.ai/agent-baseline-assessor/architecture.html?lang=ko) · [논리 구조(Mermaid)](../diagrams/ko/agent-stack.mmd)
+[편집 가능한 SVG](../diagrams/ko/agent-stack.svg) · [에이전트 보안 기준 아키텍처](https://security.teloa.ai/agent-baseline-assessor/01-standard/diagrams/?lang=ko) · [논리 구조(Mermaid)](../diagrams/ko/agent-stack.mmd)
 
 Harness는 프레임워크를 활용하여 개발할 수도 있고, 런타임 위에서 직접 실행될 수도 있습니다. 제2장에서 인용한 LangChain의 분류에 따르면 Claude Code와 Claude Agent SDK는 Harness에, LangGraph는 런타임에, LangChain은 프레임워크에 속합니다. Harness의 보안 통제 하위 시스템은 V3과 V5 요구사항 대부분이 적용되는 지점입니다.
 
@@ -148,7 +148,7 @@ Harness는 프레임워크를 활용하여 개발할 수도 있고, 런타임 �
 
 ![플랫폼 참조 아키텍처와 신뢰 경계](../diagrams/ko/reference-architecture.png)
 
-[편집 가능한 SVG](../diagrams/ko/reference-architecture.svg) · [에이전트 보안 기준 아키텍처](https://security.teloa.ai/agent-baseline-assessor/architecture.html?lang=ko) · [논리 구조(Mermaid)](../diagrams/ko/reference-architecture.mmd)
+[편집 가능한 SVG](../diagrams/ko/reference-architecture.svg) · [에이전트 보안 기준 아키텍처](https://security.teloa.ai/agent-baseline-assessor/01-standard/diagrams/?lang=ko) · [논리 구조(Mermaid)](../diagrams/ko/reference-architecture.mmd)
 
 연한 파란색은 신뢰하는 제어를, 진한 파란색은 주요 보안 제어를 나타냅니다. 주황색 사선 상자의 모델과 실행 환경은 신뢰하지 않습니다. 실선은 호출과 실행, 주황색 점선은 신뢰하지 않는 반환 콘텐츠, 그림 4.1의 회색 점선은 선택적 의존성을 나타냅니다. 화살표는 논리 관계이며 원격 모델의 실제 출구 접근에도 V4가 적용됩니다. 그림은 플랫폼이 호스팅하는 Harness를 나타내며 단말 Harness는 V5.4를 따릅니다. 데이터 계층의 콘텐츠는 V6와 V8에 따라 신뢰할 수 없는 입력으로 처리합니다.
 

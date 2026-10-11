@@ -17,7 +17,7 @@ const HEAD = {
   fr: ['Chapitre', 'Nom', 'Question traitée', 'L1', 'Ajouts L2', 'Ajouts L3', 'Total', 'Total'],
   es: ['Capítulo', 'Nombre', 'Pregunta que responde', 'L1', 'Añade L2', 'Añade L3', 'Total', 'Total']
 };
-const FILE = (code) => path.join(ROOT, code === 'zh-CN' ? 'README.md' : `README.${code}.md`);
+const FILE = (code) => path.join(ROOT, code === 'en' ? 'README.md' : `README.${code}.md`);
 
 for (const code of Object.keys(HEAD)) {
   const f = FILE(code);

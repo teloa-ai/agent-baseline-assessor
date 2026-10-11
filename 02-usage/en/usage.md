@@ -91,4 +91,6 @@ The published address is `https://<project-name>.pages.dev`. You can also bind y
 
 ## 6. Languages
 
-The page is available in 简体中文, English, 日本語, 한국어, Deutsch, Français and Español. Switch languages in the top-right corner; switching does not affect assessment data already entered. The first visit defaults to Simplified Chinese; a manually selected language is remembered, and appending `?lang=en` (or `zh-CN`, `ja`, `ko`, `de`, `fr`, `es`) to the address opens a specific language. Exported Excel files use the current language, and files exported in any language can be imported. The offline workbook under `offline/` is in Chinese; for other languages, use **Download blank assessment form** on the **Data** page.
+The page is available in 简体中文, English, 日本語, 한국어, Deutsch, Français and Español. Switch languages in the top-right corner; switching does not affect assessment data already entered. The first visit defaults to English; a manually selected language is remembered, and appending `?lang=en` (or `zh-CN`, `ja`, `ko`, `de`, `fr`, `es`) to the address opens a specific language. Exported Excel files use the current language, and files exported in any language can be imported. The offline workbook under `offline/` is in English; for other languages, use **Download blank assessment form** on the **Data** page.
+
+Chinese offline workbook: [baseline-assessment.zh-CN.xlsx](../../03-tool/offline/baseline-assessment.zh-CN.xlsx).

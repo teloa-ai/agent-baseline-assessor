@@ -39,7 +39,7 @@ function strings(o, acc) {
 }
 
 (async () => {
-  // 首次访问默认中文；显式语言链接和手动保存的语言仍优先。
+  // 首次访问默认英文；显式语言链接和手动保存的语言仍优先。
   const i18nSource = fs.readFileSync(path.join(__dirname, '../assets/i18n.js'), 'utf8');
   function browserLocale({ search = '', saved = null, browserLanguage = 'en-US', storageBlocked = false } = {}) {
     const sandbox = {
@@ -52,15 +52,15 @@ function strings(o, acc) {
     vm.runInNewContext(i18nSource, sandbox);
     return sandbox.I18N.getLocale();
   }
-  for (const browserLanguage of ['en-US', 'ja-JP', 'ko-KR', 'de-DE', 'fr-FR', 'es-ES']) {
-    assert.strictEqual(browserLocale({ browserLanguage }), 'zh-CN', '首次访问不跟随浏览器语言');
+  for (const browserLanguage of ['zh-CN', 'en-US', 'ja-JP', 'ko-KR', 'de-DE', 'fr-FR', 'es-ES']) {
+    assert.strictEqual(browserLocale({ browserLanguage }), 'en', '首次访问默认英文，不跟随浏览器语言');
   }
   assert.strictEqual(browserLocale({ saved: 'fr' }), 'fr', '保留手动选择的语言');
   assert.strictEqual(browserLocale({ search: '?lang=zh-CN', saved: 'fr' }), 'zh-CN', '中文入口优先于已保存的语言');
   assert.strictEqual(browserLocale({ search: '?lang=ja-JP', saved: 'fr' }), 'ja', '显式语言链接仍可打开译本');
   assert.strictEqual(browserLocale({ search: '?lang=unknown', saved: 'es' }), 'es', '未知参数回退到已保存的语言');
-  assert.strictEqual(browserLocale({ saved: 'unknown', browserLanguage: 'en-US' }), 'zh-CN');
-  assert.strictEqual(browserLocale({ storageBlocked: true }), 'zh-CN', '禁用存储时仍默认中文');
+  assert.strictEqual(browserLocale({ saved: 'unknown', browserLanguage: 'en-US' }), 'en');
+  assert.strictEqual(browserLocale({ storageBlocked: true }), 'en', '禁用存储时仍默认英文');
 
   // 1. 评分规则的基本性质
   const all = Score.stats(B.requirements, items, 2);
@@ -81,7 +81,8 @@ function strings(o, acc) {
   assert.strictEqual(L.t('一个没有译文的词'), '一个没有译文的词', '缺词条应回退到中文');
   assert.strictEqual(L.t('底线'), 'Baseline', 'en 词典应生效');
   L.setLocale('zh-CN');
-  assert.strictEqual(L.setLocale('xx'), 'zh-CN', '未知语言回退到 zh-CN');
+  assert.strictEqual(L.setLocale('xx'), 'en', '未知语言回退到默认英文');
+  assert.strictEqual(L10N.init().getLocale(), 'en', 'Node 端默认英文');
 
   // 3. 生成 → 写出 → 读回（中文）
   const wb = Workbook.build(ExcelJS, B, A, Score);
@@ -125,7 +126,7 @@ function strings(o, acc) {
   for (const m of html.matchAll(/data-i18n="([^"]*)"/g)) if (CJK.test(m[1])) need.add(m[1]);
   for (const m of html.matchAll(/<[^>]*data-i18n-attr="([^"]+)"[^>]*>/g)) {
     for (const a of m[1].split('|')) {
-      const v = m[0].match(new RegExp('\\s' + a.trim() + '="([^"]*)"'));
+      const v = m[0].match(new RegExp('\\sdata-i18n-source-' + a.trim() + '="([^"]*)"')) || m[0].match(new RegExp('\\s' + a.trim() + '="([^"]*)"'));
       if (v && CJK.test(v[1])) need.add(v[1]);
     }
   }

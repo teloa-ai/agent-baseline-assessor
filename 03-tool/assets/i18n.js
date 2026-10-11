@@ -8,9 +8,10 @@
   'use strict';
 
   var SOURCE = 'zh-CN';
+  var DEFAULT = 'en';
   var LOCALES = [
-    { code: 'zh-CN', name: '简体中文' },
     { code: 'en', name: 'English' },
+    { code: 'zh-CN', name: '简体中文' },
     { code: 'ja', name: '日本語' },
     { code: 'ko', name: '한국어' },
     { code: 'de', name: 'Deutsch' },
@@ -20,7 +21,7 @@
   var PREFIX = { zh: 'zh-CN', en: 'en', ja: 'ja', ko: 'ko', de: 'de', fr: 'fr', es: 'es' };
   var KEY = 'assessor.lang';
   var DICTS = Object.create(null);
-  var current = SOURCE;
+  var current = DEFAULT;
   var has = function (o, k) { return Object.prototype.hasOwnProperty.call(o, k); };
 
   function known(code) {
@@ -39,10 +40,10 @@
   function writeStored(code) {
     try { localStorage.setItem(KEY, code); } catch (e) { /* 隐私模式或禁用存储时忽略 */ }
   }
-  /* 顺序：?lang= 参数 → localStorage → zh-CN。首次访问默认中文，仅在浏览器里生效。
-     参数里是不认识的语言时，不强制中文，继续按后面的顺序判断 */
+  /* 顺序：?lang= 参数 → localStorage → en。首次访问默认英文。
+     参数里是不认识的语言时，继续按后面的顺序判断 */
   function detect() {
-    if (typeof window === 'undefined' || typeof document === 'undefined') return SOURCE;
+    if (typeof window === 'undefined' || typeof document === 'undefined') return DEFAULT;
     var m = /[?&]lang=([^&#]*)/.exec(location.search || '');
     if (m) {
       var q = m[1];
@@ -52,7 +53,7 @@
     }
     var saved = readStored();
     if (saved && known(saved)) return saved;
-    return SOURCE;
+    return DEFAULT;
   }
 
   /* 译文：src 是中文源字符串；{name} 用 vars.name 替换 */
@@ -75,7 +76,7 @@
     DICTS[code] = dict && typeof dict === 'object' ? dict : {};
   }
   function setLocale(code) {
-    current = known(code) ? code : SOURCE;
+    current = known(code) ? code : DEFAULT;
     writeStored(current);
     return current;
   }
@@ -90,6 +91,7 @@
   return {
     LOCALES: LOCALES,
     SOURCE: SOURCE,
+    DEFAULT: DEFAULT,
     t: t,
     register: register,
     setLocale: setLocale,

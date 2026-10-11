@@ -4,7 +4,7 @@
 
 Eine offene Sicherheitsbaseline mit Selbstbewertung aus der Entwicklung von Teloa
 
-[简体中文](README.md) · [English](README.en.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · **Deutsch** · [Français](README.fr.md) · [Español](README.es.md)
+[English](README.md) · [简体中文](README.zh-CN.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · **Deutsch** · [Français](README.fr.md) · [Español](README.es.md)
 
 ![Version v1.0](https://img.shields.io/badge/version-v1.0-2a78d6) ![240 Anforderungen](https://img.shields.io/badge/requirements-240-2a78d6) ![7 Sprachen](https://img.shields.io/badge/languages-7-2a78d6) ![Lizenz der Baseline CC BY 4.0](https://img.shields.io/badge/standard-CC%20BY%204.0-555) ![Lizenz des Codes Apache-2.0](https://img.shields.io/badge/code-Apache--2.0-555)
 
@@ -85,9 +85,9 @@ Fehlt einer Plattform eine Fähigkeit (etwa weil sie MCP nicht unterstützt), wi
 ## Schnellstart
 
 - **Baseline lesen**: [01-standard/de/baseline-v1.0.md](01-standard/de/baseline-v1.0.md)
-- **Online bewerten**: Die aus diesem Repository veröffentlichte [GitHub-Pages-Seite](https://security.teloa.ai/agent-baseline-assessor/?lang=zh-CN) öffnen; die Sprache lässt sich oben rechts umschalten.
+- **Online bewerten**: Die aus diesem Repository veröffentlichte [GitHub-Pages-Seite](https://security.teloa.ai/agent-baseline-assessor/?lang=de) öffnen; die Sprache lässt sich oben rechts umschalten.
 - **Offline bewerten**: Das Repository herunterladen und `03-tool/index.html` öffnen. Der Funktionsumfang entspricht der Online-Version; eine Netzwerkverbindung ist nicht erforderlich.
-- **Excel verwenden**: [`03-tool/offline/baseline-assessment.xlsx`](03-tool/offline/baseline-assessment.xlsx) (Chinesisch) ausfüllen oder auf der Seite **Daten** des Werkzeugs über „Leere Bewertungstabelle herunterladen“ ein leeres Formular auf Deutsch herunterladen. Die Arbeitsmappe enthält Summenformeln und eine Lückenliste und kann wieder in das Werkzeug importiert werden.
+- **Excel verwenden**: [`03-tool/offline/baseline-assessment.xlsx`](03-tool/offline/baseline-assessment.xlsx) (Englisch) ausfüllen oder auf der Seite **Daten** des Werkzeugs über „Leere Bewertungstabelle herunterladen“ ein leeres Formular auf Deutsch herunterladen. Die Arbeitsmappe enthält Summenformeln und eine Lückenliste und kann wieder in das Werkzeug importiert werden.
 - **Private Bereitstellung**: Das Werkzeug besteht ausschließlich aus statischen Dateien und wird mit einer gehärteten nginx-Konfiguration und einem Dockerfile ausgeliefert. Einzelheiten enthält die [Anleitung zur Verwendung](02-usage/de/usage.md).
 
 ## Aufbau des Repositorys
@@ -100,7 +100,7 @@ Fehlt einer Plattform eine Fähigkeit (etwa weil sie MCP nicht unterstützt), wi
 03-tool/                                 Selbstbewertungswerkzeug: Seite, Daten, Excel-Vorlage, Skripte, Bereitstellungskonfiguration
 03-tool/docs/<sprache>.md                Wartungshinweise zum Werkzeug
 04-design/zh-CN/, en/                 Designbegründung auf Chinesisch und Englisch
-智能体安全基线架构图.html             Architektur der Agent-Sicherheitsbaseline
+01-standard/diagrams/index.html      Architektur der Agent-Sicherheitsbaseline
 .github/                                 GitHub-Pages-Workflow, Vorlagen für Issues und Pull Requests
 ```
 
@@ -112,7 +112,7 @@ Fehlt einer Plattform eine Fähigkeit (etwa weil sie MCP nicht unterstützt), wi
 | [Verwendung](02-usage/de/usage.md) | Online-, Offline- und private Bereitstellung; Bewertungsregeln; Veröffentlichung auf GitHub Pages oder Cloudflare Pages |
 | [Werkzeugbeschreibung](03-tool/docs/de.md) | Verzeichnisstruktur, Befehle, Aktualisierung des Werkzeugs nach einer Revision der Baseline, Pflege der Übersetzungen |
 | [Entwurfsbegründung (Englisch)](04-design/en/design-rationale.md) | Sicherheitsfragen aus der Teloa-Entwicklung, Abwägungen, Anforderungszuordnung und Prüfmethoden |
-| [Architektur der Agent-Sicherheitsbaseline](https://security.teloa.ai/agent-baseline-assessor/architecture.html?lang=de) | Technologiestack · Plattform-Referenzarchitektur · PNG / SVG / Mermaid |
+| [Architektur der Agent-Sicherheitsbaseline](https://security.teloa.ai/agent-baseline-assessor/01-standard/diagrams/?lang=de) | Technologiestack · Plattform-Referenzarchitektur · PNG / SVG / Mermaid |
 | [Glossar](03-tool/i18n/glossary.md) | Terminologie in den sieben Sprachen |
 | [Änderungsprotokoll](CHANGELOG.md) | Änderungen je Version (Chinesisch/Englisch) |
 

@@ -140,7 +140,7 @@ An agent consists of a model and a harness. In addition to the harness, the plat
 
 ![Agent technology stack layers](../diagrams/en/agent-stack.png)
 
-[Editable SVG](../diagrams/en/agent-stack.svg) · [Agent Security Baseline Architecture](https://security.teloa.ai/agent-baseline-assessor/architecture.html?lang=en) · [Logical structure (Mermaid)](../diagrams/en/agent-stack.mmd)
+[Editable SVG](../diagrams/en/agent-stack.svg) · [Agent Security Baseline Architecture](https://security.teloa.ai/agent-baseline-assessor/01-standard/diagrams/?lang=en) · [Logical structure (Mermaid)](../diagrams/en/agent-stack.mmd)
 
 A harness can be developed with the help of a framework, or it can run directly on a runtime. Following the LangChain classification (see Chapter 2), Claude Code and Claude Agent SDK are harnesses, LangGraph is a runtime, and LangChain is a framework. The security control subsystem of the harness is the enforcement component for most requirements in V3 and V5.
 
@@ -148,7 +148,7 @@ A harness can be developed with the help of a framework, or it can run directly 
 
 ![Platform reference architecture and trust boundaries](../diagrams/en/reference-architecture.png)
 
-[Editable SVG](../diagrams/en/reference-architecture.svg) · [Agent Security Baseline Architecture](https://security.teloa.ai/agent-baseline-assessor/architecture.html?lang=en) · [Logical structure (Mermaid)](../diagrams/en/reference-architecture.mmd)
+[Editable SVG](../diagrams/en/reference-architecture.svg) · [Agent Security Baseline Architecture](https://security.teloa.ai/agent-baseline-assessor/01-standard/diagrams/?lang=en) · [Logical structure (Mermaid)](../diagrams/en/reference-architecture.mmd)
 
 Light blue identifies trusted controls, dark blue highlights the main security controls, and orange hatched boxes identify the untrusted model and execution environment. Solid lines show calls and execution; orange dashed lines show untrusted returned content. Gray dashed lines in Figure 4.1 show optional dependencies. Arrows show logical relationships; actual egress to a remote model is also subject to V4. The diagram shows a platform-hosted harness; endpoint harnesses follow V5.4. Data-layer content remains untrusted input under V6 and V8.
 

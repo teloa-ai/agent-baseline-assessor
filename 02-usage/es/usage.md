@@ -91,4 +91,6 @@ La dirección publicada es `https://<nombre-del-proyecto>.pages.dev`, aunque tam
 
 ## 6. Idiomas
 
-La página está disponible en 简体中文, English, 日本語, 한국어, Deutsch, Français y Español. El idioma se cambia en la esquina superior derecha, sin afectar a la evaluación ya introducida. La primera visita usa chino simplificado de forma predeterminada; se recuerda el idioma seleccionado manualmente; añadir `?lang=es` (o `zh-CN`, `en`, `ja`, `ko`, `de`, `fr`) a la dirección abre directamente un idioma concreto. Los archivos Excel exportados usan el idioma actual, y se pueden importar archivos exportados en cualquier idioma. La hoja sin conexión de `offline/` está en chino; para los demás idiomas, usar **Descargar la hoja de evaluación en blanco** en la página **Datos**.
+La página está disponible en 简体中文, English, 日本語, 한국어, Deutsch, Français y Español. El idioma se cambia en la esquina superior derecha, sin afectar a la evaluación ya introducida. La primera visita usa inglés de forma predeterminada; se recuerda el idioma seleccionado manualmente; añadir `?lang=es` (o `zh-CN`, `en`, `ja`, `ko`, `de`, `fr`) a la dirección abre directamente un idioma concreto. Los archivos Excel exportados usan el idioma actual, y se pueden importar archivos exportados en cualquier idioma. La hoja sin conexión de `offline/` está en inglés; para los demás idiomas, usar **Descargar la hoja de evaluación en blanco** en la página **Datos**.
+
+Hoja sin conexión en chino: [baseline-assessment.zh-CN.xlsx](../../03-tool/offline/baseline-assessment.zh-CN.xlsx).

@@ -681,7 +681,7 @@
   }
 
   /* ---------- 语言 ---------- */
-  /* 静态文字：data-i18n 写文本，data-i18n-attr="属性名|属性名" 写属性；源文取自第一次的属性值 */
+  /* 静态文字：data-i18n 写文本，data-i18n-attr="属性名|属性名" 写属性；源文优先取显式 source 属性，否则取第一次的属性值 */
   function applyStatic() {
     document.documentElement.lang = I18N.getLocale();
     $$('[data-i18n]').forEach(function (el) { el.textContent = I18N.t(el.getAttribute('data-i18n')); });
@@ -690,7 +690,7 @@
       el.getAttribute('data-i18n-attr').split('|').forEach(function (attr) {
         attr = attr.trim();
         if (!attr) return;
-        if (!(attr in el._i18nSrc)) el._i18nSrc[attr] = el.getAttribute(attr) || '';
+        if (!(attr in el._i18nSrc)) el._i18nSrc[attr] = el.getAttribute('data-i18n-source-' + attr) || el.getAttribute(attr) || '';
         el.setAttribute(attr, I18N.t(el._i18nSrc[attr]));
       });
     });

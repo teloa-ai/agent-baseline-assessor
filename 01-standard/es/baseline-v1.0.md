@@ -140,7 +140,7 @@ El Agente está compuesto por el modelo y el Harness. La plataforma añade, fuer
 
 ![Capas de la pila tecnológica del Agente](../diagrams/es/agent-stack.png)
 
-[SVG editable](../diagrams/es/agent-stack.svg) · [Arquitectura de la línea base de seguridad de agentes](https://security.teloa.ai/agent-baseline-assessor/architecture.html?lang=es) · [Estructura lógica (Mermaid)](../diagrams/es/agent-stack.mmd)
+[SVG editable](../diagrams/es/agent-stack.svg) · [Arquitectura de la línea base de seguridad de agentes](https://security.teloa.ai/agent-baseline-assessor/01-standard/diagrams/?lang=es) · [Estructura lógica (Mermaid)](../diagrams/es/agent-stack.mmd)
 
 El Harness puede apoyarse en un framework para su desarrollo, o bien ejecutarse directamente sobre un runtime. Según la clasificación de LangChain (véase el capítulo 2), Claude Code y Claude Agent SDK son Harness, LangGraph es un runtime y LangChain es un framework. El subsistema de controles de seguridad del Harness es el punto de aplicación de la mayoría de los requisitos de V3 y V5.
 
@@ -148,7 +148,7 @@ El Harness puede apoyarse en un framework para su desarrollo, o bien ejecutarse 
 
 ![Arquitectura de referencia y límites de confianza](../diagrams/es/reference-architecture.png)
 
-[SVG editable](../diagrams/es/reference-architecture.svg) · [Arquitectura de la línea base de seguridad de agentes](https://security.teloa.ai/agent-baseline-assessor/architecture.html?lang=es) · [Estructura lógica (Mermaid)](../diagrams/es/reference-architecture.mmd)
+[SVG editable](../diagrams/es/reference-architecture.svg) · [Arquitectura de la línea base de seguridad de agentes](https://security.teloa.ai/agent-baseline-assessor/01-standard/diagrams/?lang=es) · [Estructura lógica (Mermaid)](../diagrams/es/reference-architecture.mmd)
 
 El azul claro indica controles de confianza y el azul oscuro destaca los controles principales. El modelo y el entorno de ejecución en cuadros naranjas rayados se tratan como no fiables. Las líneas continuas indican llamadas y ejecución; las discontinuas naranjas indican contenido devuelto no fiable. Las discontinuas grises de la figura 4.1 indican dependencias opcionales. Las flechas muestran relaciones lógicas; el acceso real a un modelo remoto también está sujeto a V4. El diagrama muestra un Harness alojado por la plataforma; los Harness de terminal siguen V5.4. El contenido de la capa de datos sigue siendo una entrada no fiable según V6 y V8.
 

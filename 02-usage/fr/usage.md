@@ -91,4 +91,6 @@ L'adresse publiée est `https://<nom du projet>.pages.dev`. Il est également po
 
 ## 6. Langues
 
-La page est disponible en 简体中文, English, 日本語, 한국어, Deutsch, Français et Español. La langue se change en haut à droite, sans incidence sur l'évaluation déjà saisie. À la première ouverture, le chinois simplifié est utilisé par défaut ; le choix manuel d’une langue est mémorisé ; ajouter `?lang=fr` (ou `zh-CN`, `en`, `ja`, `ko`, `de`, `es`) à l'adresse ouvre directement une langue donnée. Les fichiers Excel exportés utilisent la langue courante, et un fichier exporté dans n'importe quelle langue peut être importé. La grille hors ligne du dossier `offline/` est en chinois ; pour les autres langues, utiliser **Télécharger la grille d'évaluation vierge** sur la page **Données**.
+La page est disponible en 简体中文, English, 日本語, 한국어, Deutsch, Français et Español. La langue se change en haut à droite, sans incidence sur l'évaluation déjà saisie. À la première ouverture, l’anglais est utilisé par défaut ; le choix manuel d’une langue est mémorisé ; ajouter `?lang=fr` (ou `zh-CN`, `en`, `ja`, `ko`, `de`, `es`) à l'adresse ouvre directement une langue donnée. Les fichiers Excel exportés utilisent la langue courante, et un fichier exporté dans n'importe quelle langue peut être importé. La grille hors ligne du dossier `offline/` est en anglais ; pour les autres langues, utiliser **Télécharger la grille d'évaluation vierge** sur la page **Données**.
+
+Grille hors ligne en chinois: [baseline-assessment.zh-CN.xlsx](../../03-tool/offline/baseline-assessment.zh-CN.xlsx).

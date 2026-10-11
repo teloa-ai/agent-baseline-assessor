@@ -140,7 +140,7 @@
 
 ![エージェント技術スタックの階層](../diagrams/ja/agent-stack.png)
 
-[編集可能な SVG](../diagrams/ja/agent-stack.svg) · [エージェント安全基線アーキテクチャ](https://security.teloa.ai/agent-baseline-assessor/architecture.html?lang=ja) · [論理構造（Mermaid）](../diagrams/ja/agent-stack.mmd)
+[編集可能な SVG](../diagrams/ja/agent-stack.svg) · [エージェント安全基線アーキテクチャ](https://security.teloa.ai/agent-baseline-assessor/01-standard/diagrams/?lang=ja) · [論理構造（Mermaid）](../diagrams/ja/agent-stack.mmd)
 
 ハーネスはフレームワークを用いて開発することもでき、ランタイム上で直接動作させることもできる。LangChain の分類（第2章参照）に従えば、Claude Code 及び Claude Agent SDK はハーネスに、LangGraph はランタイムに、LangChain はフレームワークにそれぞれ属する。ハーネスのセキュリティ制御サブシステムは、V3 及び V5 の要件の大半が適用される対象である。
 
@@ -148,7 +148,7 @@
 
 ![プラットフォームのリファレンスアーキテクチャと信頼境界](../diagrams/ja/reference-architecture.png)
 
-[編集可能な SVG](../diagrams/ja/reference-architecture.svg) · [エージェント安全基線アーキテクチャ](https://security.teloa.ai/agent-baseline-assessor/architecture.html?lang=ja) · [論理構造（Mermaid）](../diagrams/ja/reference-architecture.mmd)
+[編集可能な SVG](../diagrams/ja/reference-architecture.svg) · [エージェント安全基線アーキテクチャ](https://security.teloa.ai/agent-baseline-assessor/01-standard/diagrams/?lang=ja) · [論理構造（Mermaid）](../diagrams/ja/reference-architecture.mmd)
 
 淡い青は信頼する制御、濃い青は主要な安全制御を示す。オレンジの斜線枠のモデルと実行環境は信頼せず扱う。実線は呼び出しと実行、オレンジの破線は非信頼の返却内容、図 4.1 の灰色の破線は任意の依存関係を示す。矢印は論理関係を示し、リモートモデルへの実際の通信も V4 の対象となる。図はプラットフォームがホストするハーネスを示す。端末側ハーネスは V5.4 に従う。データ層の内容は V6、V8 に従い非信頼入力として扱う。
 

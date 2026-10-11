@@ -41,8 +41,7 @@ jobs:
       - name: Assemble site
         run: |
           mkdir _site
-          cp -r index.html assets data vendor offline _site/
-          cp "../智能体安全基线架构图.html" _site/architecture.html
+          cp -r index.html architecture.html assets data vendor offline _site/
           mkdir _site/01-standard
           cp -r ../01-standard/diagrams _site/01-standard/
           cp -r ../02-usage/examples _site/

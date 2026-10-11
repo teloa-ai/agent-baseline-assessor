@@ -140,7 +140,7 @@ Un Agent se compose d'un modèle et d'un harness. La plateforme ajoute au harnes
 
 ![Couches de la pile technique de l'Agent](../diagrams/fr/agent-stack.png)
 
-[SVG modifiable](../diagrams/fr/agent-stack.svg) · [Architecture de la baseline de sécurité des agents](https://security.teloa.ai/agent-baseline-assessor/architecture.html?lang=fr) · [Structure logique (Mermaid)](../diagrams/fr/agent-stack.mmd)
+[SVG modifiable](../diagrams/fr/agent-stack.svg) · [Architecture de la baseline de sécurité des agents](https://security.teloa.ai/agent-baseline-assessor/01-standard/diagrams/?lang=fr) · [Structure logique (Mermaid)](../diagrams/fr/agent-stack.mmd)
 
 Le harness peut être développé avec l'aide d'un cadre, ou fonctionner directement sur un runtime. Selon la classification de LangChain (voir le chapitre 2), Claude Code et Claude Agent SDK sont des harness, LangGraph est un runtime et LangChain est un cadre. Le sous-système de contrôle de sécurité du harness est le lieu d'application de la plupart des exigences des chapitres V3 et V5.
 
@@ -148,7 +148,7 @@ Le harness peut être développé avec l'aide d'un cadre, ou fonctionner directe
 
 ![Architecture de référence et frontières de confiance](../diagrams/fr/reference-architecture.png)
 
-[SVG modifiable](../diagrams/fr/reference-architecture.svg) · [Architecture de la baseline de sécurité des agents](https://security.teloa.ai/agent-baseline-assessor/architecture.html?lang=fr) · [Structure logique (Mermaid)](../diagrams/fr/reference-architecture.mmd)
+[SVG modifiable](../diagrams/fr/reference-architecture.svg) · [Architecture de la baseline de sécurité des agents](https://security.teloa.ai/agent-baseline-assessor/01-standard/diagrams/?lang=fr) · [Structure logique (Mermaid)](../diagrams/fr/reference-architecture.mmd)
 
 Le bleu clair indique les contrôles de confiance ; le bleu foncé souligne les contrôles principaux. Le modèle et l’environnement d’exécution dans les cadres orange hachurés sont non fiables. Les traits pleins indiquent les appels et l’exécution ; les pointillés orange indiquent le contenu retourné non fiable. Les pointillés gris de la figure 4.1 indiquent les dépendances facultatives. Les flèches sont logiques ; l’accès réel à un modèle distant reste soumis au V4. Le schéma montre un harness hébergé par la plateforme ; un harness sur un poste de travail suit le V5.4. Le contenu de la couche de données reste une entrée non fiable selon V6 et V8.
 

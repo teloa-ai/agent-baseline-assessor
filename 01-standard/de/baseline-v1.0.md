@@ -140,7 +140,7 @@ Ein Agent besteht aus Modell und Harness. Die Plattform ergänzt den Harness um 
 
 ![Gliederung des Agenten-Technologie-Stacks](../diagrams/de/agent-stack.png)
 
-[Bearbeitbare SVG](../diagrams/de/agent-stack.svg) · [Architektur der Agent-Sicherheitsbaseline](https://security.teloa.ai/agent-baseline-assessor/architecture.html?lang=de) · [Logische Struktur (Mermaid)](../diagrams/de/agent-stack.mmd)
+[Bearbeitbare SVG](../diagrams/de/agent-stack.svg) · [Architektur der Agent-Sicherheitsbaseline](https://security.teloa.ai/agent-baseline-assessor/01-standard/diagrams/?lang=de) · [Logische Struktur (Mermaid)](../diagrams/de/agent-stack.mmd)
 
 Ein Harness kann mit Hilfe eines Frameworks entwickelt werden oder direkt auf einer Laufzeit laufen. Nach der Klassifizierung von LangChain (siehe Kapitel 2) gehören Claude Code und Claude Agent SDK zu den Harnesses, LangGraph zu den Laufzeiten und LangChain zu den Frameworks. Die Sicherheitskontrollen des Harness sind der Ansatzpunkt für den größten Teil der Anforderungen in V3 und V5.
 
@@ -148,7 +148,7 @@ Ein Harness kann mit Hilfe eines Frameworks entwickelt werden oder direkt auf ei
 
 ![Referenzarchitektur und Vertrauensgrenzen](../diagrams/de/reference-architecture.png)
 
-[Bearbeitbare SVG](../diagrams/de/reference-architecture.svg) · [Architektur der Agent-Sicherheitsbaseline](https://security.teloa.ai/agent-baseline-assessor/architecture.html?lang=de) · [Logische Struktur (Mermaid)](../diagrams/de/reference-architecture.mmd)
+[Bearbeitbare SVG](../diagrams/de/reference-architecture.svg) · [Architektur der Agent-Sicherheitsbaseline](https://security.teloa.ai/agent-baseline-assessor/01-standard/diagrams/?lang=de) · [Logische Struktur (Mermaid)](../diagrams/de/reference-architecture.mmd)
 
 Hellblau kennzeichnet vertrauenswürdige Kontrollen, Dunkelblau die zentralen Sicherheitskontrollen. Modell und Ausführungsumgebung in orange schraffierten Kästen gelten als nicht vertrauenswürdig. Durchgezogene Linien zeigen Aufrufe und Ausführung; orange gestrichelte Linien zeigen nicht vertrauenswürdige Rückgabeinhalte. Graue gestrichelte Linien in Abbildung 4.1 zeigen optionale Abhängigkeiten. Pfeile zeigen logische Beziehungen; tatsächliche Verbindungen zu entfernten Modellen unterliegen ebenfalls V4. Das Diagramm zeigt einen auf der Plattform betriebenen Harness; Endgeräte-Harnesses folgen V5.4. Inhalte der Datenschicht bleiben gemäß V6 und V8 nicht vertrauenswürdige Eingaben.
 

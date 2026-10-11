@@ -4,7 +4,7 @@
 
 Teloa 개발에서 도출한 개방형 보안 기준선과 자가 평가 도구
 
-[简体中文](README.md) · [English](README.en.md) · [日本語](README.ja.md) · **한국어** · [Deutsch](README.de.md) · [Français](README.fr.md) · [Español](README.es.md)
+[English](README.md) · [简体中文](README.zh-CN.md) · [日本語](README.ja.md) · **한국어** · [Deutsch](README.de.md) · [Français](README.fr.md) · [Español](README.es.md)
 
 ![버전 v1.0](https://img.shields.io/badge/version-v1.0-2a78d6) ![요구사항 240개](https://img.shields.io/badge/requirements-240-2a78d6) ![언어 7개](https://img.shields.io/badge/languages-7-2a78d6) ![표준 라이선스 CC BY 4.0](https://img.shields.io/badge/standard-CC%20BY%204.0-555) ![코드 라이선스 Apache-2.0](https://img.shields.io/badge/code-Apache--2.0-555)
 
@@ -85,9 +85,9 @@ V1부터 V7까지는 에이전트의 행위 하나가 진행되는 순서를 따
 ## 빠른 시작
 
 - **기준선 읽기**: [01-standard/ko/baseline-v1.0.md](01-standard/ko/baseline-v1.0.md)
-- **온라인 평가**: 이 저장소에서 게시한 [GitHub Pages](https://security.teloa.ai/agent-baseline-assessor/?lang=zh-CN) 사이트를 엽니다. 오른쪽 위에서 언어를 바꿀 수 있습니다.
+- **온라인 평가**: 이 저장소에서 게시한 [GitHub Pages](https://security.teloa.ai/agent-baseline-assessor/?lang=ko) 사이트를 엽니다. 오른쪽 위에서 언어를 바꿀 수 있습니다.
 - **오프라인 평가**: 저장소를 내려받아 `03-tool/index.html`을 엽니다. 온라인 버전과 기능이 같으며 네트워크 연결이 필요하지 않습니다.
-- **Excel 사용**: [`03-tool/offline/baseline-assessment.xlsx`](03-tool/offline/baseline-assessment.xlsx)(중국어)를 작성하거나, 도구의 **데이터** 페이지에서 '빈 평가표 다운로드'를 눌러 한국어 빈 평가표를 내려받습니다. 평가표에는 요약 수식과 격차 목록이 포함되어 있으며, 작성 후 도구로 다시 가져올 수 있습니다.
+- **Excel 사용**: [`03-tool/offline/baseline-assessment.xlsx`](03-tool/offline/baseline-assessment.xlsx)(영어)를 작성하거나, 도구의 **데이터** 페이지에서 '빈 평가표 다운로드'를 눌러 한국어 빈 평가표를 내려받습니다. 평가표에는 요약 수식과 격차 목록이 포함되어 있으며, 작성 후 도구로 다시 가져올 수 있습니다.
 - **사내(프라이빗) 배포**: 도구는 정적 파일로만 구성되며, 보안을 강화한 nginx 설정과 Dockerfile이 함께 제공됩니다. 자세한 내용은 [사용 방법](02-usage/ko/usage.md)을 참고하십시오.
 
 ## 저장소 구조
@@ -100,7 +100,7 @@ V1부터 V7까지는 에이전트의 행위 하나가 진행되는 순서를 따
 03-tool/                              자가 평가 도구: 페이지, 데이터, Excel 템플릿, 스크립트, 배포 설정
 03-tool/docs/<언어>.md                도구 유지보수 안내
 04-design/zh-CN/, en/                 중국어 및 영어 설계 근거
-智能体安全基线架构图.html             에이전트 보안 기준 아키텍처
+01-standard/diagrams/index.html      에이전트 보안 기준 아키텍처
 .github/                              GitHub Pages 워크플로, 이슈 및 풀 리퀘스트 템플릿
 ```
 
@@ -112,7 +112,7 @@ V1부터 V7까지는 에이전트의 행위 하나가 진행되는 순서를 따
 | [사용 방법](02-usage/ko/usage.md) | 온라인, 오프라인, 사내 배포의 세 가지 사용 방식, 채점 규칙, GitHub Pages 또는 Cloudflare Pages 게시 |
 | [도구 설명](03-tool/docs/ko.md) | 디렉터리 구조, 주요 명령, 기준선 개정 후 도구 업데이트 절차, 번역 유지보수 |
 | [설계 근거(영어)](04-design/en/design-rationale.md) | Teloa 개발의 보안 문제, 설계 절충, 요구사항 매핑과 검증 방법 |
-| [에이전트 보안 기준 아키텍처](https://security.teloa.ai/agent-baseline-assessor/architecture.html?lang=ko) | 기술 스택 · 플랫폼 참조 아키텍처 · PNG / SVG / Mermaid |
+| [에이전트 보안 기준 아키텍처](https://security.teloa.ai/agent-baseline-assessor/01-standard/diagrams/?lang=ko) | 기술 스택 · 플랫폼 참조 아키텍처 · PNG / SVG / Mermaid |
 | [용어집](03-tool/i18n/glossary.md) | 7개 언어의 용어 대조 |
 | [변경 이력](CHANGELOG.md) | 버전별 변경 사항(중국어·영어) |
 
