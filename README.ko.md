@@ -55,7 +55,7 @@ V1부터 V7까지는 에이전트의 행위 하나가 진행되는 순서를 따
 ## 빠른 시작
 
 - **기준선 읽기**: [01-standard/ko/baseline-v1.0.md](01-standard/ko/baseline-v1.0.md)
-- **온라인 평가**: 이 저장소에서 게시한 GitHub Pages 사이트를 엽니다. 오른쪽 위에서 언어를 바꿀 수 있습니다.
+- **온라인 평가**: 이 저장소에서 게시한 [GitHub Pages](https://teloa-ai.github.io/agent-baseline-assessor/) 사이트를 엽니다. 오른쪽 위에서 언어를 바꿀 수 있습니다.
 - **오프라인 평가**: 저장소를 내려받아 `03-tool/index.html`을 엽니다. 온라인 버전과 기능이 같으며 네트워크 연결이 필요하지 않습니다.
 - **Excel 사용**: [`03-tool/offline/baseline-assessment.xlsx`](03-tool/offline/baseline-assessment.xlsx)(중국어)를 작성하거나, 도구의 **데이터** 페이지에서 '빈 평가표 다운로드'를 눌러 한국어 빈 평가표를 내려받습니다. 평가표에는 요약 수식과 격차 목록이 포함되어 있으며, 작성 후 도구로 다시 가져올 수 있습니다.
 - **사내(프라이빗) 배포**: 도구는 정적 파일로만 구성되며, 보안을 강화한 nginx 설정과 Dockerfile이 함께 제공됩니다. 자세한 내용은 [사용 방법](02-usage/ko/usage.md)을 참고하십시오.

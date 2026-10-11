@@ -54,7 +54,7 @@ const same = (a, b) => a === b || (typeof a === 'number' && typeof b === 'number
 (async () => {
   const files = [];
   for (const [name, A] of Object.entries(cases)) {
-    const wb = WB.build(ExcelJS, B, Object.assign({ meta: {} }, A), Score, { t: I18N.t });
+    const wb = WB.build(ExcelJS, B, Object.assign({ meta: {} }, A), Score, { t: I18N.t, locale: I18N.getLocale() });
     const f = path.join(work, name + '.xlsx');
     await wb.xlsx.writeFile(f);
     files.push(f);

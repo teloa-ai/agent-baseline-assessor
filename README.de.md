@@ -55,7 +55,7 @@ Fehlt einer Plattform eine Fähigkeit (etwa weil sie MCP nicht unterstützt), wi
 ## Schnellstart
 
 - **Baseline lesen**: [01-standard/de/baseline-v1.0.md](01-standard/de/baseline-v1.0.md)
-- **Online bewerten**: Die aus diesem Repository veröffentlichte GitHub-Pages-Seite öffnen; die Sprache lässt sich oben rechts umschalten.
+- **Online bewerten**: Die aus diesem Repository veröffentlichte [GitHub-Pages-Seite](https://teloa-ai.github.io/agent-baseline-assessor/) öffnen; die Sprache lässt sich oben rechts umschalten.
 - **Offline bewerten**: Das Repository herunterladen und `03-tool/index.html` öffnen. Der Funktionsumfang entspricht der Online-Version; eine Netzwerkverbindung ist nicht erforderlich.
 - **Excel verwenden**: [`03-tool/offline/baseline-assessment.xlsx`](03-tool/offline/baseline-assessment.xlsx) (Chinesisch) ausfüllen oder auf der Seite **Daten** des Werkzeugs über „Leere Bewertungstabelle herunterladen“ ein leeres Formular auf Deutsch herunterladen. Die Arbeitsmappe enthält Summenformeln und eine Lückenliste und kann wieder in das Werkzeug importiert werden.
 - **Private Bereitstellung**: Das Werkzeug besteht ausschließlich aus statischen Dateien und wird mit einer gehärteten nginx-Konfiguration und einem Dockerfile ausgeliefert. Einzelheiten enthält die [Anleitung zur Verwendung](02-usage/de/usage.md).

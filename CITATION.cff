@@ -8,6 +8,8 @@ authors:
   - given-names: "Max"
     alias: "cybermaxluo"
 license: CC-BY-4.0
+repository-code: "https://github.com/teloa-ai/agent-baseline-assessor"
+url: "https://teloa-ai.github.io/agent-baseline-assessor/"
 keywords:
   - AI agent
   - agentic AI

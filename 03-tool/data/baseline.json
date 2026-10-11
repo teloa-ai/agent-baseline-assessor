@@ -4,7 +4,7 @@
  "titleEn": "Enterprise Agent Identity and Authorization Security Baseline",
  "version": "1.0",
  "date": "2026-10-07",
- "docUrl": "https://claude.ai/code/artifact/a89875c9-b306-4067-b517-e3a093231b20",
+ "docUrl": "https://github.com/teloa-ai/agent-baseline-assessor/blob/main/01-standard/{lang}/baseline-v1.0.md",
  "levels": [
   {
    "id": 1,

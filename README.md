@@ -55,7 +55,7 @@ V1 至 V7 按一次智能体行为的发生顺序排列，V8 至 V10 覆盖跨�
 ## 快速开始
 
 - **阅读基线**：[01-standard/zh-CN/baseline-v1.0.md](01-standard/zh-CN/baseline-v1.0.md)
-- **在线自评**：打开本仓库发布的 GitHub Pages 页面，右上角可切换语言。
+- **在线自评**：打开本仓库发布的 [GitHub Pages](https://teloa-ai.github.io/agent-baseline-assessor/) 页面，右上角可切换语言。
 - **离线自评**：下载仓库后双击 `03-tool/index.html`，功能与在线版相同，不需要联网。
 - **用 Excel 填写**：使用 [`03-tool/offline/baseline-assessment.xlsx`](03-tool/offline/baseline-assessment.xlsx)，表内带汇总公式和差距清单，填完可导回网页。
 - **私有化部署**：工具是纯静态文件，附带 nginx 安全配置和 Dockerfile，步骤见[使用方法](02-usage/zh-CN/usage.md)。

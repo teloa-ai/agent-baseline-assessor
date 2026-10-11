@@ -647,7 +647,7 @@
     toast(I18N.t('正在生成 Excel…'));
     return loadExcel().then(function (XL) {
       var src = empty ? { target: 2, items: {}, meta: {} } : A;
-      return WB.build(XL, B, src, S, { t: I18N.t }).xlsx.writeBuffer();
+      return WB.build(XL, B, src, S, { t: I18N.t, locale: I18N.getLocale() }).xlsx.writeBuffer();
     }).then(function (buf) {
       var name = empty ? I18N.t(B.title) + '_' + I18N.t('评估表') + '.xlsx' : fileBase() + '.xlsx';
       return saveFile(name, new Blob([buf], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }));
@@ -658,7 +658,7 @@
   function renderAbout() {
     var c = B.counts;
     $('#p-about').innerHTML = '<div class="page-head"><div class="t"><h2>' + I18N.t('说明') + '</h2><div class="sub">' + I18N.t('{title} v{version}（{date}）', { title: esc(I18N.t(B.title)), version: esc(B.version), date: esc(B.date) }) + '</div></div></div><div class="card prose">' +
-      '<p>' + I18N.t('本工具用于对照《{title}》做自评。基线共 {total} 条要求，分布在 {chapters} 章 {sections} 个小节：L1 {l1} 条，L2 在此基础上增加 {l2} 条，L3 再增加 {l3} 条。完整条文、术语、架构和威胁模型见 <a href="{url}" target="_blank" rel="noopener">基线文档</a>。', { title: esc(I18N.t(B.title)), total: c.total, chapters: B.chapters.length, sections: c.sections, l1: c.L1, l2: c.L2, l3: c.L3, url: esc(B.docUrl) }) + '</p>' +
+      '<p>' + I18N.t('本工具用于对照《{title}》做自评。基线共 {total} 条要求，分布在 {chapters} 章 {sections} 个小节：L1 {l1} 条，L2 在此基础上增加 {l2} 条，L3 再增加 {l3} 条。完整条文、术语、架构和威胁模型见 <a href="{url}" target="_blank" rel="noopener">基线文档</a>。', { title: esc(I18N.t(B.title)), total: c.total, chapters: B.chapters.length, sections: c.sections, l1: c.L1, l2: c.L2, l3: c.L3, url: esc(docUrl()) }) + '</p>' +
       '<h3>' + I18N.t('怎么评') + '</h3><ul>' +
       '<li>' + I18N.t('先在应用栏选目标等级。L1 是底线，L2 是主流企业安全评审的标准，L3 面向高监管行业和高敏感数据。') + '</li>' +
       '<li>' + I18N.t('在覆盖矩阵点开小节，或在逐条评估页筛选后逐条标记状态，并填写证据、负责人和计划完成时间。') + '</li>' +
@@ -698,6 +698,8 @@
     $('#targetSeg').innerHTML = [1, 2, 3].map(function (n) { return '<button type="button" data-t="' + n + '" aria-pressed="false">L' + n + '<small>' + LL(n) + '</small></button>'; }).join('');
   }
   /* 切换语言：不刷新页面，重新套用静态文字并重绘当前视图；评估数据和自动保存不受影响 */
+  /* 基线正文链接：打开当前界面语言对应的译本 */
+  function docUrl() { return String(B.docUrl || '').replace('{lang}', encodeURIComponent(I18N.getLocale())); }
   function setLang(code) {
     I18N.setLocale(code);
     $('#langSel').value = I18N.getLocale();

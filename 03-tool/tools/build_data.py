@@ -12,7 +12,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from component_map import COMPONENTS, CHECKPOINTS, component_of, check
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DOC_URL = "https://claude.ai/code/artifact/a89875c9-b306-4067-b517-e3a093231b20"
+DOC_URL = "https://github.com/teloa-ai/agent-baseline-assessor/blob/main/01-standard/{lang}/baseline-v1.0.md"
 
 
 def load_markdown(path):

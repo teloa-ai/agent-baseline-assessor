@@ -87,6 +87,7 @@
   function build(ExcelJS, B, A, Score, opts) {
     opts = opts || {};
     var tr = opts.t || ident;
+    var docLink = String(B.docUrl || '').replace('{lang}', opts.locale || 'zh-CN');
     var items = (A && A.items) || {};
     var target = (A && A.target) || 2;
     var meta = (A && A.meta) || {};
@@ -337,7 +338,7 @@
     var rows = [
       [tr(B.title) + ' ' + tr('评估表'), null, { size: 14, bold: true }],
       [tr('对应文档'), tr('{title} v{version}（{date}）。要求的完整上下文、术语、架构图、威胁模型和映射附录都在文档中。', { title: tr(B.title), version: B.version, date: B.date })],
-      [tr('文档链接'), { text: B.docUrl, hyperlink: B.docUrl }],
+      [tr('文档链接'), { text: docLink, hyperlink: docLink }],
       [tr('内容'), tr('共 {total} 条要求，分布在 {sections} 个小节：L1 {l1} 条，L2 在此基础上增加 {l2} 条，L3 再增加 {l3} 条。', { total: c3.total, sections: c3.sections, l1: c3.L1, l2: c3.L2, l3: c3.L3 })],
       ['', null],
       [tr('评估信息'), null, { bold: true }],

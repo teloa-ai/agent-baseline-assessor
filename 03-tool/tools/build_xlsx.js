@@ -16,4 +16,4 @@ const A = src ? JSON.parse(fs.readFileSync(src, 'utf8')) : { target: 2, items: {
 const loc = I18N.getLocale();
 const out = process.argv[3] || path.join(__dirname, '..', 'offline', 'baseline-assessment' + (loc === I18N.SOURCE ? '' : '.' + loc) + '.xlsx');
 fs.mkdirSync(path.dirname(out), { recursive: true });
-Workbook.build(ExcelJS, B, A, Score, { t: I18N.t }).xlsx.writeFile(out).then(() => console.log('saved', out));
+Workbook.build(ExcelJS, B, A, Score, { t: I18N.t, locale: I18N.getLocale() }).xlsx.writeFile(out).then(() => console.log('saved', out));

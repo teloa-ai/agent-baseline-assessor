@@ -55,7 +55,7 @@ V1〜V7 は、エージェントの1回の行為が進む順序に沿って並�
 ## クイックスタート
 
 - **ベースラインを読む**：[01-standard/ja/baseline-v1.0.md](01-standard/ja/baseline-v1.0.md)
-- **オンラインで評価する**：本リポジトリから公開される GitHub Pages のサイトを開く。右上で言語を切り替えられる。
+- **オンラインで評価する**：本リポジトリから公開される [GitHub Pages](https://teloa-ai.github.io/agent-baseline-assessor/) のサイトを開く。右上で言語を切り替えられる。
 - **オフラインで評価する**：リポジトリをダウンロードし、`03-tool/index.html` を開く。機能はオンライン版と同じで、ネットワーク接続は不要である。
 - **Excel を使う**：[`03-tool/offline/baseline-assessment.xlsx`](03-tool/offline/baseline-assessment.xlsx)（中国語）に入力するか、ツールの **データ** ページにある「空白の評価表をダウンロード」から日本語の空白の評価表を取得する。評価表には集計数式とギャップ一覧が含まれ、入力後はツールに読み込み直すことができる。
 - **私有化デプロイ**：ツールは静的ファイルのみで構成され、強化済みの nginx 設定と Dockerfile が付属する。手順は[利用方法](02-usage/ja/usage.md)を参照。

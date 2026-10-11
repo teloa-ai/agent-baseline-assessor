@@ -55,7 +55,7 @@ When a platform lacks a capability (for example, it does not support MCP), the c
 ## Quick start
 
 - **Read the standard**: [01-standard/en/baseline-v1.0.md](01-standard/en/baseline-v1.0.md)
-- **Assess online**: open the GitHub Pages site published from this repository; switch languages in the top-right corner.
+- **Assess online**: open the [GitHub Pages](https://teloa-ai.github.io/agent-baseline-assessor/) site published from this repository; switch languages in the top-right corner.
 - **Assess offline**: download the repository and open `03-tool/index.html`. It works the same as the online version and needs no network.
 - **Use Excel**: fill in [`03-tool/offline/baseline-assessment.xlsx`](03-tool/offline/baseline-assessment.xlsx) (Chinese), or download a blank form in your language from the tool's **Data** page. The workbook includes summary formulas and a gap list, and can be imported back into the tool.
 - **Self-host**: the tool is plain static files and ships with a hardened nginx configuration and a Dockerfile. See the [usage guide](02-usage/en/usage.md).
