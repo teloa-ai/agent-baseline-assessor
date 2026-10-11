@@ -48,4 +48,12 @@
 ### Task 3: Review and publication
 
 - [x] Obtain independent review; run the complete browser acceptance checks for defaults, seven languages, imports/exports, score persistence, and gallery assets.
-- [ ] Publish the reviewed changes, confirm both Pages workflows succeed, verify HTTPS/HTTP redirects, and open the live English project in Chrome.
+- [x] Publish the reviewed changes, confirm both Pages workflows succeed, verify HTTPS/HTTP redirects, and open the live English project in Chrome.
+
+## Verification
+
+- Self-test: all 240 requirements round-trip in seven languages; scoring unchanged.
+- Browser acceptance: English first visit, saved and explicit languages, seven languages across five panels, JSON/Excel imports and exports, report downloads, and mobile layouts passed.
+- Architecture gallery: local and published paths, seven languages, 42 download links, and the legacy URL redirect passed.
+- HTTPS: approved certificates on both Pages sites; HTTP redirects to HTTPS; Chrome opens the project without an interstitial.
+- Pages deployments: [project](https://github.com/teloa-ai/agent-baseline-assessor/actions/runs/38114153822) and [public security homepage](https://github.com/teloa-ai/teloa-ai.github.io/actions/runs/38114025723) passed.
