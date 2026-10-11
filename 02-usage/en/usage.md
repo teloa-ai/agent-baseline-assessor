@@ -2,6 +2,22 @@
 
 This guide explains how to assess yourself against the baseline with the self-assessment tool. It covers the online, offline, and self-hosted modes, the scoring rules, and how data is stored. For the tool's directory structure and maintenance, see [03 Tool Guide](../../03-tool/docs/en.md).
 
+## Assessment example
+
+These screenshots come from the self-assessment tool using the simulated data included in this repository. They demonstrate scoring and reporting; they do not assess Teloa or any real platform.
+
+![Simulated report: L1 achieved, target L2, about 79% met, 47 gaps](../assets/maturity-report.en.png)
+
+All 90 L1 requirements are met. Of the 137 additional L2 requirements, 90 are met, 20 partially met, 17 unmet, and 10 unassessed. The target total is 180 of 227, shown as 79%; 47 gaps remain before L2. The 13 L3 requirements are unassessed and excluded from the L2 satisfaction rate.
+
+![Excerpt of the simulated coverage matrix showing statuses by chapter and section](../assets/coverage-matrix.en.png)
+
+### Reproduce the screenshots
+
+1. Download the [example assessment JSON](../examples/demo-assessment.json).
+2. Open the tool's Data page and import the file. Import replaces the current assessment; export existing data as JSON first.
+3. Open Assessment Report to inspect the maturity levels and charts, then Coverage Matrix to locate gaps.
+
 ## 1. Three Ways to Use the Tool
 
 ### 1.1 Online

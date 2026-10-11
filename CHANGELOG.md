@@ -4,6 +4,21 @@
 
 All notable changes are recorded here, following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). The baseline version matches the standard; the self-assessment tool is released together with it.
 
+## [Unreleased]
+
+### 文档 / Documentation
+
+- 明确项目源于 Teloa 开发与安全设计，由 Max 编写、Teloa 发起维护；区分安全目标、产品实现与自评结论。
+  Clarify the project's origin in Teloa development and security design, Max's authorship, Teloa's maintenance, and the distinction between goals, implementation, and assessment conclusions.
+- 新增中英文设计思考，按提供的 HTML 布局补齐七种语言的技术栈与平台信任边界架构图；提供 PNG、可编辑 SVG、Mermaid 逻辑结构和可切换语言的 HTML 图集。
+  Add Chinese and English design rationale and restore technology-stack and platform trust-boundary diagrams in all seven languages using the supplied HTML layout, with PNGs, editable SVGs, Mermaid logical structures, and a multilingual HTML gallery.
+- 添加模拟评估数据及中英文成熟度报告、覆盖矩阵截图，用于文档中的评估示例。
+  Add simulated assessment data and Chinese and English report and coverage-matrix screenshots for documentation examples.
+- GitHub Pages 同时提供在线自评、七语言架构图集和模拟评估 JSON；文档入口指向可交互的在线图集。
+  GitHub Pages serves the assessment tool, multilingual architecture gallery, and simulated assessment JSON; documentation links open the interactive gallery.
+- 本次更新发布说明、配套文档与静态发布配置，v1.0 的 240 条要求、编号、等级和评分规则不变。
+  These documentation and deployment updates do not change the 240 v1.0 requirements, their identifiers, levels, or scoring rules.
+
 ## [1.0] - 2026-10-07
 
 ### 基线 / Standard

@@ -1,0 +1,27 @@
+flowchart LR
+    identity["Couche d'identité<br/>IdP d'entreprise, annuaire, SCIM ; identités des utilisateurs, agents et charges de travail<br/>V1"]
+    n0["Utilisateur<br/>Employé<br/>ou événement système"]
+    n1["Canal d'interaction<br/>Web, IM<br/>IDE, API<br/>V1.2 · V7"]
+    n2["Harness<br/>Boucle de l'agent<br/>Hooks de sécurité<br/>V3 · V5 · V6"]
+    n3["Point de décision de politique<br/>Permissions effectives<br/>Classification du risque<br/>V2 · V3"]
+    n4["Passerelle de sortie<br/>Injection d'identifiants<br/>Vérification de la cible<br/>V4"]
+    n5["Systèmes aval<br/>SaaS, API<br/>MCP, bases de données<br/>V4"]
+    model["Modèle (LLM)<br/>Sortie traitée comme une demande<br/>V6"]
+    data["Couche de données<br/>Connaissances, mémoire<br/>V8"]
+    execution["Environnement d'exécution<br/>Sandbox ou poste de travail<br/>V5"]
+    manage["Administration<br/>Enregistrement des agents, connecteurs, politiques, cycle de vie<br/>V9"]
+    audit["Audit<br/>Utilisateurs, agents, délégation, paramètres, approbations<br/>V10"]
+    n0 --> n1 --> n2 --> n3 --> n4 --> n5
+    model <-->|"Appel"| n2
+    data <-->|"Recherche"| n2
+    n2 -->|"Exécuter"| execution
+    execution -->|"Sortie"| n4
+    n5 -.->|"Le contenu renvoyé est traité comme non fiable"| n2
+    classDef controls fill:#e6edf5,stroke:#9db4cf,color:#14171c;
+    classDef focus fill:#183a5a,stroke:#183a5a,color:#fff;
+    classDef untrusted fill:#fbf3ea,stroke:#b4561c,color:#5e4a3c,stroke-dasharray:5 3;
+    classDef component fill:#fff,stroke:#cfd5dc,color:#14171c;
+    class identity,n3,n4,manage,audit controls;
+    class n2 focus;
+    class model,execution untrusted;
+    class n1,data component;

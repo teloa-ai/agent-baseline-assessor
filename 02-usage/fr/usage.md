@@ -2,6 +2,22 @@
 
 Ce document explique comment utiliser l'outil d'auto-évaluation pour confronter une mise en œuvre au référentiel. Il décrit les trois modes d'utilisation (en ligne, hors ligne et déploiement privé), les règles de notation et le mode de conservation des données. Pour la structure de l'outil et sa maintenance, voir [03 Outil](../../03-tool/docs/fr.md).
 
+## Exemple d'évaluation
+
+Les captures ci-dessous (en anglais) ont été générées avec les données simulées incluses. Elles n'évaluent ni Teloa ni une plateforme réelle.
+
+![Rapport simulé (en anglais) : L1 atteint, cible L2, environ 79 %, 47 écarts](../assets/maturity-report.en.png)
+
+Les 90 exigences L1 sont satisfaites. Parmi les 137 exigences L2 supplémentaires, 90 sont satisfaites, 20 partiellement satisfaites, 17 non satisfaites et 10 non évaluées. Le total cible est de 180 sur 227, affiché à 79 % ; il reste 47 écarts avant L2. Les 13 exigences L3 sont non évaluées et exclues du taux de la cible L2.
+
+![Extrait de la matrice de couverture simulée (en anglais)](../assets/coverage-matrix.en.png)
+
+### Reproduire les captures
+
+1. Téléchargez le [JSON d'évaluation d'exemple](../examples/demo-assessment.json).
+2. Importez le fichier dans la page Données de l'outil. L'import remplace l'évaluation actuelle ; exportez d'abord les données existantes au format JSON.
+3. Consultez le rapport pour les niveaux et graphiques, puis la matrice de couverture pour localiser les écarts.
+
 ## 1. Trois modes d'utilisation
 
 ### 1.1 En ligne

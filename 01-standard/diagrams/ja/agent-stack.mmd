@@ -1,0 +1,25 @@
+flowchart TB
+    subgraph agent["エージェント = モデル + ハーネス"]
+        subgraph harness["ハーネス"]
+            m0["エージェントループ<br/>モデルとツールを繰り返し呼び出す"]
+            m1["コンテキスト管理<br/>文脈の組立てと圧縮"]
+            m2["ツール層<br/>ファイル、コマンド、MCP"]
+            m3["安全制御<br/>権限、承認、フック"]
+            m4["オーケストレーション<br/>計画、子エージェント"]
+            m5["拡張インターフェース<br/>Skill、プラグイン、MCP"]
+        end
+        model["モデル（LLM）<br/>出力は要求として扱う"]
+        harness <-->|"呼出し"| model
+    end
+    framework["フレームワーク（任意）<br/>モデル呼び出しやツール定義の開発抽象化（例：LangChain、OpenAI Agents SDK）"]
+    runtime["ランタイム<br/>永続実行、状態保存、障害復旧（例：LangGraph、Temporal）"]
+    execution["実行環境<br/>サンドボックス、仮想マシン、端末"]
+    harness -.->|"基盤として利用可能"| framework
+    framework -.->|"実行基盤として利用可能"| runtime
+    harness -->|"ツール実行"| execution
+    classDef focus fill:#183a5a,stroke:#183a5a,color:#fff;
+    classDef untrusted fill:#fbf3ea,stroke:#b4561c,color:#5e4a3c,stroke-dasharray:5 3;
+    classDef foundation fill:#e4e8ec,stroke:#b8bfc8,color:#14171c;
+    class m3 focus;
+    class model,execution untrusted;
+    class runtime foundation;

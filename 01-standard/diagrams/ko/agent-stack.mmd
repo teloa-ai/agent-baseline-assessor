@@ -1,0 +1,25 @@
+flowchart TB
+    subgraph agent["에이전트 = 모델 + Harness"]
+        subgraph harness["하네스 (Harness)"]
+            m0["에이전트 루프<br/>모델과 도구를 반복 호출"]
+            m1["문맥 관리<br/>문맥 구성과 압축"]
+            m2["도구 계층<br/>파일, 명령, MCP"]
+            m3["보안 통제<br/>권한, 승인, 후크"]
+            m4["오케스트레이션<br/>계획, 하위 에이전트"]
+            m5["확장 인터페이스<br/>Skill, 플러그인, MCP"]
+        end
+        model["모델(LLM)<br/>출력을 요청으로 취급"]
+        harness <-->|"호출"| model
+    end
+    framework["프레임워크(선택)<br/>모델 호출과 도구 정의의 개발 추상화: LangChain, OpenAI Agents SDK"]
+    runtime["런타임<br/>지속 실행, 상태 저장, 복구: LangGraph, Temporal"]
+    execution["실행 환경<br/>샌드박스, 가상 머신, 터미널"]
+    harness -.->|"기반으로 구축 가능"| framework
+    framework -.->|"실행 기반으로 사용 가능"| runtime
+    harness -->|"도구 실행"| execution
+    classDef focus fill:#183a5a,stroke:#183a5a,color:#fff;
+    classDef untrusted fill:#fbf3ea,stroke:#b4561c,color:#5e4a3c,stroke-dasharray:5 3;
+    classDef foundation fill:#e4e8ec,stroke:#b8bfc8,color:#14171c;
+    class m3 focus;
+    class model,execution untrusted;
+    class runtime foundation;

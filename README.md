@@ -1,5 +1,7 @@
 # 企业智能体身份与授权安全基线
 
+源于 Teloa 开发实践的开放安全基线与自评工具
+
 **简体中文** · [English](README.en.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Deutsch](README.de.md) · [Français](README.fr.md) · [Español](README.es.md)
 
 ![版本 v1.0](https://img.shields.io/badge/version-v1.0-2a78d6) ![要求 240 条](https://img.shields.io/badge/requirements-240-2a78d6) ![语言 7 种](https://img.shields.io/badge/languages-7-2a78d6) ![标准许可 CC BY 4.0](https://img.shields.io/badge/standard-CC%20BY%204.0-555) ![代码许可 Apache-2.0](https://img.shields.io/badge/code-Apache--2.0-555)
@@ -9,6 +11,16 @@
 本仓库包含基线正文和配套的自评工具。正文可以直接用作平台建设的设计输入、供应商评估的问卷或安全评审的核对清单。自评工具是一个纯静态页面，逐条记录评估结果，生成成熟度报告和 Excel 评估表，数据只保存在使用者自己的浏览器里。
 
 作者：Max（[GitHub @cybermaxluo](https://github.com/cybermaxluo)）
+
+发起与维护：[Teloa](https://github.com/teloa-ai)
+
+## 项目缘起与定位
+
+本项目由 Max 在 [Teloa](https://github.com/teloa-ai/teloa) 开发与安全设计过程中整理。它从 AI 同事的工具授权、人工审批、凭据管理、执行隔离与协作数据可见性等问题出发，结合公开规范，归纳面向企业智能体平台的可验证要求。基线面向各类平台开放使用与评审，不依赖 Teloa 的具体实现。
+
+本基线描述安全设计与评估的目标；各产品是否满足要求，应按具体版本、部署范围和证据逐条判定。自评结果不构成独立认证，引用和映射 OWASP、NIST、CSA 等资料不代表这些组织的背书。
+
+[设计思考](04-design/zh-CN/design-rationale.md)记录代表性问题、设计取舍、对应要求和核验方法，与规定要求的基线正文分开维护。
 
 ## 概览
 
@@ -21,6 +33,14 @@
 | 映射 | OWASP Top 10 for Agentic Applications 2026、OWASP AISVS 1.0、CSA AICM v1.1 |
 | 语言 | 简体中文（正本）、English、日本語、한국어、Deutsch、Français、Español |
 | 许可 | 正文与文档 CC BY 4.0，代码 Apache-2.0 |
+
+## 评估示例
+
+下面是工具使用模拟数据生成的报告，不对应 Teloa 或任何真实平台。示例当前达到 L1、目标为 L2：227 条适用要求中满足 180 条，满足率约 79%，距 L2 还差 47 条，其中 10 条未评估。
+
+![模拟评估报告：成熟度阶梯、满足率、差距与章节图表](02-usage/assets/maturity-report.zh-CN.png)
+
+查看[覆盖矩阵与示例操作](02-usage/zh-CN/usage.md#评估示例)，或下载[示例评估 JSON](02-usage/examples/demo-assessment.json)后在工具的「数据」页导入。
 
 ## 覆盖范围
 
@@ -64,9 +84,13 @@ V1 至 V7 按一次智能体行为的发生顺序排列，V8 至 V10 覆盖跨�
 
 ```
 01-standard/<语言>/baseline-v1.0.md   基线正文
+01-standard/diagrams/                 七种语言的架构图：PNG、SVG 和 Mermaid
 02-usage/<语言>/usage.md              使用方法：自评步骤、评分规则、部署与数据保存
+02-usage/examples/, assets/           模拟评估数据与报告截图
 03-tool/                              自评工具：页面、数据、Excel 模板、脚本和部署配置
 03-tool/docs/<语言>.md                工具维护说明
+04-design/zh-CN/, en/                 中英文设计思考
+智能体安全基线架构图.html             智能体安全基线架构图
 .github/                              GitHub Pages 发布工作流、Issue 与 PR 模板
 ```
 
@@ -77,6 +101,8 @@ V1 至 V7 按一次智能体行为的发生顺序排列，V8 至 V10 覆盖跨�
 | [基线正文](01-standard/zh-CN/baseline-v1.0.md) | 范围、术语、参考架构、威胁模型、等级规则、240 条要求和映射附录 |
 | [使用方法](02-usage/zh-CN/usage.md) | 在线、离线、私有化三种用法，评分规则，发布到 GitHub Pages 或 Cloudflare Pages |
 | [工具说明](03-tool/docs/zh-CN.md) | 目录结构、常用命令、基线修订后的更新流程、多语言维护 |
+| [设计思考](04-design/zh-CN/design-rationale.md) | Teloa 开发中的代表性安全问题、设计取舍、要求映射与核验方法 |
+| [智能体安全基线架构图](https://teloa-ai.github.io/agent-baseline-assessor/architecture.html?lang=zh-CN) | 技术栈分层 · 平台参考架构 · PNG / SVG / Mermaid |
 | [术语表](03-tool/i18n/glossary.md) | 七种语言的术语对照 |
 | [变更记录](CHANGELOG.md) | 各版本的变更 |
 

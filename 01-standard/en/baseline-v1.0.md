@@ -2,9 +2,13 @@
 
 Author: Max · 2026-10-07
 
+Initiated and maintained by [Teloa](https://github.com/teloa-ai)
+
 This baseline is licensed under [CC BY 4.0](../../LICENSE-DOCS).
 
 ## Preface
+
+Max developed this baseline during the development and security design of [Teloa](https://github.com/teloa-ai/teloa). Initiated and maintained by Teloa, it is open to use and review across enterprise agent platforms. It describes security goals and does not assert that Teloa or another product meets every requirement. Implementation must be verified against a specific version, deployment scope, and evidence. Self-assessment is not independent certification; references and mappings do not imply endorsement by their publishers. See the [design rationale](../../04-design/en/design-rationale.md).
 
 This baseline specifies the security requirements that agents in enterprise environments shall satisfy with respect to identity and authorization. The requirements are organized into ten chapters, first by the order in which an agent action occurs and then by the cross-session objects concerned. Each requirement can be verified independently, and the requirements are grouped into three levels, L1 to L3.
 
@@ -134,13 +138,19 @@ An agent consists of a model and a harness. In addition to the harness, the plat
 
 ### 4.1 Technology Stack Layers
 
-&#91;embedded content: agent technology stack layers · model, harness, framework, runtime, execution environment\]
+![Agent technology stack layers](../diagrams/en/agent-stack.png)
+
+[Editable SVG](../diagrams/en/agent-stack.svg) · [Agent Security Baseline Architecture](https://teloa-ai.github.io/agent-baseline-assessor/architecture.html?lang=en) · [Logical structure (Mermaid)](../diagrams/en/agent-stack.mmd)
 
 A harness can be developed with the help of a framework, or it can run directly on a runtime. Following the LangChain classification (see Chapter 2), Claude Code and Claude Agent SDK are harnesses, LangGraph is a runtime, and LangChain is a framework. The security control subsystem of the harness is the enforcement component for most requirements in V3 and V5.
 
 ### 4.2 Platform Reference Architecture
 
-&#91;embedded content: platform reference architecture · trusted components and untrusted parts\]
+![Platform reference architecture and trust boundaries](../diagrams/en/reference-architecture.png)
+
+[Editable SVG](../diagrams/en/reference-architecture.svg) · [Agent Security Baseline Architecture](https://teloa-ai.github.io/agent-baseline-assessor/architecture.html?lang=en) · [Logical structure (Mermaid)](../diagrams/en/reference-architecture.mmd)
+
+Light blue identifies trusted controls, dark blue highlights the main security controls, and orange hatched boxes identify the untrusted model and execution environment. Solid lines show calls and execution; orange dashed lines show untrusted returned content. Gray dashed lines in Figure 4.1 show optional dependencies. Arrows show logical relationships; actual egress to a remote model is also subject to V4. The diagram shows a platform-hosted harness; endpoint harnesses follow V5.4. Data-layer content remains untrusted input under V6 and V8.
 
 Model output is only a request. The execution environment may be compromised, and content returned by downstream systems is treated as untrusted. All external access shall pass only through the egress gateway, and real credentials are injected only at the gateway.
 

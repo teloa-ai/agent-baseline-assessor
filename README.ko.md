@@ -1,5 +1,7 @@
 # 엔터프라이즈 에이전트 신원 및 인가 보안 기준선
 
+Teloa 개발에서 도출한 개방형 보안 기준선과 자가 평가 도구
+
 [简体中文](README.md) · [English](README.en.md) · [日本語](README.ja.md) · **한국어** · [Deutsch](README.de.md) · [Français](README.fr.md) · [Español](README.es.md)
 
 ![버전 v1.0](https://img.shields.io/badge/version-v1.0-2a78d6) ![요구사항 240개](https://img.shields.io/badge/requirements-240-2a78d6) ![언어 7개](https://img.shields.io/badge/languages-7-2a78d6) ![표준 라이선스 CC BY 4.0](https://img.shields.io/badge/standard-CC%20BY%204.0-555) ![코드 라이선스 Apache-2.0](https://img.shields.io/badge/code-Apache--2.0-555)
@@ -9,6 +11,16 @@
 이 저장소에는 기준선 본문과 함께 사용하는 자가 평가 도구가 들어 있습니다. 본문은 플랫폼 구축의 설계 입력, 공급업체 평가 질문지, 보안 검토 체크리스트로 바로 사용할 수 있습니다. 자가 평가 도구는 정적 웹페이지로, 요구사항별로 평가 결과를 기록하고 성숙도 보고서와 Excel 평가표를 생성합니다. 평가 데이터는 사용자 자신의 브라우저에만 저장됩니다.
 
 저자: Max ([GitHub @cybermaxluo](https://github.com/cybermaxluo))
+
+발의 및 유지보수: [Teloa](https://github.com/teloa-ai)
+
+## 배경과 목적
+
+Max는 [Teloa](https://github.com/teloa-ai/teloa)의 개발과 보안 설계 과정에서 이 프로젝트를 정리했습니다. AI 직원의 도구 인가, 사람의 승인, 자격 증명, 실행 격리, 협업 시 데이터 가시성 문제를 공개 명세와 결합해 기업용 에이전트 플랫폼의 검증 가능한 요구사항으로 만들었습니다. 다양한 플랫폼의 사용과 검토에 개방되어 있으며 Teloa의 특정 구현에 의존하지 않습니다.
+
+이 기준선은 보안 설계와 평가의 목표를 설명합니다. 충족 여부는 구체적인 제품 버전, 배포 범위, 증거를 바탕으로 항목별로 판단해야 합니다. 자가 평가는 독립 인증이 아니며, OWASP, NIST, CSA 등의 자료를 인용하거나 매핑했다고 해서 해당 조직의 보증을 의미하지는 않습니다.
+
+[설계 근거(영어)](04-design/en/design-rationale.md)는 대표적인 문제, 설계의 절충, 관련 요구사항, 검증 방법을 기준선 본문과 별도로 설명합니다.
 
 ## 개요
 
@@ -21,6 +33,14 @@
 | 매핑 | OWASP Top 10 for Agentic Applications 2026, OWASP AISVS 1.0, CSA AICM v1.1 |
 | 언어 | 중국어 간체(정본), 영어, 일본어, 한국어, 독일어, 프랑스어, 스페인어 |
 | 라이선스 | 본문과 문서는 CC BY 4.0, 코드는 Apache-2.0 |
+
+## 평가 예시
+
+아래 보고서는 도구에서 모의 데이터로 생성했으며 Teloa나 실제 플랫폼의 평가가 아닙니다. 현재 L1을 달성하고 L2를 목표로 합니다. 적용 요구사항 227개 중 180개를 충족해 약 79%이며, 미평가 10개를 포함한 47개 항목이 남아 있습니다.
+
+![모의 평가 보고서(영어): 성숙도, 충족률, 차이, 장별 차트](02-usage/assets/maturity-report.en.png)
+
+[예시 사용 방법(영어)](02-usage/en/usage.md#assessment-example)을 참조하거나 [예시 JSON](02-usage/examples/demo-assessment.json)을 내려받아 도구의 데이터 페이지에서 가져오십시오.
 
 ## 적용 범위
 
@@ -64,9 +84,13 @@ V1부터 V7까지는 에이전트의 행위 하나가 진행되는 순서를 따
 
 ```
 01-standard/<언어>/baseline-v1.0.md   기준선 본문
+01-standard/diagrams/                 7개 언어의 아키텍처 그림: PNG, SVG, Mermaid
 02-usage/<언어>/usage.md              사용 방법: 평가 절차, 채점 규칙, 배포, 데이터 저장
+02-usage/examples/, assets/           모의 평가 데이터 및 보고서 이미지
 03-tool/                              자가 평가 도구: 페이지, 데이터, Excel 템플릿, 스크립트, 배포 설정
 03-tool/docs/<언어>.md                도구 유지보수 안내
+04-design/zh-CN/, en/                 중국어 및 영어 설계 근거
+智能体安全基线架构图.html             에이전트 보안 기준 아키텍처
 .github/                              GitHub Pages 워크플로, 이슈 및 풀 리퀘스트 템플릿
 ```
 
@@ -77,6 +101,8 @@ V1부터 V7까지는 에이전트의 행위 하나가 진행되는 순서를 따
 | [기준선 본문](01-standard/ko/baseline-v1.0.md) | 범위, 용어, 참조 아키텍처, 위협 모델, 등급 규칙, 240개 요구사항, 매핑 부록 |
 | [사용 방법](02-usage/ko/usage.md) | 온라인, 오프라인, 사내 배포의 세 가지 사용 방식, 채점 규칙, GitHub Pages 또는 Cloudflare Pages 게시 |
 | [도구 설명](03-tool/docs/ko.md) | 디렉터리 구조, 주요 명령, 기준선 개정 후 도구 업데이트 절차, 번역 유지보수 |
+| [설계 근거(영어)](04-design/en/design-rationale.md) | Teloa 개발의 보안 문제, 설계 절충, 요구사항 매핑과 검증 방법 |
+| [에이전트 보안 기준 아키텍처](https://teloa-ai.github.io/agent-baseline-assessor/architecture.html?lang=ko) | 기술 스택 · 플랫폼 참조 아키텍처 · PNG / SVG / Mermaid |
 | [용어집](03-tool/i18n/glossary.md) | 7개 언어의 용어 대조 |
 | [변경 이력](CHANGELOG.md) | 버전별 변경 사항(중국어·영어) |
 

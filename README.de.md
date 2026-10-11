@@ -1,5 +1,7 @@
 # Sicherheitsbaseline für Identität und Autorisierung von Unternehmensagenten
 
+Eine offene Sicherheitsbaseline mit Selbstbewertung aus der Entwicklung von Teloa
+
 [简体中文](README.md) · [English](README.en.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · **Deutsch** · [Français](README.fr.md) · [Español](README.es.md)
 
 ![Version v1.0](https://img.shields.io/badge/version-v1.0-2a78d6) ![240 Anforderungen](https://img.shields.io/badge/requirements-240-2a78d6) ![7 Sprachen](https://img.shields.io/badge/languages-7-2a78d6) ![Lizenz der Baseline CC BY 4.0](https://img.shields.io/badge/standard-CC%20BY%204.0-555) ![Lizenz des Codes Apache-2.0](https://img.shields.io/badge/code-Apache--2.0-555)
@@ -9,6 +11,16 @@ Die Sicherheitsbaseline für Identität und Autorisierung von Unternehmensagente
 Dieses Repository enthält die Baseline und ein zugehöriges Selbstbewertungswerkzeug. Die Baseline kann unmittelbar als Designvorgabe beim Aufbau einer Plattform, als Fragebogen für die Lieferantenbewertung oder als Checkliste für Sicherheitsreviews verwendet werden. Das Werkzeug ist eine statische Webseite, die Ergebnisse je Anforderung erfasst und daraus einen Reifegradbericht und eine Excel-Arbeitsmappe erstellt. Die Bewertungsdaten verbleiben im Browser des Nutzers.
 
 Autor: Max ([GitHub @cybermaxluo](https://github.com/cybermaxluo))
+
+Initiiert und gepflegt von [Teloa](https://github.com/teloa-ai)
+
+## Hintergrund und Ziel
+
+Max hat dieses Projekt während der Entwicklung und Sicherheitsplanung von [Teloa](https://github.com/teloa-ai/teloa) erarbeitet. Ausgangspunkte sind Tool-Berechtigungen von KI-Mitarbeitern, menschliche Freigaben, Zugangsdaten, Ausführungsisolation und Datensichtbarkeit bei der Zusammenarbeit. Zusammen mit öffentlichen Spezifikationen werden daraus überprüfbare Anforderungen für Unternehmensagenten. Die Baseline ist für verschiedene Plattformen offen und nicht an Teloas Implementierung gebunden.
+
+Die Baseline beschreibt Sicherheitsziele für Entwurf und Bewertung. Die Erfüllung ist je Anforderung anhand einer konkreten Produktversion, des Bereitstellungsumfangs und von Nachweisen zu prüfen. Selbstbewertung ist keine unabhängige Zertifizierung. Verweise und Zuordnungen zu OWASP, NIST, CSA und anderen Quellen bedeuten keine Unterstützung durch diese Organisationen.
+
+Die [Entwurfsbegründung (Englisch)](04-design/en/design-rationale.md) erläutert typische Probleme, Abwägungen, zugehörige Anforderungen und Prüfmethoden getrennt von der Baseline.
 
 ## Überblick
 
@@ -21,6 +33,14 @@ Autor: Max ([GitHub @cybermaxluo](https://github.com/cybermaxluo))
 | Zuordnungen | OWASP Top 10 for Agentic Applications 2026, OWASP AISVS 1.0, CSA AICM v1.1 |
 | Sprachen | Vereinfachtes Chinesisch (maßgebliche Fassung), Englisch, Japanisch, Koreanisch, Deutsch, Französisch, Spanisch |
 | Lizenz | Baseline und Dokumentation CC BY 4.0; Code Apache-2.0 |
+
+## Bewertungsbeispiel
+
+Der folgende Bericht wurde mit simulierten Daten erzeugt und bewertet weder Teloa noch eine reale Plattform. Das Beispiel erreicht L1 und zielt auf L2: 180 von 227 anwendbaren Anforderungen sind erfüllt, etwa 79 %. Es fehlen 47 Anforderungen, darunter 10 noch nicht bewertete.
+
+![Simulierter Bewertungsbericht (Englisch): Reifegrad, Erfüllungsquote, Lücken und Kapitelgrafiken](02-usage/assets/maturity-report.en.png)
+
+Siehe die [Beispielanleitung (Englisch)](02-usage/en/usage.md#assessment-example), oder laden Sie die [Beispiel-JSON-Datei](02-usage/examples/demo-assessment.json) herunter und importieren Sie sie auf der Datenseite des Werkzeugs.
 
 ## Abdeckung
 
@@ -64,9 +84,13 @@ Fehlt einer Plattform eine Fähigkeit (etwa weil sie MCP nicht unterstützt), wi
 
 ```
 01-standard/<sprache>/baseline-v1.0.md   Baseline
+01-standard/diagrams/                 Architekturabbildungen in sieben Sprachen: PNG, SVG, Mermaid
 02-usage/<sprache>/usage.md              Verwendung: Bewertungsschritte, Bewertungsregeln, Bereitstellung, Datenspeicherung
+02-usage/examples/, assets/           Simulierte Bewertungsdaten und Berichtsabbildungen
 03-tool/                                 Selbstbewertungswerkzeug: Seite, Daten, Excel-Vorlage, Skripte, Bereitstellungskonfiguration
 03-tool/docs/<sprache>.md                Wartungshinweise zum Werkzeug
+04-design/zh-CN/, en/                 Designbegründung auf Chinesisch und Englisch
+智能体安全基线架构图.html             Architektur der Agent-Sicherheitsbaseline
 .github/                                 GitHub-Pages-Workflow, Vorlagen für Issues und Pull Requests
 ```
 
@@ -77,6 +101,8 @@ Fehlt einer Plattform eine Fähigkeit (etwa weil sie MCP nicht unterstützt), wi
 | [Baseline](01-standard/de/baseline-v1.0.md) | Geltungsbereich, Begriffe, Referenzarchitektur, Bedrohungsmodell, Stufenregeln, die 240 Anforderungen und Anhänge mit Zuordnungen |
 | [Verwendung](02-usage/de/usage.md) | Online-, Offline- und private Bereitstellung; Bewertungsregeln; Veröffentlichung auf GitHub Pages oder Cloudflare Pages |
 | [Werkzeugbeschreibung](03-tool/docs/de.md) | Verzeichnisstruktur, Befehle, Aktualisierung des Werkzeugs nach einer Revision der Baseline, Pflege der Übersetzungen |
+| [Entwurfsbegründung (Englisch)](04-design/en/design-rationale.md) | Sicherheitsfragen aus der Teloa-Entwicklung, Abwägungen, Anforderungszuordnung und Prüfmethoden |
+| [Architektur der Agent-Sicherheitsbaseline](https://teloa-ai.github.io/agent-baseline-assessor/architecture.html?lang=de) | Technologiestack · Plattform-Referenzarchitektur · PNG / SVG / Mermaid |
 | [Glossar](03-tool/i18n/glossary.md) | Terminologie in den sieben Sprachen |
 | [Änderungsprotokoll](CHANGELOG.md) | Änderungen je Version (Chinesisch/Englisch) |
 

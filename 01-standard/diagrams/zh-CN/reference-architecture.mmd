@@ -1,0 +1,27 @@
+flowchart LR
+    identity["身份层<br/>企业 IdP、目录、SCIM，为用户、Agent 和工作负载签发身份<br/>V1"]
+    n0["用户<br/>企业员工<br/>或系统事件"]
+    n1["交互渠道<br/>Web、IM<br/>IDE、API<br/>V1.2 · V7"]
+    n2["Harness<br/>Agent 循环<br/>安全控制钩子<br/>V3 · V5 · V6"]
+    n3["策略决策点<br/>有效权限<br/>风险分级<br/>V2 · V3"]
+    n4["出口网关<br/>凭证注入<br/>目标校验<br/>V4"]
+    n5["下游系统<br/>SaaS、API<br/>MCP、数据库<br/>V4"]
+    model["模型（LLM）<br/>输出视为请求<br/>V6"]
+    data["数据层<br/>知识库、记忆<br/>V8"]
+    execution["执行环境<br/>沙箱或终端<br/>V5"]
+    manage["管理面<br/>Agent 登记、连接器、托管策略、生命周期<br/>V9"]
+    audit["审计<br/>记录用户、Agent、委托链、工具参数和审批<br/>V10"]
+    n0 --> n1 --> n2 --> n3 --> n4 --> n5
+    model <-->|"调用"| n2
+    data <-->|"检索"| n2
+    n2 -->|"执行"| execution
+    execution -->|"出网"| n4
+    n5 -.->|"返回内容按不可信处理"| n2
+    classDef controls fill:#e6edf5,stroke:#9db4cf,color:#14171c;
+    classDef focus fill:#183a5a,stroke:#183a5a,color:#fff;
+    classDef untrusted fill:#fbf3ea,stroke:#b4561c,color:#5e4a3c,stroke-dasharray:5 3;
+    classDef component fill:#fff,stroke:#cfd5dc,color:#14171c;
+    class identity,n3,n4,manage,audit controls;
+    class n2 focus;
+    class model,execution untrusted;
+    class n1,data component;

@@ -1,5 +1,7 @@
 # Línea base de seguridad de identidad y autorización para agentes empresariales
 
+Una línea base abierta de seguridad y autoevaluación derivada del desarrollo de Teloa
+
 [简体中文](README.md) · [English](README.en.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Deutsch](README.de.md) · [Français](README.fr.md) · **Español**
 
 ![Versión v1.0](https://img.shields.io/badge/version-v1.0-2a78d6) ![240 requisitos](https://img.shields.io/badge/requirements-240-2a78d6) ![7 idiomas](https://img.shields.io/badge/languages-7-2a78d6) ![Licencia de la línea base CC BY 4.0](https://img.shields.io/badge/standard-CC%20BY%204.0-555) ![Licencia del código Apache-2.0](https://img.shields.io/badge/code-Apache--2.0-555)
@@ -9,6 +11,16 @@ La Línea base de seguridad de identidad y autorización para agentes empresaria
 Este repositorio contiene la línea base y una herramienta de autoevaluación complementaria. La línea base puede utilizarse directamente como insumo de diseño para construir una plataforma, como cuestionario para evaluar proveedores o como lista de verificación en revisiones de seguridad. La herramienta es una página web estática que registra los resultados requisito por requisito y genera un informe de madurez y un libro de Excel. Los datos de evaluación permanecen en el navegador del propio usuario.
 
 Autor: Max ([GitHub @cybermaxluo](https://github.com/cybermaxluo))
+
+Iniciada y mantenida por [Teloa](https://github.com/teloa-ai)
+
+## Origen y propósito
+
+Max elaboró este proyecto durante el desarrollo y el diseño de seguridad de [Teloa](https://github.com/teloa-ai/teloa). Parte de cuestiones de acceso a herramientas, aprobación humana, credenciales, aislamiento de ejecución y visibilidad de datos en la colaboración. Al combinarlas con especificaciones públicas, las convierte en requisitos verificables para plataformas empresariales. Su uso y revisión están abiertos a distintas plataformas y no dependen de la implementación de Teloa.
+
+Esta línea base describe objetivos de diseño y evaluación de seguridad. El cumplimiento debe verificarse requisito por requisito según una versión, un alcance de despliegue y evidencias concretas. La autoevaluación no es una certificación independiente. Las referencias y correspondencias con OWASP, NIST, CSA y otras fuentes no implican el respaldo de esas organizaciones.
+
+La [justificación de diseño (en inglés)](04-design/en/design-rationale.md) explica problemas representativos, decisiones, requisitos relacionados y métodos de verificación por separado de la línea base.
 
 ## Resumen
 
@@ -21,6 +33,14 @@ Autor: Max ([GitHub @cybermaxluo](https://github.com/cybermaxluo))
 | Correspondencias | OWASP Top 10 for Agentic Applications 2026, OWASP AISVS 1.0, CSA AICM v1.1 |
 | Idiomas | Chino simplificado (versión de referencia), inglés, japonés, coreano, alemán, francés, español |
 | Licencia | Línea base y documentación CC BY 4.0; código Apache-2.0 |
+
+## Ejemplo de evaluación
+
+El siguiente informe se generó con datos simulados; no evalúa Teloa ni ninguna plataforma real. El ejemplo alcanza L1 y tiene L2 como objetivo: cumple 180 de 227 requisitos aplicables, aproximadamente el 79 %. Quedan 47 brechas, incluidas 10 sin evaluar.
+
+![Informe simulado (en inglés): madurez, tasa de cumplimiento, brechas y gráficos por capítulo](02-usage/assets/maturity-report.en.png)
+
+Véase la [guía del ejemplo (en inglés)](02-usage/en/usage.md#assessment-example), o descargue el [JSON de ejemplo](02-usage/examples/demo-assessment.json) e impórtelo en la página Datos de la herramienta.
 
 ## Cobertura
 
@@ -64,9 +84,13 @@ Cuando una plataforma carece de una capacidad (por ejemplo, no admite MCP), la s
 
 ```
 01-standard/<idioma>/baseline-v1.0.md   Línea base
+01-standard/diagrams/                 Diagramas en siete idiomas: PNG, SVG, Mermaid
 02-usage/<idioma>/usage.md              Instrucciones de uso: pasos de evaluación, puntuación, despliegue, almacenamiento de datos
+02-usage/examples/, assets/           Datos simulados y capturas de informes
 03-tool/                                Herramienta de autoevaluación: página, datos, plantilla de Excel, scripts, configuración de despliegue
 03-tool/docs/<idioma>.md                Guía de mantenimiento de la herramienta
+04-design/zh-CN/, en/                 Fundamentos de diseño en chino e inglés
+智能体安全基线架构图.html             Arquitectura de la línea base de seguridad de agentes
 .github/                                Flujo de trabajo de GitHub Pages, plantillas de issues y pull requests
 ```
 
@@ -77,6 +101,8 @@ Cuando una plataforma carece de una capacidad (por ejemplo, no admite MCP), la s
 | [Línea base](01-standard/es/baseline-v1.0.md) | Alcance, términos, arquitectura de referencia, modelo de amenazas, reglas de niveles, los 240 requisitos y anexos de correspondencias |
 | [Instrucciones de uso](02-usage/es/usage.md) | Uso en línea, sin conexión y en despliegue privado; reglas de puntuación; publicación en GitHub Pages o Cloudflare Pages |
 | [Guía de la herramienta](03-tool/docs/es.md) | Estructura, comandos, actualización de la herramienta tras una revisión de la línea base, mantenimiento de las traducciones |
+| [Justificación de diseño (en inglés)](04-design/en/design-rationale.md) | Cuestiones de seguridad de Teloa, decisiones, correspondencias y métodos de verificación |
+| [Arquitectura de la línea base de seguridad de agentes](https://teloa-ai.github.io/agent-baseline-assessor/architecture.html?lang=es) | Pila tecnológica · Arquitectura de referencia · PNG / SVG / Mermaid |
 | [Glosario](03-tool/i18n/glossary.md) | Terminología en los siete idiomas |
 | [Registro de cambios](CHANGELOG.md) | Cambios por versión (en chino e inglés) |
 

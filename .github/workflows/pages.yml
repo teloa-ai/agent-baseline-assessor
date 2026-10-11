@@ -42,6 +42,10 @@ jobs:
         run: |
           mkdir _site
           cp -r index.html assets data vendor offline _site/
+          cp "../智能体安全基线架构图.html" _site/architecture.html
+          mkdir _site/01-standard
+          cp -r ../01-standard/diagrams _site/01-standard/
+          cp -r ../02-usage/examples _site/
       - uses: actions/upload-pages-artifact@v4
         with:
           path: 03-tool/_site

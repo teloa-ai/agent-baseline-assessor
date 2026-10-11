@@ -2,6 +2,22 @@
 
 Dieser Text beschreibt, wie das Selbstbewertungswerkzeug zur Bewertung gegen die Baseline eingesetzt wird. Behandelt werden die drei Betriebsarten Online, Offline und private Bereitstellung sowie die Bewertungsregeln und die Art der Datenspeicherung. Verzeichnisstruktur und Pflege des Werkzeugs selbst sind in der [Werkzeugbeschreibung](../../03-tool/docs/de.md) beschrieben.
 
+## Bewertungsbeispiel
+
+Die folgenden Screenshots (Englisch) wurden mit den beigefügten simulierten Daten erstellt. Sie bewerten weder Teloa noch eine reale Plattform.
+
+![Simulierter Reifegradbericht (Englisch): L1 erreicht, Ziel L2, etwa 79 %, 47 Lücken](../assets/maturity-report.en.png)
+
+Alle 90 L1-Anforderungen sind erfüllt. Von den 137 zusätzlichen L2-Anforderungen sind 90 erfüllt, 20 teilweise erfüllt, 17 nicht erfüllt und 10 nicht bewertet. Im Zielumfang sind 180 von 227 erfüllt; die Anzeige beträgt 79 %. Bis L2 fehlen 47 Anforderungen. Die 13 L3-Anforderungen sind nicht bewertet und zählen nicht zur L2-Erfüllungsquote.
+
+![Ausschnitt der simulierten Abdeckungsmatrix (Englisch)](../assets/coverage-matrix.en.png)
+
+### Screenshots reproduzieren
+
+1. Laden Sie die [Beispielbewertung als JSON](../examples/demo-assessment.json) herunter.
+2. Importieren Sie die Datei auf der Datenseite des Werkzeugs. Der Import ersetzt die aktuelle Bewertung; exportieren Sie vorhandene Daten vorher als JSON.
+3. Öffnen Sie den Bewertungsbericht für Reifegrad und Diagramme und die Abdeckungsmatrix zum Auffinden der Lücken.
+
 ## 1 Drei Verwendungsarten
 
 ### 1.1 Online

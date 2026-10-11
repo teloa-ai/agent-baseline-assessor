@@ -1,5 +1,7 @@
 # エンタープライズエージェントのID・認可セキュリティベースライン
 
+Teloa の開発から生まれたオープンなセキュリティベースラインと自己評価ツール
+
 [简体中文](README.md) · [English](README.en.md) · **日本語** · [한국어](README.ko.md) · [Deutsch](README.de.md) · [Français](README.fr.md) · [Español](README.es.md)
 
 ![バージョン v1.0](https://img.shields.io/badge/version-v1.0-2a78d6) ![要件 240 件](https://img.shields.io/badge/requirements-240-2a78d6) ![対応言語 7](https://img.shields.io/badge/languages-7-2a78d6) ![標準のライセンス CC BY 4.0](https://img.shields.io/badge/standard-CC%20BY%204.0-555) ![コードのライセンス Apache-2.0](https://img.shields.io/badge/code-Apache--2.0-555)
@@ -9,6 +11,16 @@
 本リポジトリには、ベースライン本文と付属の自己評価ツールが含まれる。本文は、プラットフォーム構築の設計インプット、ベンダー評価の質問票、セキュリティレビューのチェックリストとしてそのまま利用できる。自己評価ツールは静的な Web ページであり、要件ごとに評価結果を記録し、成熟度レポートと Excel 評価表を生成する。評価データは利用者自身のブラウザにのみ保存される。
 
 著者：Max（[GitHub @cybermaxluo](https://github.com/cybermaxluo)）
+
+発起・保守：[Teloa](https://github.com/teloa-ai)
+
+## 背景と位置付け
+
+本プロジェクトは、Max が [Teloa](https://github.com/teloa-ai/teloa) の開発とセキュリティ設計の過程で整理したものである。AI社員のツール認可、承認、資格情報、実行隔離、共同作業でのデータ可視性を出発点とし、公開仕様と合わせて企業向けエージェントプラットフォームの検証可能な要件にまとめている。各種プラットフォームでの利用とレビューに開かれており、Teloa 固有の実装には依存しない。
+
+本ベースラインは設計・評価の目標を示す。適合性は製品の具体的なバージョン、配備範囲、証跡に基づき要件ごとに判定する。自己評価は独立した認証ではなく、OWASP、NIST、CSA 等への参照や対応付けは、各団体による支持を意味しない。
+
+[設計上の考察（英語）](04-design/en/design-rationale.md)には、代表的な問題、トレードオフ、対応要件、検証方法を本文とは別に記載する。
 
 ## 概要
 
@@ -21,6 +33,14 @@
 | 対応付け | OWASP Top 10 for Agentic Applications 2026、OWASP AISVS 1.0、CSA AICM v1.1 |
 | 言語 | 簡体字中国語（正本）、英語、日本語、韓国語、ドイツ語、フランス語、スペイン語 |
 | ライセンス | 本文及びドキュメントは CC BY 4.0、コードは Apache-2.0 |
+
+## 評価例
+
+以下は模擬データから生成したレポートであり、Teloa や実在するプラットフォームの評価ではない。L1 達成、目標 L2 の例で、適用される227件中180件を満たし、充足率は約79％。L2 まで47件不足し、そのうち10件は未評価である。
+
+![模擬評価レポート（英語）：成熟度、充足率、差分、章別グラフ](02-usage/assets/maturity-report.en.png)
+
+[評価例の操作手順（英語）](02-usage/en/usage.md#assessment-example)を参照するか、[サンプル JSON](02-usage/examples/demo-assessment.json)をダウンロードし、ツールのデータページでインポートする。
 
 ## 対象範囲
 
@@ -64,9 +84,13 @@ V1〜V7 は、エージェントの1回の行為が進む順序に沿って並�
 
 ```
 01-standard/<言語>/baseline-v1.0.md   ベースライン本文
+01-standard/diagrams/                 7 言語のアーキテクチャ図：PNG、SVG、Mermaid
 02-usage/<言語>/usage.md              利用方法：評価手順、評価ルール、デプロイ、データの保存
+02-usage/examples/, assets/           模擬評価データとレポート画像
 03-tool/                              自己評価ツール：ページ、データ、Excel テンプレート、スクリプト、デプロイ設定
 03-tool/docs/<言語>.md                ツールの保守説明
+04-design/zh-CN/, en/                 中国語・英語の設計考察
+智能体安全基线架构图.html             エージェント安全基線アーキテクチャ
 .github/                              GitHub Pages 公開ワークフロー、Issue と Pull Request のテンプレート
 ```
 
@@ -77,6 +101,8 @@ V1〜V7 は、エージェントの1回の行為が進む順序に沿って並�
 | [ベースライン本文](01-standard/ja/baseline-v1.0.md) | 範囲、用語、リファレンスアーキテクチャ、脅威モデル、レベルのルール、240 件の要件、対応付けの付録 |
 | [利用方法](02-usage/ja/usage.md) | オンライン、オフライン、私有化デプロイの3つの利用方法、評価ルール、GitHub Pages 又は Cloudflare Pages への公開 |
 | [ツール説明](03-tool/docs/ja.md) | ディレクトリ構成、主なコマンド、ベースライン改訂後のツール更新手順、翻訳の保守 |
+| [設計上の考察（英語）](04-design/en/design-rationale.md) | Teloa 開発時の安全上の問題、設計のトレードオフ、対応要件と検証方法 |
+| [エージェント安全基線アーキテクチャ](https://teloa-ai.github.io/agent-baseline-assessor/architecture.html?lang=ja) | 技術スタック · プラットフォーム参照アーキテクチャ · PNG / SVG / Mermaid |
 | [用語集](03-tool/i18n/glossary.md) | 7 言語の用語対照 |
 | [変更履歴](CHANGELOG.md) | バージョンごとの変更内容（中国語・英語） |
 

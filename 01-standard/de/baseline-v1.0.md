@@ -2,9 +2,13 @@
 
 Autor: Max · 2026-10-07
 
+Initiiert und gepflegt von [Teloa](https://github.com/teloa-ai)
+
 Diese Baseline steht unter der Lizenz [CC BY 4.0](../../LICENSE-DOCS).
 
 ## Vorwort
+
+Max hat diese Baseline während der Entwicklung und Sicherheitsplanung von [Teloa](https://github.com/teloa-ai/teloa) erarbeitet. Teloa initiiert und pflegt sie; sie ist offen für Nutzung und Prüfung auf verschiedenen Unternehmensplattformen. Sie beschreibt Sicherheitsziele und bestätigt nicht, dass Teloa oder ein anderes Produkt alle Anforderungen erfüllt. Der Implementierungsstand ist anhand einer konkreten Version, des Bereitstellungsumfangs und von Nachweisen zu prüfen. Selbstbewertung ist keine unabhängige Zertifizierung; Verweise und Zuordnungen bedeuten keine Unterstützung durch die Herausgeber. Siehe [Entwurfsbegründung (Englisch)](../../04-design/en/design-rationale.md).
 
 Diese Baseline legt die Sicherheitsanforderungen fest, die Agenten in Unternehmensumgebungen hinsichtlich Identität und Autorisierung erfüllen sollen. Die Anforderungen sind nach dem Ablauf eines einzelnen Agentenvorgangs und danach nach den sitzungsübergreifenden Objekten in zehn Kapitel gegliedert. Jede Anforderung ist einzeln überprüfbar und ist in drei Stufen L1 bis L3 eingeteilt.
 
@@ -134,13 +138,19 @@ Ein Agent besteht aus Modell und Harness. Die Plattform ergänzt den Harness um 
 
 ### 4.1 Gliederung des Technologie-Stacks
 
-&#91;eingebetteter Inhalt: Gliederung des Agenten-Technologie-Stacks · Modell, Harness, Framework, Laufzeit, Ausführungsumgebung\]
+![Gliederung des Agenten-Technologie-Stacks](../diagrams/de/agent-stack.png)
+
+[Bearbeitbare SVG](../diagrams/de/agent-stack.svg) · [Architektur der Agent-Sicherheitsbaseline](https://teloa-ai.github.io/agent-baseline-assessor/architecture.html?lang=de) · [Logische Struktur (Mermaid)](../diagrams/de/agent-stack.mmd)
 
 Ein Harness kann mit Hilfe eines Frameworks entwickelt werden oder direkt auf einer Laufzeit laufen. Nach der Klassifizierung von LangChain (siehe Kapitel 2) gehören Claude Code und Claude Agent SDK zu den Harnesses, LangGraph zu den Laufzeiten und LangChain zu den Frameworks. Die Sicherheitskontrollen des Harness sind der Ansatzpunkt für den größten Teil der Anforderungen in V3 und V5.
 
 ### 4.2 Referenzarchitektur der Plattform
 
-&#91;eingebetteter Inhalt: Referenzarchitektur der Plattform · vertrauenswürdige Komponenten und nicht vertrauenswürdige Bereiche\]
+![Referenzarchitektur und Vertrauensgrenzen](../diagrams/de/reference-architecture.png)
+
+[Bearbeitbare SVG](../diagrams/de/reference-architecture.svg) · [Architektur der Agent-Sicherheitsbaseline](https://teloa-ai.github.io/agent-baseline-assessor/architecture.html?lang=de) · [Logische Struktur (Mermaid)](../diagrams/de/reference-architecture.mmd)
+
+Hellblau kennzeichnet vertrauenswürdige Kontrollen, Dunkelblau die zentralen Sicherheitskontrollen. Modell und Ausführungsumgebung in orange schraffierten Kästen gelten als nicht vertrauenswürdig. Durchgezogene Linien zeigen Aufrufe und Ausführung; orange gestrichelte Linien zeigen nicht vertrauenswürdige Rückgabeinhalte. Graue gestrichelte Linien in Abbildung 4.1 zeigen optionale Abhängigkeiten. Pfeile zeigen logische Beziehungen; tatsächliche Verbindungen zu entfernten Modellen unterliegen ebenfalls V4. Das Diagramm zeigt einen auf der Plattform betriebenen Harness; Endgeräte-Harnesses folgen V5.4. Inhalte der Datenschicht bleiben gemäß V6 und V8 nicht vertrauenswürdige Eingaben.
 
 Die Ausgabe des Modells ist lediglich eine Anfrage; die Ausführungsumgebung kann kompromittiert sein; Inhalte aus nachgelagerten Systemen werden als nicht vertrauenswürdig behandelt. Jeder Zugriff nach außen darf nur über das Egress-Gateway erfolgen, und echte Zugangsdaten werden ausschließlich am Gateway injiziert.
 

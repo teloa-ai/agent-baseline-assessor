@@ -2,9 +2,13 @@
 
 作者：Max · 2026-10-07
 
+发起与维护：[Teloa](https://github.com/teloa-ai)
+
 本基线以 [CC BY 4.0](../../LICENSE-DOCS) 许可发布。
 
 ## 前言
+
+本基线由 Max 在 [Teloa](https://github.com/teloa-ai/teloa) 开发与安全设计过程中整理，由 Teloa 发起和维护，面向各类企业智能体平台开放使用与评审。它描述安全目标，不表示 Teloa 或其他产品已满足全部要求；实现状态须按具体版本、部署范围和证据核验。自评不构成独立认证，参考文件的引用和映射不代表其发布方背书。设计推导见[设计思考](../../04-design/zh-CN/design-rationale.md)。
 
 本基线规定企业环境中的智能体在身份与授权上应满足的安全要求。要求先按一次智能体行为的发生顺序、再按跨会话的对象分为十章，每条可单独验证，并分为 L1 至 L3 三级。
 
@@ -134,13 +138,19 @@ Agent 由模型和 Harness 组成。平台在 Harness 之外再加上身份层�
 
 ### 4.1 技术栈分层
 
-&#91;embedded content: Agent 技术栈分层 · 模型、Harness、框架、运行时、执行环境\]
+![Agent 技术栈分层](../diagrams/zh-CN/agent-stack.png)
+
+[可编辑 SVG](../diagrams/zh-CN/agent-stack.svg) · [智能体安全基线架构图](https://teloa-ai.github.io/agent-baseline-assessor/architecture.html?lang=zh-CN) · [逻辑结构（Mermaid）](../diagrams/zh-CN/agent-stack.mmd)
 
 Harness 可以借助框架开发，也可以直接运行在运行时上。按 LangChain 的分类（见第 2 章），Claude Code 和 Claude Agent SDK 属于 Harness，LangGraph 属于运行时，LangChain 属于框架。Harness 的安全控制子系统是 V3、V5 多数要求的落点。
 
 ### 4.2 平台参考架构
 
-&#91;embedded content: 平台参考架构 · 可信组件与不可信部分\]
+![平台参考架构与信任边界](../diagrams/zh-CN/reference-architecture.png)
+
+[可编辑 SVG](../diagrams/zh-CN/reference-architecture.svg) · [智能体安全基线架构图](https://teloa-ai.github.io/agent-baseline-assessor/architecture.html?lang=zh-CN) · [逻辑结构（Mermaid）](../diagrams/zh-CN/reference-architecture.mmd)
+
+浅蓝色表示可信控制组件，深蓝色突出主要安全控制，橙色斜线框中的模型与执行环境按不可信处理。实线表示调用与执行，橙色虚线表示不可信返回内容；图 4.1 的灰色虚线表示可选依赖。模型交互表示逻辑关系；使用远程模型时，其实际出站访问同样受 V4 约束。图中的 Harness 为平台托管形态；端侧 Harness 按 V5.4 置于不可信边界。数据层中的内容仍须按 V6、V8 处理为不可信输入。
 
 模型的输出只是请求，执行环境可能被攻陷，下游返回的内容按不可信处理。所有对外访问只能经过出口网关，真实凭证只在网关注入。
 

@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>智能体安全基线架构图</title>
+  <style>
+    :root{color-scheme:light;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif;color:#14171c;background:#f4f5f2}
+    *{box-sizing:border-box}
+    body{margin:0}
+    main{max-width:1696px;margin:auto;padding:32px 48px 48px}
+    header{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;margin-bottom:32px}
+    h1{font-size:24px;line-height:1.35;margin:0 0 8px;color:#183a5a}
+    .intro{font-size:14px;line-height:1.6;color:#545b66;margin:0;max-width:960px}
+    .language{display:flex;align-items:center;gap:8px;flex-shrink:0}
+    label,select{font-size:14px}
+    select{padding:9px 12px;border:1px solid #b9c9db;border-radius:8px;background:white;color:#183a5a;min-width:148px}
+    select:focus-visible,a:focus-visible{outline:3px solid #2878d8;outline-offset:3px}
+    figure{margin:0 0 40px}
+    figcaption{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:0 0 12px}
+    h2{font-size:17px;margin:0;font-weight:600}
+    .links{display:flex;gap:18px;flex-wrap:wrap;font-size:13px}
+    a{color:#1e4a75;text-underline-offset:3px}
+    img{display:block;width:100%;height:auto;border:1px solid #d6dad3;border-radius:4px}
+    footer{font-size:13px;line-height:1.6;color:#545b66}
+    @media(max-width:720px){main{padding:20px 16px}header{flex-direction:column;gap:16px}h1{font-size:21px}.links{gap:12px}}
+    @media print{main{padding:0}header{margin-bottom:16px}.language,.links,footer{display:none}figure{break-inside:avoid;page-break-after:always}figure:last-of-type{page-break-after:auto}img{border:0}}
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div><h1 id="title">智能体安全基线架构图</h1><p class="intro" id="intro">两张图沿用统一布局；深蓝标出主要安全控制，橙色斜线表示按不可信处理。</p></div>
+    <div class="language"><label for="language" id="language-label">语言</label><select id="language">
+      <option value="zh-CN">简体中文</option><option value="en">English</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="de">Deutsch</option><option value="fr">Français</option><option value="es">Español</option>
+    </select></div>
+  </header>
+  <figure data-name="agent-stack">
+    <figcaption><h2 id="stack-heading">4.1 技术栈分层</h2><div class="links"><a data-format="png" download>下载 PNG</a><a data-format="svg" download>可编辑 SVG</a><a data-format="mmd" download>逻辑结构（Mermaid）</a></div></figcaption>
+    <img id="stack" src="01-standard/diagrams/zh-CN/agent-stack.png" width="1600" height="1056" alt="技术栈分层">
+  </figure>
+  <figure data-name="reference-architecture">
+    <figcaption><h2 id="reference-heading">4.2 平台参考架构</h2><div class="links"><a data-format="png" download>下载 PNG</a><a data-format="svg" download>可编辑 SVG</a><a data-format="mmd" download>逻辑结构（Mermaid）</a></div></figcaption>
+    <img id="reference" src="01-standard/diagrams/zh-CN/reference-architecture.png" width="1600" height="992" alt="平台参考架构">
+  </figure>
+  <footer>Max · <a href="https://github.com/teloa-ai">Teloa</a> · <a href="https://github.com/teloa-ai/agent-baseline-assessor/blob/main/LICENSE-DOCS">CC BY 4.0</a> · <a id="baseline" href="https://github.com/teloa-ai/agent-baseline-assessor/blob/main/01-standard/zh-CN/baseline-v1.0.md">基线正文</a></footer>
+  <noscript><p>JavaScript is needed to switch languages. <a href="01-standard/diagrams/en/agent-stack.png">English stack</a> · <a href="01-standard/diagrams/en/reference-architecture.png">English reference architecture</a></p></noscript>
+</main>
+<script>
+  const text = {
+  "zh-CN": [
+    "智能体安全基线架构图",
+    "技术栈分层",
+    "平台参考架构",
+    "语言",
+    "下载 PNG",
+    "可编辑 SVG",
+    "逻辑结构（Mermaid）",
+    "基线正文",
+    "两张图沿用统一布局；深蓝标出主要安全控制，橙色斜线表示按不可信处理。"
+  ],
+  "en": [
+    "Agent Security Baseline Architecture",
+    "Technology stack",
+    "Platform reference architecture",
+    "Language",
+    "Download PNG",
+    "Editable SVG",
+    "Logical structure (Mermaid)",
+    "Read the baseline",
+    "Both figures share one layout. Dark blue marks the main security controls; orange hatching means treat as untrusted."
+  ],
+  "ja": [
+    "エージェント安全基線アーキテクチャ",
+    "技術スタック",
+    "プラットフォーム参照アーキテクチャ",
+    "言語",
+    "PNG をダウンロード",
+    "編集可能な SVG",
+    "論理構造（Mermaid）",
+    "基線本文",
+    "すべての言語で同じレイアウトを使用。濃い青は主要な安全制御、オレンジの斜線は信頼せず扱う部分を示す。"
+  ],
+  "ko": [
+    "에이전트 보안 기준 아키텍처",
+    "기술 스택",
+    "플랫폼 참조 아키텍처",
+    "언어",
+    "PNG 다운로드",
+    "편집 가능한 SVG",
+    "논리 구조 (Mermaid)",
+    "기준 본문",
+    "모든 언어에 동일한 레이아웃을 사용합니다. 진한 파란색은 주요 보안 제어, 주황색 사선은 신뢰하지 않는 부분을 나타냅니다."
+  ],
+  "de": [
+    "Architektur der Agent-Sicherheitsbaseline",
+    "Technologiestack",
+    "Plattform-Referenzarchitektur",
+    "Sprache",
+    "PNG herunterladen",
+    "Bearbeitbare SVG",
+    "Logische Struktur (Mermaid)",
+    "Baseline lesen",
+    "Alle Sprachen nutzen dasselbe Layout. Dunkelblau markiert zentrale Sicherheitskontrollen; orange Schraffuren kennzeichnen nicht vertrauenswürdige Bereiche."
+  ],
+  "fr": [
+    "Architecture de la baseline de sécurité des agents",
+    "Pile technologique",
+    "Architecture de référence",
+    "Langue",
+    "Télécharger le PNG",
+    "SVG modifiable",
+    "Structure logique (Mermaid)",
+    "Lire la baseline",
+    "Toutes les langues partagent la même disposition. Le bleu foncé indique les contrôles principaux ; les hachures orange signalent les parties non fiables."
+  ],
+  "es": [
+    "Arquitectura de la línea base de seguridad de agentes",
+    "Pila tecnológica",
+    "Arquitectura de referencia",
+    "Idioma",
+    "Descargar PNG",
+    "SVG editable",
+    "Estructura lógica (Mermaid)",
+    "Leer la línea base",
+    "Todos los idiomas comparten la misma disposición. El azul oscuro indica los controles principales; el rayado naranja señala las partes no fiables."
+  ]
+};
+  const selector = document.getElementById('language');
+  function render(lang) {
+    if (!Object.prototype.hasOwnProperty.call(text, lang)) lang = 'zh-CN';
+    const t = text[lang];
+    document.documentElement.lang = lang;
+    document.title = t[0];
+    document.getElementById('title').textContent = t[0];
+    document.getElementById('language-label').textContent = t[3];
+    document.getElementById('intro').textContent = t[8];
+    document.getElementById('stack-heading').textContent = '4.1 ' + t[1];
+    document.getElementById('reference-heading').textContent = '4.2 ' + t[2];
+    selector.value = lang;
+    document.querySelectorAll('figure').forEach((figure, i) => {
+      const base = '01-standard/diagrams/' + lang + '/' + figure.dataset.name;
+      const image = figure.querySelector('img');
+      image.src = base + '.png';
+      image.alt = t[i + 1];
+      figure.querySelectorAll('a').forEach((link, index) => {
+        link.href = base + '.' + link.dataset.format;
+        link.textContent = t[index + 4];
+      });
+    });
+    const baseline = document.getElementById('baseline');
+    baseline.textContent = t[7];
+    baseline.href = 'https://github.com/teloa-ai/agent-baseline-assessor/blob/main/01-standard/' + lang + '/baseline-v1.0.md';
+  }
+  render(new URLSearchParams(location.search).get('lang') || 'zh-CN');
+  selector.addEventListener('change', () => {
+    render(selector.value);
+    const url = new URL(location.href);
+    url.searchParams.set('lang', selector.value);
+    history.replaceState(null, '', url);
+  });
+</script>
+</body>
+</html>

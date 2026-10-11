@@ -1,0 +1,959 @@
+{
+  "schema": "agent-identity-baseline-assessment/1",
+  "baseline": {
+    "title": "企业智能体身份与授权安全基线",
+    "version": "1.0"
+  },
+  "meta": {
+    "org": "示例组织 / Example organization",
+    "scope": "模拟评估，不对应 Teloa 或任何真实平台 / Demo only; not an assessment of Teloa or any real platform",
+    "assessor": "模拟数据 / Demo data",
+    "date": "2026-10-11"
+  },
+  "target": 2,
+  "items": {
+    "V1.1.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V1.1.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V1.1.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V1.1.4": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V1.2.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V1.2.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V1.2.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V1.2.4": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V1.2.5": {
+      "status": "partial",
+      "evidence": "模拟：仅覆盖部分路径 / Partial coverage (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V1.2.6": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V1.3.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V1.3.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V1.3.4": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V1.3.5": {
+      "status": "partial",
+      "evidence": "模拟：仅覆盖部分路径 / Partial coverage (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V1.4.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V1.4.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V1.4.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V1.5.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V1.5.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V1.5.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V2.1.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V2.1.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V2.1.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V2.2.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V2.2.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V2.2.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V2.2.4": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V2.2.5": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V2.3.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V2.3.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V2.3.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V2.3.4": {
+      "status": "partial",
+      "evidence": "模拟：仅覆盖部分路径 / Partial coverage (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V2.3.5": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V2.4.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V2.4.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V2.4.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V2.4.4": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V2.4.5": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V2.4.6": {
+      "status": "unmet",
+      "evidence": "模拟：控制待建设 / Control absent (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V2.5.1": {
+      "status": "unmet",
+      "evidence": "模拟：控制待建设 / Control absent (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V2.5.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V2.6.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V2.6.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V3.1.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V3.1.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V3.1.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V3.1.4": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V3.2.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V3.2.2": {
+      "status": "partial",
+      "evidence": "模拟：仅覆盖部分路径 / Partial coverage (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V3.2.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V3.2.4": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V3.3.1": {
+      "status": "partial",
+      "evidence": "模拟：仅覆盖部分路径 / Partial coverage (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V3.3.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V3.4.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V3.4.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V3.4.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V3.4.4": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V3.4.5": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V3.4.6": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V3.6.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V3.6.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V3.7.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V3.7.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V3.8.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V3.8.2": {
+      "status": "unmet",
+      "evidence": "模拟：控制待建设 / Control absent (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V3.8.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V3.8.4": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V4.1.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V4.1.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V4.1.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V4.1.4": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V4.1.5": {
+      "status": "partial",
+      "evidence": "模拟：仅覆盖部分路径 / Partial coverage (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V4.1.6": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V4.1.7": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V4.2.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V4.2.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V4.2.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V4.2.4": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V4.2.5": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V4.3.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V4.3.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V4.3.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V4.4.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V4.4.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V4.4.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V4.4.4": {
+      "status": "partial",
+      "evidence": "模拟：仅覆盖部分路径 / Partial coverage (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V4.5.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V4.5.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V4.5.5": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V4.5.6": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V4.6.1": {
+      "status": "partial",
+      "evidence": "模拟：仅覆盖部分路径 / Partial coverage (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V4.6.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V4.6.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V4.7.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V4.7.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V4.7.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V4.7.4": {
+      "status": "partial",
+      "evidence": "模拟：仅覆盖部分路径 / Partial coverage (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V4.7.5": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V5.1.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V5.1.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V5.1.3": {
+      "status": "unmet",
+      "evidence": "模拟：控制待建设 / Control absent (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V5.1.4": {
+      "status": "partial",
+      "evidence": "模拟：仅覆盖部分路径 / Partial coverage (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V5.2.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V5.2.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V5.2.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V5.2.4": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V5.3.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V5.3.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V5.3.3": {
+      "status": "partial",
+      "evidence": "模拟：仅覆盖部分路径 / Partial coverage (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V5.3.4": {
+      "status": "partial",
+      "evidence": "模拟：仅覆盖部分路径 / Partial coverage (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V5.3.5": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V5.4.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V5.4.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V5.4.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V5.4.4": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V5.5.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V5.5.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V5.5.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V5.5.4": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V5.5.5": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V5.5.6": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V5.6.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V5.6.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V5.6.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V5.6.4": {
+      "status": "partial",
+      "evidence": "模拟：仅覆盖部分路径 / Partial coverage (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V6.1.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V6.1.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V6.1.3": {
+      "status": "unmet",
+      "evidence": "模拟：控制待建设 / Control absent (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V6.2.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V6.2.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V6.2.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V6.3.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V6.3.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V6.3.3": {
+      "status": "partial",
+      "evidence": "模拟：仅覆盖部分路径 / Partial coverage (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V6.4.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V6.4.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V7.1.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V7.1.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V7.1.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V7.1.4": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V7.2.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V7.2.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V7.3.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V7.3.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V7.4.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V7.4.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V7.4.3": {
+      "status": "partial",
+      "evidence": "模拟：仅覆盖部分路径 / Partial coverage (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V7.5.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V7.5.2": {
+      "status": "unmet",
+      "evidence": "模拟：控制待建设 / Control absent (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V7.5.3": {
+      "status": "partial",
+      "evidence": "模拟：仅覆盖部分路径 / Partial coverage (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V7.5.4": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V7.6.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V7.6.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V7.6.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V8.1.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V8.1.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V8.1.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V8.2.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V8.2.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V8.2.3": {
+      "status": "unmet",
+      "evidence": "模拟：控制待建设 / Control absent (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V8.3.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V8.3.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V8.3.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V8.4.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V8.4.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V8.4.3": {
+      "status": "partial",
+      "evidence": "模拟：仅覆盖部分路径 / Partial coverage (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V8.5.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V8.5.2": {
+      "status": "unmet",
+      "evidence": "模拟：控制待建设 / Control absent (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V8.6.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V8.6.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V8.6.4": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V8.7.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V8.7.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V9.1.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V9.1.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V9.1.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V9.1.4": {
+      "status": "unmet",
+      "evidence": "模拟：控制待建设 / Control absent (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V9.2.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V9.2.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V9.3.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V9.3.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V9.3.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V9.3.4": {
+      "status": "unmet",
+      "evidence": "模拟：控制待建设 / Control absent (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V9.3.5": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V9.3.6": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V9.4.1": {
+      "status": "partial",
+      "evidence": "模拟：仅覆盖部分路径 / Partial coverage (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V9.4.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V9.4.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V9.5.1": {
+      "status": "unmet",
+      "evidence": "模拟：控制待建设 / Control absent (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V9.5.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V9.6.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V9.6.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V9.6.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V9.7.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V9.7.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V9.7.3": {
+      "status": "unmet",
+      "evidence": "模拟：控制待建设 / Control absent (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V9.7.4": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V10.1.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V10.1.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V10.1.3": {
+      "status": "unmet",
+      "evidence": "模拟：控制待建设 / Control absent (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V10.1.4": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V10.1.5": {
+      "status": "partial",
+      "evidence": "模拟：仅覆盖部分路径 / Partial coverage (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V10.2.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V10.2.2": {
+      "status": "unmet",
+      "evidence": "模拟：控制待建设 / Control absent (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V10.2.3": {
+      "status": "unmet",
+      "evidence": "模拟：控制待建设 / Control absent (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V10.2.4": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V10.3.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V10.3.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V10.4.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V10.4.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V10.4.3": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V10.4.4": {
+      "status": "unmet",
+      "evidence": "模拟：控制待建设 / Control absent (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V10.4.5": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V10.5.1": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V10.5.2": {
+      "status": "met",
+      "evidence": "模拟核验记录 / Simulated evidence"
+    },
+    "V10.6.1": {
+      "status": "partial",
+      "evidence": "模拟：仅覆盖部分路径 / Partial coverage (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    },
+    "V10.6.2": {
+      "status": "unmet",
+      "evidence": "模拟：控制待建设 / Control absent (demo)",
+      "owner": "示例责任组 / Demo owner",
+      "due": "2026-11-01"
+    }
+  },
+  "updatedAt": "2026-10-11T00:00:00.000Z"
+}

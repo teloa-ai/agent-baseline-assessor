@@ -1,0 +1,25 @@
+flowchart TB
+    subgraph agent["Agent = 模型 + Harness"]
+        subgraph harness["Harness"]
+            m0["Agent 循环<br/>循环调用模型与工具"]
+            m1["上下文管理<br/>组装与压缩上下文"]
+            m2["工具层<br/>文件、命令、MCP"]
+            m3["安全控制<br/>权限、审批、钩子"]
+            m4["编排<br/>规划、子 Agent"]
+            m5["扩展接口<br/>Skill、插件、MCP"]
+        end
+        model["模型（LLM）<br/>输出视为请求"]
+        harness <-->|"调用"| model
+    end
+    framework["框架（Framework，可选）<br/>模型调用、工具定义等开发抽象，如 LangChain、OpenAI Agents SDK"]
+    runtime["运行时（Runtime）<br/>持久化执行、状态保存、崩溃恢复，如 LangGraph、Temporal"]
+    execution["执行环境<br/>沙箱、虚拟机、终端"]
+    harness -.->|"可基于"| framework
+    framework -.->|"可运行在"| runtime
+    harness -->|"执行工具"| execution
+    classDef focus fill:#183a5a,stroke:#183a5a,color:#fff;
+    classDef untrusted fill:#fbf3ea,stroke:#b4561c,color:#5e4a3c,stroke-dasharray:5 3;
+    classDef foundation fill:#e4e8ec,stroke:#b8bfc8,color:#14171c;
+    class m3 focus;
+    class model,execution untrusted;
+    class runtime foundation;

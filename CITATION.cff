@@ -1,6 +1,12 @@
 cff-version: 1.2.0
 message: "If you use or reference this baseline, please cite it as below, including the version."
 title: "Enterprise Agent Identity and Authorization Security Baseline"
+abstract: >-
+  An open security baseline and self-assessment tool developed by Max during
+  Teloa development and security design, initiated and maintained by Teloa.
+  It defines verifiable enterprise agent identity and authorization goals;
+  product compliance requires evidence for a specific version and deployment.
+  Self-assessment is not independent certification.
 version: "1.0"
 date-released: 2026-10-07
 type: dataset

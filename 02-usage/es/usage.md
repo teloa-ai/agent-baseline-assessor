@@ -2,6 +2,22 @@
 
 Este documento explica cómo realizar una evaluación contrastando con la línea base mediante la herramienta de autoevaluación, en sus tres modos de uso (en línea, sin conexión y despliegue privado), así como las reglas de puntuación y la forma en que se almacenan los datos. La estructura de directorios de la herramienta y su método de mantenimiento se describen en [03 Guía de la herramienta](../../03-tool/docs/es.md).
 
+## Ejemplo de evaluación
+
+Las capturas siguientes (en inglés) se generaron con los datos simulados incluidos. No evalúan Teloa ni una plataforma real.
+
+![Informe simulado (en inglés): L1 alcanzado, objetivo L2, aproximadamente 79 %, 47 brechas](../assets/maturity-report.en.png)
+
+Se cumplen los 90 requisitos L1. De los 137 adicionales de L2, se cumplen 90, se cumplen parcialmente 20, no se cumplen 17 y hay 10 sin evaluar. En el objetivo se cumplen 180 de 227, mostrado como 79 %; faltan 47 para L2. Los 13 requisitos L3 no están evaluados y se excluyen de la tasa del objetivo L2.
+
+![Detalle de la matriz de cobertura simulada (en inglés)](../assets/coverage-matrix.en.png)
+
+### Reproducir las capturas
+
+1. Descargue el [JSON de evaluación de ejemplo](../examples/demo-assessment.json).
+2. Importe el archivo en la página Datos de la herramienta. La importación reemplaza la evaluación actual; exporte primero los datos existentes como JSON.
+3. Abra el informe para revisar la madurez y los gráficos, y la matriz de cobertura para localizar las brechas.
+
 ## 1. Tres modos de uso
 
 ### 1.1 En línea

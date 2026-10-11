@@ -1,0 +1,25 @@
+flowchart TB
+    subgraph agent["Agente = modelo + Harness"]
+        subgraph harness["Harness"]
+            m0["Bucle del agente<br/>Llamadas repetidas al modelo y herramientas"]
+            m1["Gestión de contexto<br/>Construir y comprimir el contexto"]
+            m2["Capa de herramientas<br/>Archivos, comandos, MCP"]
+            m3["Controles de seguridad<br/>Permisos, aprobaciones, hooks"]
+            m4["Orquestación<br/>Planificación, subagentes"]
+            m5["Interfaces de extensión<br/>Skills, plugins, MCP"]
+        end
+        model["Modelo (LLM)<br/>Salida tratada como solicitud"]
+        harness <-->|"Llamada"| model
+    end
+    framework["Framework (opcional)<br/>Abstracciones para llamadas y herramientas, p. ej. LangChain, OpenAI Agents SDK"]
+    runtime["Runtime<br/>Ejecución persistente, estado, recuperación, p. ej. LangGraph, Temporal"]
+    execution["Entorno de ejecución<br/>Sandbox, VM, terminal"]
+    harness -.->|"Puede basarse en"| framework
+    framework -.->|"Puede ejecutarse en"| runtime
+    harness -->|"Ejecutar herramientas"| execution
+    classDef focus fill:#183a5a,stroke:#183a5a,color:#fff;
+    classDef untrusted fill:#fbf3ea,stroke:#b4561c,color:#5e4a3c,stroke-dasharray:5 3;
+    classDef foundation fill:#e4e8ec,stroke:#b8bfc8,color:#14171c;
+    class m3 focus;
+    class model,execution untrusted;
+    class runtime foundation;

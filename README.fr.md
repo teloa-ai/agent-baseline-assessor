@@ -1,5 +1,7 @@
 # Référentiel de sécurité de l'identité et de l'autorisation des agents d'entreprise
 
+Un référentiel de sécurité ouvert et un outil d'auto-évaluation issus du développement de Teloa
+
 [简体中文](README.md) · [English](README.en.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Deutsch](README.de.md) · **Français** · [Español](README.es.md)
 
 ![Version v1.0](https://img.shields.io/badge/version-v1.0-2a78d6) ![240 exigences](https://img.shields.io/badge/requirements-240-2a78d6) ![7 langues](https://img.shields.io/badge/languages-7-2a78d6) ![Licence du référentiel CC BY 4.0](https://img.shields.io/badge/standard-CC%20BY%204.0-555) ![Licence du code Apache-2.0](https://img.shields.io/badge/code-Apache--2.0-555)
@@ -9,6 +11,16 @@ Le Référentiel de sécurité de l'identité et de l'autorisation des agents d'
 Ce dépôt contient le référentiel et un outil d'auto-évaluation associé. Le référentiel peut servir directement de donnée d'entrée pour la conception d'une plateforme, de questionnaire pour l'évaluation des fournisseurs ou de liste de contrôle pour les revues de sécurité. L'outil est une page web statique qui enregistre les résultats exigence par exigence et produit un rapport de maturité ainsi qu'un classeur Excel. Les données d'évaluation restent dans le navigateur de l'utilisateur.
 
 Auteur : Max ([GitHub @cybermaxluo](https://github.com/cybermaxluo))
+
+Projet initié et maintenu par [Teloa](https://github.com/teloa-ai)
+
+## Origine et objectif
+
+Max a élaboré ce projet pendant le développement et la conception de la sécurité de [Teloa](https://github.com/teloa-ai/teloa). Les questions d'accès aux outils, d'approbation humaine, d'identifiants, d'isolation et de visibilité des données en collaboration sont rapprochées de spécifications publiques pour produire des exigences vérifiables. Le référentiel est ouvert à l'utilisation et à la revue pour différentes plateformes, sans dépendre de l'implémentation de Teloa.
+
+Ce référentiel décrit des objectifs de conception et d'évaluation de la sécurité. Leur respect doit être vérifié exigence par exigence selon une version, un périmètre de déploiement et des preuves précises. L'auto-évaluation n'est pas une certification indépendante. Les références et correspondances avec OWASP, NIST, CSA ou d'autres sources ne constituent pas une approbation de ces organismes.
+
+Les [choix de conception (en anglais)](04-design/en/design-rationale.md) présentent les problèmes représentatifs, les compromis, les exigences associées et les méthodes de vérification séparément du référentiel.
 
 ## Vue d'ensemble
 
@@ -21,6 +33,14 @@ Auteur : Max ([GitHub @cybermaxluo](https://github.com/cybermaxluo))
 | Correspondances | OWASP Top 10 for Agentic Applications 2026, OWASP AISVS 1.0, CSA AICM v1.1 |
 | Langues | Chinois simplifié (version de référence), anglais, japonais, coréen, allemand, français, espagnol |
 | Licence | Référentiel et documentation CC BY 4.0 ; code Apache-2.0 |
+
+## Exemple d'évaluation
+
+Le rapport ci-dessous est généré avec des données simulées ; il n'évalue ni Teloa ni une plateforme réelle. L'exemple atteint L1 et vise L2 : 180 exigences sur 227 applicables sont satisfaites, soit environ 79 %. Il reste 47 écarts, dont 10 exigences non évaluées.
+
+![Rapport simulé (en anglais) : maturité, taux de conformité, écarts et graphiques par chapitre](02-usage/assets/maturity-report.en.png)
+
+Consultez le [parcours d'exemple (en anglais)](02-usage/en/usage.md#assessment-example), ou téléchargez le [JSON d'exemple](02-usage/examples/demo-assessment.json) et importez-le dans la page Données de l'outil.
 
 ## Couverture
 
@@ -64,9 +84,13 @@ Lorsqu'une plateforme ne dispose pas d'une capacité (par exemple, si elle ne pr
 
 ```
 01-standard/<langue>/baseline-v1.0.md   Référentiel
+01-standard/diagrams/                 Schémas en sept langues : PNG, SVG, Mermaid
 02-usage/<langue>/usage.md              Mode d'emploi : étapes d'évaluation, notation, déploiement, stockage des données
+02-usage/examples/, assets/           Données simulées et captures des rapports
 03-tool/                                Outil d'auto-évaluation : page, données, modèle Excel, scripts, configuration de déploiement
 03-tool/docs/<langue>.md                Notes de maintenance de l'outil
+04-design/zh-CN/, en/                 Réflexions de conception en chinois et anglais
+智能体安全基线架构图.html             Architecture de la baseline de sécurité des agents
 .github/                                Workflow GitHub Pages, modèles d'issues et de pull requests
 ```
 
@@ -77,6 +101,8 @@ Lorsqu'une plateforme ne dispose pas d'une capacité (par exemple, si elle ne pr
 | [Référentiel](01-standard/fr/baseline-v1.0.md) | Périmètre, termes, architecture de référence, modèle de menace, règles des niveaux, les 240 exigences et les annexes de correspondance |
 | [Mode d'emploi](02-usage/fr/usage.md) | Utilisation en ligne, hors ligne et en déploiement privé ; règles de notation ; publication sur GitHub Pages ou Cloudflare Pages |
 | [Notes sur l'outil](03-tool/docs/fr.md) | Structure, commandes, mise à jour de l'outil après une révision du référentiel, maintenance des traductions |
+| [Choix de conception (en anglais)](04-design/en/design-rationale.md) | Questions de sécurité issues de Teloa, compromis, correspondances et vérification |
+| [Architecture de la baseline de sécurité des agents](https://teloa-ai.github.io/agent-baseline-assessor/architecture.html?lang=fr) | Pile technologique · Architecture de référence · PNG / SVG / Mermaid |
 | [Glossaire](03-tool/i18n/glossary.md) | Terminologie dans les sept langues |
 | [Journal des modifications](CHANGELOG.md) | Modifications par version (en chinois et en anglais) |
 
