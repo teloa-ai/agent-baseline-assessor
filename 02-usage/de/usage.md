@@ -83,8 +83,9 @@ Die Adresse nach der Veröffentlichung lautet `https://<Projektname>.pages.dev`;
 
 ## 5 Daten und Datenschutz
 
-- Die Bewertungsdaten werden im lokalen Speicher des Browsers (localStorage) abgelegt. Die Seite stellt keine Netzwerkanfragen und enthält keinen Code für Statistik oder Telemetrie.
-- Der lokale Speicher ist nach Ursprung (Origin) getrennt. Die Projektseiten von GitHub Pages teilen sich den Ursprung `<Konto>.github.io`; andere Seiten desselben Kontos können diese Daten daher lesen. Auch lokale Webseiten, die in Chrome über file:// geöffnet werden, verwenden denselben Speicher. Bei sensiblen Bewertungsinhalten sollten eine eigene Domain oder eine private Bereitstellung verwendet werden.
+- Bewertungsdaten bleiben im localStorage des Browsers und werden nicht hochgeladen. Die Onlineversion lädt nur statische Ressourcen wie Seiten, Bilder und Schriftarten; sie enthält keine Analyse- oder Telemetrieprogramme.
+- Lokaler Speicher ist nach Origin und nicht nach Verzeichnis getrennt. Projektpfade unter `security.teloa.ai` teilen einen Origin, ebenso GitHub-Pages-Projekte unter `<Konto>.github.io`; andere Seiten desselben Origins können die Daten lesen. Auch file://-Seiten in Chrome können Speicher teilen. Für sensible Bewertungen sollte eine eigene Domain oder eine private Bereitstellung verwendet werden.
+- Beim Wechsel von der alten GitHub-Pages-Adresse zur neuen Domain werden Bewertungsdaten nicht automatisch übertragen. JSON zuerst an der alten Adresse exportieren und dann an der neuen importieren.
 - Vor einem Gerätewechsel, einer Bereinigung des Browsers oder der Weitergabe zur Prüfung an Dritte sollte auf der Seite „Daten“ eine JSON-Datei exportiert werden.
 - Beim Import werden nur Nummern und Statuswerte akzeptiert, die in der Baseline vorhanden sind. Alle übrigen Inhalte werden ignoriert. Sämtlicher angezeigter Text wird vor der Darstellung maskiert.
 

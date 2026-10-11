@@ -83,8 +83,9 @@ The published address is `https://<project-name>.pages.dev`. You can also bind y
 
 ## 5. Data and Privacy
 
-- Assessment data is stored in the browser's local storage (localStorage). The page makes no network requests and contains no analytics or telemetry code.
-- Local storage is isolated by origin. GitHub Pages project pages share the `<account>.github.io` origin, so other pages under the same account can read this data. In Chrome, local pages opened through file:// also share one storage area. If the assessment content is sensitive, use a separate domain or a self-hosted deployment.
+- Assessment data is stored in browser localStorage and is not uploaded. The online version loads only static assets such as pages, images, and fonts, with no analytics or telemetry code.
+- Local storage is isolated by origin, not directory. Project paths under `security.teloa.ai` share one origin, as do GitHub Pages projects under `<account>.github.io`; other same-origin pages can read this data. Local file:// pages in Chrome may also share storage. For sensitive assessments, use a dedicated domain or a self-hosted deployment.
+- Moving from the old GitHub Pages address to the new domain does not automatically migrate assessment data. Export JSON at the old address, then import it at the new address.
 - Before you switch computers, clear your browser data, or hand the assessment to someone else for review, export JSON from the Data page first.
 - When you import a file, the tool accepts only identifiers that exist in the baseline and known status values. Everything else is ignored. All displayed text is escaped before it is rendered.
 

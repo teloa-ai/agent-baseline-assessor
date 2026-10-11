@@ -83,8 +83,9 @@ L'adresse publiée est `https://<nom du projet>.pages.dev`. Il est également po
 
 ## 5. Données et confidentialité
 
-- Les données d'évaluation sont conservées dans le stockage local du navigateur (localStorage). La page n'émet aucune requête réseau et ne contient aucun code de statistiques ni de télémétrie.
-- Le stockage local est isolé par origine. Les pages de projet GitHub Pages partagent l'origine `<compte>.github.io` : les autres pages du même compte peuvent donc lire ces données. Dans Chrome, les pages ouvertes via file:// partagent également un même stockage. Lorsque le contenu de l'évaluation est sensible, il convient d'utiliser un domaine dédié ou un déploiement privé.
+- Les données d’évaluation restent dans le localStorage du navigateur et ne sont pas téléversées. La version en ligne ne charge que des ressources statiques, telles que les pages, images et polices, sans code d’analyse ni de télémétrie.
+- Le stockage local est isolé par origine, et non par répertoire. Les projets sous `security.teloa.ai` partagent une origine, tout comme les projets GitHub Pages sous `<compte>.github.io` ; les autres pages de la même origine peuvent lire ces données. Les pages file:// de Chrome peuvent également partager le stockage. Pour les évaluations sensibles, utiliser un domaine dédié ou un déploiement privé.
+- Le passage de l’ancienne adresse GitHub Pages au nouveau domaine ne transfère pas automatiquement les données d’évaluation. Exporter le JSON à l’ancienne adresse, puis l’importer à la nouvelle.
 - Avant de changer d'ordinateur, de nettoyer le navigateur ou de confier la relecture à un tiers, exporter le JSON depuis la page « Données ».
 - Lors de l'import d'un fichier, seuls les numéros présents dans le référentiel et les valeurs d'état connues sont acceptés. Tout le reste est ignoré. Tout texte affiché est échappé avant d'être rendu.
 
