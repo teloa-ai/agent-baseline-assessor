@@ -667,22 +667,22 @@
       '<div class="security-companion"><h3>' + I18N.t('小松鼠 Teloa，加入安全团队') + '</h3><div class="security-stickers">' +
       '<figure><img src="assets/brand/teloa-security.webp" width="88" height="88" alt="" aria-hidden="true" loading="lazy"><figcaption>' + I18N.t('先核验身份') + '</figcaption></figure>' +
       '<figure><img src="assets/brand/teloa-focused.png" width="88" height="88" alt="" aria-hidden="true" loading="lazy"><figcaption>' + I18N.t('权限要收敛') + '</figcaption></figure>' +
-      '<figure><img src="assets/brand/teloa-nailed-it.png" width="88" height="88" alt="" aria-hidden="true" loading="lazy"><figcaption>' + I18N.t('证据要留好') + '</figcaption></figure></div></div><div class="card prose">' +
+      '<figure><img src="assets/brand/teloa-nailed-it.png" width="88" height="88" alt="" aria-hidden="true" loading="lazy"><figcaption>' + I18N.t('证据要留好') + '</figcaption></figure></div></div><div class="card about-guide">' +
       '<p>' + I18N.t('本工具用于对照《{title}》做自评。基线共 {total} 条要求，分布在 {chapters} 章 {sections} 个小节：L1 {l1} 条，L2 在此基础上增加 {l2} 条，L3 再增加 {l3} 条。完整条文、术语、架构和威胁模型见 <a href="{url}" target="_blank" rel="noopener">基线文档</a>。', { title: esc(I18N.t(B.title)), total: c.total, chapters: B.chapters.length, sections: c.sections, l1: c.L1, l2: c.L2, l3: c.L3, url: esc(docUrl()) }) + '</p>' +
-      '<h3>' + I18N.t('怎么评') + '</h3><ul>' +
+      '<div class="about-guide-grid"><section class="prose"><h3>' + I18N.t('怎么评') + '</h3><ul>' +
       '<li>' + I18N.t('先在应用栏选目标等级。L1 是底线，L2 是主流企业安全评审的标准，L3 面向高监管行业和高敏感数据。') + '</li>' +
       '<li>' + I18N.t('在覆盖矩阵点开小节，或在逐条评估页筛选后逐条标记状态，并填写证据、负责人和计划完成时间。') + '</li>' +
       '<li>' + I18N.t('平台不具备某项能力时（例如不支持 MCP），对应小节整节标为不适用，不计入满足率。') + '</li></ul>' +
-      '<h3>' + I18N.t('怎么算') + '</h3><ul>' +
+      '</section><section class="prose"><h3>' + I18N.t('怎么算') + '</h3><ul>' +
       '<li>' + I18N.t('满足率 = 已满足 ÷ 适用要求，只统计目标等级内的要求。部分满足和未评估都按未满足计。') + '</li>' +
       '<li>' + I18N.t('达到某一级，要求该级及以下的全部适用要求都已满足。差一条，就停在下一级。') + '</li>' +
       '<li>' + I18N.t('差距条目 = 目标等级内、适用、但还没有满足的要求。') + '</li></ul>' +
-      '<h3>' + I18N.t('数据放在哪') + '</h3><ul>' +
+      '</section><section class="prose"><h3>' + I18N.t('数据放在哪') + '</h3><ul>' +
       '<li>' + I18N.t('评估数据只保存在当前浏览器的本地存储里，页面不向任何服务器发送数据。') + '</li>' +
       '<li>' + I18N.t('需要留档、换电脑或交给别人复核时，在数据页导出 JSON 或 Excel。两种文件都能再导回。') + '</li>' +
       '<li>' + I18N.t('离线填写的 Excel 评估表可以导回本工具，状态、证据、负责人和计划完成会按编号回填。') + '</li></ul>' +
-      '<h3>' + I18N.t('两个视角') + '</h3><p>' + I18N.t('章回答「要求什么」：V1 至 V7 沿一次 Agent 行为的发生顺序排列，V8 至 V10 按跨会话持续存在的数据、Agent 和审计组织。落点组件回答「在哪里实现」，评估时可以按组件把差距分派给对应团队。') + '</p>' +
-      '<h3>' + I18N.t('第三方组件') + '</h3><p>' + I18N.t('Excel 读写使用 ExcelJS（MIT 许可），字体使用 IBM Plex（SIL Open Font License）。') + '</p></div>';
+      '</section><section class="prose"><h3>' + I18N.t('两个视角') + '</h3><p>' + I18N.t('章回答「要求什么」：V1 至 V7 沿一次 Agent 行为的发生顺序排列，V8 至 V10 按跨会话持续存在的数据、Agent 和审计组织。落点组件回答「在哪里实现」，评估时可以按组件把差距分派给对应团队。') + '</p>' +
+      '</section><section class="prose about-notes"><h3>' + I18N.t('第三方组件') + '</h3><p>' + I18N.t('Excel 读写使用 ExcelJS（MIT 许可），字体使用 IBM Plex（SIL Open Font License）。') + '</p></section></div></div>';
   }
 
   /* ---------- 语言 ---------- */
