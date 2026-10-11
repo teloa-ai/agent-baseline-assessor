@@ -81,8 +81,6 @@ p { margin: 0; }
 
 /* ---------- 应用栏 ---------- */
 .app-bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: color-mix(in oklab, var(--surface) 92%, transparent); backdrop-filter: saturate(1.4) blur(10px); border-bottom: 1px solid var(--line); }
-/* 全站导航先随页面滚出，评估栏再吸顶，避免两层操作栏重叠。 */
-body > #teloa-site-header.teloa-site-chrome { position: relative; }
 .bar-in { max-width: 1440px; margin: 0 auto; padding: 0 24px; min-height: 56px; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 24px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); white-space: nowrap; min-width: 0; max-width: 100%; }
 .brand .mark { width: 32px; height: 32px; flex: none; }
@@ -443,7 +441,7 @@ table.data .linkish:focus-visible { outline: 2px solid var(--accent); }
   --r: 10px; --r-s: 6px;
     color-scheme: light;
   }
-  .app-bar, .teloa-site-chrome, .no-print, .card-head .acts { display: none !important; }
+  .app-bar, .no-print, .card-head .acts { display: none !important; }
   body { background: #fff; }
   main { padding: 0; }
   .card, .kpi, .ov { break-inside: avoid; box-shadow: none; }

@@ -88,6 +88,8 @@ Cuando una plataforma carece de una capacidad (por ejemplo, no admite MCP), la s
 
 ## Inicio rápido
 
+Este es un proyecto independiente que puede alojarse en infraestructura propia. La instancia de Teloa AI Security es una demostración pública; la herramienta y la galería de arquitectura no dependen de la navegación, el diseño ni los servicios del portal.
+
 - **Leer la línea base**: [01-standard/es/baseline-v1.0.md](01-standard/es/baseline-v1.0.md)
 - **Evaluar en línea**: abrir el sitio de [GitHub Pages](https://security.teloa.ai/agent-baseline-assessor/?lang=es) publicado desde este repositorio; el idioma se cambia en la esquina superior derecha.
 - **Evaluar sin conexión**: descargar el repositorio y abrir `03-tool/index.html`. Funciona igual que la versión en línea y no requiere conexión de red.

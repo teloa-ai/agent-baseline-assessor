@@ -88,6 +88,8 @@ V1부터 V7까지는 에이전트의 행위 하나가 진행되는 순서를 따
 
 ## 빠른 시작
 
+이 프로젝트는 독립적으로 자체 호스팅할 수 있습니다. Teloa AI Security의 인스턴스는 공개 데모이며, 도구와 아키텍처 갤러리는 포털의 탐색 메뉴, 페이지 레이아웃 또는 서비스에 의존하지 않습니다.
+
 - **기준선 읽기**: [01-standard/ko/baseline-v1.0.md](01-standard/ko/baseline-v1.0.md)
 - **온라인 평가**: 이 저장소에서 게시한 [GitHub Pages](https://security.teloa.ai/agent-baseline-assessor/?lang=ko) 사이트를 엽니다. 오른쪽 위에서 언어를 바꿀 수 있습니다.
 - **오프라인 평가**: 저장소를 내려받아 `03-tool/index.html`을 엽니다. 온라인 버전과 기능이 같으며 네트워크 연결이 필요하지 않습니다.

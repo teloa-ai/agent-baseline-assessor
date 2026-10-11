@@ -88,6 +88,8 @@ When a platform lacks a capability (for example, it does not support MCP), the c
 
 ## Quick start
 
+This is an independent, self-hostable project. The instance on Teloa AI Security is a public demo; the tool and architecture gallery do not depend on the portal's navigation, layout, or services.
+
 - **Read the standard**: [01-standard/en/baseline-v1.0.md](01-standard/en/baseline-v1.0.md)
 - **Assess online**: open the [GitHub Pages](https://security.teloa.ai/agent-baseline-assessor/?lang=en) site published from this repository. First visits default to English; switch languages in the top-right corner.
 - **Assess offline**: download the repository and open `03-tool/index.html`. It works the same as the online version and needs no network.

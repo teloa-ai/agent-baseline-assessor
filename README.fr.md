@@ -88,6 +88,8 @@ Lorsqu'une plateforme ne dispose pas d'une capacité (par exemple, si elle ne pr
 
 ## Démarrage rapide
 
+Ce projet est indépendant et peut être auto-hébergé. L’instance sur Teloa AI Security est une démonstration publique ; l’outil et la galerie d’architecture ne dépendent ni de la navigation, ni de la mise en page, ni des services du portail.
+
 - **Lire le référentiel** : [01-standard/fr/baseline-v1.0.md](01-standard/fr/baseline-v1.0.md)
 - **Évaluer en ligne** : ouvrir le site [GitHub Pages](https://security.teloa.ai/agent-baseline-assessor/?lang=fr) publié à partir de ce dépôt ; la langue se change en haut à droite.
 - **Évaluer hors ligne** : télécharger le dépôt et ouvrir `03-tool/index.html`. Les fonctionnalités sont identiques à celles de la version en ligne et aucune connexion réseau n'est nécessaire.

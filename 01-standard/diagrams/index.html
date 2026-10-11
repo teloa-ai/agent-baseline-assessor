@@ -24,12 +24,10 @@
     figure img{display:block;width:100%;height:auto;border:1px solid #d6dad3;border-radius:4px}
     footer{font-size:13px;line-height:1.6;color:#545b66}
     @media(max-width:720px){main{padding:20px 16px}main>header{flex-direction:column;gap:16px}h1{font-size:21px}.links{gap:12px}}
-    @media print{main{padding:0}header{margin-bottom:16px}.language,.links,footer,.teloa-site-chrome{display:none!important}figure{break-inside:avoid;page-break-after:always}figure:last-of-type{page-break-after:auto}img{border:0}}
+    @media print{main{padding:0}header{margin-bottom:16px}.language,.links,footer{display:none!important}figure{break-inside:avoid;page-break-after:always}figure:last-of-type{page-break-after:auto}img{border:0}}
   </style>
-  <link rel="stylesheet" href="assets/site-chrome.css">
 </head>
-<body data-site-locales="en,zh-CN,ja,ko,de,fr,es">
-<div class="teloa-site-chrome" id="teloa-site-header"></div>
+<body>
 <main>
   <header>
     <div><h1 id="title">Agent Security Baseline Architecture</h1><p class="intro" id="intro">Both figures share one layout. Dark blue marks the main security controls; orange hatching means treat as untrusted.</p></div>
@@ -48,8 +46,6 @@
   <footer><a href="https://github.com/teloa-ai">Teloa AI Security</a> · <a href="https://github.com/teloa-ai/agent-baseline-assessor/blob/main/LICENSE-DOCS">CC BY 4.0</a> · <a id="baseline" href="https://github.com/teloa-ai/agent-baseline-assessor/blob/main/01-standard/en/baseline-v1.0.md">Read the baseline</a></footer>
   <noscript><p>JavaScript is needed to switch languages. <a href="en/agent-stack.png">English stack</a> · <a href="en/reference-architecture.png">English reference architecture</a></p></noscript>
 </main>
-<div class="teloa-site-chrome" id="teloa-site-footer"></div>
-<script src="assets/site-chrome.js"></script>
 <script>
   const text = {
   "zh-CN": [
@@ -155,17 +151,8 @@
     const baseline = document.getElementById('baseline');
     baseline.textContent = t[7];
     baseline.href = 'https://github.com/teloa-ai/agent-baseline-assessor/blob/main/01-standard/' + lang + '/baseline-v1.0.md';
-    if (window.TeloaSiteChrome) window.TeloaSiteChrome.render(lang);
   }
   render(new URLSearchParams(location.search).get('lang') || 'en');
-  window.addEventListener('teloa-language-change', event => {
-    if (!text[event.detail]) return;
-    event.preventDefault();
-    render(event.detail);
-    const url = new URL(location.href);
-    url.searchParams.set('lang', event.detail);
-    history.replaceState(null, '', url);
-  });
   selector.addEventListener('change', () => {
     render(selector.value);
     const url = new URL(location.href);

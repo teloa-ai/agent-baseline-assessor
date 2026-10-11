@@ -689,7 +689,6 @@
   /* 静态文字：data-i18n 写文本，data-i18n-attr="属性名|属性名" 写属性；源文优先取显式 source 属性，否则取第一次的属性值 */
   function applyStatic() {
     document.documentElement.lang = I18N.getLocale();
-    if (window.TeloaSiteChrome) window.TeloaSiteChrome.render(I18N.getLocale());
     $$('[data-i18n]').forEach(function (el) { el.textContent = I18N.t(el.getAttribute('data-i18n')); });
     $$('[data-i18n-attr]').forEach(function (el) {
       el._i18nSrc = el._i18nSrc || {};
@@ -726,11 +725,6 @@
     renderTop();
     renderTab();
   }
-  window.addEventListener('teloa-language-change', function (event) {
-    if (!I18N.LOCALES.some(function (locale) { return locale.code === event.detail; })) return;
-    event.preventDefault();
-    setLang(event.detail);
-  });
 
   /* ---------- 路由与整体刷新 ---------- */
   var TABS = ['matrix', 'items', 'results', 'data', 'about'];

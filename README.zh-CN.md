@@ -88,6 +88,8 @@ V1 至 V7 按一次智能体行为的发生顺序排列，V8 至 V10 覆盖跨�
 
 ## 快速开始
 
+本基线是可独立部署的开源项目。Teloa AI Security 上的实例仅作为公共演示；工具和架构图册不依赖安全门户的导航、页面框架或服务。
+
 - **阅读基线**：[01-standard/zh-CN/baseline-v1.0.md](01-standard/zh-CN/baseline-v1.0.md)
 - **在线自评**：打开本仓库发布的 [GitHub Pages](https://security.teloa.ai/agent-baseline-assessor/?lang=zh-CN) 页面。项目首次访问默认英文；此链接直接打开中文，右上角可切换语言。
 - **离线自评**：下载仓库后双击 `03-tool/index.html`，功能与在线版相同，不需要联网。
