@@ -22,7 +22,7 @@ jobs:
       contents: read
     defaults:
       run:
-        working-directory: 03-工具
+        working-directory: 03-tool
     steps:
       - uses: actions/checkout@v4
         with:
@@ -44,7 +44,7 @@ jobs:
           cp -r index.html assets data vendor offline _site/
       - uses: actions/upload-pages-artifact@v4
         with:
-          path: 03-工具/_site
+          path: 03-tool/_site
 
   deploy:
     needs: build
