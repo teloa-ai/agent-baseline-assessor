@@ -91,7 +91,7 @@ Lorsqu'une plateforme ne dispose pas d'une capacité (par exemple, si elle ne pr
 Ce projet est indépendant et peut être auto-hébergé. L’instance sur Teloa AI Security est une démonstration publique ; l’outil et la galerie d’architecture ne dépendent ni de la navigation, ni de la mise en page, ni des services du portail.
 
 - **Lire le référentiel** : [01-standard/fr/baseline-v1.0.md](01-standard/fr/baseline-v1.0.md)
-- **Évaluer en ligne** : ouvrir le site [GitHub Pages](https://security.teloa.ai/agent-baseline-assessor/?lang=fr) publié à partir de ce dépôt ; la langue se change en haut à droite.
+- **Évaluer en ligne** : ouvrir la [démonstration publique](https://security.teloa.ai/agent-baseline-assessor/?lang=fr) hébergée par Teloa AI Security sur Cloudflare Pages ; la langue se change en haut à droite.
 - **Évaluer hors ligne** : télécharger le dépôt et ouvrir `03-tool/index.html`. Les fonctionnalités sont identiques à celles de la version en ligne et aucune connexion réseau n'est nécessaire.
 - **Utiliser Excel** : remplir [`03-tool/offline/baseline-assessment.xlsx`](03-tool/offline/baseline-assessment.xlsx) (en anglais), ou télécharger une grille vierge en français depuis la page **Données** de l'outil, avec le bouton « Télécharger la grille d'évaluation vierge ». Le classeur comporte des formules de synthèse et une liste des écarts, et peut être réimporté dans l'outil.
 - **Déploiement privé** : l'outil se compose uniquement de fichiers statiques et est fourni avec une configuration nginx durcie et un Dockerfile. Voir le [mode d'emploi](02-usage/fr/usage.md).

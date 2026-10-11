@@ -91,7 +91,7 @@ Cuando una plataforma carece de una capacidad (por ejemplo, no admite MCP), la s
 Este es un proyecto independiente que puede alojarse en infraestructura propia. La instancia de Teloa AI Security es una demostración pública; la herramienta y la galería de arquitectura no dependen de la navegación, el diseño ni los servicios del portal.
 
 - **Leer la línea base**: [01-standard/es/baseline-v1.0.md](01-standard/es/baseline-v1.0.md)
-- **Evaluar en línea**: abrir el sitio de [GitHub Pages](https://security.teloa.ai/agent-baseline-assessor/?lang=es) publicado desde este repositorio; el idioma se cambia en la esquina superior derecha.
+- **Evaluar en línea**: abrir la [demostración pública](https://security.teloa.ai/agent-baseline-assessor/?lang=es) alojada por Teloa AI Security en Cloudflare Pages; el idioma se cambia en la esquina superior derecha.
 - **Evaluar sin conexión**: descargar el repositorio y abrir `03-tool/index.html`. Funciona igual que la versión en línea y no requiere conexión de red.
 - **Usar Excel**: completar [`03-tool/offline/baseline-assessment.xlsx`](03-tool/offline/baseline-assessment.xlsx) (en inglés) o descargar una hoja en blanco en español desde la página **Datos** de la herramienta, con el botón «Descargar la hoja de evaluación en blanco». El libro incluye fórmulas de resumen y una lista de brechas, y puede volver a importarse en la herramienta.
 - **Despliegue privado**: la herramienta consta solo de archivos estáticos e incluye una configuración de nginx reforzada y un Dockerfile. Los detalles figuran en las [instrucciones de uso](02-usage/es/usage.md).
