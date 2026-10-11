@@ -1,6 +1,6 @@
 # Sicherheitsbaseline für Identität und Autorisierung von Unternehmensagenten
 
-7. Oktober 2026 · @MaxL
+Autor: Max · 2026-10-07
 
 ## Vorwort
 

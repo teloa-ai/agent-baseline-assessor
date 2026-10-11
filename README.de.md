@@ -4,6 +4,8 @@
 
 Dieses Projekt umfasst zwei Teile: einen Sicherheitsstandard für Identität und Autorisierung von Unternehmensagenten sowie ein statisches Werkzeug zur Selbstbewertung gegen diesen Standard. Das Werkzeug benötigt kein Backend. Die Bewertungsdaten werden ausschließlich im Browser der bewertenden Person gespeichert.
 
+Autor: Max ([GitHub @cybermaxluo](https://github.com/cybermaxluo))
+
 ## Verzeichnis
 
 ```

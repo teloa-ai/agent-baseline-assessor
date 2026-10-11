@@ -1,6 +1,6 @@
 # Línea base de seguridad de identidad y autorización para agentes empresariales
 
-7 de octubre de 2026 · @MaxL
+Autor: Max · 2026-10-07
 
 ## Prólogo
 

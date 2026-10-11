@@ -4,6 +4,8 @@
 
 This project has two parts: a security standard for enterprise agent identity and authorization, and a static tool for assessing yourself against that standard. The tool needs no backend. Assessment data is stored only in the user's own browser.
 
+Author: Max ([GitHub @cybermaxluo](https://github.com/cybermaxluo))
+
 ## Contents
 
 ```

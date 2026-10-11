@@ -1,6 +1,6 @@
 # Enterprise Agent Identity and Authorization Security Baseline
 
-Oct 7, 2026 · @MaxL
+Author: Max · 2026-10-07
 
 ## Preface
 

@@ -4,6 +4,8 @@
 
 Este proyecto contiene dos partes: un estándar de seguridad sobre identidad y autorización de agentes empresariales y una herramienta estática de autoevaluación que permite contrastar el cumplimiento con dicho estándar. La herramienta no requiere backend, y los datos de evaluación se almacenan únicamente en el navegador del usuario.
 
+Autor: Max ([GitHub @cybermaxluo](https://github.com/cybermaxluo))
+
 ## Índice
 
 ```

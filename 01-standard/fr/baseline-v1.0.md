@@ -1,6 +1,6 @@
 # Référentiel de sécurité de l'identité et de l'autorisation des agents d'entreprise
 
-Oct 7, 2026 · @MaxL
+Auteur : Max · 2026-10-07
 
 ## Préambule
 

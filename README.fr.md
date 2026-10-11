@@ -4,6 +4,8 @@
 
 Ce projet comprend deux volets : un référentiel de sécurité relatif à l'identité et à l'autorisation des agents d'entreprise, et un outil statique d'auto-évaluation permettant de le confronter à une mise en œuvre. L'outil ne nécessite aucun serveur back-end. Les données d'évaluation ne sont conservées que dans le navigateur de l'utilisateur.
 
+Auteur : Max ([GitHub @cybermaxluo](https://github.com/cybermaxluo))
+
 ## Structure
 
 ```
