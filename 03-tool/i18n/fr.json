@@ -724,5 +724,15 @@
   "先核验身份": "Vérifier d’abord l’identité",
   "权限要收敛": "Limiter les permissions",
   "证据要留好": "Conserver les preuves",
-  "作者：Max Luo": "Auteur : Max Luo"
+  "作者：Max Luo": "Auteur : Max Luo",
+  "关于本项目": "À propos de ce projet",
+  "本项目将 Teloa 开发中的工具授权、人工审批、凭据管理、执行隔离与协作数据可见性等设计经验，整理为企业智能体身份与授权安全基线、参考架构及自评工具。基线面向各类智能体平台开放使用与评审，不依赖 Teloa 的具体实现。": "Ce projet rassemble les enseignements du développement de Teloa concernant l’autorisation des outils, l’approbation humaine, la gestion des identifiants, l’isolation de l’exécution et la visibilité des données partagées. Il les traduit en un référentiel de sécurité pour l’identité et l’autorisation des agents d’entreprise, des architectures de référence et un outil d’autoévaluation. Le référentiel est ouvert à l’utilisation et à la revue par diverses plateformes d’agents, indépendamment de l’implémentation de Teloa.",
+  "项目 GitHub": "Projet sur GitHub",
+  "基线文档": "Document du référentiel",
+  "参考架构": "Architectures de référence",
+  "让每个人，都拥有自己的 AI 团队。": "Votre propre équipe IA. Pour tous.",
+  "Teloa 是用于组建、管理和运行 AI 员工团队的 AI-Native Team Studio。为员工配置职责、知识、技能、工具、记忆与权限，让不同岗位在同一个工作平台中协作交付成果。你可以先从一个具体任务开始，再逐步建立自己的团队和工作方式。": "Teloa est un AI-Native Team Studio pour créer, gérer et faire travailler des équipes d’employés IA. Définissez pour chacun ses responsabilités, ses connaissances, ses compétences, ses outils, sa mémoire et ses permissions, puis faites collaborer différents rôles dans un même espace de travail pour produire des résultats. Commencez par une tâche concrète et construisez progressivement votre équipe et vos méthodes de travail.",
+  "Teloa 官网": "Site officiel de Teloa",
+  "产品文档": "Documentation du produit",
+  "资源市场": "Marché de ressources"
 }

@@ -369,6 +369,10 @@ table.data .linkish:focus-visible { outline: 2px solid var(--accent); }
 .prose h3 { font-size: 15px; margin-top: 10px; }
 .prose p, .prose li { color: var(--ink-2); }
 .prose ul { margin: 0; padding-left: 20px; }
+.about-projects .prose { max-width: none; height: 100%; }
+.about-projects h3 { margin-top: 0; }
+.about-links { display: flex; flex-wrap: wrap; gap: 8px 16px; padding-top: 6px; }
+.about-links a { text-underline-offset: 3px; }
 
 /* 提示 */
 .tip { position: fixed; z-index: 60; pointer-events: none; background: #101828; color: #ffffff; font-size: 12.5px; padding: 7px 10px; border-radius: 6px; max-width: 340px; line-height: 1.5; box-shadow: var(--shadow-2); }

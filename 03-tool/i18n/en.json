@@ -724,5 +724,15 @@
   "先核验身份": "Verify identity first",
   "权限要收敛": "Keep permissions narrow",
   "证据要留好": "Keep the evidence",
-  "作者：Max Luo": "Author: Max Luo"
+  "作者：Max Luo": "Author: Max Luo",
+  "关于本项目": "About this project",
+  "本项目将 Teloa 开发中的工具授权、人工审批、凭据管理、执行隔离与协作数据可见性等设计经验，整理为企业智能体身份与授权安全基线、参考架构及自评工具。基线面向各类智能体平台开放使用与评审，不依赖 Teloa 的具体实现。": "This project brings together lessons from Teloa development on tool authorization, human approval, credential management, execution isolation, and visibility of shared data. It provides an enterprise agent identity and authorization security baseline, reference architectures, and a self-assessment tool. The baseline is open for use and review across agent platforms and is independent of Teloa’s implementation.",
+  "项目 GitHub": "Project on GitHub",
+  "基线文档": "Baseline document",
+  "参考架构": "Reference architectures",
+  "让每个人，都拥有自己的 AI 团队。": "An AI team of your own. For everyone.",
+  "Teloa 是用于组建、管理和运行 AI 员工团队的 AI-Native Team Studio。为员工配置职责、知识、技能、工具、记忆与权限，让不同岗位在同一个工作平台中协作交付成果。你可以先从一个具体任务开始，再逐步建立自己的团队和工作方式。": "Teloa is an AI-Native Team Studio for building, managing, and running teams of AI employees. Give each employee responsibilities, knowledge, skills, tools, memory, and permissions, then bring roles together to deliver results in one workspace. Start with a concrete task and build your team and working methods as you go.",
+  "Teloa 官网": "Teloa website",
+  "产品文档": "Product documentation",
+  "资源市场": "Resource market"
 }

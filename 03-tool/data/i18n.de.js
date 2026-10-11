@@ -725,5 +725,15 @@ I18N.register("de", {
  "先核验身份": "Zuerst die Identität prüfen",
  "权限要收敛": "Berechtigungen begrenzen",
  "证据要留好": "Nachweise aufbewahren",
- "作者：Max Luo": "Autor: Max Luo"
+ "作者：Max Luo": "Autor: Max Luo",
+ "关于本项目": "Über dieses Projekt",
+ "本项目将 Teloa 开发中的工具授权、人工审批、凭据管理、执行隔离与协作数据可见性等设计经验，整理为企业智能体身份与授权安全基线、参考架构及自评工具。基线面向各类智能体平台开放使用与评审，不依赖 Teloa 的具体实现。": "Dieses Projekt bündelt Erfahrungen aus der Teloa-Entwicklung zu Werkzeugautorisierung, menschlicher Freigabe, Verwaltung von Zugangsdaten, Ausführungsisolation und Sichtbarkeit gemeinsam genutzter Daten. Daraus entstehen eine Sicherheitsbaseline für die Identität und Autorisierung von Unternehmensagenten, Referenzarchitekturen und ein Werkzeug zur Selbstbewertung. Die Baseline steht verschiedenen Agentenplattformen zur Nutzung und Prüfung offen und ist unabhängig von der konkreten Implementierung von Teloa.",
+ "项目 GitHub": "Projekt auf GitHub",
+ "基线文档": "Baseline-Dokument",
+ "参考架构": "Referenzarchitekturen",
+ "让每个人，都拥有自己的 AI 团队。": "Ein eigenes KI-Team. Für alle.",
+ "Teloa 是用于组建、管理和运行 AI 员工团队的 AI-Native Team Studio。为员工配置职责、知识、技能、工具、记忆与权限，让不同岗位在同一个工作平台中协作交付成果。你可以先从一个具体任务开始，再逐步建立自己的团队和工作方式。": "Teloa ist ein AI-Native Team Studio zum Aufbau, zur Verwaltung und zum Betrieb von Teams aus KI-Mitarbeitern. Legen Sie für jeden Mitarbeiter Aufgaben, Wissen, Fähigkeiten, Werkzeuge, Gedächtnis und Berechtigungen fest und lassen Sie verschiedene Rollen in einem gemeinsamen Arbeitsbereich Ergebnisse liefern. Beginnen Sie mit einer konkreten Aufgabe und entwickeln Sie Ihr Team und Ihre Arbeitsweise schrittweise weiter.",
+ "Teloa 官网": "Teloa-Website",
+ "产品文档": "Produktdokumentation",
+ "资源市场": "Ressourcenmarkt"
 });
